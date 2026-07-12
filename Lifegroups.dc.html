@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+
+  <!-- TOPBAR -->
+  <div style="background:#191713; color:#B9B2A4; text-align:center; padding:9px 24px; font-size:12.5px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;">Where You Matter</div>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; padding:16px clamp(20px,4vw,56px); background:rgba(253,251,247,0.95); backdrop-filter:blur(10px); border-bottom:1px solid #ECE5D8;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
+      <span style="width:1px; height:24px; background:#ECE5D8;"></span>
+      <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172;">Life Groups</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <a href="Heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
+      <a href="Join a Team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
+      <a href="#heart" style="color:#191713; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:700;">Life Groups</a>
+      <a href="Leader Portal.dc.html" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Leader Login</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(40px,6vw,72px); text-align:center;">
+    <img src="assets/cp-icon-black.png" alt="" style="width:46px; height:auto; margin:0 auto 22px; display:block;">
+    <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#191713; margin-bottom:18px;">Life is better together.</div>
+    <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,66px); line-height:1.04; margin:0 auto 26px; letter-spacing:-1.5px; max-width:820px;">A seat at the table is waiting for you</h1>
+    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:620px; margin:0 auto 40px;">Our Life Groups gather people around Jesus in homes throughout our city — sharing meals, studying God's Word, praying together, and doing life side by side.</p>
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center; margin-bottom:clamp(36px,5vw,64px);">
+      <a href="#find" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:17px 38px; border-radius:100px; text-decoration:none;">Find a Life Group</a>
+      <a href="#heart" style="display:inline-block; background:#F4EEE3; color:#191713; font-weight:600; font-size:16px; padding:17px 34px; border-radius:100px; text-decoration:none;">Why Life Groups?</a>
+    </div>
+
+    <!-- PHOTO COLLAGE -->
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:clamp(8px,1.5vw,16px); align-items:end;">
+      <img src="assets/photo-2.png" alt="Praying together" style="aspect-ratio:0.9; width:100%; border-radius:22px; object-fit:cover; display:block;">
+      <img src="assets/photo-1.png" alt="Welcoming one another" style="aspect-ratio:1.5; width:100%; border-radius:22px; object-fit:cover; display:block;">
+      <img src="assets/photo-5.png" alt="Worship" style="aspect-ratio:0.9; width:100%; border-radius:22px; object-fit:cover; display:block;">
+    </div>
+  </div>
+
+  <!-- OUR HEART -->
+  <div id="heart" style="background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:860px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px); text-align:center;">
+      <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:22px; text-transform:uppercase;">Our Heart</div>
+      <p style="font-family:'Minion Pro', Georgia, serif; font-size:clamp(22px,3.2vw,29px); line-height:1.55; color:#191713; margin:0 0 28px;">Our Life Groups exist to make disciples by gathering people around Jesus in homes throughout our city.</p>
+      <p style="font-size:17px; line-height:1.8; color:#6E6759; margin:0;">Following the example found in Scripture, we devote ourselves to God's Word, prayer, fellowship, the breaking of bread, and caring for one another — so that Christ is glorified and His love is made visible to the world.</p>
+    </div>
+  </div>
+
+  <!-- THE TABLE (dinner party emphasis) -->
+  <div id="table" style="background:#191713; color:#FDFBF7;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(32px,5vw,72px); align-items:center;">
+      <img src="assets/photo-8.png" alt="Community gathering" style="aspect-ratio:1.15; width:100%; border-radius:24px; object-fit:cover; display:block;">
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#B9B2A4; margin-bottom:20px; text-transform:uppercase;">The Table</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 22px; letter-spacing:-1px;">Most groups start with dinner</h2>
+        <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 18px;">We're leaning into dinner parties — because something happens around a shared meal that doesn't happen anywhere else. Conversation slows down. Guards come down. Strangers become family.</p>
+        <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 30px;">Jesus did some of His best work around a table, and so do we: breaking bread, taking Communion together, and remembering our risen Savior.</p>
+        <a href="#find" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:15.5px; padding:15px 32px; border-radius:100px; text-decoration:none;">Find a dinner group</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- OUR PROMISE / EVERY LIFE GROUP WILL -->
+  <div id="promise" style="max-width:1100px; margin:0 auto; padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(28px,5vw,72px); align-items:start;">
+      <div style="position:sticky; top:110px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Our Promise</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Every Life Group will&hellip;</h2>
+        <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0;">Eight commitments every group keeps — whichever home it meets in, whoever gathers around the table.</p>
+      </div>
+      <div>
+        <sc-for list="{{ commitments }}" as="item" hint-placeholder-count="8">
+          <div style="display:flex; gap:22px; padding:26px 0; border-bottom:1px solid #ECE5D8; align-items:flex-start;">
+            <div style="flex:none; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#191713; width:36px; padding-top:1px;">{{ item.num }}</div>
+            <div>
+              <div style="font-weight:700; font-size:17.5px; margin-bottom:6px;">{{ item.title }}</div>
+              <div style="font-size:15.5px; line-height:1.7; color:#6E6759;">{{ item.detail }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- FIND A GROUP -->
+  <div id="find" style="background:#FFFFFF; border-top:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; margin-bottom:52px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Find a Life Group</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">There's a place for you</h2>
+        <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">Filter by what matters to you, then request to join — a leader will reach out personally within the week.</p>
+      </div>
+
+      <!-- FILTERS -->
+      <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:48px;">
+        <select style="{{ selectStyle }}" value="{{ filters.location }}" onChange="{{ setLocation }}">
+          <option value="">All locations</option>
+          <sc-for list="{{ locationOptions }}" as="loc" hint-placeholder-count="4">
+            <option value="{{ loc }}">{{ loc }}</option>
+          </sc-for>
+        </select>
+        <select style="{{ selectStyle }}" value="{{ filters.day }}" onChange="{{ setDay }}">
+          <option value="">Any day</option>
+          <sc-for list="{{ dayOptions }}" as="d" hint-placeholder-count="6">
+            <option value="{{ d }}">{{ d }}</option>
+          </sc-for>
+        </select>
+        <select style="{{ selectStyle }}" value="{{ filters.stage }}" onChange="{{ setStage }}">
+          <option value="">Everyone welcome</option>
+          <sc-for list="{{ stageOptions }}" as="s" hint-placeholder-count="5">
+            <option value="{{ s }}">{{ s }}</option>
+          </sc-for>
+        </select>
+        <div onClick="{{ toggleKids }}" style="{{ kidsChipStyle }}">Kids welcome</div>
+        <div onClick="{{ toggleDinner }}" style="{{ dinnerChipStyle }}">Dinner provided</div>
+        <div onClick="{{ toggleOpenOnly }}" style="{{ openChipStyle }}">Has open spots</div>
+      </div>
+
+      <!-- GROUP CARDS -->
+      <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:26px;">
+        <sc-for list="{{ visibleGroups }}" as="g" hint-placeholder-count="6">
+          <div style="background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; overflow:hidden; display:flex; flex-direction:column;">
+            <div style="position:relative; height:158px;">
+              <img src="{{ g.img }}" alt="{{ g.name }}" style="width:100%; height:158px; object-fit:cover; display:block;">
+              <sc-if value="{{ g.showCapacityBadge }}" hint-placeholder-val="{{ false }}">
+                <span style="{{ g.capacityBadgeStyle }}">{{ g.capacityBadge }}</span>
+              </sc-if>
+            </div>
+            <div style="padding:24px 24px 26px; display:flex; flex-direction:column; gap:12px; flex:1;">
+              <div>
+                <div style="font-weight:700; font-size:19px; margin-bottom:3px;">{{ g.name }}</div>
+                <div style="font-size:13.5px; color:#8A8172;">{{ g.location }} &middot; {{ g.day }}s, {{ g.time }} &middot; {{ g.frequency }}</div>
+              </div>
+              <div style="display:flex; gap:7px; flex-wrap:wrap;">
+                <span style="background:#F4EEE3; color:#6E6759; font-size:12px; font-weight:600; padding:5px 12px; border-radius:100px;">{{ g.stage }}</span>
+                <sc-if value="{{ g.kids }}" hint-placeholder-val="{{ false }}">
+                  <span style="background:#EAF0E4; color:#54713F; font-size:12px; font-weight:600; padding:5px 12px; border-radius:100px;">Kids welcome</span>
+                </sc-if>
+                <sc-if value="{{ g.dinner }}" hint-placeholder-val="{{ false }}">
+                  <span style="background:#F4EEE3; color:#4A443A; font-size:12px; font-weight:600; padding:5px 12px; border-radius:100px;">Dinner provided</span>
+                </sc-if>
+              </div>
+              <div style="font-size:14.5px; color:#6E6759; line-height:1.65; flex:1;">{{ g.description }}</div>
+              <div style="display:flex; align-items:center; gap:10px; padding-top:2px;">
+                <div style="width:34px; height:34px; border-radius:50%; background:#ECE5D8; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#8A8172;">{{ g.leaderInitials }}</div>
+                <div style="font-size:13.5px; color:#8A8172;">Led by <span style="color:#4A443A; font-weight:600;">{{ g.leader }}</span></div>
+              </div>
+              <a href="#find" style="{{ g.ctaStyle }}">{{ g.ctaLabel }}</a>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:56px 0 8px; color:#6E6759; font-size:16px;">No groups match those filters yet — try widening your search, or <a href="#contact">contact our team</a> and we'll help you find a fit.</div>
+      </sc-if>
+    </div>
+  </div>
+
+  <!-- HEARTBEAT CROSS-PROMO -->
+  <div style="border-top:1px solid #ECE5D8; background:#F4EEE3;">
+    <div style="max-width:1240px; margin:0 auto; padding:28px clamp(20px,4vw,56px); display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 28px; text-align:center;">
+      <span style="font-size:15.5px; color:#4A443A;"><span style="font-family:'Minion Pro', Georgia, serif; font-style:italic;">New to Citipointe?</span> Heartbeat is the best first step. One Sunday a month, during service.</span>
+      <a href="Heartbeat.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">See the next date &rarr;</a>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,96px) clamp(20px,4vw,56px);">
+    <div style="background:#191713; color:#FDFBF7; border-radius:26px; padding:clamp(32px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:clamp(24px,4vw,44px); align-items:center;">
+      <div>
+        <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block; margin-bottom:22px;">
+        <h2 style="font-weight:800; font-size:clamp(26px,4vw,32px); margin:0 0 14px; letter-spacing:-0.5px;">Can't find the right fit?</h2>
+        <p style="font-size:16.5px; color:#B9B2A4; margin:0; line-height:1.7; max-width:520px;">Tell us a little about you and we'll personally connect you with a Life Group near you — or help you start one around your own table.</p>
+      </div>
+      <a href="#contact" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:16px; padding:17px 38px; border-radius:100px; text-decoration:none; white-space:nowrap;">Contact Our Team</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:44px clamp(20px,4vw,56px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:28px; width:auto; display:block;">
+        <span style="width:1px; height:20px; background:#ECE5D8;"></span>
+        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Life Groups</span>
+      </div>
+      <div style="display:flex; gap:32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
+        <span>lifegroups@citipointechurch.com</span>
+        <a href="Heartbeat.dc.html" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
+        <a href="Join a Team.dc.html" style="color:#8A8172; text-decoration:none;">Join a Team</a>
+        <a href="Leader Portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+      </div>
+      <div style="font-size:13px; color:#B0A897;">&copy; 2026 Citipointe Church &middot; Where You Matter</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = {
+    filters: { location: '', day: '', stage: '', kids: false, dinner: false, openOnly: false },
+  };
+
+  commitments = [
+    { num: '01', title: 'Two approved leaders', detail: 'Be led by two approved leaders, sharing the responsibility of shepherding the group.' },
+    { num: '02', title: 'Two leaders in training', detail: 'Intentionally develop two leaders in training — raising up who leads next.' },
+    { num: '03', title: 'Meet in homes', detail: 'Meet in a home or apartment complex whenever possible, where hospitality feels natural.' },
+    { num: '04', title: 'Christ at the center', detail: 'Keep Christ at the center of every gathering by taking Communion together regularly — remembering and celebrating our risen Savior Jesus.' },
+    { num: '05', title: 'Genuine community', detail: 'Cultivate genuine community through meals, conversation, and hospitality.' },
+    { num: '06', title: 'Space to be known', detail: 'Allow space for prayer, encouragement, confession, and bearing one another\u2019s burdens.' },
+    { num: '07', title: 'Grow through Scripture', detail: 'Study the Bible together or discuss the previous Sunday\u2019s message.' },
+    { num: '08', title: 'Always welcoming', detail: 'Always be looking to welcome new people — to make disciples and build the church.' },
+  ];
+
+  groups = [
+    { img: 'assets/photo-1.png', name: 'The East Side Table', location: 'East Nashville', day: 'Tuesday', time: '6:30pm', frequency: 'Weekly', stage: 'Young Adults', leader: 'Sam & Priya Nair', leaderInitials: 'SP', description: 'A meal-first group unpacking the Sunday message over a long dinner table.', kids: false, dinner: true, capacity: 'open', spotsLeft: 4 },
+    { img: 'assets/photo-6.png', name: 'Franklin Sojourners', location: 'Franklin', day: 'Wednesday', time: '5:30pm', frequency: 'Weekly', stage: 'Families', leader: 'Dave & Grace Holt', leaderInitials: 'DG', description: 'Families with young kids doing life together — early dinner, kid chaos welcome.', kids: true, dinner: true, capacity: 'open', spotsLeft: 6 },
+    { img: 'assets/photo-3.png', name: 'Green Hills Anchor', location: 'Green Hills', day: 'Thursday', time: '7:00pm', frequency: 'Weekly', stage: 'Mixed Ages', leader: 'Marcus Iona', leaderInitials: 'MI', description: 'Working verse by verse through Scripture, with strong coffee and deep questions.', kids: false, dinner: false, capacity: 'full', spotsLeft: 0 },
+    { img: 'assets/photo-7.png', name: 'Brentwood Sunrise', location: 'Brentwood', day: 'Sunday', time: '12:00pm', frequency: 'Fortnightly', stage: 'Singles', leader: 'Beth Farrow', leaderInitials: 'BF', description: 'Lunch, conversation and Communion straight after church.', kids: false, dinner: false, capacity: 'open', spotsLeft: 8 },
+    { img: 'assets/photo-8.png', name: '12 South Roots', location: '12 South', day: 'Monday', time: '6:30pm', frequency: 'Weekly', stage: 'Young Adults', leader: 'Jono & Tess Meyer', leaderInitials: 'JT', description: 'A close-knit dinner group for young adults navigating faith, work and life.', kids: false, dinner: true, capacity: 'nearly', spotsLeft: 2 },
+    { img: 'assets/photo-4.png', name: 'Germantown Fellowship', location: 'Germantown', day: 'Tuesday', time: '6:00pm', frequency: 'Weekly', stage: 'Mixed Ages', leader: 'Ruth Okafor', leaderInitials: 'RO', description: 'Prayer, praise and a full table — open to all ages and stages.', kids: true, dinner: true, capacity: 'full', spotsLeft: 0 },
+  ];
+
+  selectStyle = "padding:12px 20px; border-radius:100px; border:1px solid #ECE5D8; background:#FDFBF7; font-size:16px; font-weight:500; color:#4A443A; font-family:inherit;";
+  chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
+
+  setLocation = (e) => this.setState(s => ({ filters: { ...s.filters, location: e.target.value } }));
+  setDay = (e) => this.setState(s => ({ filters: { ...s.filters, day: e.target.value } }));
+  setStage = (e) => this.setState(s => ({ filters: { ...s.filters, stage: e.target.value } }));
+  toggleKids = () => this.setState(s => ({ filters: { ...s.filters, kids: !s.filters.kids } }));
+  toggleDinner = () => this.setState(s => ({ filters: { ...s.filters, dinner: !s.filters.dinner } }));
+  toggleOpenOnly = () => this.setState(s => ({ filters: { ...s.filters, openOnly: !s.filters.openOnly } }));
+
+  renderVals() {
+    const { filters } = this.state;
+    const visibleGroups = this.groups.filter(g =>
+      (!filters.location || g.location === filters.location) &&
+      (!filters.day || g.day === filters.day) &&
+      (!filters.stage || g.stage === filters.stage) &&
+      (!filters.kids || g.kids) &&
+      (!filters.dinner || g.dinner) &&
+      (!filters.openOnly || g.capacity !== 'full')
+    ).map(g => {
+      const full = g.capacity === 'full';
+      const nearly = g.capacity === 'nearly';
+      return {
+        ...g,
+        showCapacityBadge: full || nearly,
+        capacityBadge: full ? 'At capacity' : `${g.spotsLeft} spots left`,
+        capacityBadgeStyle: `position:absolute; top:12px; right:12px; font-family:'Proxima Nova','Helvetica Neue',Arial,sans-serif; ${full ? 'background:#191713; color:#FFFFFF;' : 'background:#FFFFFF; color:#191713;'} font-size:11.5px; font-weight:700; padding:6px 13px; border-radius:100px; letter-spacing:0.3px;`,
+        ctaLabel: full ? 'Join the waitlist' : 'Request to join',
+        ctaStyle: full
+          ? 'text-align:center; margin-top:6px; background:transparent; color:#191713; border:1.5px solid #191713; font-weight:600; font-size:14.5px; padding:11px; border-radius:100px; text-decoration:none;'
+          : 'text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:12px; border-radius:100px; text-decoration:none;',
+      };
+    });
+
+    return {
+      commitments: this.commitments,
+      filters,
+      selectStyle: this.selectStyle,
+      locationOptions: [...new Set(this.groups.map(g => g.location))],
+      dayOptions: [...new Set(this.groups.map(g => g.day))],
+      stageOptions: [...new Set(this.groups.map(g => g.stage))],
+      setLocation: this.setLocation,
+      setDay: this.setDay,
+      setStage: this.setStage,
+      toggleKids: this.toggleKids,
+      toggleDinner: this.toggleDinner,
+      toggleOpenOnly: this.toggleOpenOnly,
+      kidsChipStyle: this.chipStyle(filters.kids),
+      dinnerChipStyle: this.chipStyle(filters.dinner),
+      openChipStyle: this.chipStyle(filters.openOnly),
+      visibleGroups,
+      noResults: visibleGroups.length === 0,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

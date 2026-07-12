@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+
+  <!-- TOPBAR -->
+  <div style="background:#191713; color:#B9B2A4; text-align:center; padding:9px 24px; font-size:12.5px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;">Where You Matter</div>
+
+  <!-- NAV -->
+  <div style="position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; padding:16px clamp(20px,4vw,56px); background:rgba(253,251,247,0.95); backdrop-filter:blur(10px); border-bottom:1px solid #ECE5D8;">
+    <div style="display:flex; align-items:center; gap:14px;">
+      <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
+      <span style="width:1px; height:24px; background:#ECE5D8;"></span>
+      <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172;">Heartbeat</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <a href="#what" style="color:#191713; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:700;">Heartbeat</a>
+      <a href="Join a Team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
+      <a href="Lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Life Groups</a>
+      <a href="#signup" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Save my spot</a>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(40px,6vw,72px); text-align:center;">
+    <img src="assets/cp-icon-black.png" alt="" style="width:46px; height:auto; margin:0 auto 22px; display:block;">
+    <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#191713; margin-bottom:18px;">Your first step at Citipointe.</div>
+    <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,66px); line-height:1.04; margin:0 auto 26px; letter-spacing:-1.5px; max-width:860px;">One Sunday. Fully connected.</h1>
+    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:640px; margin:0 auto 36px;">Heartbeat is a one day course that happens during service on the second Sunday of every month. Discover the heart of our church, what we believe, your spiritual gifts, and your place on a team and in a lifegroup.</p>
+
+    <div style="display:flex; flex-wrap:wrap; align-items:stretch; justify-content:center; gap:14px; max-width:720px; margin:0 auto 36px;">
+      <div style="background:#191713; color:#FDFBF7; border-radius:18px; flex:1 1 240px; padding:20px clamp(22px,4vw,34px); text-align:left;">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:6px;">Next Heartbeat</div>
+        <div style="font-weight:800; font-size:26px; letter-spacing:-0.5px;">{{ nextDateLabel }}</div>
+        <div style="font-size:14px; color:#B9B2A4; margin-top:4px;">During service, Nashville and Franklin</div>
+      </div>
+      <div style="background:#F4EEE3; color:#191713; border-radius:18px; flex:1 1 240px; padding:20px clamp(22px,4vw,34px); text-align:left;">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:6px;">Can't make it? Following month</div>
+        <div style="font-weight:700; font-size:20px;">{{ followingDateLabel }}</div>
+      </div>
+    </div>
+
+    <div style="display:flex; flex-wrap:wrap; gap:14px; justify-content:center;">
+      <a href="#signup" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:17px 38px; border-radius:100px; text-decoration:none;">Save my spot</a>
+      <a href="#what" style="display:inline-block; background:#F4EEE3; color:#191713; font-weight:600; font-size:16px; padding:17px 34px; border-radius:100px; text-decoration:none;">What is Heartbeat?</a>
+    </div>
+  </div>
+
+  <!-- WHAT YOU'LL GET -->
+  <div id="what" style="background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; margin-bottom:52px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">What you'll get</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0; letter-spacing:-1px;">You'll leave with four things</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:22px;">
+        <sc-for list="{{ outcomes }}" as="o" hint-placeholder-count="4">
+          <div style="background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,4.5vw,30px);">
+            <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; color:#191713; margin-bottom:16px;">{{ o.num }}</div>
+            <div style="font-weight:700; font-size:18px; margin-bottom:8px;">{{ o.title }}</div>
+            <div style="font-size:15px; line-height:1.7; color:#6E6759;">{{ o.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOW IT WORKS -->
+  <div style="background:#191713; color:#FDFBF7;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(32px,5vw,72px); align-items:center;">
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#B9B2A4; margin-bottom:20px; text-transform:uppercase;">How it works</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 22px; letter-spacing:-1px;">Just show up. We'll take it from there.</h2>
+        <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 30px;">No prep. No cost. Nothing to bring. Heartbeat happens during the service you're already attending, so it fits into a Sunday you've already planned.</p>
+        <a href="#signup" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:15.5px; padding:15px 32px; border-radius:100px; text-decoration:none;">Save my spot</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:0;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <div style="display:flex; gap:22px; padding:26px 0; border-bottom:1px solid #3A362E; align-items:flex-start;">
+            <div style="flex:none; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#B9B2A4; width:36px; padding-top:1px;">{{ s.num }}</div>
+            <div>
+              <div style="font-weight:700; font-size:17.5px; margin-bottom:6px;">{{ s.title }}</div>
+              <div style="font-size:15.5px; line-height:1.7; color:#B9B2A4;">{{ s.detail }}</div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIGNUP -->
+  <div id="signup" style="max-width:1100px; margin:0 auto; padding:clamp(56px,8vw,110px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(28px,5vw,72px); align-items:start;">
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Sign up</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Save your spot</h2>
+        <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 24px;">Takes thirty seconds. We'll text you the details before the day.</p>
+        <img src="assets/photo-2.png" alt="People gathering at Citipointe" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
+      </div>
+
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(28px,4vw,40px);">
+
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(160px, 1fr)); gap:14px;">
+              <div>
+                <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">First name</label>
+                <input type="text" value="{{ form.first }}" onChange="{{ setFirst }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+              </div>
+              <div>
+                <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Last name</label>
+                <input type="text" value="{{ form.last }}" onChange="{{ setLast }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+              </div>
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Mobile</label>
+              <input type="tel" placeholder="(615) 555-0100" value="{{ form.mobile }}" onChange="{{ setMobile }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Email</label>
+              <input type="email" placeholder="you@email.com" value="{{ form.email }}" onChange="{{ setEmail }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Campus</label>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <sc-for list="{{ campusOptions }}" as="c" hint-placeholder-count="2">
+                  <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which date?</label>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <sc-for list="{{ dateOptions }}" as="d" hint-placeholder-count="2">
+                  <div onClick="{{ d.onClick }}" style="{{ d.style }}">{{ d.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+            <a href="#signup" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">Save my spot</a>
+            <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Submits to our signup form (CCB). Placeholder link for now.</div>
+          </div>
+        </sc-if>
+
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:24px 8px;">
+            <div style="width:56px; height:56px; border-radius:50%; background:#EAF0E4; color:#54713F; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; margin:0 auto 20px;">&#10003;</div>
+            <h3 style="font-weight:800; font-size:26px; margin:0 0 12px; letter-spacing:-0.5px;">You're in.</h3>
+            <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 8px;">We'll text you the details before the day.</p>
+            <p style="font-size:15px; color:#8A8172; margin:0 0 24px;">See you on <strong style="color:#191713;">{{ chosenDateLabel }}</strong>.</p>
+            <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:26px;">
+              <a href="Join a Team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">While you wait: meet the serving teams &rarr;</a>
+              <a href="Lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">Browse Life Groups &rarr;</a>
+            </div>
+            <a href="#signup" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#8A8172; text-decoration:none;">Sign up someone else</a>
+          </div>
+        </sc-if>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS CROSS-PROMO -->
+  <div style="border-top:1px solid #ECE5D8; background:#F4EEE3;">
+    <div style="max-width:1240px; margin:0 auto; padding:28px clamp(20px,4vw,56px); display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 28px; text-align:center;">
+      <span style="font-size:15.5px; color:#4A443A;"><span style="font-family:'Minion Pro', Georgia, serif; font-style:italic;">Already done Heartbeat?</span> Your next step is a team and a table.</span>
+      <a href="Join a Team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Join a Team &rarr;</a>
+      <a href="Lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Find a Life Group &rarr;</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:44px clamp(20px,4vw,56px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:28px; width:auto; display:block;">
+        <span style="width:1px; height:20px; background:#ECE5D8;"></span>
+        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Heartbeat</span>
+      </div>
+      <div style="display:flex; gap:32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
+        <a href="Join a Team.dc.html" style="color:#8A8172; text-decoration:none;">Join a Team</a>
+        <a href="Lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Life Groups</a>
+        <a href="Leader Portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+      </div>
+      <div style="font-size:13px; color:#B0A897;">&copy; 2026 Citipointe Church &middot; Where You Matter</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = {
+    form: { first: '', last: '', mobile: '', email: '', campus: 'Nashville', date: 0 },
+    submitted: false,
+  };
+
+  outcomes = [
+    { num: '01', title: 'The heart of our church', detail: 'Hear the story, the vision, and why Citipointe does what it does.' },
+    { num: '02', title: 'What we believe', detail: 'A clear, simple walk through the beliefs that shape everything here.' },
+    { num: '03', title: 'Your spiritual gifts', detail: 'Discover how God has wired you and where those gifts fit best.' },
+    { num: '04', title: 'Your people and your place', detail: 'Get connected to a lifegroup and matched to a serving team.' },
+  ];
+
+  steps = [
+    { num: '01', title: 'Show up on the second Sunday', detail: 'Come to the service you normally attend at Nashville or Franklin.' },
+    { num: '02', title: 'It happens during service', detail: 'Heartbeat runs alongside the service, so there is no extra trip.' },
+    { num: '03', title: 'Leave connected', detail: 'You walk out knowing your gifts, your lifegroup, and your team.' },
+  ];
+
+  // 2nd Sunday of a given month/year
+  secondSunday(year, month) {
+    const first = new Date(year, month, 1);
+    const offset = (7 - first.getDay()) % 7; // days to first Sunday
+    return new Date(year, month, 1 + offset + 7);
+  }
+
+  upcomingDates() {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const dates = [];
+    let y = today.getFullYear(), m = today.getMonth();
+    while (dates.length < 2) {
+      const d = this.secondSunday(y, m);
+      if (d >= today) dates.push(d);
+      m++;
+      if (m > 11) { m = 0; y++; }
+    }
+    return dates;
+  }
+
+  fmt(d) {
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
+
+  chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
+
+  setField = (key) => (e) => this.setState(s => ({ form: { ...s.form, [key]: e.target.value } }));
+
+  renderVals() {
+    const dates = this.upcomingDates();
+    const { form, submitted } = this.state;
+
+    return {
+      nextDateLabel: this.fmt(dates[0]),
+      followingDateLabel: this.fmt(dates[1]),
+      outcomes: this.outcomes,
+      steps: this.steps,
+      form,
+      setFirst: this.setField('first'),
+      setLast: this.setField('last'),
+      setMobile: this.setField('mobile'),
+      setEmail: this.setField('email'),
+      campusOptions: ['Nashville', 'Franklin'].map(label => ({
+        label,
+        style: this.chipStyle(form.campus === label),
+        onClick: () => this.setState(s => ({ form: { ...s.form, campus: label } })),
+      })),
+      dateOptions: dates.map((d, i) => ({
+        label: d.toLocaleDateString('en-US', { month: 'long' }) + ' ' + d.getDate(),
+        style: this.chipStyle(form.date === i),
+        onClick: () => this.setState(s => ({ form: { ...s.form, date: i } })),
+      })),
+      chosenDateLabel: this.fmt(dates[form.date] || dates[0]),
+      submit: () => this.setState({ submitted: true }),
+      reset: () => this.setState(s => ({ submitted: false, form: { ...s.form, first: '', last: '', mobile: '', email: '' } })),
+      submitted,
+      notSubmitted: !submitted,
+    };
+  }
+}
+</script>
+</body>
+</html>
