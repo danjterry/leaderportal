@@ -30,9 +30,11 @@
       <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172;">Join a Team</span>
     </div>
     <div style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <a href="Home.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Home</a>
       <a href="Heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
       <a href="#teams" style="color:#191713; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:700;">Join a Team</a>
       <a href="Lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Life Groups</a>
+      <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Give</a>
       <a href="#interest" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">I want to serve</a>
     </div>
   </div>
@@ -54,8 +56,8 @@
     <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px);">
       <div style="text-align:center; margin-bottom:52px;">
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">The teams</div>
-        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">Four ways to make a Sunday happen</h2>
-        <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">More teams are coming. These four are where most people start.</p>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">Seven ways to make a Sunday happen</h2>
+        <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">From the parking lot to the platform — there’s a place for your gifts.</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:24px;">
         <sc-for list="{{ teams }}" as="t" hint-placeholder-count="4">
@@ -101,7 +103,7 @@
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Interest form</div>
         <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Tell us you're in</h2>
         <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 24px;">Whether you've done Heartbeat or not, start here. We'll take the next step with you.</p>
-        <img src="assets/photo-1.png" alt="Team serving on a Sunday" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
+        <img src="assets/auditorium-wide.jpg" alt="A full auditorium on a Sunday at Citipointe" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
       </div>
 
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(28px,4vw,40px);">
@@ -182,12 +184,12 @@
         <span style="width:1px; height:20px; background:#ECE5D8;"></span>
         <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Join a Team</span>
       </div>
-      <div style="display:flex; gap:32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
+      <div style="display:flex; gap:12px 32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
         <a href="Heartbeat.dc.html" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
         <a href="Lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Life Groups</a>
         <a href="Leader Portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
       </div>
-      <div style="font-size:13px; color:#B0A897;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
+      <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
     </div>
   </div>
 
@@ -201,10 +203,13 @@ class Component extends DCLogic {
   };
 
   teams = [
-    { img: 'assets/photo-4.png', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
-    { img: 'assets/photo-1.png', name: 'Welcome Team', what: 'The first face people see. Greet at the doors and set the tone for the whole morning.', win: 'The win: every guest feels expected.' },
-    { img: 'assets/photo-3.png', name: 'Parking Lot Team', what: 'Direct traffic, wave people in, and turn the parking lot into the first hello.', win: 'The win: the welcome starts at the curb.' },
-    { img: 'assets/photo-6.png', name: 'Kids Team', what: 'Make church the highlight of a kid\u2019s week through games, stories, and small groups.', win: 'The win: kids beg their parents to come back.' },
+    { img: 'assets/preaching-cross.jpg', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
+    { img: 'assets/arrival-flags.jpg', name: 'Welcome Team', what: 'The first face people see. Greet at the doors and set the tone for the whole morning.', win: 'The win: every guest feels expected.' },
+    { img: 'assets/parking-team.jpg', name: 'Parking Lot Team', what: 'Direct traffic, wave people in, and turn the parking lot into the first hello.', win: 'The win: the welcome starts at the curb.' },
+    { img: 'assets/kids-outside.jpg', name: 'Citipointe Kids', what: 'Help every child feel seen, known, and loved \u2014 games, stories, worship, and small groups that make faith stick.', win: 'The win: kids beg their parents to come back.' },
+    { img: 'assets/ministry-community.jpg', name: 'Connect Bar', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
+    { img: 'assets/stage-word.jpg', name: 'Worship Team', what: 'Lead the room in worship through vocals and band \u2014 carrying His presence before carrying a note.', win: 'The win: a room led into pure worship of Jesus.' },
+    { img: 'assets/photo-7.png', name: 'Production Team', what: 'Run sound, lyrics, lighting, and stream \u2014 the seamless details behind every service.', win: 'The win: nothing between people and the presence of God.' },
   ];
 
   pathway = [

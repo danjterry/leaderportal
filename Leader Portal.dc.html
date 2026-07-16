@@ -23,7 +23,7 @@
 <sc-if value="{{ showGate }}" hint-placeholder-val="{{ true }}">
   <div style="min-height:100vh; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));">
     <div style="background:#16140F; color:#FBF8F3; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(32px,5vw,56px);">
-      <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block; align-self:flex-start;">
+      <a href="Home.dc.html" style="align-self:flex-start; display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;"></a>
       <div>
         <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the people who make Sundays and lifegroups happen.</div>
         <h1 style="font-weight:800; font-size:clamp(30px,4vw,44px); line-height:1.08; margin:0; letter-spacing:-1px; max-width:480px;">Everything you need to serve and lead, in one place.</h1>
@@ -45,7 +45,7 @@
         <input type="password" placeholder="••••••••" value="{{ pw }}" onChange="{{ setPw }}" onKeyDown="{{ pwKeyDown }}" style="width:100%; padding:14px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FFFFFF;">
         <a href="#portal" onClick="{{ enter }}" style="display:block; text-align:center; margin-top:16px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Enter the portal</a>
         <div style="text-align:center; margin-top:22px;">
-          <a href="Lifegroups.dc.html" style="font-size:13px; color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
+          <a href="Home.dc.html" style="font-size:13px; color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
         </div>
       </div>
     </div>
@@ -59,10 +59,10 @@
   <!-- NAV -->
   <div style="position:sticky; top:0; z-index:40; background:#16140F; color:#FBF8F3;">
     <div style="max-width:1200px; margin:0 auto; padding:14px clamp(18px,4vw,40px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px;">
-      <div onClick="{{ goHome }}" style="display:flex; align-items:center; gap:12px; cursor:pointer;">
-        <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="Home.dc.html" title="Back to the public site" style="display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;"></a>
         <span style="width:1px; height:18px; background:#3A362E;"></span>
-        <span style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase;">Leader Portal</span>
+        <span onClick="{{ goHome }}" style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase; cursor:pointer;">Leader Portal</span>
       </div>
       <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
         <div style="display:flex; gap:2px; background:#26221B; border-radius:100px; padding:3px;">
@@ -98,6 +98,13 @@
               <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
               <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">Second Sunday of every month</div>
             </div>
+            <sc-for list="{{ seasons }}" as="sn" hint-placeholder-count="3">
+              <div style="background:{{ sn.bg }}; color:{{ sn.color }}; border:1px solid {{ sn.border }}; border-radius:16px; flex:1 1 170px; max-width:280px; padding:20px clamp(20px,4vw,28px);">
+                <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:{{ sn.labelColor }}; text-transform:uppercase; margin-bottom:5px;">{{ sn.label }}</div>
+                <div style="font-weight:800; font-size:19px;">{{ sn.range }}</div>
+                <div style="font-size:13px; color:{{ sn.labelColor }}; margin-top:5px;">{{ sn.status }}</div>
+              </div>
+            </sc-for>
           </div>
         </div>
 
@@ -202,7 +209,7 @@
 
         <!-- FAQs -->
         <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden; margin-bottom:22px;">
-          <div style="padding:24px clamp(18px,4vw,30px) 8px; font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">Top 5 questions</div>
+          <div style="padding:24px clamp(18px,4vw,30px) 8px; font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">The questions everyone asks</div>
           <sc-for list="{{ pb.faqs }}" as="f" hint-placeholder-count="5">
             <div style="padding:20px clamp(18px,4vw,30px); border-bottom:1px solid #F0EAE0;">
               <div style="font-weight:700; font-size:15.5px; margin-bottom:5px;">{{ f.q }}</div>
@@ -210,6 +217,25 @@
             </div>
           </sc-for>
         </div>
+
+        <!-- Extra sections (teams with richer source docs) -->
+        <sc-if value="{{ pb.hasExtras }}" hint-placeholder-val="{{ false }}">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; margin-bottom:22px;">
+            <sc-for list="{{ pb.extras }}" as="ex" hint-placeholder-count="2">
+              <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+                <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:16px;">{{ ex.title }}</div>
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <sc-for list="{{ ex.items }}" as="xi" hint-placeholder-count="4">
+                    <div style="display:flex; gap:12px; align-items:flex-start;">
+                      <span style="flex:none; width:6px; height:6px; border-radius:50%; background:#191713; margin-top:8px;"></span>
+                      <div style="font-size:14px; color:#3B372E; line-height:1.65;"><strong>{{ xi.name }}.</strong> {{ xi.detail }}</div>
+                    </div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </sc-if>
 
         <!-- Who to call -->
         <div style="background:#F5EFE3; border-radius:18px; padding:clamp(20px,4.5vw,30px); display:flex; flex-wrap:wrap; gap:20px 48px;">
@@ -225,6 +251,9 @@
 
         <sc-if value="{{ pb.showNote }}" hint-placeholder-val="{{ false }}">
           <div style="margin-top:18px; padding:18px 24px; background:#FFFFFF; border:1px dashed #D8CFBC; border-radius:14px; font-size:13.5px; color:#6B6355; line-height:1.65;">{{ pb.note }}</div>
+        </sc-if>
+        <sc-if value="{{ pb.hasDoc }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ pb.docHref }}" target="_blank" style="display:inline-block; margin-top:18px; font-size:14px; font-weight:700; text-decoration:none;">{{ pb.docLabel }} &rarr;</a>
         </sc-if>
       </div>
     </sc-if>
@@ -263,7 +292,7 @@
                 </sc-for>
               </div>
               <sc-if value="{{ sec.showLink }}" hint-placeholder-val="{{ false }}">
-                <a href="#lead-app" style="display:inline-block; margin-top:18px; font-size:14px; font-weight:700; text-decoration:none;">{{ sec.linkLabel }} &rarr;</a>
+                <a href="#ccb" style="display:inline-block; margin-top:18px; font-size:14px; font-weight:700; text-decoration:none;">{{ sec.linkLabel }} &rarr;</a>
               </sc-if>
             </div>
           </sc-for>
@@ -294,6 +323,33 @@
           <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">A healthy lifegroup produces people who are known, cared for, growing in God's Word, and raising up the next leaders.</div>
         </div>
 
+        <!-- The model -->
+        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
+          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:14px;">The model: dinner parties</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px 28px;">
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Every group is a dinner party.</strong> The table is the strategy — a meal people want to invite their friends to, where community happens before the study does.</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Every group meets Wednesday night.</strong> For the next 12 months, all groups gather on one night. One rhythm for the whole church — then we grow from there.</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Communion at every gathering.</strong> Every table, every week. Pick up Communion resources on Sundays, or midweek from the church office.</div>
+          </div>
+        </div>
+
+        <!-- Run sheet -->
+        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
+          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:6px;">Wednesday night run sheet</div>
+          <div style="font-size:13.5px; color:#9C927E; margin-bottom:18px;">A guide, not a script — shift the times to suit your table, but protect dinner, Communion, and finishing on time.</div>
+          <div style="display:flex; flex-direction:column;">
+            <sc-for list="{{ runSheet }}" as="rs" hint-placeholder-count="5">
+              <div style="display:flex; gap:18px; align-items:flex-start; padding:13px 0; border-bottom:1px solid #F0EADC;">
+                <div style="flex:none; width:64px; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172; padding-top:1px;">{{ rs.time }}</div>
+                <div>
+                  <div style="font-weight:700; font-size:15px; margin-bottom:3px;">{{ rs.title }}</div>
+                  <div style="font-size:14px; color:#6B6355; line-height:1.65;">{{ rs.detail }}</div>
+                </div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
         <!-- Weekly rhythm -->
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-bottom:28px;">
           <sc-for list="{{ rhythm }}" as="r" hint-placeholder-count="3">
@@ -308,15 +364,27 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; margin-bottom:28px;">
           <!-- Attendance -->
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Attendance</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">Log attendance in the Lead app after every gathering. It takes under a minute and it's how staff know your group is healthy.</div>
-            <a href="#lead-app" style="font-size:14px; font-weight:700; text-decoration:none;">Open the Lead app (placeholder) &rarr;</a>
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Reporting: within 24 hours</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">Report your gathering in the Citipointe Nashville app within 24 hours — attendance, testimonies, and pastoral care notes. Reporting is stewardship: it's how we care for our communities and see who's being discipled. Add new people to your group so our pastors are aware; to remove someone, contact your Pastoral Oversight with the details.</div>
+            <a href="#ccb" style="font-size:14px; font-weight:700; text-decoration:none;">Open CCB (placeholder) &rarr;</a>
           </div>
 
           <!-- Join requests -->
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Join requests</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">When someone asks to join through the website, their details come to you by email. Reach out within the week &mdash; a fast, warm hello decides whether they show up.</div>
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Join requests: the 48-hour rule</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">When someone asks to join through the website or app, respond within 48 hours &mdash; a fast, warm hello communicates that we value people. And we never turn anyone away: if your table is at capacity, talk to your Pastoral Oversight about alternatives before saying no.</div>
+          </div>
+
+          <!-- Cancelling -->
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Before you cancel</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">For many, Wednesday night is the anchor of their week. Contact your Pastoral Oversight <strong>before</strong> cancelling a gathering &mdash; there's usually an alternative. Same goes for changes to format or frequency. You're not on your own.</div>
+          </div>
+
+          <!-- Support -->
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">You have an oversight — use them</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">Every leader has a <strong>Pastoral Oversight</strong> for care, coaching, and any question about discipling your group — build the relationship, don't wait for a crisis. <strong>Discipleship Support</strong> keeps a pulse on who's engaged so nobody slips through the cracks. Reply to both promptly. Pastoral Oversight: Dan Terry, 628&nbsp;259&nbsp;9460.</div>
           </div>
         </div>
 
@@ -333,6 +401,21 @@
             </sc-for>
           </div>
           <div onClick="{{ goSafeChurch }}" style="display:inline-block; margin-top:18px; font-size:14px; font-weight:700; cursor:pointer;">Safe Church policies and incident report &rarr;</div>
+        </div>
+
+        <!-- Leader commitment -->
+        <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(24px,4vw,34px); margin-top:28px;">
+          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:8px;">As leaders, we commit</div>
+          <div style="font-size:13.5px; color:#B7AF9E; margin-bottom:20px; line-height:1.6;">This is the commitment every lifegroup leader makes when they say yes (1 Timothy 3:8&ndash;13).</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:16px 28px;">
+            <sc-for list="{{ commitments }}" as="cm" hint-placeholder-count="4">
+              <div style="display:flex; gap:12px; align-items:flex-start;">
+                <span style="flex:none; width:6px; height:6px; border-radius:50%; background:#B7AF9E; margin-top:9px;"></span>
+                <div style="font-size:14.5px; line-height:1.7; color:#EDE8DE;"><strong>{{ cm.title }}.</strong> {{ cm.detail }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="border-top:1px solid #3A362E; margin-top:22px; padding-top:16px; font-size:13.5px; color:#B7AF9E; line-height:1.7;">We carry the culture: generous, planted in God's house, teachable, honoring, self-controlled, wise in word and action &mdash; bringing glory to God, greatness to the church, and value to the individual.</div>
         </div>
         </div>
         </sc-if>
@@ -354,6 +437,32 @@
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Communion guide</div>
             <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">How to take Communion together, step by step, with the Scriptures to read.</div>
             <div style="font-size:14px; font-weight:700;">Open the guide &rarr;</div>
+          </div>
+
+          <!-- Discipleship resources -->
+          <div style="grid-column:1 / -1; background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(22px,4.5vw,34px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Discipleship resources</div>
+            <div style="font-size:13.5px; color:#9C927E; margin-bottom:20px;">Discipleship is a life transaction — teaching others everything Jesus has taught you. (Matthew 28:18–20)</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:24px 40px;">
+              <div>
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:12px;">How to make a disciple</div>
+                <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#3B372E; line-height:1.65;">
+                  <div><strong>Listen first, then ask questions.</strong> Understand where they're coming from; the right question grows people faster than the right answer.</div>
+                  <div><strong>Teach truth and equip them.</strong> Break the Word down where they're at — then show them how you study, pray, and practice the disciplines.</div>
+                  <div><strong>Be consistent in their life.</strong> Connect outside the group — groceries, hikes, your kitchen table. Discipleship is relationship.</div>
+                  <div><strong>Dig for gold.</strong> Help people see themselves the way God sees them, and teach them the importance of being planted in the local church.</div>
+                  <div><strong>Love unconditionally.</strong> Give grace and mercy as you address growth — the Holy Spirit changes hearts, not us.</div>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:12px;">Put in their hands</div>
+                <div style="display:flex; flex-direction:column; gap:10px; font-size:14px; color:#3B372E; line-height:1.65;">
+                  <div><strong>New believers:</strong> the "Following Jesus" book + app (7 essentials, with video course), and the book of John — one chapter a day on the YouVersion Bible app.</div>
+                  <div><strong>Going deeper:</strong> Theos U short courses (my.theosu.ca) and the Enduring Word commentary (enduringword.com).</div>
+                  <div><strong>Topical books:</strong> "Keep Your Love On" (Danny Silk), "Expanded Leadership" (Mark Ramsey &amp; Karolina Gunsser), and "Secrets of the Secret Place".</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         </sc-if>
@@ -531,8 +640,7 @@
               <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
                 <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Forms and links</div>
                 <div style="display:flex; flex-direction:column; gap:10px;">
-                  <a href="#lead-app" style="font-size:14px; font-weight:700; text-decoration:none;">The Lead app — rosters and swaps (placeholder) &rarr;</a>
-                  <a href="#ccb" style="font-size:14px; font-weight:700; text-decoration:none;">CCB — checks and membership (placeholder) &rarr;</a>
+                  <a href="#ccb" style="font-size:14px; font-weight:700; text-decoration:none;">CCB — rostering, serving requests, checks and membership (placeholder) &rarr;</a>
                   <div onClick="{{ goSafeChurch }}" style="font-size:14px; font-weight:700; cursor:pointer;">Safe Church and incident report &rarr;</div>
                 </div>
               </div>
@@ -605,8 +713,8 @@
 
     <!-- FOOTER -->
     <div style="margin-top:56px; padding-top:28px; border-top:1px solid #E7DFCF; display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:13px; color:#9C927E;">
-      <div>Safeguarding records and full membership data live in CCB. Attendance marked here syncs to the Lead app (placeholder).</div>
-      <a href="Lifegroups.dc.html" style="color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
+      <div>Safeguarding records and full membership data live in CCB. Lifegroup reporting lives in the Citipointe Nashville app (built on CCB); team rostering lives in CCB (placeholders).</div>
+      <a href="Home.dc.html" style="color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
     </div>
 
   </div>
@@ -627,108 +735,200 @@ class Component extends DCLogic {
 
   teams = [
     {
-      key: 'inside-hosts', name: 'Inside Hosts',
-      win: 'Nobody sits alone or feels lost. Every person in the room is seen and settled.',
+      key: 'parking', name: 'Parking Lot Team',
+      win: 'The first face of Citipointe \u2014 a welcoming, safe arrival for every guest. Order, clarity, and warmth from the moment they turn in.',
       basics: [
-        { label: 'Arrive', value: '45 min before service' },
-        { label: 'Check in', value: 'Host desk, main foyer' },
-        { label: 'Wear', value: 'Neat casual + team lanyard' },
+        { label: 'Arrive', value: '9:00 AM, check in with your team lead' },
+        { label: 'Team', value: '3\u20135: crosswalk, parking aisle, spot directing' },
+        { label: 'Wear', value: 'Team vest + closed shoes' },
       ],
       steps: [
-        { n: 1, title: 'Huddle with your team leader', detail: 'Quick prayer, assignments for the morning, anything unusual about today.' },
-        { n: 2, title: 'Walk your section', detail: 'Check seats, sightlines, and reserved rows before doors open.' },
-        { n: 3, title: 'Seat people as they arrive', detail: 'Guide guests to open seats, prioritize families and first-timers near the aisles.' },
-        { n: 4, title: 'Stay available during service', detail: 'Watch for latecomers, parents with kids, and anyone who looks unsure.' },
-        { n: 5, title: 'Reset and pack down', detail: 'Straighten your section after service and flag anything broken or left behind.' },
+        { n: 1, title: 'Set the space (9:00\u20139:25)', detail: 'White cones out to guide traffic flow, parking signage in designated spots, welcome flags at main entrances, gated play area clean and tidy, umbrellas up (weather permitting \u2014 not if windy), and walk the lot for trash.' },
+        { n: 2, title: 'Team Huddle (9:25\u20139:35)', detail: 'Celebrate wins, hear vision, and pray before we serve.' },
+        { n: 3, title: 'Welcome with a smile and a wave', detail: 'Direct incoming traffic safely and smoothly, assist with parking needs, and watch pedestrian zones. You are one of the first people guests see \u2014 a simple smile and hi sets the tone for their whole experience.' },
+        { n: 4, title: 'Hold the lot until 10:20', detail: 'Stay in the lot until all guests have arrived. Your team lead releases you into service once the lot is clear.' },
+        { n: 5, title: 'Serve the exit, then pack down', detail: 'Keep waving and smiling as guests leave, reset and clean the parking zones, and return all gear \u2014 vests, signs, cones, welcome flags, and red torches \u2014 to the Team Hub.' },
       ],
       faqs: [
-        { q: 'What if someone sits in a reserved row?', a: 'Kindly offer them a better seat nearby. Reserved rows are for families with accessibility needs and late-arriving volunteers.' },
-        { q: 'What do I do with a crying baby situation?', a: 'Gently point parents to the family room. There is a live feed of the service in there.' },
-        { q: 'Someone asks a question I cannot answer. Now what?', a: 'Walk them to the host desk. Never guess about kids check-in or safeguarding questions.' },
-        { q: 'Can I serve and still attend service?', a: 'Yes. Most hosts serve one service and sit in another, or sit in their section once everyone is settled.' },
-        { q: 'What if I cannot make my rostered Sunday?', a: 'Swap with a teammate in the Lead app as early as you can, then tell your team leader.' },
+        { q: 'What happens in bad weather?', a: 'We serve rain or shine. Umbrellas go up only when it is safe \u2014 never in wind \u2014 and rotations get shorter in extreme weather.' },
+        { q: 'What if the lot fills up?', a: 'Tell your team lead. We open the overflow area and you redirect from the entrance.' },
+        { q: 'A driver is frustrated or ignores directions. What now?', a: 'Never argue with a moving car. Let it go, stay safe, and mention it at pack down.' },
+        { q: 'Do I miss the whole service?', a: 'No. Your team lead releases you into service once the lot is clear, around 10:20.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
       ],
-      leader: 'Rachel Kim, Inside Hosts lead',
-      escalation: 'Connections Pastor via host desk',
+      leader: 'Your Parking team lead \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
       note: '',
     },
     {
       key: 'welcome', name: 'Welcome Team',
-      win: 'Every guest feels expected. The first 30 seconds set the tone for the whole morning.',
+      win: 'Every guest feels seen, known, and loved \u2014 from the front doors to the auditorium, first visit or fifteenth year.',
       basics: [
-        { label: 'Arrive', value: '45 min before service' },
-        { label: 'Check in', value: 'Welcome hub, front doors' },
-        { label: 'Wear', value: 'Neat casual + team lanyard' },
+        { label: 'Arrive', value: '9:20 AM, check in with your team lead' },
+        { label: 'Team', value: '6 minimum: 2 outside doors, 2 inside doors, 2 auditorium doors' },
+        { label: 'Huddle', value: '9:25\u20139:35 AM' },
       ],
       steps: [
-        { n: 1, title: 'Huddle and pray', detail: 'Meet at the welcome hub for assignments: doors, foyer, or new-here table.' },
-        { n: 2, title: 'Set the entrance', detail: 'Doors open, signage out, new-here table stocked before the first car parks.' },
-        { n: 3, title: 'Greet like you mean it', detail: 'Eye contact, a real hello, hold the door. Point people to coffee, kids check-in, and seats.' },
-        { n: 4, title: 'Spot first-timers', detail: 'Walk them to the new-here table personally. Never point when you can walk with them.' },
-        { n: 5, title: 'Farewell well', detail: 'The goodbye matters as much as the hello. Be at the doors as people leave.' },
+        { n: 1, title: 'Check in and get your doors', detail: 'Arrive at 9:20, check in with your team lead for assignments, then join Team Huddle at 9:25 to celebrate wins, hear vision, and pray.' },
+        { n: 2, title: 'Greet with enthusiasm and intention', detail: 'A personable, authentic, encouraging atmosphere at every door and in the lobby and outdoor spaces.' },
+        { n: 3, title: 'Open sanctuary doors at 9:40', detail: 'Identify new guests and connect them with someone inside. Never point when you can walk with them.' },
+        { n: 4, title: 'Watch the lobby', detail: 'Monitor and tidy the coffee station as needed, and stay available and responsive to the lobby environment.' },
+        { n: 5, title: 'At 10:00, close the main doors', detail: 'Put up signage directing guests to the side door. After service, check your area for debris and personal items \u2014 leave it better than we found it, supplies ready for the next team.' },
       ],
       faqs: [
-        { q: 'How do I spot a first-timer?', a: 'They pause inside the door, read signage, or walk slowly. When unsure, a warm "have you been with us before?" works every time.' },
-        { q: 'What if someone arrives upset or in crisis?', a: 'Stay with them, stay calm, and send a teammate for your team leader or a pastor. Do not leave them alone.' },
+        { q: 'How do I spot a first-timer?', a: 'They pause inside the door, read signage, or walk slowly. When connecting, ask "how long have you been coming to Citipointe?" \u2014 never "is this your first time?" First time: you know exactly what to do, show them around. Second time: "Welcome back! How was your first service? Can I help you with anything?" Five years: no awkwardness, just conversation.' },
+        { q: 'What if someone arrives upset or in crisis?', a: 'Stay with them, stay calm, and send a teammate for your team lead or a pastor. Do not leave them alone.' },
         { q: 'Do I have to be an extrovert?', a: 'No. Warm beats loud. Some of our best greeters are the quiet ones.' },
-        { q: 'What about rain or cold mornings?', a: 'Umbrellas live at the welcome hub. Walk guests in under cover, guests stay dry before you do.' },
-        { q: 'What if I cannot make my rostered Sunday?', a: 'Swap with a teammate in the Lead app as early as you can, then tell your team leader.' },
+        { q: 'Someone arrives after 10:00. What do I do?', a: 'The main sanctuary doors are closed \u2014 warmly direct them to the side door using the signage.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
       ],
-      leader: 'Marcus Bell, Welcome Team lead',
-      escalation: 'Connections Pastor via welcome hub',
+      leader: 'Your Welcome team lead \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
       note: '',
     },
     {
-      key: 'parking', name: 'Parking Lot Team',
-      win: 'The welcome starts at the curb. People park easily and walk in already feeling cared for.',
+      key: 'connect-bar', name: 'Connect Bar',
+      win: 'We set the atmosphere by being prepared, present, and people-focused \u2014 every guest feels seen, supported, and guided from the moment they enter until service ends.',
       basics: [
-        { label: 'Arrive', value: '60 min before service' },
-        { label: 'Check in', value: 'Parking trailer, lot entrance' },
-        { label: 'Wear', value: 'Team vest (provided) + closed shoes' },
+        { label: 'Arrive', value: '9:00 AM to set up before huddle' },
+        { label: 'Team', value: '2 including team lead: 1 lobby, 1 back lobby' },
+        { label: 'Bring', value: 'Empty hands, full attention' },
       ],
       steps: [
-        { n: 1, title: 'Huddle and gear up', detail: 'Vests, radios, and lot assignments at the parking trailer. Quick prayer before positions.' },
-        { n: 2, title: 'Open the lot', detail: 'Cones out, accessible spots clear, guest parking signed before the first arrivals.' },
-        { n: 3, title: 'Direct with a smile', detail: 'Clear signals, big waves. You are the first hello of the morning, act like it.' },
-        { n: 4, title: 'Watch the peak', detail: 'The 15 minutes before service is the crunch. Keep lanes moving and radios on.' },
-        { n: 5, title: 'Manage the exit', detail: 'After service, keep the exit flowing and wave people off. Pack down cones and gear last.' },
+        { n: 1, title: 'Set the bar (from 9:00)', detail: 'Gather 1 iPad and stand, confirm the connect bar is set up, then join Team Huddle at 9:25.' },
+        { n: 2, title: 'Know your info', detail: 'Review campus events, Next Steps, and key ministry areas before guests arrive \u2014 service times, Kids check-in, restrooms, lobby resources \u2014 so you can answer confidently.' },
+        { n: 3, title: 'Work the bar until 10:15', detail: 'Be proactive: smile, greet, and open with "I don\u2019t think I\u2019ve met you yet" or "How can I help you today?" Watch for anyone who looks new, unsure, or in need of help.' },
+        { n: 4, title: 'Walk, don\u2019t point', detail: 'Walk people to Kids check-in, restrooms, Growth Track \u2014 wherever they need to go. Know where the child headphones are if a parent asks.' },
+        { n: 5, title: 'Be back for the response', detail: 'When salvations are being prayed, return to the bar and stay until at least 12:15 to serve guests as they leave. Then iPads back on chargers, stands stored, and leave the bar and lobby better than you found them.' },
       ],
       faqs: [
-        { q: 'What happens in bad weather?', a: 'We serve rain or shine. Ponchos and umbrellas are in the trailer, and rotations get shorter in extreme weather.' },
-        { q: 'What if the lot fills up?', a: 'Radio your team leader. We open the overflow lot and you redirect from the entrance.' },
-        { q: 'A driver is frustrated or ignores directions. What now?', a: 'Never argue with a moving car. Let it go, stay safe, and mention it at pack down.' },
-        { q: 'Do I miss the whole service?', a: 'No. Rotations get everyone inside for most of the service, and the team sits together.' },
-        { q: 'What if I cannot make my rostered Sunday?', a: 'Swap with a teammate in the Lead app as early as you can, then tell your team leader.' },
+        { q: 'Someone asks a question I cannot answer. Now what?', a: 'Walk them to someone who can \u2014 your team lead or a staff member. Never guess about kids check-in or safeguarding questions.' },
+        { q: 'Someone looks new but does not approach the bar. Do I wait?', a: 'No \u2014 go to them. Open with "I don\u2019t think I\u2019ve met you yet," then "how long have you been coming to Citipointe?" It works whatever the answer \u2014 first time, third time, or five years.' },
+        { q: 'When can I head into service?', a: 'Stay at the bar until 10:15, then return when salvations are being prayed and serve until at least 12:15.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
       ],
-      leader: 'Tony Alvarez, Parking Team lead',
-      escalation: 'Facilities lead via radio channel 2',
-      note: '',
+      leader: 'Your Connect Bar team lead \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
+      note: 'Excellence is in the details: technology working, space tidy, and most importantly \u2014 eyes up, people first.',
     },
     {
-      key: 'kids', name: 'Kids Team',
-      win: 'Kids beg their parents to come back. Church is the highlight of their week.',
+      key: 'inside-hosts', name: 'Inside Auditorium Hosts',
+      win: 'Every seat and space is ready for someone to encounter God \u2014 an excellent, welcoming, distraction-free auditorium. "Use your gifts well to serve one another." (1 Peter 4:10)',
       basics: [
-        { label: 'Arrive', value: '45 min before service' },
-        { label: 'Check in', value: 'Kids wing volunteer desk' },
-        { label: 'Wear', value: 'Kids Team shirt + name badge' },
+        { label: 'Arrive', value: '8:45 AM check-in (leads by 8:40)' },
+        { label: 'Team', value: '6 per service (5 minimum), aisles covered' },
+        { label: 'Huddle', value: '9:25\u20139:35 AM' },
       ],
       steps: [
-        { n: 1, title: 'Check in and huddle', detail: 'Sign in at the volunteer desk, get your room assignment, pray with your room team.' },
-        { n: 2, title: 'Prep your room', detail: 'Activities out, lesson material ready, check-in tablets on before doors open.' },
-        { n: 3, title: 'Welcome every kid by name', detail: 'Greet kids at the door, match wristbands with the parent tag at drop-off.' },
-        { n: 4, title: 'Run the session', detail: 'Games, worship, story, and small group time. Follow the lesson plan, bring the energy.' },
-        { n: 5, title: 'Hand back safely', detail: 'Match every wristband to the parent tag at pick-up, every time, no exceptions. Then reset the room.' },
+        { n: 1, title: 'Prep every seat', detail: 'One offering envelope and one pen in every seat-back, plus promotional material on seats when applicable.' },
+        { n: 2, title: 'Walk the sanctuary', detail: 'Remove trash, cups, and left items; spot vacuum if needed; confirm chairs align to the black tape and rows are neat.' },
+        { n: 3, title: 'Stock the front and giving stations', detail: 'Tissues under the front row on each aisle, 5 small water bottles under the front row stage left, black box (tissues, mints, Connect Card, offering envelope), and giving stations full of envelopes and pens.' },
+        { n: 4, title: 'Welcome, seat, and serve', detail: 'From 9:40, help guests find seats and keep the room distraction-free. Pass buckets in the offering moment, and on the first Sunday of the month assist with Communion setup and distribution.' },
+        { n: 5, title: 'Reset for what\u2019s next', detail: 'Sweep the auditorium for debris and handouts, realign every row, and restock seat-backs and giving stations for midweek and the next service.' },
       ],
       faqs: [
-        { q: 'What checks do I need before serving?', a: 'A current background check and the safeguarding briefing, both handled through CCB before your first Sunday.' },
-        { q: 'A parent lost their pick-up tag. What do I do?', a: 'Call your room leader. They verify ID against the check-in system. Never release a child without a tag or leader sign-off.' },
-        { q: 'What if a child gets upset and wants their parents?', a: 'Comfort first. If they cannot settle in ten minutes, your room leader texts the parents through the check-in system.' },
-        { q: 'Am I ever alone with kids?', a: 'Never. Two-adult rule in every room, every time, including bathroom escorts.' },
-        { q: 'What if I cannot make my rostered Sunday?', a: 'Swap with a teammate in the Lead app as early as you can, then tell your room leader.' },
+        { q: 'When do we serve Communion?', a: 'The first Sunday of each month. Your team lead directs setup and distribution.' },
+        { q: 'What do I do with a crying baby situation?', a: 'Gently point parents to the families and mother\u2019s lounge \u2014 they can still follow the service from there.' },
+        { q: 'Someone asks a question I cannot answer. Now what?', a: 'Walk them to the Connect Bar. Never guess about kids check-in or safeguarding questions.' },
+        { q: 'Can I serve and still attend service?', a: 'Yes. Once everyone is settled you sit in your section, available but worshipping with everyone else.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
       ],
-      leader: 'Dana Whitfield, Kids Ministry lead',
-      escalation: 'Kids Pastor via volunteer desk',
-      note: 'This playbook covers the serving experience only. Safeguarding documents, background checks and rosters live in CCB. Ask your room leader for the links.',
+      leader: 'Your Inside Hosts team lead \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
+      note: 'Team leads: arrive by 8:40, assign roles and zones, take the Huddle Count (prayer count) during huddle and the Attendance Count during worship \u2014 both forms live at the Team Hub and go back after service. After offering, collect all 5 buckets with a staff member and secure the envelope in the giving station with another approved lead.',
+    },
+    {
+      key: 'worship', name: 'Worship Team',
+      win: 'A room led into pure worship of Jesus \u2014 prepared hearts, prepared parts, and a team that carries His presence before they carry a note.',
+      basics: [
+        { label: 'Arrive', value: '8:30 AM for rehearsal and soundcheck' },
+        { label: 'Team', value: 'Vocals and band, as rostered in CCB' },
+        { label: 'Huddle', value: '9:25\u20139:35 AM' },
+      ],
+      steps: [
+        { n: 1, title: 'Come prepared', detail: 'Charts learned, parts practiced, and keys confirmed before Sunday. Rehearsal is for tightening together, not learning alone.' },
+        { n: 2, title: 'Rehearse and soundcheck (8:30)', detail: 'Full run with the Production Team \u2014 in-ears dialed, transitions and spontaneous moments talked through with the worship leader.' },
+        { n: 3, title: 'Huddle and pray', detail: 'Join Team Huddle at 9:25 \u2014 celebrate wins, hear vision, and pray. Worship flows out of who you are before it flows out of the platform.' },
+        { n: 4, title: 'Lead the room', detail: 'Eyes up, engaged, and worshipping first \u2014 the congregation follows what they see. Watch the worship leader for changes and stay sensitive to the moment.' },
+        { n: 5, title: 'Pack down your position', detail: 'Stow instruments, in-ears, and cables; leave the platform reset. Stay for the word \u2014 you\u2019re part of the service, not just the setlist.' },
+      ],
+      faqs: [
+        { q: 'How do I join the team?', a: 'Complete Heartbeat, then ask about an audition \u2014 it\u2019s a low-pressure chance to hear where you fit, followed by onboarding with a mentor.' },
+        { q: 'When do I get the setlist?', a: 'Early in the week, with charts and reference tracks. Come to rehearsal ready \u2014 preparation is how we honor the team\u2019s time.' },
+        { q: 'What if I make a mistake during worship?', a: 'Keep going. Recover, stay engaged, and talk it through after. Nobody is chasing perfection \u2014 we\u2019re chasing His presence.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your worship leader so they can adjust the schedule.' },
+      ],
+      leader: 'Your worship leader \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
+      note: 'Draft playbook \u2014 send me the Worship Team doc (like the other team PDFs) and I\u2019ll update times, positions, and procedures to match.',
+    },
+    {
+      key: 'production', name: 'Production Team',
+      win: 'Nothing between people and the presence of God \u2014 sound, lyrics, lighting, and stream so seamless nobody thinks about them.',
+      basics: [
+        { label: 'Arrive', value: '8:30 AM for line check and rehearsal' },
+        { label: 'Team', value: 'Sound, lyrics/ProPresenter, lighting, stream/camera' },
+        { label: 'Huddle', value: '9:25\u20139:35 AM' },
+      ],
+      steps: [
+        { n: 1, title: 'Power up and line check (8:30)', detail: 'Consoles, stage boxes, in-ears, and screens on. Check every input with the worship team before rehearsal starts.' },
+        { n: 2, title: 'Run rehearsal like it\u2019s live', detail: 'Mix, lyrics, and lighting cues at service standard. Fix problems now \u2014 rehearsal is where surprises are allowed.' },
+        { n: 3, title: 'Confirm the run sheet', detail: 'Walk the service order with the worship leader and host: transitions, videos, announcements, and who cues what.' },
+        { n: 4, title: 'Serve the moment during service', detail: 'Eyes up between cues. Lyrics land on time, mix serves the room, and changes get communicated calmly on comms.' },
+        { n: 5, title: 'Pack down and report', detail: 'Power down in order, stow gear, log any faulty equipment so it\u2019s fixed before next Sunday.' },
+      ],
+      faqs: [
+        { q: 'Do I need experience to join?', a: 'No \u2014 you train shoulder to shoulder with an experienced operator until you\u2019re confident, and you\u2019re never thrown on a console alone.' },
+        { q: 'Something breaks mid-service. What now?', a: 'Stay calm, communicate on comms, and work the problem. The congregation follows your composure \u2014 if you don\u2019t panic, they won\u2019t notice.' },
+        { q: 'Can I still worship while serving?', a: 'Yes \u2014 production is worship. You\u2019re serving the room\u2019s encounter with God, and between cues you\u2019re part of it.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
+      ],
+      leader: 'Your Production team lead \u2014 check in on arrival',
+      escalation: 'Michael Piper, Serving teams (see Who to Contact)',
+      note: 'Draft playbook \u2014 send me the Production Team doc (like the other team PDFs) and I\u2019ll update times, positions, and procedures to match.',
+    },
+    {
+      key: 'kids', name: 'Citipointe Kids',
+      win: 'Every child and every family feels seen, valued, and experiences the love of God \u2014 kids saved, healed, set free, discipled, equipped, empowered, and growing in serving.',
+      basics: [
+        { label: 'Arrive', value: '9:00 AM, Kids Wing hallway for huddle' },
+        { label: 'Wear', value: 'Kids volunteer shirt + name tag (Hosts: "I Am Here to Serve" lanyard)' },
+        { label: 'Phones', value: 'No Phone Zone \u2014 away unless it\u2019s an emergency' },
+      ],
+      steps: [
+        { n: 1, title: 'Arrive ready, huddle twice (9:00 + 9:20)', detail: 'Belongings in your room, check in at the volunteer station, name tag on. Kids huddle at 9:00 in the Kids Wing hallway, All-Team Huddle at 9:20 in the foyer \u2014 then straight to your classroom, no lingering in the foyer.' },
+        { n: 2, title: 'Prep your room', detail: 'Activities out, lesson ready, water pitcher filled. Classroom doors stay open (barn doors closed). Kids Wing doors close at 10:15 once service begins.' },
+        { n: 3, title: 'Check every child in safely', detail: 'Every child gets a security tag \u2014 name, allergies, and a code that matches the parent\u2019s pick-up tag. New families: Connect Card, Welcome Pack, a HEY! I\u2019M NEW sticker, and walk them to the room personally.' },
+        { n: 4, title: 'Run the session under the Two Adult Rule', detail: 'Always two or more volunteers with children \u2014 every room, every activity, no exceptions. Bring the energy, follow the lesson, and keep contact public, nonsexual, and respectful.' },
+        { n: 5, title: 'Outside time, then hand back safely', detail: 'Before going out: bathroom break, shoes on, headcount, line up, name call \u2014 and again coming back in. Release each child only to the matching security tag, never to "the parent said I could get them." Then wipe surfaces, sanitize toys, reset the room.' },
+      ],
+      faqs: [
+        { q: 'Which room do I serve in?', a: 'Red 12\u201318 months (walking) \u00b7 Yellow 18\u201324 months \u00b7 Orange 2\u20133 years \u00b7 Blue 4\u20135 \u00b7 Green 6\u20137 \u00b7 Purple 8\u201312. Your Coordinator confirms your room each Sunday.' },
+        { q: 'A child needs a diaper change or the restroom. What do I do?', a: 'Leaders never change diapers \u2014 notify the Coordinator, who contacts the parent to come (tag verified). Restroom: classroom restroom, knock and call their name if they take long. Potty-training help only with the door open.' },
+        { q: 'A child gets hurt. What now?', a: 'Minor scrapes: first aid kit in the closet, tell the parent at pick-up. Anything more \u2014 including any head injury \u2014 Coordinator immediately, parent contacted, incident report signed by the parent with a Coordinator witnessing. We never administer medication (life-threatening conditions excepted).' },
+        { q: 'How do I handle behavior?', a: 'Calm, kind, and fair \u2014 ask questions, listen well. No physical discipline of any kind, ever, even with parent permission. Need support? Kids Director.' },
+        { q: 'A child is missing or there\u2019s a lockdown. What happens?', a: 'Missing child: Coordinator immediately \u2014 they alert the Watchman for a security search. Lockdown: lock all doors, two-minute standby; if unverified, lights off and move kids to the hard corner. Emergency contacts: Dan Terry 628 259 9460, Joel Ramsey 615 979 4933.' },
+        { q: 'Someone\u2019s in the Kids Wing who shouldn\u2019t be.', a: 'If they\u2019re not a pastor or a Kids leader serving that Sunday and don\u2019t need to be there, you have permission to kindly direct them to the lobby.' },
+        { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your Coordinator so they can adjust the schedule.' },
+      ],
+      extras: [
+        { title: 'Roles on the team', items: [
+          { name: 'Kids Host Team', detail: 'First impressions for kids and families \u2014 check-in iPads, security tags, new-family Connect Cards and Welcome Packs, walking families to rooms.' },
+          { name: 'Coordinator', detail: 'Carries the strength of the day: room readiness, headcounts, Watchman coverage, parent contact, mid-service pick-ups (matching tag only), doors at 10:15.' },
+          { name: 'Kids Team Leader', detail: 'Leads the room \u2014 fun, faith, and safety. Runs the lesson, owns the headcounts, verifies every release against the security code.' },
+          { name: 'Junior Helpers (13\u201317)', detail: 'Support, never supervise. Always accompanied by a leader, in a volunteer shirt, phones away.' },
+        ]},
+        { title: 'Non-negotiables', items: [
+          { name: 'Background check + Code of Conduct first', detail: 'Every volunteer completes a background check and signs the Child Safety Code of Conduct before their first Sunday.' },
+          { name: 'Two Adult Rule', detail: 'Two or more volunteers for any activity involving children \u2014 ideally screened and unrelated.' },
+          { name: 'Security tags decide releases', detail: 'A child is released only to the matching tag. No tag, no release \u2014 safety before convenience.' },
+          { name: 'Report, don\u2019t carry it alone', detail: 'Any policy violation, suspicion, or disclosure goes straight to the Kids Director \u2014 and to legal authorities when merited (Tennessee mandated-reporter procedures apply). We lead together.' },
+        ]},
+      ],
+      docHref: 'assets/kids-leadership-essentials.pdf', docLabel: 'Read the full Leadership Essentials manual (Nashville source of truth)',
+      leader: 'Kids Director \u2014 check in at the volunteer station',
+      escalation: 'Your Coordinator on the day; Kids Director for policies and anything bigger',
+      note: 'This playbook summarizes the Citipointe Kids Leadership Essentials manual \u2014 the Nashville source of truth. The full manual covers every policy in detail: first aid, lockdown, discipline, outside regulations, and the Child Safety Code of Conduct every volunteer signs.',
     },
   ];
 
@@ -756,11 +956,28 @@ class Component extends DCLogic {
 
   leadTeamSections = [
     {
-      title: 'Running your team', showLink: true, linkLabel: 'Open the Lead app (placeholder)',
+      title: 'Running your team', showLink: true, linkLabel: 'Open CCB (placeholder)',
       items: [
         { title: 'Pre-service huddle', detail: 'Ten minutes: pray, assign positions, name one thing to do better than last week.' },
-        { title: 'Roster in the Lead app', detail: 'Schedule a month ahead. People say yes to a plan, not a scramble.' },
+        { title: 'Roster in CCB, a month ahead', detail: 'People say yes to a plan, not a scramble. By the 10th, next month should be scheduled and sent out.' },
         { title: 'Follow up new members', detail: 'A text within 48 hours of a first serve. First Sundays decide whether there is a second.' },
+      ],
+    },
+    {
+      title: 'Monthly rostering in CCB', showLink: false, linkLabel: '',
+      items: [
+        { title: 'Schedule a month out', detail: 'Rostering is completed about one month in advance \u2014 by June 10th, July is scheduled and sent.' },
+        { title: 'Build the grid', detail: 'In each team: View All in Grid \u2192 Add Weeks for the month\u2019s Sundays \u2192 add the correct serving rotation for each 1st\u20135th Sunday. Repeat for every team.' },
+        { title: 'Notify volunteers', detail: 'Once rotations are added, click Notify Volunteers (top right) to send out serving requests.' },
+        { title: 'Check every Wednesday', detail: 'Review accepted, declined, and pending. Adjust the schedule for declines; reach out directly to anyone still pending.' },
+      ],
+    },
+    {
+      title: 'Keep Serving Rotations current', showLink: false, linkLabel: '',
+      items: [
+        { title: 'Add new volunteers', detail: 'The moment someone finishes onboarding, add them to the right Serving Rotation so future schedules include them automatically.' },
+        { title: 'Remove and update', detail: 'Take out volunteers no longer actively serving and update team assignments as they change.' },
+        { title: 'Why it matters', detail: 'Accurate rotations keep scheduling clean, prevent volunteers being overlooked, and mean each month generates from an up-to-date list.' },
       ],
     },
     {
@@ -781,10 +998,43 @@ class Component extends DCLogic {
     },
   ];
 
+  runSheet = [
+    { time: '7:00', title: 'Dinner around the table', detail: 'The meal is the point, not the preamble. Eat together, linger, and make the new person feel like they were expected.' },
+    { time: '7:45', title: 'Celebrate and announce', detail: 'Wins first \u2014 someone joined a team, a testimony, an answered prayer. Then any dates the group needs.' },
+    { time: '7:55', title: 'The Word at the table', detail: 'Open the study material or sermon notes. Dialogue over monologue \u2014 keep the ball moving from person to person.' },
+    { time: '8:20', title: 'Communion together', detail: 'Every table, every gathering. Use the Communion guide, and pick up resources on Sundays or midweek from the office.' },
+    { time: '8:30', title: 'Pray and send', detail: 'Prayer requests and praise reports, pray for them together, and finish on time \u2014 honoring the clock honors the guest.' },
+  ];
+
+  commitments = [
+    { title: 'Jesus is Lord of my life', detail: 'I have a personal and daily relationship with Him \u2014 what I lead others into, I live first.' },
+    { title: 'I\u2019m in for the full season', detail: 'I commit to pastoring my table for the whole season \u2014 my group can count on Wednesday night because they can count on me.' },
+    { title: 'I lead the way we\u2019ve agreed to lead', detail: 'I\u2019ve read this playbook and committed to its expectations \u2014 the run sheet, the 48-hour rule, reporting, and care.' },
+    { title: 'I build this house', detail: 'I passionately support the vision of Citipointe Church and honor its pastors and leaders in both speech and action.' },
+  ];
+
+  seasonCards() {
+    const m = new Date().getMonth();
+    const defs = [
+      { label: 'Spring season', range: 'Feb \u2013 April', months: [1, 2, 3] },
+      { label: 'Summer season', range: 'June \u2013 July', months: [5, 6] },
+      { label: 'Fall season', range: 'Sep \u2013 Nov', months: [8, 9, 10] },
+    ];
+    return defs.map(d => {
+      const active = d.months.includes(m);
+      return {
+        label: d.label, range: d.range,
+        status: active ? 'Happening now' : 'Lifegroup season',
+        bg: active ? '#16140F' : '#FFFFFF', color: active ? '#FBF8F3' : '#16140F',
+        border: active ? '#16140F' : '#E7DFCF', labelColor: active ? '#B7AF9E' : '#9C927E',
+      };
+    });
+  }
+
   rhythm = [
     { num: '01', title: 'Prep', detail: 'Read the material early in the week, pray for your people by name, and confirm who is bringing what.' },
     { num: '02', title: 'Gather', detail: 'Eat together, open the Word, make space for prayer and honesty. Start and finish on time.' },
-    { num: '03', title: 'Follow up', detail: 'Log attendance in the Lead app, text anyone who was missing, and act on anything raised in the room.' },
+    { num: '03', title: 'Follow up', detail: 'Report the gathering in the Citipointe Nashville app within 24 hours, text anyone who was missing, and act on anything raised in the room.' },
   ];
 
   careLevels = [
@@ -837,7 +1087,7 @@ class Component extends DCLogic {
       { id: 'pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything.' },
       { id: 'pre-safe', title: 'Safeguarding briefing', detail: 'One session, runs monthly. Book through the church office.' },
       { id: 'pre-coach', title: 'Coffee with your coach', detail: 'Every new leader gets one. They are your first call all year.' },
-      { id: 'pre-app', title: 'Lead app access', detail: 'Ask your staff contact to add you so rosters and attendance work.' },
+      { id: 'pre-app', title: 'CCB access', detail: 'Ask your staff contact to add you so rostering, serving requests, and attendance work.' },
     ]},
     { title: 'Your first month', items: [
       { id: 'm1-colead', title: 'Co-lead alongside a current leader', detail: 'Watch one, lead one. You are never thrown in alone.' },
@@ -1005,10 +1255,11 @@ class Component extends DCLogic {
       })),
 
       teamCards: this.teams.map(t => ({ name: t.name, win: t.win, onClick: this.go('playbook', t.key) })),
-      pb: pb ? { ...pb, showNote: !!pb.note } : { basics: [], steps: [], faqs: [] },
+      pb: pb ? { ...pb, showNote: !!pb.note, hasExtras: !!(pb.extras && pb.extras.length), hasDoc: !!pb.docHref } : { basics: [], steps: [], faqs: [], extras: [] },
 
       leadTeamSections: this.leadTeamSections,
-      rhythm: this.rhythm,
+      rhythm: this.rhythm, runSheet: this.runSheet, commitments: this.commitments,
+      seasons: this.seasonCards(),
       careLevels: this.careLevels,
       sermonNotes: this.sermonNotes,
       communionScripture: this.communionScripture,

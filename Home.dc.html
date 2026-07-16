@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+    @media (max-width: 720px) {
+      #home-nav-links { order: 3; flex-basis: 100%; }
+    }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+
+  <div style="background:#191713; color:#B9B2A4; text-align:center; padding:9px 24px; font-size:12.5px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;">For the glory of God and for the sake of the world</div>
+
+  <div style="position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; padding:16px clamp(20px,4vw,56px); background:rgba(253,251,247,0.95); backdrop-filter:blur(10px); border-bottom:1px solid #ECE5D8;">
+    <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
+    <div id="home-nav-links" style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <a href="#new" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">New Here?</a>
+      <a href="Lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Life Groups</a>
+      <a href="Join a Team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
+      <a href="Heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
+      <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Give</a>
+    </div>
+    <a href="#visit" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Plan your visit</a>
+  </div>
+
+  <!-- HERO -->
+  <div style="position:relative; min-height:clamp(480px,72vh,680px); display:flex; align-items:flex-end; background:#191713;">
+    <img src="assets/arrival-flags.jpg" alt="Families arriving at Citipointe, welcomed at the flags" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.72;">
+    <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(25,23,19,0.1) 25%, rgba(25,23,19,0.85) 100%);"></div>
+    <div style="position:relative; width:100%; padding:clamp(36px,6vw,56px) clamp(20px,4vw,72px) clamp(32px,5vw,48px); color:#FDFBF7;">
+      <h1 style="font-weight:800; font-size:clamp(36px,5.5vw,66px); line-height:1.05; margin:0 0 18px; letter-spacing:-1.5px; max-width:900px;">Welcome to Citipointe Church in Nashville &amp; Franklin, TN</h1>
+      <p style="font-size:clamp(16.5px,2vw,19px); line-height:1.65; color:#D9D2C4; max-width:600px; margin:0 0 28px;">Come as you are. We'd love to save you a seat, meet you at the door, and help your kids get checked in.</p>
+      <div style="display:flex; flex-wrap:wrap; gap:14px;">
+        <a href="#visit" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:16.5px; padding:18px 42px; border-radius:100px; text-decoration:none;">Plan your visit</a>
+        <a href="#new" style="display:inline-block; border:1px solid rgba(253,251,247,0.5); color:#FDFBF7; font-weight:600; font-size:16px; padding:17px 34px; border-radius:100px; text-decoration:none;">I'm new — what to expect</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICE TIMES BAR -->
+  <div style="background:#FFFFFF; border-bottom:1px solid #ECE5D8; padding:clamp(20px,3vw,26px) clamp(20px,4vw,72px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:18px 40px;">
+
+    <sc-for list="{{ locations }}" as="l" hint-placeholder-count="2">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 18px;">
+        <div>
+          <div style="font-weight:800; font-size:20px; letter-spacing:-0.3px;">{{ l.name }} <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-weight:400; font-size:18px; color:#8A8172;">{{ l.time }}</span></div>
+          <div style="font-size:14.5px; color:#6E6759; margin-top:3px; line-height:1.5;">{{ l.venue }}</div>
+        </div>
+        <a href="{{ l.map }}" target="_blank" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-weight:600; font-size:14px; padding:12px 22px; border-radius:100px; text-decoration:none;">Directions</a>
+      </div>
+    </sc-for>
+  </div>
+
+  <!-- NEW HERE -->
+  <div id="new" style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(32px,5vw,72px); align-items:start;">
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:20px;">New here?</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 22px; letter-spacing:-1px;">Everything you're wondering, answered.</h2>
+        <p style="font-size:17px; line-height:1.8; color:#6E6759; margin:0 0 30px;">Walking into a new church can feel like a big step. Here's exactly what your first Sunday looks like — so nothing is a surprise.</p>
+        <img src="assets/ministry-community.jpg" alt="Community and prayer after service at Citipointe" style="width:100%; aspect-ratio:1.35; border-radius:22px; object-fit:cover; display:block;">
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px; align-content:start;">
+        <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+          <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
+            <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:19px; margin-bottom:10px;">{{ f.q }}</div>
+            <div style="font-size:15px; line-height:1.7; color:#6E6759;">{{ f.a }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- PASTORS -->
+  <div style="background:#191713; color:#FDFBF7;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(32px,5vw,72px); align-items:center;">
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(210px, 1fr)); gap:18px;">
+        <div>
+          <img src="assets/pastors-ramsey.webp" alt="Joel and Savannah Ramsey" style="width:100%; aspect-ratio:0.95; object-fit:cover; border-radius:22px; display:block;">
+          <div style="font-weight:800; font-size:18px; margin-top:16px;">Joel &amp; Savannah Ramsey</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:15.5px; color:#B9B2A4; margin-top:3px;">Lead Pastors</div>
+        </div>
+        <div>
+          <img src="assets/pastors-sherrer.webp" alt="Ethan and Emma-Grace Sherrer" style="width:100%; aspect-ratio:0.95; object-fit:cover; border-radius:22px; display:block;">
+          <div style="font-weight:800; font-size:18px; margin-top:16px;">Ethan &amp; Emma-Grace Sherrer</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:15.5px; color:#B9B2A4; margin-top:3px;">Franklin Location Leaders</div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:20px;">Who we are</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 22px; letter-spacing:-1px;">The people who'll welcome you</h2>
+        <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 18px;">We're a nondenominational church — unashamed in our worship of Jesus, uncompromising in the Word of God, and relentless in our love for people.</p>
+        <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 30px;">Citipointe began in Brisbane, Australia in 1974 and is now a global family of churches. Here in Middle Tennessee, we're equipping the people of Jesus for the glory of God and for the sake of the world.</p>
+        <a href="https://www.citipointe.church/sunday-sermons" target="_blank" style="display:inline-block; border:1px solid rgba(253,251,247,0.4); color:#FDFBF7; font-weight:600; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Hear a sermon before you come</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT WE BELIEVE -->
+  <div id="beliefs" style="background:#FFFFFF; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; max-width:720px; margin:0 auto 48px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">What we believe</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 18px; letter-spacing:-1px;">Historic Christianity, plainly held</h2>
+        <p style="font-size:16.5px; line-height:1.75; color:#6E6759; margin:0;">We hold to the Apostles' and Nicene Creeds — the beliefs that have united Christians across denominations and centuries.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:16px;">
+        <sc-for list="{{ beliefs }}" as="b" hint-placeholder-count="6">
+          <div style="background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
+            <div style="font-weight:700; font-size:17px; margin-bottom:8px;">{{ b.title }}</div>
+            <div style="font-size:15px; line-height:1.7; color:#6E6759;">{{ b.detail }}</div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="text-align:center; margin-top:36px;">
+        <a href="assets/declaration-of-faith.pdf" target="_blank" style="display:inline-block; border:1px solid #E0D8C8; color:#191713; font-weight:600; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Read our full Declaration of Faith</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMING UP -->
+  <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,4vw,56px);">
+    <div style="text-align:center; margin-bottom:40px;">
+      <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Coming up</div>
+      <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0; letter-spacing:-1px;">Mark your calendar</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+      <div style="background:#191713; color:#FDFBF7; border-radius:22px; padding:clamp(22px,3vw,28px);">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:8px;">Every Sunday</div>
+        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Sunday service</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#B9B2A4;">Nashville 10am · Franklin 11am</div>
+      </div>
+      <div style="background:#F4EEE3; border-radius:22px; padding:clamp(22px,3vw,28px);">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Next Heartbeat · {{ nextHeartbeat }}</div>
+        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Heartbeat</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Your first step — a one-day course during service. <a href="Heartbeat.dc.html" style="font-weight:700; color:#191713;">Save your spot</a></div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Midweek</div>
+        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Life Groups</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Groups meet across the week in homes around the city. <a href="Lifegroups.dc.html" style="font-weight:700; color:#191713;">Find a group</a></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEXT STEPS -->
+  <div style="background:#FFFFFF; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,88px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; margin-bottom:48px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">After your first visit</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0; letter-spacing:-1px;">Find your place with us</h2>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px;">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+          <a href="{{ s.href }}" style="background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,3.5vw,30px); text-decoration:none; color:#191713; display:block;">
+            <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; margin-bottom:16px;">{{ s.num }}</div>
+            <div style="font-weight:700; font-size:19px; margin-bottom:8px;">{{ s.title }}</div>
+            <div style="font-size:15px; line-height:1.7; color:#6E6759;">{{ s.detail }}</div>
+            <div style="font-weight:700; font-size:14.5px; margin-top:18px;">{{ s.cta }} →</div>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <!-- PLAN YOUR VISIT -->
+  <div id="visit" style="max-width:1100px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(28px,5vw,72px); align-items:start;">
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:20px;">Plan your visit</div>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">We'll save you a seat</h2>
+        <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 24px;">Tell us when you're coming and someone will be looking out for you — we'll meet you at the door, show you around, and get your kids checked in ahead of the line.</p>
+        <img src="assets/parking-arrival.jpg" alt="Our parking team welcoming cars on a Sunday morning" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,4vw,36px);">
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Your name</div>
+              <input placeholder="First and last name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Phone or email</div>
+              <input placeholder="So we can confirm the details" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Which location?</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <button onClick="{{ pickNashville }}" style="flex:1 1 150px; border:1px solid {{ nashBorder }}; background:{{ nashBg }}; color:{{ nashColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Nashville · 10am</button>
+                <button onClick="{{ pickFranklin }}" style="flex:1 1 150px; border:1px solid {{ frankBorder }}; background:{{ frankBg }}; color:{{ frankColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Franklin · 11am</button>
+              </div>
+            </div>
+            <button onClick="{{ submit }}" style="background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:16px; padding:17px; border-radius:100px; font-family:inherit; cursor:pointer; margin-top:6px;">Plan my visit</button>
+            <div style="font-size:12.5px; color:#B9B2A4; text-align:center;">Submits to CCB — placeholder until the real form endpoint is connected.</div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:34px 8px;">
+            <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; margin-bottom:12px;">See you Sunday.</div>
+            <p style="font-size:15.5px; line-height:1.7; color:#6E6759; margin:0;">We'll be in touch to confirm the details and someone will be looking out for you at the {{ campus }} location.</p>
+            <button onClick="{{ reset }}" style="margin-top:22px; background:#F4EEE3; color:#191713; border:none; font-weight:600; font-size:14.5px; padding:12px 26px; border-radius:100px; font-family:inherit; cursor:pointer;">Plan another visit</button>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#191713; color:#B9B2A4;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(44px,6vw,64px) clamp(20px,4vw,56px);">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; gap:36px; align-items:flex-start;">
+        <div style="max-width:340px;">
+          <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:30px; width:auto; display:block; margin-bottom:16px;">
+          <div style="font-size:13px; letter-spacing:1.2px; text-transform:uppercase; font-weight:600; margin-bottom:22px;">For the glory of God and for the sake of the world</div>
+          <div style="font-size:14.5px; line-height:1.8; color:#8A8172;"><strong style="color:#D9D2C4;">Nashville</strong> · Sundays 10am<br>7533 Lords Chapel Drive, Nashville, TN<br><strong style="color:#D9D2C4;">Franklin</strong> · Sundays 11am<br>Expression City Theatre, 1724a General George Patton Dr, Brentwood, TN</div>
+        </div>
+        <div style="display:flex; flex-wrap:wrap; gap:36px 56px;">
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
+            <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Next steps</div>
+            <a href="#visit" style="color:#D9D2C4; text-decoration:none;">Plan your visit</a>
+            <a href="Heartbeat.dc.html" style="color:#D9D2C4; text-decoration:none;">Heartbeat</a>
+            <a href="Lifegroups.dc.html" style="color:#D9D2C4; text-decoration:none;">Life Groups</a>
+            <a href="Join a Team.dc.html" style="color:#D9D2C4; text-decoration:none;">Join a Team</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
+            <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Resources</div>
+            <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#D9D2C4; text-decoration:none;">Give online</a>
+            <a href="https://www.citipointe.church/sunday-sermons" target="_blank" style="color:#D9D2C4; text-decoration:none;">Sunday sermons</a>
+            <a href="Leader Portal.dc.html" style="color:#D9D2C4; text-decoration:none;">Leader Portal</a>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
+            <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Contact</div>
+            <a href="mailto:nashville@citipointechurch.com" style="color:#D9D2C4; text-decoration:none;">nashville@citipointechurch.com</a>
+            <a href="tel:+16152355675" style="color:#D9D2C4; text-decoration:none;">(615) 235-5675</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top:1px solid #3A362E; margin-top:44px; padding-top:22px; font-size:13px; color:#6E6759;">© 2026 Citipointe Church</div>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { campus: 'Nashville', submitted: false };
+  nextHeartbeatLabel() {
+    const now = new Date();
+    const second = (y, m) => { const d = new Date(y, m, 1); const off = (7 - d.getDay()) % 7; return new Date(y, m, 1 + off + 7); };
+    let d = second(now.getFullYear(), now.getMonth());
+    if (d < new Date(now.getFullYear(), now.getMonth(), now.getDate())) d = second(now.getFullYear(), now.getMonth() + 1);
+    return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  }
+  renderVals() {
+    const { campus, submitted } = this.state;
+    const nash = campus === 'Nashville', sel = '#191713', selC = '#FFFFFF', un = '#FDFBF7', unB = '#E0D8C8', unC = '#191713';
+    return {
+      campus, submitted, notSubmitted: !submitted,
+      pickNashville: () => this.setState({ campus: 'Nashville' }),
+      pickFranklin: () => this.setState({ campus: 'Franklin' }),
+      submit: () => this.setState({ submitted: true }),
+      reset: () => this.setState({ submitted: false }),
+      nashBg: nash ? sel : un, nashBorder: nash ? sel : unB, nashColor: nash ? selC : unC,
+      frankBg: !nash ? sel : un, frankBorder: !nash ? sel : unB, frankColor: !nash ? selC : unC,
+      locations: [
+        { name: 'Nashville, TN', time: 'Sundays at 10am', venue: '7533 Lords Chapel Drive, Nashville, TN', map: 'https://www.google.com/maps/search/?api=1&query=7533+Lords+Chapel+Drive+Nashville+TN' },
+        { name: 'Franklin, TN', time: 'Sundays at 11am', venue: 'Expression City Theatre — 1724a General George Patton Dr, Brentwood, TN 37027', map: 'https://www.google.com/maps/search/?api=1&query=1724a+General+George+Patton+Dr+Brentwood+TN' }
+      ],
+      nextHeartbeat: this.nextHeartbeatLabel(),
+      beliefs: [
+        { title: 'One God, Holy Trinity', detail: 'One God, eternally existing in three equally divine Persons \u2014 Father, Son, and Holy Spirit \u2014 Creator and Ruler over all things, worthy of all worship.' },
+        { title: 'Jesus, our Lord and Savior', detail: 'The Son of God \u2014 born of a virgin, lived a sinless life, died on a cross for our sins, rose bodily on the third day, and will return as King of Kings.' },
+        { title: 'The Holy Spirit, our Helper', detail: 'Fully God, present in the world to draw people to Jesus \u2014 indwelling every believer with power for living, understanding, comfort, and guidance.' },
+        { title: 'The Bible, how we know God', detail: 'The inspired Word of God and our highest written authority \u2014 all of Scripture ultimately points to and climaxes in Jesus.' },
+        { title: 'The Gospel, God saves sinners', detail: 'Salvation can\u2019t be earned \u2014 it\u2019s received as a gift of grace through faith in Jesus, who died in our place and rose in victory over sin and death.' },
+        { title: 'The Church, God\u2019s people', detail: 'Adopted into God\u2019s family, we gather in large and small settings to worship, celebrate the gospel, and share our lives together for His glory.' }
+      ],
+      faqs: [
+        { q: 'What should I wear?', a: 'Whatever you\u2019re comfortable in. Most people are casual \u2014 jeans are as normal as Sunday best. Come as you are.' },
+        { q: 'How long is the service?', a: 'Service runs 2 hours \u2014 you can expect powerful worship, practical teaching, and an opportunity to receive prayer.' },
+        { q: 'Where do my kids go?', a: 'A fun, safe kids program runs during service for ages 1 (and walking) to 11, led by trained and background-checked team members. A families and mother\u2019s lounge is also available.' },
+        { q: 'Where do I park?', a: 'There\u2019s free parking on site at both locations. Our team will be outside to guide you in and walk you to the door.' }
+      ],
+      steps: [
+        { num: '01', title: 'Heartbeat', detail: 'Your first step. A one-day course during service \u2014 discover the heart of our church, what we believe, and your spiritual gifts.', cta: 'Learn about Heartbeat', href: 'Heartbeat.dc.html' },
+        { num: '02', title: 'Life Groups', detail: 'Life is better together. Find real community, grow in your faith, and do life with people on the same journey.', cta: 'Find a group', href: 'Lifegroups.dc.html' },
+        { num: '03', title: 'Join a Team', detail: 'Serve with purpose. Whether it\u2019s worship, kids, or production, there\u2019s a place for your gifts on a team.', cta: 'See the teams', href: 'Join a Team.dc.html' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
