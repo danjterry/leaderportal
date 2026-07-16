@@ -25,18 +25,22 @@
     <div style="background:#16140F; color:#FBF8F3; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(32px,5vw,56px);">
       <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block; align-self:flex-start;">
       <div>
-        <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the people who make Sundays happen.</div>
+        <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the people who make Sundays and lifegroups happen.</div>
         <h1 style="font-weight:800; font-size:clamp(30px,4vw,44px); line-height:1.08; margin:0; letter-spacing:-1px; max-width:480px;">Everything you need to serve and lead, in one place.</h1>
       </div>
-      <div style="font-size:13px; color:#9C927E;">&copy; 2026 Citipointe Church &middot; Where You Matter</div>
+      <div style="font-size:13px; color:#9C927E;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
     </div>
     <div style="display:flex; align-items:center; justify-content:center; padding:clamp(32px,5vw,56px);">
       <div style="width:100%; max-width:380px;">
         <div style="font-weight:700; font-size:12.5px; letter-spacing:2px; color:#191713; text-transform:uppercase; margin-bottom:12px;">Leader Portal</div>
         <h2 style="font-weight:800; font-size:26px; margin:0 0 10px; letter-spacing:-0.3px;">Enter the team password</h2>
         <p style="font-size:14.5px; color:#6B6355; margin:0 0 26px; line-height:1.6;">One shared password for everyone who serves. Ask your team leader if you don't have it.</p>
-        <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">Your name</label>
-        <input type="text" placeholder="So the portal knows who's leading" value="{{ leaderName }}" onChange="{{ setLeaderName }}" style="width:100%; padding:14px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FFFFFF; margin-bottom:14px;">
+        <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">Your campus</label>
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+          <sc-for list="{{ campusOptions }}" as="c" hint-placeholder-count="2">
+            <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+          </sc-for>
+        </div>
         <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">Password</label>
         <input type="password" placeholder="••••••••" value="{{ pw }}" onChange="{{ setPw }}" onKeyDown="{{ pwKeyDown }}" style="width:100%; padding:14px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FFFFFF;">
         <a href="#portal" onClick="{{ enter }}" style="display:block; text-align:center; margin-top:16px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Enter the portal</a>
@@ -60,10 +64,17 @@
         <span style="width:1px; height:18px; background:#3A362E;"></span>
         <span style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase;">Leader Portal</span>
       </div>
-      <div style="display:flex; align-items:center; gap:6px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
-        <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
-          <div onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</div>
-        </sc-for>
+      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
+        <div style="display:flex; gap:2px; background:#26221B; border-radius:100px; padding:3px;">
+          <sc-for list="{{ campusToggle }}" as="c" hint-placeholder-count="2">
+            <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+          </sc-for>
+        </div>
+        <div style="display:flex; align-items:center; gap:6px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+            <div onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</div>
+          </sc-for>
+        </div>
       </div>
     </div>
   </div>
@@ -74,47 +85,20 @@
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
       <div data-screen-label="Portal Home">
         <div style="margin-bottom:36px;">
-          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">{{ welcomeLabel }}</div>
+          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">Welcome, leader</div>
           <h1 style="font-weight:800; font-size:clamp(28px,5vw,40px); margin:0; letter-spacing:-0.8px;">What do you need today?</h1>
         </div>
 
-        <!-- THIS WEEK -->
-        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4vw,28px); margin-bottom:16px;">
-          <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:14px;">This week</div>
-          <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:flex; gap:4px 16px; align-items:baseline; flex-wrap:wrap;">
-              <span style="flex:none; width:84px; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#191713;">Sunday</span>
-              <span style="font-size:14.5px; color:#3B372E; line-height:1.6;">Check your position and service time in the <a href="#lead-app" style="font-weight:700;">Lead app</a></span>
-            </div>
-            <div style="display:flex; gap:4px 16px; align-items:baseline; flex-wrap:wrap;">
-              <span style="flex:none; width:84px; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#191713;">Tuesday</span>
-              <span style="font-size:14.5px; color:#3B372E; line-height:1.6;">The East Side Table, 6:30pm &mdash; <span onClick="{{ goMyGroup }}" style="font-weight:700; cursor:pointer;">mark attendance after &rarr;</span></span>
-            </div>
-            <div style="display:flex; gap:4px 16px; align-items:baseline; flex-wrap:wrap;">
-              <span style="flex:none; width:84px; font-size:11.5px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:#191713;">To prep</span>
-              <span style="font-size:14.5px; color:#3B372E; line-height:1.6;"><span onClick="{{ goSermonNotes }}" style="font-weight:700; cursor:pointer;">&ldquo;{{ latestSermonTitle }}&rdquo; discussion notes &rarr;</span></span>
-            </div>
-          </div>
-        </div>
-
         <!-- KEY DATES -->
-        <div style="display:flex; flex-wrap:wrap; gap:14px; margin-bottom:40px;">
-          <div style="background:#16140F; color:#FBF8F3; border-radius:16px; flex:1 1 220px; padding:18px clamp(20px,4vw,28px);">
-            <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:5px;">Next Heartbeat</div>
-            <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
+        <div style="margin-bottom:40px;">
+          <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:12px;">Key dates</div>
+          <div style="display:flex; flex-wrap:wrap; gap:14px;">
+            <div style="background:#16140F; color:#FBF8F3; border-radius:16px; flex:1 1 260px; max-width:440px; padding:20px clamp(20px,4vw,28px);">
+              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:5px;">Next Heartbeat</div>
+              <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
+              <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">Second Sunday of every month</div>
+            </div>
           </div>
-          <sc-for list="{{ keyDates }}" as="k" hint-placeholder-count="2">
-            <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 220px; padding:18px clamp(20px,4vw,28px);">
-              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">{{ k.label }}</div>
-              <div style="font-weight:700; font-size:19px;">{{ k.value }}</div>
-            </div>
-          </sc-for>
-          <sc-if value="{{ pendingAny }}" hint-placeholder-val="{{ false }}">
-            <div onClick="{{ goMyGroup }}" style="background:#FFFFFF; border:1.5px solid #191713; border-radius:16px; flex:1 1 220px; padding:18px clamp(20px,4vw,28px); cursor:pointer;">
-              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Join requests</div>
-              <div style="font-weight:700; font-size:19px;">{{ pendingLabel }} &rarr;</div>
-            </div>
-          </sc-if>
         </div>
 
         <!-- TILES -->
@@ -132,13 +116,23 @@
         <!-- WHO TO CONTACT -->
         <div style="background:#F5EFE3; border-radius:22px; padding:clamp(24px,4vw,36px);">
           <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:20px;">Who to contact</div>
-          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:18px;">
-            <sc-for list="{{ contacts }}" as="c" hint-placeholder-count="4">
-              <div style="display:flex; align-items:center; gap:14px;">
-                <div style="flex:none; width:40px; height:40px; border-radius:50%; background:#E7DFCF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#6B6355;">{{ c.initials }}</div>
-                <div>
-                  <div style="font-weight:700; font-size:14.5px;">{{ c.name }}</div>
-                  <div style="font-size:13px; color:#6B6355;">{{ c.area }}</div>
+          <div style="display:flex; flex-direction:column; gap:28px;">
+            <sc-for list="{{ contactGroups }}" as="g" hint-placeholder-count="2">
+              <div>
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:16px;">{{ g.campus }}</div>
+                <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px;">
+                  <sc-for list="{{ g.people }}" as="c" hint-placeholder-count="4">
+                    <div style="display:flex; align-items:center; gap:14px;">
+                      <div style="flex:none; width:40px; height:40px; border-radius:50%; background:#E7DFCF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#6B6355;">{{ c.initials }}</div>
+                      <div>
+                        <div style="font-weight:700; font-size:14.5px;">{{ c.name }}</div>
+                        <div style="font-size:13px; color:#6B6355;">{{ c.area }}</div>
+                        <sc-if value="{{ c.hasPhone }}" hint-placeholder-val="{{ true }}">
+                          <a href="{{ c.tel }}" style="font-size:13px; font-weight:600; text-decoration:none;">{{ c.phone }}</a>
+                        </sc-if>
+                      </div>
+                    </div>
+                  </sc-for>
                 </div>
               </div>
             </sc-for>
@@ -243,6 +237,14 @@
           <h1 style="font-weight:800; font-size:clamp(28px,5vw,38px); margin:0; letter-spacing:-0.8px;">Great teams are led on purpose</h1>
         </div>
 
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+          <sc-for list="{{ leadTeamTabs }}" as="t" hint-placeholder-count="2">
+            <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ isLTPlaybook }}" hint-placeholder-val="{{ true }}">
+        <div>
         <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
           <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">The leader's win</div>
           <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">Every person on your team knows their role, feels seen, and is becoming more like Jesus because they serve with you.</div>
@@ -266,6 +268,8 @@
             </div>
           </sc-for>
         </div>
+        </div>
+        </sc-if>
       </div>
     </sc-if>
 
@@ -277,6 +281,14 @@
           <h1 style="font-weight:800; font-size:clamp(28px,5vw,38px); margin:0; letter-spacing:-0.8px;">Shepherd your table well</h1>
         </div>
 
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
+          <sc-for list="{{ leadLGTabs }}" as="t" hint-placeholder-count="3">
+            <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
+          </sc-for>
+        </div>
+
+        <sc-if value="{{ isLGPlaybook }}" hint-placeholder-val="{{ true }}">
+        <div>
         <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
           <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">The leader's win</div>
           <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">A healthy lifegroup produces people who are known, cared for, growing in God's Word, and raising up the next leaders.</div>
@@ -294,22 +306,17 @@
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px; margin-bottom:28px;">
-          <!-- Curriculum -->
-          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Curriculum and content</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">This term's material, discussion guides, and the current sermon series notes all live here.</div>
-            <div style="display:flex; flex-direction:column; gap:10px;">
-              <a href="#curriculum" style="font-size:14px; font-weight:700; text-decoration:none;">This term's study material (placeholder) &rarr;</a>
-              <div onClick="{{ goSermonNotes }}" style="font-size:14px; font-weight:700; cursor:pointer;">Sermon notes and discussion questions &rarr;</div>
-              <div onClick="{{ goCommunion }}" style="font-size:14px; font-weight:700; cursor:pointer;">How to take Communion together &rarr;</div>
-            </div>
-          </div>
-
           <!-- Attendance -->
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Attendance</div>
             <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">Log attendance in the Lead app after every gathering. It takes under a minute and it's how staff know your group is healthy.</div>
             <a href="#lead-app" style="font-size:14px; font-weight:700; text-decoration:none;">Open the Lead app (placeholder) &rarr;</a>
+          </div>
+
+          <!-- Join requests -->
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Join requests</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">When someone asks to join through the website, their details come to you by email. Reach out within the week &mdash; a fast, warm hello decides whether they show up.</div>
           </div>
         </div>
 
@@ -327,13 +334,36 @@
           </div>
           <div onClick="{{ goSafeChurch }}" style="display:inline-block; margin-top:18px; font-size:14px; font-weight:700; cursor:pointer;">Safe Church policies and incident report &rarr;</div>
         </div>
+        </div>
+        </sc-if>
+
+        <!-- CURRICULUM & CONTENT TAB -->
+        <sc-if value="{{ isLGCurriculum }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">This term's study material</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">The current series guide and week-by-week material for your group.</div>
+            <a href="#curriculum" style="font-size:14px; font-weight:700; text-decoration:none;">Open (placeholder) &rarr;</a>
+          </div>
+          <div onClick="{{ goSermonNotes }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
+            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Sermon notes</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Discussion questions from the current series, updated weekly.</div>
+            <div style="font-size:14px; font-weight:700;">Open sermon notes &rarr;</div>
+          </div>
+          <div onClick="{{ goCommunion }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
+            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Communion guide</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">How to take Communion together, step by step, with the Scriptures to read.</div>
+            <div style="font-size:14px; font-weight:700;">Open the guide &rarr;</div>
+          </div>
+        </div>
+        </sc-if>
       </div>
     </sc-if>
 
     <!-- ══════════ SERMON NOTES ══════════ -->
     <sc-if value="{{ isSermonNotes }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Sermon Notes">
-        <div onClick="{{ goLeadLifegroup }}" style="display:inline-block; font-size:13.5px; font-weight:600; color:#9C927E; cursor:pointer; margin-bottom:20px;">&larr; Lead a Lifegroup</div>
+        <div onClick="{{ goCurriculum }}" style="display:inline-block; font-size:13.5px; font-weight:600; color:#9C927E; cursor:pointer; margin-bottom:20px;">&larr; Curriculum and content</div>
         <div style="margin-bottom:32px;">
           <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">Discuss the message</div>
           <h1 style="font-weight:800; font-size:clamp(26px,5vw,34px); margin:0; letter-spacing:-0.5px;">Sermon Notes</h1>
@@ -367,7 +397,7 @@
     <!-- ══════════ COMMUNION GUIDE ══════════ -->
     <sc-if value="{{ isCommunion }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Communion Guide">
-        <div onClick="{{ goLeadLifegroup }}" style="display:inline-block; font-size:13.5px; font-weight:600; color:#9C927E; cursor:pointer; margin-bottom:20px;">&larr; Lead a Lifegroup</div>
+        <div onClick="{{ goCurriculum }}" style="display:inline-block; font-size:13.5px; font-weight:600; color:#9C927E; cursor:pointer; margin-bottom:20px;">&larr; Curriculum and content</div>
         <div style="margin-bottom:32px;">
           <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">Christ at the center</div>
           <h1 style="font-weight:800; font-size:clamp(26px,5vw,34px); margin:0 0 10px; letter-spacing:-0.5px;">How to Take Communion Together</h1>
@@ -402,76 +432,9 @@
       </div>
     </sc-if>
 
-    <!-- ══════════ MY GROUP ══════════ -->
-    <sc-if value="{{ isMyGroup }}" hint-placeholder-val="{{ false }}">
-      <div data-screen-label="My Group">
-        <div style="margin-bottom:32px;">
-          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">My Group</div>
-          <h1 style="font-weight:800; font-size:clamp(28px,5vw,38px); margin:0 0 8px; letter-spacing:-0.8px;">The East Side Table</h1>
-          <div style="font-size:14.5px; color:#6B6355;">East Nashville &middot; Tuesdays, 6:30pm &middot; Weekly</div>
-        </div>
-
-        <!-- JOIN REQUESTS -->
-        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden; margin-bottom:22px;">
-          <div style="padding:24px clamp(18px,4vw,30px) 8px; display:flex; align-items:baseline; justify-content:space-between; gap:6px 12px; flex-wrap:wrap;">
-            <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">Join requests</div>
-            <div style="font-size:13px; color:#9C927E;">From the Life Groups page &middot; reach out within the week</div>
-          </div>
-          <sc-for list="{{ requestRows }}" as="r" hint-placeholder-count="3">
-            <div style="display:flex; align-items:center; gap:14px 16px; padding:18px clamp(18px,4vw,30px); border-bottom:1px solid #F0EAE0; flex-wrap:wrap;">
-              <div style="flex:none; width:40px; height:40px; border-radius:50%; background:#E7DFCF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#6B6355;">{{ r.initials }}</div>
-              <div style="flex:1; min-width:180px;">
-                <div style="font-weight:700; font-size:15.5px;">{{ r.name }}</div>
-                <div style="font-size:13.5px; color:#6B6355; line-height:1.5;">{{ r.meta }}</div>
-              </div>
-              <sc-if value="{{ r.hasWait }}" hint-placeholder-val="{{ true }}">
-                <span style="{{ r.waitStyle }}">{{ r.waitLabel }}</span>
-              </sc-if>
-              <span style="{{ r.pillStyle }}">{{ r.pillLabel }}</span>
-              <sc-if value="{{ r.hasAction }}" hint-placeholder-val="{{ true }}">
-                <div onClick="{{ r.onAction }}" style="{{ r.actionStyle }}">{{ r.actionLabel }}</div>
-              </sc-if>
-            </div>
-          </sc-for>
-        </div>
-
-        <!-- ATTENDANCE -->
-        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden;">
-          <div style="padding:24px clamp(18px,4vw,30px) 8px; display:flex; align-items:baseline; justify-content:space-between; gap:6px 12px; flex-wrap:wrap;">
-            <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">This week's attendance</div>
-            <div style="font-size:13px; color:#9C927E;">{{ attendanceSummary }}</div>
-          </div>
-          <sc-for list="{{ memberRows }}" as="m" hint-placeholder-count="8">
-            <div style="display:flex; align-items:center; gap:14px; padding:13px clamp(18px,4vw,30px); border-bottom:1px solid #F0EAE0;">
-              <div style="flex:none; width:36px; height:36px; border-radius:50%; background:#E7DFCF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; color:#6B6355;">{{ m.initials }}</div>
-              <div style="flex:1; min-width:0;">
-                <div style="display:flex; align-items:baseline; gap:10px; flex-wrap:wrap;">
-                  <span style="font-weight:700; font-size:15px;">{{ m.name }}</span>
-                  <sc-if value="{{ m.hasTag }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9C927E;">{{ m.tag }}</span>
-                  </sc-if>
-                </div>
-                <div style="font-size:11px; letter-spacing:3px; color:#8A8172; margin-top:2px;">{{ m.dots }}</div>
-                <sc-if value="{{ m.hasFlag }}" hint-placeholder-val="{{ false }}">
-                  <div style="font-size:12.5px; color:oklch(0.52 0.11 45); font-weight:600;">{{ m.flag }}</div>
-                </sc-if>
-              </div>
-              <div onClick="{{ m.onToggle }}" style="{{ m.toggleStyle }}">{{ m.toggleLabel }}</div>
-            </div>
-          </sc-for>
-          <div style="padding:16px clamp(18px,4vw,30px); font-size:13px; color:#9C927E;">&#9679; attended &middot; &#9675; missed &mdash; last four weeks, oldest first. Saves on this device; syncs to the Lead app when connected (placeholder).</div>
-        </div>
-      </div>
-    </sc-if>
-
     <!-- ══════════ TRAINING ══════════ -->
     <sc-if value="{{ isTraining }}" hint-placeholder-val="{{ false }}">
       <div data-screen-label="Training">
-        <div style="margin-bottom:26px;">
-          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">Training</div>
-          <h1 style="font-weight:800; font-size:clamp(28px,5vw,38px); margin:0; letter-spacing:-0.8px;">Leaders are made on purpose</h1>
-        </div>
-
         <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:28px;">
           <sc-for list="{{ trainTabs }}" as="t" hint-placeholder-count="3">
             <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
@@ -589,8 +552,9 @@
         </div>
 
         <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,30px); margin-bottom:22px;">
-          <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:8px;">If someone is in danger right now</div>
-          <div style="font-weight:800; font-size:19px; line-height:1.4;">Call 911 first. Then the pastoral care line &mdash; any hour.</div>
+          <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">1 Peter 5:2</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:19px; line-height:1.55; color:#EDE8DE;">"Be shepherds of God's flock that is under your care, watching over them &mdash; not because you must, but because you are willing, as God wants you to be."</div>
+          <div style="margin-top:14px; padding-top:14px; border-top:1px solid #3A362E; font-size:13.5px; color:#B7AF9E; line-height:1.6;">In an emergency, or if someone is in immediate danger: call 911 first, then Dan Terry on <a href="tel:6282599460" style="color:#FBF8F3; font-weight:700; text-decoration:none;">628 259 9460</a>.</div>
         </div>
 
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px; margin-bottom:28px;">
@@ -654,26 +618,10 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
   state = {
-    authed: false, pw: '', view: 'home', teamKey: null,
-    trainingTab: 'start',
-    leaderName: '',
+    authed: false, pw: '', view: 'home', teamKey: null, campus: 'nashville',
+    trainingTab: 'start', ltTab: 'playbook', lgTab: 'playbook',
     incident: { what: '', when: '', who: '' },
     incidentSubmitted: false,
-    requests: [
-      { name: 'Maya Chen', meta: 'Via the website \u00b7 \u201cNew to Nashville, keen for a dinner group\u201d', daysWaiting: 3, status: 'new' },
-      { name: 'Ruth & Eli Sandoval', meta: 'Via the website \u00b7 \u201cComing as a couple, kids at home\u201d', daysWaiting: 5, status: 'new' },
-      { name: 'Jordan Ellis', meta: 'Via the website \u00b7 You texted Monday', daysWaiting: 9, status: 'contacted' },
-    ],
-    members: [
-      { name: 'Jess Cooper', tag: 'Leader in training', history: [1, 1, 1, 1], present: false },
-      { name: 'Noah Patel', tag: 'Leader in training', history: [1, 1, 0, 1], present: false },
-      { name: 'Ava Riley', tag: '', history: [1, 1, 1, 0], present: false },
-      { name: 'Tom Riley', tag: '', history: [1, 1, 1, 0], present: false },
-      { name: 'Grace Lin', tag: '', history: [1, 1, 0, 0], present: false },
-      { name: 'Dan Whitmore', tag: '', history: [0, 1, 1, 1], present: false },
-      { name: 'Sofia Marino', tag: '', history: [1, 0, 1, 1], present: false },
-      { name: 'Caleb Ford', tag: 'New this month', history: [0, 0, 1, 1], present: false },
-    ],
     checklist: {},
   };
 
@@ -784,25 +732,26 @@ class Component extends DCLogic {
     },
   ];
 
-  keyDates = [
-    { label: 'Leader huddle', value: 'Sun July 26, 8:00 AM' },
-    { label: 'All-leader night', value: 'Tue Aug 4, 7:00 PM' },
-  ];
-
   tiles = [
     { key: 'serve', num: '01', title: 'Team Playbooks', detail: 'How each team serves: the win, the basics, your role step by step, and who to call.' },
-    { key: 'leadTeam', num: '02', title: 'Lead a Team', detail: 'Huddles, rosters in the Lead app, following up new people, and raising future leaders.' },
-    { key: 'leadLifegroup', num: '03', title: 'Lead a Lifegroup', detail: 'The weekly rhythm, this term\u2019s content, attendance, and the care escalation path.' },
-    { key: 'myGroup', num: '04', title: 'My Group', detail: 'Your roster, this week\u2019s attendance, and join requests from the website.' },
-    { key: 'training', num: '05', title: 'Training', detail: 'The new leader checklist, raising your replacement, and the resource library.' },
-    { key: 'safeChurch', num: '06', title: 'Safe Church', detail: 'The policies that protect everyone, and the incident report form.' },
+    { key: 'leadTeam', num: '02', title: 'Lead a Team', detail: 'The leader playbook for Sunday teams, plus training for the people who run them.' },
+    { key: 'leadLifegroup', num: '03', title: 'Lead a Lifegroup', detail: 'The leader playbook, this term\u2019s curriculum and content, and training.' },
+    { key: 'safeChurch', num: '04', title: 'Safe Church', detail: 'The policies that protect everyone, and the incident report form.' },
   ];
 
-  contacts = [
-    { initials: 'JR', name: 'Jordan Reyes', area: 'Serving teams' },
-    { initials: 'AM', name: 'Abby Monroe', area: 'Lifegroups' },
-    { initials: 'DW', name: 'Dana Whitfield', area: 'Kids and safeguarding' },
-    { initials: 'CO', name: 'Church office', area: 'Everything else' },
+  contactGroups = [
+    { campus: 'Nashville Campus', people: [
+      { initials: 'MP', name: 'Michael Piper', area: 'Serving teams', phone: '865 740 7575' },
+      { initials: 'KP', name: 'Kim Peterson', area: 'Lifegroups', phone: '425 231 2715' },
+      { initials: 'DT', name: 'Dan Terry', area: 'Safeguarding policies', phone: '628 259 9460' },
+      { initials: 'CO', name: 'Church office', area: 'Everything else', phone: '615 235 5675' },
+    ]},
+    { campus: 'Franklin Campus', people: [
+      { initials: 'JW', name: 'Jewels Wike', area: 'Serving teams', phone: '614 636 9425' },
+      { initials: 'ES', name: 'Ethan Sherrer', area: 'Lifegroups', phone: '615 878 6480' },
+      { initials: 'DT', name: 'Dan Terry', area: 'Safeguarding policies', phone: '628 259 9460' },
+      { initials: 'CO', name: 'Church office', area: 'Everything else', phone: '615 235 5675' },
+    ]},
   ];
 
   leadTeamSections = [
@@ -841,7 +790,7 @@ class Component extends DCLogic {
   careLevels = [
     { label: 'You handle', title: 'Everyday care', detail: 'Prayer, meals, check-in texts, hospital visits, celebrating wins. This is the normal life of a group.', bg: '#FFFFFF', color: '#16140F' },
     { label: 'You pass to staff', title: 'Beyond the group', detail: 'Grief, marriage crisis, financial hardship, ongoing mental health needs. Tell your Lifegroups contact within a day.', bg: '#FFFFFF', color: '#16140F' },
-    { label: 'Call immediately', title: 'Urgent and unsafe', detail: 'Risk of harm to anyone, abuse disclosures, or a safeguarding concern. Call the pastoral care line right away, day or night.', bg: '#16140F', color: '#FBF8F3' },
+    { label: 'Call immediately', title: 'Urgent and unsafe', detail: 'Risk of harm to anyone, abuse disclosures, or a safeguarding concern. Call 911 if anyone is in immediate danger, then Dan Terry on 628 259 9460 \u2014 day or night.', bg: '#16140F', color: '#FBF8F3' },
   ];
 
   sermonNotes = [
@@ -880,7 +829,8 @@ class Component extends DCLogic {
     return d;
   }
 
-  go = (view, teamKey) => () => this.setState({ view, teamKey: teamKey || null });
+  go = (view, teamKey) => () => this.setState({ view, teamKey: teamKey || null, ltTab: 'playbook', lgTab: 'playbook' });
+  goCurriculum = () => this.setState({ view: 'leadLifegroup', lgTab: 'curriculum' });
 
   checklistData = [
     { title: 'Before your first night', items: [
@@ -921,24 +871,10 @@ class Component extends DCLogic {
       const raw = localStorage.getItem('cp-leader-portal-v2');
       if (raw) {
         const d = JSON.parse(raw) || {};
-        const members = this.state.members.map(m => {
-          const s = (d.members || []).find(x => x.name === m.name);
-          return s ? { ...m, present: !!s.present } : m;
-        });
-        (d.members || []).forEach(s => {
-          if (!members.some(m => m.name === s.name)) {
-            members.push({ name: s.name, tag: 'New this month', history: [0, 0, 0, 0], present: !!s.present });
-          }
-        });
-        const requests = this.state.requests.map(r => {
-          const s = (d.requests || []).find(x => x.name === r.name);
-          return s ? { ...r, status: s.status } : r;
-        });
-        this.setState({
-          members, requests,
-          checklist: d.checklist && typeof d.checklist === 'object' ? d.checklist : this.state.checklist,
-          leaderName: typeof d.leaderName === 'string' ? d.leaderName : '',
-        });
+        const next = {};
+        if (d.checklist && typeof d.checklist === 'object') next.checklist = d.checklist;
+        if (d.campus === 'nashville' || d.campus === 'franklin') next.campus = d.campus;
+        this.setState(next);
       }
     } catch (e) {}
   }
@@ -946,14 +882,10 @@ class Component extends DCLogic {
   save(next) {
     this.setState(next, () => {
       try {
-        localStorage.setItem('cp-leader-portal-v2', JSON.stringify({
-          requests: this.state.requests, members: this.state.members, checklist: this.state.checklist, leaderName: this.state.leaderName,
-        }));
+        localStorage.setItem('cp-leader-portal-v2', JSON.stringify({ checklist: this.state.checklist, campus: this.state.campus }));
       } catch (e) {}
     });
   }
-
-  setLeaderName = (e) => this.save({ leaderName: e.target.value });
 
   policies = [
     { title: 'The two-adult rule', detail: 'Never alone with a child or vulnerable person — two screened adults in every room, every time, including bathroom escorts and lifts home.' },
@@ -962,24 +894,6 @@ class Component extends DCLogic {
     { title: 'Wise in every setting', detail: 'Meet in open, visible spaces. Keep communication with minors group-based and visible to parents. No photos of kids without consent.' },
   ];
 
-  initials(name) {
-    return name.split(/[\s&]+/).filter(w => w).map(w => w[0]).slice(0, 2).join('').toUpperCase();
-  }
-
-  advanceRequest = (name) => () => {
-    const requests = this.state.requests.map(r => r.name !== name ? r : { ...r, status: r.status === 'new' ? 'contacted' : 'joined' });
-    const just = requests.find(r => r.name === name);
-    let members = this.state.members;
-    if (just && just.status === 'joined' && !members.some(m => m.name === name)) {
-      members = [...members, { name, tag: 'New this month', history: [0, 0, 0, 0], present: false }];
-    }
-    this.save({ requests, members });
-  };
-
-  toggleMember = (name) => () => {
-    this.save({ members: this.state.members.map(m => m.name === name ? { ...m, present: !m.present } : m) });
-  };
-
   toggleCheck = (id) => () => {
     this.save({ checklist: { ...this.state.checklist, [id]: !this.state.checklist[id] } });
   };
@@ -987,8 +901,7 @@ class Component extends DCLogic {
   navStyle = (active) => `flex:none; white-space:nowrap; padding:11px 18px; border-radius:100px; font-size:14px; font-weight:600; cursor:pointer; user-select:none; color:${active ? '#16140F' : '#D8D2C6'}; background:${active ? '#FBF8F3' : 'transparent'};`;
 
   renderVals() {
-    const { authed, pw, view, teamKey, requests, members, checklist, trainingTab, leaderName, incident, incidentSubmitted } = this.state;
-    const firstName = (leaderName || '').trim().split(/\s+/)[0] || '';
+    const { authed, pw, view, teamKey, checklist, trainingTab, ltTab, lgTab, campus, incident, incidentSubmitted } = this.state;
     const pb = this.teams.find(t => t.key === teamKey);
     const enter = () => this.setState({ authed: true, view: 'home' });
 
@@ -997,50 +910,11 @@ class Component extends DCLogic {
       { key: 'serve', label: 'Team Playbooks' },
       { key: 'leadTeam', label: 'Lead a Team' },
       { key: 'leadLifegroup', label: 'Lead a Lifegroup' },
-      { key: 'myGroup', label: 'My Group' },
-      { key: 'training', label: 'Training' },
       { key: 'safeChurch', label: 'Safe Church' },
     ];
     const activeKey =
       view === 'playbook' ? 'serve' :
       (view === 'sermonNotes' || view === 'communion') ? 'leadLifegroup' : view;
-
-    const pillBase = 'flex:none; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; padding:6px 13px; border-radius:100px;';
-    const requestRows = requests.map(r => {
-      const days = r.daysWaiting || 0;
-      const overdue = r.status !== 'joined' && days > 7;
-      return {
-        ...r,
-        initials: this.initials(r.name),
-        pillLabel: r.status === 'new' ? 'New' : r.status === 'contacted' ? 'Contacted' : 'In the group',
-        pillStyle: pillBase + (r.status === 'new' ? 'background:#16140F; color:#FBF8F3;' : r.status === 'contacted' ? 'background:#F3E7D8; color:#4A443A;' : 'background:#EAF0E4; color:#54713F;'),
-        hasWait: r.status !== 'joined',
-        waitLabel: overdue ? days + ' days \u2014 past the week' : 'Waiting ' + days + (days === 1 ? ' day' : ' days'),
-        waitStyle: 'flex:none; font-size:12.5px; font-weight:700; ' + (overdue ? 'color:oklch(0.52 0.11 45);' : 'color:#9C927E;'),
-        hasAction: r.status !== 'joined',
-        actionLabel: r.status === 'new' ? 'Mark contacted' : 'Mark joined',
-        actionStyle: 'flex:none; cursor:pointer; user-select:none; border:1.5px solid #191713; color:#16140F; padding:8px 16px; border-radius:100px; font-size:13px; font-weight:700; white-space:nowrap;',
-        onAction: this.advanceRequest(r.name),
-      };
-    });
-    const pendingCount = requests.filter(r => r.status !== 'joined').length;
-
-    const memberRows = members.map(m => {
-      const h = m.history || [0, 0, 0, 0];
-      const drifting = h[h.length - 1] === 0 && h[h.length - 2] === 0 && m.tag !== 'New this month';
-      return {
-        ...m,
-        initials: this.initials(m.name),
-        hasTag: !!m.tag,
-        dots: h.map(x => x ? '\u25CF' : '\u25CB').join(' '),
-        hasFlag: drifting && !m.present,
-        flag: 'Missed the last 2 gatherings \u2014 worth a text',
-        onToggle: this.toggleMember(m.name),
-        toggleLabel: m.present ? 'Present \u2713' : 'Mark present',
-        toggleStyle: 'flex:none; cursor:pointer; user-select:none; padding:9px 18px; border-radius:100px; font-size:13px; font-weight:700; white-space:nowrap; border:1.5px solid ' + (m.present ? '#191713; background:#191713; color:#FFFFFF;' : '#E7DFCF; background:transparent; color:#6B6355;'),
-      };
-    });
-    const presentCount = members.filter(m => m.present).length;
 
     const trainTabs = [
       { key: 'start', label: 'Start here' },
@@ -1051,6 +925,16 @@ class Component extends DCLogic {
       onClick: () => this.setState({ trainingTab: t.key }),
       style: 'cursor:pointer; user-select:none; padding:11px 20px; border-radius:100px; font-size:14px; font-weight:700; white-space:nowrap; ' + (trainingTab === t.key ? 'background:#191713; color:#FFFFFF;' : 'background:#FFFFFF; border:1px solid #E7DFCF; color:#4A443A;'),
     }));
+    const subTabStyle = (active) => 'cursor:pointer; user-select:none; padding:11px 20px; border-radius:100px; font-size:14px; font-weight:700; white-space:nowrap; ' + (active ? 'background:#191713; color:#FFFFFF;' : 'background:#FFFFFF; border:1px solid #E7DFCF; color:#4A443A;');
+    const leadTeamTabs = [
+      { key: 'playbook', label: 'Leader Playbook' },
+      { key: 'training', label: 'Training' },
+    ].map(t => ({ label: t.label, onClick: () => this.setState({ ltTab: t.key }), style: subTabStyle(ltTab === t.key) }));
+    const leadLGTabs = [
+      { key: 'playbook', label: 'Leader Playbook' },
+      { key: 'curriculum', label: 'Curriculum & Content' },
+      { key: 'training', label: 'Training' },
+    ].map(t => ({ label: t.label, onClick: () => this.setState({ lgTab: t.key }), style: subTabStyle(lgTab === t.key) }));
 
     const allItems = this.checklistData.flatMap(s => s.items);
     const doneCount = allItems.filter(i => checklist[i.id]).length;
@@ -1099,7 +983,26 @@ class Component extends DCLogic {
       nextHeartbeatLabel: this.nextHeartbeat().toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' }),
       keyDates: this.keyDates,
       tiles: this.tiles.map(t => ({ ...t, onClick: this.go(t.key) })),
-      contacts: this.contacts,
+      contactGroups: this.contactGroups.filter(g => g.campus.toLowerCase().indexOf(campus) === 0).map(g => ({
+        campus: g.campus,
+        people: g.people.map(c => ({ ...c, hasPhone: !!c.phone, tel: 'tel:' + (c.phone || '').replace(/\s/g, '') })),
+      })),
+      campusOptions: [
+        { key: 'nashville', label: 'Nashville' },
+        { key: 'franklin', label: 'Franklin' },
+      ].map(c => ({
+        label: c.label,
+        onClick: () => this.save({ campus: c.key }),
+        style: 'flex:1; text-align:center; padding:13px; border-radius:12px; cursor:pointer; user-select:none; font-weight:700; font-size:14.5px; border:1.5px solid ' + (campus === c.key ? '#191713; background:#191713; color:#FFFFFF;' : '#E7DFCF; background:#FFFFFF; color:#6B6355;'),
+      })),
+      campusToggle: [
+        { key: 'nashville', label: 'Nashville' },
+        { key: 'franklin', label: 'Franklin' },
+      ].map(c => ({
+        label: c.label,
+        onClick: () => this.save({ campus: c.key }),
+        style: 'cursor:pointer; user-select:none; white-space:nowrap; padding:7px 14px; border-radius:100px; font-size:12.5px; font-weight:700; ' + (campus === c.key ? 'background:#FBF8F3; color:#16140F;' : 'color:#B7AF9E;'),
+      })),
 
       teamCards: this.teams.map(t => ({ name: t.name, win: t.win, onClick: this.go('playbook', t.key) })),
       pb: pb ? { ...pb, showNote: !!pb.note } : { basics: [], steps: [], faqs: [] },
@@ -1111,15 +1014,12 @@ class Component extends DCLogic {
       communionScripture: this.communionScripture,
       communionSteps: this.communionSteps,
 
-      isMyGroup: view === 'myGroup',
-      goMyGroup: this.go('myGroup'),
-      pendingAny: pendingCount > 0,
-      pendingLabel: pendingCount + ' to follow up',
-      requestRows,
-      memberRows,
-      attendanceSummary: presentCount + ' of ' + members.length + ' marked present',
-
-      isTraining: view === 'training',
+      isTraining: (view === 'leadTeam' && ltTab === 'training') || (view === 'leadLifegroup' && lgTab === 'training'),
+      leadTeamTabs, leadLGTabs,
+      isLTPlaybook: ltTab === 'playbook',
+      isLGPlaybook: lgTab === 'playbook',
+      isLGCurriculum: lgTab === 'curriculum',
+      goCurriculum: this.goCurriculum,
       trainTabs,
       isTrainStart: trainingTab === 'start',
       isTrainPipeline: trainingTab === 'pipeline',
@@ -1131,11 +1031,6 @@ class Component extends DCLogic {
       progressBarStyle: 'height:100%; width:' + pct + '%; background:#191713; border-radius:100px; transition:width 0.3s;',
       pipelineSteps: this.pipelineSteps,
       videos: this.videos,
-
-      leaderName,
-      setLeaderName: this.setLeaderName,
-      welcomeLabel: firstName ? 'Welcome back, ' + firstName : 'Welcome, leader',
-      latestSermonTitle: this.sermonNotes[0].title,
 
       isSafeChurch: view === 'safeChurch',
       goSafeChurch: this.go('safeChurch'),
