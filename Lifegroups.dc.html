@@ -128,6 +128,100 @@
     </div>
   </div>
 
+  <!-- LEAD A GROUP -->
+  <div id="lead" style="background:#191713; color:#FDFBF7; border-top:1px solid #ECE5D8;">
+    <div style="max-width:1100px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px);">
+      <sc-if value="{{ leadClosed }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px 40px;">
+          <div style="flex:1 1 380px;">
+            <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#B9B2A4; margin-bottom:16px; text-transform:uppercase;">Lead a Group</div>
+            <h2 style="font-weight:800; font-size:clamp(28px,4.5vw,40px); line-height:1.12; margin:0 0 14px; letter-spacing:-1px;">Interested in leading a group?</h2>
+            <p style="font-size:16.5px; line-height:1.7; color:#B9B2A4; margin:0; max-width:560px;">You don't need to be an expert — just willing to open your table. Tell us a little about you and our team will walk with you from there.</p>
+          </div>
+          <button onClick="{{ openLead }}" style="flex:none; background:#FDFBF7; color:#191713; border:none; font-weight:700; font-size:16px; padding:17px 38px; border-radius:100px; font-family:inherit; cursor:pointer; white-space:nowrap;">I'm interested</button>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ leadOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="max-width:640px; margin:0 auto;">
+          <div style="text-align:center; margin-bottom:32px;">
+            <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#B9B2A4; margin-bottom:16px; text-transform:uppercase;">Lead a Group</div>
+            <h2 style="font-weight:800; font-size:clamp(28px,4.5vw,38px); line-height:1.12; margin:0; letter-spacing:-1px;">Tell us about you</h2>
+          </div>
+
+          <sc-if value="{{ leadNotSubmitted }}" hint-placeholder-val="{{ true }}">
+            <div style="background:#FFFFFF; color:#191713; border-radius:22px; padding:clamp(24px,4vw,34px); display:flex; flex-direction:column; gap:16px;">
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
+                <div>
+                  <div style="font-size:13px; font-weight:700; margin-bottom:7px;">First name *</div>
+                  <input onInput="{{ setLdFirst }}" placeholder="First name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+                </div>
+                <div>
+                  <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Last name *</div>
+                  <input onInput="{{ setLdLast }}" placeholder="Last name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Phone *</div>
+                <input onInput="{{ setLdPhone }}" type="tel" placeholder="(615) 555-0100" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Email *</div>
+                <input onInput="{{ setLdEmail }}" type="email" placeholder="you@example.com" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Which campus? *</div>
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                  <button onClick="{{ pickLdNashville }}" style="flex:1 1 130px; border:1px solid {{ ldNashBorder }}; background:{{ ldNashBg }}; color:{{ ldNashColor }}; border-radius:12px; padding:12px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Nashville</button>
+                  <button onClick="{{ pickLdFranklin }}" style="flex:1 1 130px; border:1px solid {{ ldFrankBorder }}; background:{{ ldFrankBg }}; color:{{ ldFrankColor }}; border-radius:12px; padding:12px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Franklin</button>
+                </div>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">What area of town are you in?</div>
+                <input onInput="{{ setLdArea }}" placeholder="e.g. East Nashville, Franklin, Brentwood" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Have you been part of a Life Group before?</div>
+                <select onChange="{{ setLdBefore }}" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+                  <option value="">Select one</option>
+                  <sc-for list="{{ beforeOptions }}" as="b" hint-placeholder-count="3">
+                    <option value="{{ b }}">{{ b }}</option>
+                  </sc-for>
+                </select>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">How long have you been attending Citipointe?</div>
+                <select onChange="{{ setLdHowLong }}" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+                  <option value="">Select one</option>
+                  <sc-for list="{{ howLongOptions }}" as="h" hint-placeholder-count="4">
+                    <option value="{{ h }}">{{ h }}</option>
+                  </sc-for>
+                </select>
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Why are you interested in leading?</div>
+                <textarea onInput="{{ setLdWhy }}" rows="3" placeholder="A sentence or two is plenty" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; resize:vertical;"></textarea>
+              </div>
+              <sc-if value="{{ leadError }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ leadError }}</div>
+              </sc-if>
+              <button onClick="{{ submitLead }}" style="background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:16px; padding:16px; border-radius:100px; font-family:inherit; cursor:pointer; margin-top:4px;">{{ leadSubmitLabel }}</button>
+              <button onClick="{{ closeLead }}" style="background:transparent; color:#8A8172; border:none; font-size:14px; font-family:inherit; cursor:pointer;">Cancel</button>
+            </div>
+          </sc-if>
+
+          <sc-if value="{{ leadSubmitted }}" hint-placeholder-val="{{ false }}">
+            <div style="background:#FFFFFF; color:#191713; border-radius:22px; padding:44px 24px; text-align:center;">
+              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; margin-bottom:12px;">Thank you for stepping up.</div>
+              <p style="font-size:15.5px; line-height:1.7; color:#6E6759; margin:0;">Our Life Groups team will reach out personally to talk about next steps.</p>
+              <button onClick="{{ closeLead }}" style="margin-top:22px; background:#F4EEE3; color:#191713; border:none; font-weight:600; font-size:14.5px; padding:12px 26px; border-radius:100px; font-family:inherit; cursor:pointer;">Done</button>
+            </div>
+          </sc-if>
+        </div>
+      </sc-if>
+    </div>
+  </div>
+
   <!-- FIND A GROUP -->
   <div id="find" style="background:#FFFFFF; border-top:1px solid #ECE5D8;">
     <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px);">
@@ -213,13 +307,72 @@
 
   <!-- CONTACT -->
   <div id="contact" style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,96px) clamp(20px,4vw,56px);">
-    <div style="background:#191713; color:#FDFBF7; border-radius:26px; padding:clamp(32px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:clamp(24px,4vw,44px); align-items:center;">
+    <div style="background:#191713; color:#FDFBF7; border-radius:26px; padding:clamp(32px,5vw,64px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:clamp(28px,4vw,56px); align-items:start;">
       <div>
         <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block; margin-bottom:22px;">
         <h2 style="font-weight:800; font-size:clamp(26px,4vw,32px); margin:0 0 14px; letter-spacing:-0.5px;">Can't find the right fit?</h2>
         <p style="font-size:16.5px; color:#B9B2A4; margin:0; line-height:1.7; max-width:520px;">Tell us a little about you and we'll personally connect you with a Life Group near you — or help you start one around your own table.</p>
       </div>
-      <a href="#contact" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:16px; padding:17px 38px; border-radius:100px; text-decoration:none; white-space:nowrap;">Contact Our Team</a>
+
+      <div style="background:#FFFFFF; color:#191713; border-radius:22px; padding:clamp(24px,4vw,34px);">
+        <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:10px;">
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">First name *</div>
+                <input onInput="{{ setFirst }}" placeholder="First name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Last name *</div>
+                <input onInput="{{ setLast }}" placeholder="Last name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Phone *</div>
+              <input onInput="{{ setPhone }}" type="tel" placeholder="(615) 555-0100" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Email *</div>
+              <input onInput="{{ setEmail }}" type="email" placeholder="you@example.com" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Which campus? *</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <button onClick="{{ pickNashville }}" style="flex:1 1 130px; border:1px solid {{ nashBorder }}; background:{{ nashBg }}; color:{{ nashColor }}; border-radius:12px; padding:12px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Nashville</button>
+                <button onClick="{{ pickFranklin }}" style="flex:1 1 130px; border:1px solid {{ frankBorder }}; background:{{ frankBg }}; color:{{ frankColor }}; border-radius:12px; padding:12px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Franklin</button>
+              </div>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">What area of town are you in?</div>
+              <input onInput="{{ setArea }}" placeholder="e.g. East Nashville, Franklin, Brentwood" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Which best describes you?</div>
+              <select onChange="{{ setDemographic }}" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+                <option value="">Select one</option>
+                <sc-for list="{{ demographicOptions }}" as="d" hint-placeholder-count="7">
+                  <option value="{{ d }}">{{ d }}</option>
+                </sc-for>
+              </select>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:7px;">Anything else we should know?</div>
+              <textarea onInput="{{ setNotes }}" rows="3" placeholder="Optional" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 15px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; resize:vertical;"></textarea>
+            </div>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
+            </sc-if>
+            <button onClick="{{ submit }}" style="background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:16px; padding:16px; border-radius:100px; font-family:inherit; cursor:pointer; margin-top:4px;">{{ submitLabel }}</button>
+          </div>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div style="text-align:center; padding:34px 8px;">
+            <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; margin-bottom:12px;">Thanks — we'll be in touch.</div>
+            <p style="font-size:15.5px; line-height:1.7; color:#6E6759; margin:0;">Someone from our Life Groups team will personally reach out to help you find your people.</p>
+            <button onClick="{{ reset }}" style="margin-top:22px; background:#F4EEE3; color:#191713; border:none; font-weight:600; font-size:14.5px; padding:12px 26px; border-radius:100px; font-family:inherit; cursor:pointer;">Send another</button>
+          </div>
+        </sc-if>
+      </div>
     </div>
   </div>
 
@@ -248,7 +401,62 @@
 class Component extends DCLogic {
   state = {
     filters: { location: '', day: '', stage: '', kids: false, dinner: false, openOnly: false },
+    campus: 'Nashville', submitted: false, sending: false, error: '',
+    first: '', last: '', phone: '', email: '', area: '', demographic: '', notes: '',
+    leadView: 'closed', ldCampus: 'Nashville', ldSubmitted: false, ldSending: false, ldError: '',
+    ldFirst: '', ldLast: '', ldPhone: '', ldEmail: '', ldArea: '', ldBefore: '', ldHowLong: '', ldWhy: '',
   };
+
+  beforeOptions = ['Yes at Citipointe', 'Yes elsewhere', 'Not yet'];
+  howLongOptions = ['Just started', 'Under a year', '1 to 3 years', '3+ years'];
+
+  submitLeadForm() {
+    const s = this.state;
+    if (!s.ldFirst.trim() || !s.ldLast.trim() || !s.ldPhone.trim() || !s.ldEmail.trim()) {
+      this.setState({ ldError: 'Please fill in your name, phone, and email.' });
+      return;
+    }
+    this.setState({ ldError: '', ldSending: true });
+    const fd = new URLSearchParams();
+    fd.append('formID', '261983275943167');
+    fd.append('q2_q2_fullname0[first]', s.ldFirst.trim());
+    fd.append('q2_q2_fullname0[last]', s.ldLast.trim());
+    fd.append('q3_q3_phone1[full]', s.ldPhone.trim());
+    fd.append('q4_q4_email2', s.ldEmail.trim());
+    fd.append('q5_q5_dropdown3', s.ldCampus);
+    fd.append('q15_whatArea', s.ldArea.trim());
+    fd.append('q20_haveYou', s.ldBefore);
+    fd.append('q19_chooseYour19', s.ldHowLong);
+    fd.append('q18_whyAre', s.ldWhy.trim());
+    fetch('https://submit.jotform.com/submit/261983275943167', { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ ldSubmitted: true, ldSending: false }))
+      .catch(() => this.setState({ ldSending: false, ldError: 'Something went wrong — please try again, or email lifegroups@citipointechurch.com.' }));
+  }
+
+  demographicOptions = ['Youth', 'Young Adults', 'Young Professionals', 'Young Families', 'Families with kids at home', 'Adults', 'Empty Nester / Retired'];
+
+  submitInterest() {
+    const s = this.state;
+    if (!s.first.trim() || !s.last.trim() || !s.phone.trim() || !s.email.trim()) {
+      this.setState({ error: 'Please fill in your name, phone, and email.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const fd = new URLSearchParams();
+    fd.append('formID', '261983471243158');
+    fd.append('q2_q2_fullname0[first]', s.first.trim());
+    fd.append('q2_q2_fullname0[last]', s.last.trim());
+    fd.append('q3_q3_phone1[full]', s.phone.trim());
+    fd.append('q4_q4_email2', s.email.trim());
+    fd.append('q5_q5_dropdown3', s.campus);
+    fd.append('q15_whatArea', s.area.trim());
+    fd.append('q19_chooseYour19', s.demographic);
+    fd.append('q18_anythingElse', s.notes.trim());
+    fetch('https://submit.jotform.com/submit/261983471243158', { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email lifegroups@citipointechurch.com.' }));
+  }
+
 
   commitments = [
     { num: '01', title: 'Two approved leaders', detail: 'Be led by two approved leaders, sharing the responsibility of shepherding the group.' },
@@ -322,6 +530,48 @@ class Component extends DCLogic {
       openChipStyle: this.chipStyle(filters.openOnly),
       visibleGroups,
       noResults: visibleGroups.length === 0,
+      demographicOptions: this.demographicOptions,
+      submitted: this.state.submitted,
+      notSubmitted: !this.state.submitted,
+      formError: this.state.error || false,
+      submitLabel: this.state.sending ? 'Sending…' : 'Connect me with a group',
+      nashBg: this.state.campus === 'Nashville' ? '#191713' : '#FDFBF7', nashBorder: this.state.campus === 'Nashville' ? '#191713' : '#E0D8C8', nashColor: this.state.campus === 'Nashville' ? '#FFFFFF' : '#191713',
+      frankBg: this.state.campus === 'Franklin' ? '#191713' : '#FDFBF7', frankBorder: this.state.campus === 'Franklin' ? '#191713' : '#E0D8C8', frankColor: this.state.campus === 'Franklin' ? '#FFFFFF' : '#191713',
+      pickNashville: () => this.setState({ campus: 'Nashville' }),
+      pickFranklin: () => this.setState({ campus: 'Franklin' }),
+      setFirst: e => this.setState({ first: e.target.value }),
+      setLast: e => this.setState({ last: e.target.value }),
+      setPhone: e => this.setState({ phone: e.target.value }),
+      setEmail: e => this.setState({ email: e.target.value }),
+      setArea: e => this.setState({ area: e.target.value }),
+      setDemographic: e => this.setState({ demographic: e.target.value }),
+      setNotes: e => this.setState({ notes: e.target.value }),
+      submit: () => this.submitInterest(),
+      reset: () => this.setState({ submitted: false, error: '', first: '', last: '', phone: '', email: '', area: '', demographic: '', notes: '' }),
+
+      leadClosed: this.state.leadView === 'closed',
+      leadOpen: this.state.leadView === 'open',
+      leadNotSubmitted: !this.state.ldSubmitted,
+      leadSubmitted: this.state.ldSubmitted,
+      leadError: this.state.ldError || false,
+      leadSubmitLabel: this.state.ldSending ? 'Sending…' : 'Submit',
+      beforeOptions: this.beforeOptions,
+      howLongOptions: this.howLongOptions,
+      openLead: () => this.setState({ leadView: 'open' }),
+      closeLead: () => this.setState({ leadView: 'closed', ldSubmitted: false, ldError: '' }),
+      ldNashBg: this.state.ldCampus === 'Nashville' ? '#191713' : '#FDFBF7', ldNashBorder: this.state.ldCampus === 'Nashville' ? '#191713' : '#E0D8C8', ldNashColor: this.state.ldCampus === 'Nashville' ? '#FFFFFF' : '#191713',
+      ldFrankBg: this.state.ldCampus === 'Franklin' ? '#191713' : '#FDFBF7', ldFrankBorder: this.state.ldCampus === 'Franklin' ? '#191713' : '#E0D8C8', ldFrankColor: this.state.ldCampus === 'Franklin' ? '#FFFFFF' : '#191713',
+      pickLdNashville: () => this.setState({ ldCampus: 'Nashville' }),
+      pickLdFranklin: () => this.setState({ ldCampus: 'Franklin' }),
+      setLdFirst: e => this.setState({ ldFirst: e.target.value }),
+      setLdLast: e => this.setState({ ldLast: e.target.value }),
+      setLdPhone: e => this.setState({ ldPhone: e.target.value }),
+      setLdEmail: e => this.setState({ ldEmail: e.target.value }),
+      setLdArea: e => this.setState({ ldArea: e.target.value }),
+      setLdBefore: e => this.setState({ ldBefore: e.target.value }),
+      setLdHowLong: e => this.setState({ ldHowLong: e.target.value }),
+      setLdWhy: e => this.setState({ ldWhy: e.target.value }),
+      submitLead: () => this.submitLeadForm(),
     };
   }
 }

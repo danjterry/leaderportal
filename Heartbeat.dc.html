@@ -154,8 +154,15 @@
                 </sc-for>
               </div>
             </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">How long have you been attending Citipointe?</label>
+              <input type="text" placeholder="e.g. first time, a few weeks, a year" value="{{ form.howLong }}" onChange="{{ setHowLong }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
+            </sc-if>
             <a href="#signup" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">Save my spot</a>
-            <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Submits to our signup form (CCB). Placeholder link for now.</div>
+
           </div>
         </sc-if>
 
@@ -208,9 +215,32 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
   state = {
-    form: { first: '', last: '', mobile: '', email: '', campus: 'Nashville', date: 0 },
-    submitted: false,
+    form: { first: '', last: '', mobile: '', email: '', campus: 'Nashville', date: 0, howLong: '' },
+    submitted: false, error: '', sending: false,
   };
+  submitToJotform() {
+    const { form } = this.state;
+    if (!form.first.trim() || !form.last.trim() || !form.mobile.trim() || !form.email.trim()) {
+      this.setState({ error: 'Please fill in your name, mobile, and email.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const d = this.upcomingDates()[form.date] || this.upcomingDates()[0];
+    const fd = new URLSearchParams();
+    fd.append('formID', '261983504237158');
+    fd.append('q2_q2_fullname0[first]', form.first.trim());
+    fd.append('q2_q2_fullname0[last]', form.last.trim());
+    fd.append('q3_q3_phone1[full]', form.mobile.trim());
+    fd.append('q4_q4_email2', form.email.trim());
+    fd.append('q5_q5_dropdown3', form.campus);
+    fd.append('q8_q8_datetime6[month]', String(d.getMonth() + 1).padStart(2, '0'));
+    fd.append('q8_q8_datetime6[day]', String(d.getDate()).padStart(2, '0'));
+    fd.append('q8_q8_datetime6[year]', String(d.getFullYear()));
+    fd.append('q13_howLong', form.howLong.trim());
+    fetch('https://submit.jotform.com/submit/261983504237158', { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email nashville@citipointechurch.com.' }));
+  }
 
   outcomes = [
     { num: '01', title: 'The heart of our church', detail: 'Hear the story, the vision, and why Citipointe does what it does.' },
@@ -237,7 +267,7 @@ class Component extends DCLogic {
     today.setHours(0, 0, 0, 0);
     const dates = [];
     let y = today.getFullYear(), m = today.getMonth();
-    while (dates.length < 2) {
+    while (dates.length < 3) {
       const d = this.secondSunday(y, m);
       if (d >= today) dates.push(d);
       m++;
@@ -256,7 +286,7 @@ class Component extends DCLogic {
 
   renderVals() {
     const dates = this.upcomingDates();
-    const { form, submitted } = this.state;
+    const { form, submitted, error, sending } = this.state;
 
     return {
       nextDateLabel: this.fmt(dates[0]),
@@ -268,6 +298,7 @@ class Component extends DCLogic {
       setLast: this.setField('last'),
       setMobile: this.setField('mobile'),
       setEmail: this.setField('email'),
+      setHowLong: this.setField('howLong'),
       campusOptions: ['Nashville', 'Franklin'].map(label => ({
         label,
         style: this.chipStyle(form.campus === label),
@@ -279,8 +310,9 @@ class Component extends DCLogic {
         onClick: () => this.setState(s => ({ form: { ...s.form, date: i } })),
       })),
       chosenDateLabel: this.fmt(dates[form.date] || dates[0]),
-      submit: () => this.setState({ submitted: true }),
-      reset: () => this.setState(s => ({ submitted: false, form: { ...s.form, first: '', last: '', mobile: '', email: '' } })),
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.submitToJotform(); },
+      formError: error || false,
+      reset: () => this.setState(s => ({ submitted: false, error: '', form: { ...s.form, first: '', last: '', mobile: '', email: '' } })),
       submitted,
       notSubmitted: !submitted,
     };

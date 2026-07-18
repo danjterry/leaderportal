@@ -148,8 +148,23 @@
                 </sc-for>
               </div>
             </div>
-            <a href="#interest" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">Send it in</a>
-            <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Submits to our interest form (CCB). Placeholder link for now.</div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">How long have you been attending Citipointe?</label>
+              <select onChange="{{ setHowLong }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+                <option value="">Select one</option>
+                <sc-for list="{{ howLongOptions }}" as="hl" hint-placeholder-count="4">
+                  <option value="{{ hl }}">{{ hl }}</option>
+                </sc-for>
+              </select>
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Anything we should know?</label>
+              <textarea onInput="{{ setNotes }}" rows="3" placeholder="Optional" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; background:#FDFBF7; outline:none; resize:vertical;"></textarea>
+            </div>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
+            </sc-if>
+            <a href="#interest" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">{{ submitLabel }}</a>
           </div>
         </sc-if>
 
@@ -198,9 +213,54 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
   state = {
-    form: { name: '', mobile: '', email: '', campus: 'Nashville', teams: [], heartbeat: '' },
-    submitted: false,
+    form: { name: '', mobile: '', email: '', campus: 'Nashville', teams: [], heartbeat: '', howLong: '', notes: '' },
+    submitted: false, sending: false, error: '',
   };
+
+  howLongOptions = ['Just started', 'Under a year', '1 to 3 years', '3+ years'];
+
+  // our card names -> exact JotForm dropdown values
+  teamMap = {
+    'Inside Hosts': 'Inside Host Team',
+    'Welcome Team': 'Welcome Team',
+    'Parking Lot Team': 'Parking Lot',
+    'Citipointe Kids': 'Kids Team',
+    'Connect Bar': 'Connect Bar Team',
+    'Worship Team': 'Worship Team',
+    'Production Team': 'Production',
+    'Photo/Video Team': 'Photo/Video Team',
+  };
+
+  submitToJotform() {
+    const { form } = this.state;
+    if (!form.name.trim() || !form.mobile.trim() || !form.email.trim()) {
+      this.setState({ error: 'Please fill in your name, mobile, and email.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const parts = form.name.trim().split(/\s+/);
+    const first = parts.shift();
+    const last = parts.join(' ');
+    const mapped = form.teams.map(t => this.teamMap[t] || t);
+    const noteBits = [];
+    if (form.teams.length > 1) noteBits.push('Also interested in: ' + mapped.slice(1).join(', '));
+    if (form.notes.trim()) noteBits.push(form.notes.trim());
+    const hb = form.heartbeat === 'Yes' ? 'Yes' : (form.heartbeat ? 'Not Yet' : '');
+    const fd = new URLSearchParams();
+    fd.append('formID', '261983781484169');
+    fd.append('q2_q2_fullname0[first]', first);
+    fd.append('q2_q2_fullname0[last]', last);
+    fd.append('q3_q3_phone1[full]', form.mobile.trim());
+    fd.append('q4_q4_email2', form.email.trim());
+    fd.append('q5_q5_dropdown3', form.campus);
+    fd.append('q20_whatTeam', mapped[0] || '');
+    fd.append('q19_chooseYour19', form.howLong);
+    fd.append('q22_haveYou', hb);
+    fd.append('q21_anythingWe', noteBits.join(' \u2014 '));
+    fetch('https://submit.jotform.com/submit/261983781484169', { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong \u2014 please try again, or email nashville@citipointechurch.com.' }));
+  }
 
   teams = [
     { img: 'assets/preaching-cross.jpg', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
@@ -210,6 +270,7 @@ class Component extends DCLogic {
     { img: 'assets/ministry-community.jpg', name: 'Connect Bar', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
     { img: 'assets/stage-word.jpg', name: 'Worship Team', what: 'Lead the room in worship through vocals and band \u2014 carrying His presence before carrying a note.', win: 'The win: a room led into pure worship of Jesus.' },
     { img: 'assets/photo-7.png', name: 'Production Team', what: 'Run sound, lyrics, lighting, and stream \u2014 the seamless details behind every service.', win: 'The win: nothing between people and the presence of God.' },
+    { img: 'assets/stage-word.jpg', name: 'Photo/Video Team', what: 'Capture the moments \u2014 photos, video, and stories that let people feel the room before they ever walk in.', win: 'The win: the weekend gets to keep preaching all week.' },
   ];
 
   pathway = [
@@ -238,7 +299,7 @@ class Component extends DCLogic {
   setField = (key) => (e) => this.setState(s => ({ form: { ...s.form, [key]: e.target.value } }));
 
   renderVals() {
-    const { form, submitted } = this.state;
+    const { form, submitted, error, sending } = this.state;
     const next = this.nextHeartbeat();
 
     return {
@@ -248,6 +309,11 @@ class Component extends DCLogic {
       setName: this.setField('name'),
       setMobile: this.setField('mobile'),
       setEmail: this.setField('email'),
+      setHowLong: this.setField('howLong'),
+      setNotes: this.setField('notes'),
+      howLongOptions: this.howLongOptions,
+      formError: error || false,
+      submitLabel: sending ? 'Sending…' : 'Send it in',
       campusOptions: ['Nashville', 'Franklin'].map(label => ({
         label,
         style: this.chipStyle(form.campus === label),
@@ -268,8 +334,8 @@ class Component extends DCLogic {
         style: this.chipStyle(form.heartbeat === label),
         onClick: () => this.setState(s => ({ form: { ...s.form, heartbeat: label } })),
       })),
-      submit: () => this.setState({ submitted: true }),
-      reset: () => this.setState(s => ({ submitted: false, form: { ...s.form, name: '', mobile: '', email: '', teams: [], heartbeat: '' } })),
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.submitToJotform(); },
+      reset: () => this.setState(s => ({ submitted: false, error: '', form: { ...s.form, name: '', mobile: '', email: '', teams: [], heartbeat: '', howLong: '', notes: '' } })),
       submitted,
       notSubmitted: !submitted,
       doneHeartbeat: form.heartbeat === 'Yes',

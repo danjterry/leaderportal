@@ -214,8 +214,12 @@
               </div>
             </div>
             <div>
-              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Date you plan to attend *</div>
-              <input onInput="{{ setDate }}" type="date" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Which Sunday? *</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <sc-for list="{{ sundayOptions }}" as="s" hint-placeholder-count="3">
+                  <button onClick="{{ s.onClick }}" style="flex:1 1 120px; border:1px solid {{ s.border }}; background:{{ s.bg }}; color:{{ s.color }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">{{ s.label }}</button>
+                </sc-for>
+              </div>
             </div>
             <div>
               <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Bringing kids? *</div>
@@ -290,16 +294,25 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { campus: 'Nashville', submitted: false, kids: 'No', first: '', last: '', phone: '', email: '', date: '', kidAges: '', howDid: '', error: '', sending: false };
+  state = { campus: 'Nashville', submitted: false, kids: 'No', first: '', last: '', phone: '', email: '', date: 0, kidAges: '', howDid: '', error: '', sending: false };
+  nextSundays(n) {
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const d = new Date(today);
+    d.setDate(d.getDate() + ((7 - d.getDay()) % 7 || 7));
+    const out = [];
+    for (let i = 0; i < n; i++) { out.push(new Date(d)); d.setDate(d.getDate() + 7); }
+    return out;
+  }
   submitToJotform() {
     const s = this.state;
-    if (!s.first.trim() || !s.last.trim() || !s.phone.trim() || !s.email.trim() || !s.date) {
-      this.setState({ error: 'Please fill in name, phone, email, and the date you plan to attend.' });
+    if (!s.first.trim() || !s.last.trim() || !s.phone.trim() || !s.email.trim()) {
+      this.setState({ error: 'Please fill in name, phone, email, and the Sunday you plan to attend.' });
       return;
     }
     this.setState({ error: '', sending: true });
-    const [y, m, d] = s.date.split('-');
-    const fd = new FormData();
+    const dt = this.nextSundays(3)[s.date] || this.nextSundays(3)[0];
+    const y = String(dt.getFullYear()), m = String(dt.getMonth() + 1).padStart(2, '0'), d = String(dt.getDate()).padStart(2, '0');
+    const fd = new URLSearchParams();
     fd.append('formID', '261978205313054');
     fd.append('q2_q2_fullname0[first]', s.first.trim());
     fd.append('q2_q2_fullname0[last]', s.last.trim());
@@ -340,7 +353,14 @@ class Component extends DCLogic {
       setLast: e => this.setState({ last: e.target.value }),
       setPhone: e => this.setState({ phone: e.target.value }),
       setEmail: e => this.setState({ email: e.target.value }),
-      setDate: e => this.setState({ date: e.target.value }),
+      sundayOptions: this.nextSundays(3).map((d, i) => {
+        const on = this.state.date === i;
+        return {
+          label: d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+          bg: on ? sel : un, border: on ? sel : unB, color: on ? selC : unC,
+          onClick: () => this.setState({ date: i }),
+        };
+      }),
       setKidAges: e => this.setState({ kidAges: e.target.value }),
       setHowDid: e => this.setState({ howDid: e.target.value }),
       formError: error || false,
