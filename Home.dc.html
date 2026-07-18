@@ -188,23 +188,56 @@
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,4vw,36px);">
         <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex; flex-direction:column; gap:18px;">
-            <div>
-              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Your name</div>
-              <input placeholder="First and last name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:10px;">
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:8px;">First name *</div>
+                <input onInput="{{ setFirst }}" placeholder="First name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Last name *</div>
+                <input onInput="{{ setLast }}" placeholder="Last name" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
             </div>
             <div>
-              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Phone or email</div>
-              <input placeholder="So we can confirm the details" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Phone *</div>
+              <input onInput="{{ setPhone }}" type="tel" placeholder="(000) 000-0000" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
             </div>
             <div>
-              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Which location?</div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Email *</div>
+              <input onInput="{{ setEmail }}" type="email" placeholder="you@example.com" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Which campus? *</div>
               <div style="display:flex; flex-wrap:wrap; gap:10px;">
                 <button onClick="{{ pickNashville }}" style="flex:1 1 150px; border:1px solid {{ nashBorder }}; background:{{ nashBg }}; color:{{ nashColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Nashville · 10am</button>
                 <button onClick="{{ pickFranklin }}" style="flex:1 1 150px; border:1px solid {{ frankBorder }}; background:{{ frankBg }}; color:{{ frankColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Franklin · 11am</button>
               </div>
             </div>
-            <button onClick="{{ submit }}" style="background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:16px; padding:17px; border-radius:100px; font-family:inherit; cursor:pointer; margin-top:6px;">Plan my visit</button>
-            <div style="font-size:12.5px; color:#B9B2A4; text-align:center;">Submits to CCB — placeholder until the real form endpoint is connected.</div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Date you plan to attend *</div>
+              <input onInput="{{ setDate }}" type="date" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:13px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none; color:#191713;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Bringing kids? *</div>
+              <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                <button onClick="{{ pickKidsYes }}" style="flex:1 1 120px; border:1px solid {{ kidsYesBorder }}; background:{{ kidsYesBg }}; color:{{ kidsYesColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">Yes</button>
+                <button onClick="{{ pickKidsNo }}" style="flex:1 1 120px; border:1px solid {{ kidsNoBorder }}; background:{{ kidsNoBg }}; color:{{ kidsNoColor }}; border-radius:12px; padding:13px; font-size:15px; font-weight:600; font-family:inherit; cursor:pointer;">No</button>
+              </div>
+            </div>
+            <sc-if value="{{ bringingKids }}" hint-placeholder-val="{{ false }}">
+              <div>
+                <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Ages of children</div>
+                <input onInput="{{ setKidAges }}" placeholder="e.g. 3, 7, 10" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+              </div>
+            </sc-if>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">How did you hear about Citipointe?</div>
+              <input onInput="{{ setHowDid }}" placeholder="Optional" style="width:100%; border:1px solid #E0D8C8; border-radius:12px; padding:14px 16px; font-size:15.5px; font-family:inherit; background:#FDFBF7; outline:none;">
+            </div>
+            <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+              <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
+            </sc-if>
+            <button onClick="{{ submit }}" style="background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:16px; padding:17px; border-radius:100px; font-family:inherit; cursor:pointer; margin-top:6px;">{{ submitLabel }}</button>
           </div>
         </sc-if>
         <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
@@ -257,7 +290,32 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { campus: 'Nashville', submitted: false };
+  state = { campus: 'Nashville', submitted: false, kids: 'No', first: '', last: '', phone: '', email: '', date: '', kidAges: '', howDid: '', error: '', sending: false };
+  submitToJotform() {
+    const s = this.state;
+    if (!s.first.trim() || !s.last.trim() || !s.phone.trim() || !s.email.trim() || !s.date) {
+      this.setState({ error: 'Please fill in name, phone, email, and the date you plan to attend.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const [y, m, d] = s.date.split('-');
+    const fd = new FormData();
+    fd.append('formID', '261978205313054');
+    fd.append('q2_q2_fullname0[first]', s.first.trim());
+    fd.append('q2_q2_fullname0[last]', s.last.trim());
+    fd.append('q3_q3_phone1[full]', s.phone.trim());
+    fd.append('q4_q4_email2', s.email.trim());
+    fd.append('q5_q5_dropdown3', s.campus);
+    fd.append('q6_q6_radio4', s.kids);
+    fd.append('q7_q7_textbox5', s.kids === 'Yes' ? s.kidAges.trim() : '');
+    fd.append('q8_q8_datetime6[month]', m);
+    fd.append('q8_q8_datetime6[day]', d);
+    fd.append('q8_q8_datetime6[year]', y);
+    fd.append('q10_howDid', s.howDid.trim());
+    fetch('https://submit.jotform.com/submit/261978205313054', { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email nashville@citipointechurch.com.' }));
+  }
   nextHeartbeatLabel() {
     const now = new Date();
     const second = (y, m) => { const d = new Date(y, m, 1); const off = (7 - d.getDay()) % 7; return new Date(y, m, 1 + off + 7); };
@@ -266,14 +324,29 @@ class Component extends DCLogic {
     return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   }
   renderVals() {
-    const { campus, submitted } = this.state;
+    const { campus, submitted, kids, error, sending } = this.state;
     const nash = campus === 'Nashville', sel = '#191713', selC = '#FFFFFF', un = '#FDFBF7', unB = '#E0D8C8', unC = '#191713';
+    const kidsYes = kids === 'Yes';
     return {
       campus, submitted, notSubmitted: !submitted,
       pickNashville: () => this.setState({ campus: 'Nashville' }),
       pickFranklin: () => this.setState({ campus: 'Franklin' }),
-      submit: () => this.setState({ submitted: true }),
-      reset: () => this.setState({ submitted: false }),
+      pickKidsYes: () => this.setState({ kids: 'Yes' }),
+      pickKidsNo: () => this.setState({ kids: 'No' }),
+      bringingKids: kidsYes,
+      kidsYesBg: kidsYes ? sel : un, kidsYesBorder: kidsYes ? sel : unB, kidsYesColor: kidsYes ? selC : unC,
+      kidsNoBg: !kidsYes ? sel : un, kidsNoBorder: !kidsYes ? sel : unB, kidsNoColor: !kidsYes ? selC : unC,
+      setFirst: e => this.setState({ first: e.target.value }),
+      setLast: e => this.setState({ last: e.target.value }),
+      setPhone: e => this.setState({ phone: e.target.value }),
+      setEmail: e => this.setState({ email: e.target.value }),
+      setDate: e => this.setState({ date: e.target.value }),
+      setKidAges: e => this.setState({ kidAges: e.target.value }),
+      setHowDid: e => this.setState({ howDid: e.target.value }),
+      formError: error || false,
+      submitLabel: sending ? 'Sending…' : 'Plan my visit',
+      submit: () => this.submitToJotform(),
+      reset: () => this.setState({ submitted: false, error: '' }),
       nashBg: nash ? sel : un, nashBorder: nash ? sel : unB, nashColor: nash ? selC : unC,
       frankBg: !nash ? sel : un, frankBorder: !nash ? sel : unB, frankColor: !nash ? selC : unC,
       locations: [
