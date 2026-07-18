@@ -104,8 +104,48 @@
         <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 22px; letter-spacing:-1px;">The people who'll welcome you</h2>
         <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 18px;">We're a nondenominational church — unashamed in our worship of Jesus, uncompromising in the Word of God, and relentless in our love for people.</p>
         <p style="font-size:17px; line-height:1.8; color:#B9B2A4; margin:0 0 30px;">Citipointe began in Brisbane, Australia in 1974 and is now a global family of churches. Here in Middle Tennessee, we're equipping the people of Jesus for the glory of God and for the sake of the world.</p>
-        <a href="https://www.citipointe.church/sunday-sermons" target="_blank" style="display:inline-block; border:1px solid rgba(253,251,247,0.4); color:#FDFBF7; font-weight:600; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Hear a sermon before you come</a>
+        <a href="#sermons" style="display:inline-block; border:1px solid rgba(253,251,247,0.4); color:#FDFBF7; font-weight:600; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Hear a sermon before you come</a>
       </div>
+    </div>
+  </div>
+
+  <!-- SUNDAY SERMONS -->
+  <div id="sermons" style="background:#FDFBF7; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,96px) clamp(20px,4vw,56px);">
+      <div style="display:flex; flex-wrap:wrap; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:36px;">
+        <div style="max-width:640px;">
+          <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px; color:#6E6759;">Sunday sermons</div>
+          <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,42px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Catch a message before you visit</h2>
+          <p style="font-size:16.5px; line-height:1.75; color:#6E6759; margin:0;">The latest teaching from Pastor Joel &amp; Savannah Ramsey and the team — press play right here. The newest message loads first; use the playlist to browse more.</p>
+        </div>
+        <a href="https://www.youtube.com/channel/UCHlB-nLPdshLHHt_PH7PJ9w/videos" target="_blank" rel="noopener" style="flex:none; display:inline-block; border:1px solid #191713; color:#191713; font-weight:600; font-size:15px; padding:13px 28px; border-radius:100px; text-decoration:none;">Full sermon library &rarr;</a>
+      </div>
+      <sc-if value="{{ sermonsReady }}" hint-placeholder-val="{{ false }}">
+        <div style="display:grid; gap:18px;">
+          <div style="position:relative; width:100%; aspect-ratio:16/9; border-radius:22px; overflow:hidden; border:1px solid #ECE5D8; background:#000; box-shadow:0 24px 60px -30px rgba(25,23,19,0.5);">
+            <iframe src="https://www.youtube.com/embed/{{ activeVideo }}?rel=0&amp;modestbranding=1&amp;playsinline=1" title="{{ activeTitle }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:14px;">
+            <sc-for list="{{ moreSermons }}" as="s" hint-placeholder-count="3">
+              <div onClick="{{ s.onClick }}" style="cursor:pointer; border-radius:14px; overflow:hidden; border:2px solid {{ s.ring }}; background:#FFFFFF;">
+                <div style="position:relative; aspect-ratio:16/9; background:#000;">
+                  <img src="{{ s.thumb }}" alt="{{ s.title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div style="padding:10px 12px; font-size:13px; font-weight:600; line-height:1.4; color:#191713;">{{ s.title }}</div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ sermonsPending }}" hint-placeholder-val="{{ true }}">
+        <div style="width:100%; aspect-ratio:16/9; border-radius:22px; border:1px solid #ECE5D8; background:#F5EFE3; display:flex; align-items:center; justify-content:center; color:#8A8172; font-size:15px;">Loading the latest messages…</div>
+      </sc-if>
+      <sc-if value="{{ sermonsFailed }}" hint-placeholder-val="{{ false }}">
+        <div style="width:100%; border-radius:22px; border:1px solid #ECE5D8; background:#FFFFFF; padding:clamp(28px,5vw,44px); text-align:center;">
+          <div style="font-size:16.5px; color:#6E6759; line-height:1.7; margin:0 auto 22px; max-width:520px;">Watch the latest Sunday messages on our YouTube channel — new teaching posted every week.</div>
+          <a href="https://www.youtube.com/channel/UCHlB-nLPdshLHHt_PH7PJ9w/videos" target="_blank" rel="noopener" style="display:inline-block; background:#191713; color:#FDFBF7; font-weight:600; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Watch on YouTube &rarr;</a>
+        </div>
+      </sc-if>
     </div>
   </div>
 
@@ -275,7 +315,7 @@
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
             <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Resources</div>
             <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#D9D2C4; text-decoration:none;">Give online</a>
-            <a href="https://www.citipointe.church/sunday-sermons" target="_blank" style="color:#D9D2C4; text-decoration:none;">Sunday sermons</a>
+            <a href="#sermons" style="color:#D9D2C4; text-decoration:none;">Sunday sermons</a>
             <a href="Leader Portal.dc.html" style="color:#D9D2C4; text-decoration:none;">Leader Portal</a>
           </div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
@@ -294,7 +334,28 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { campus: 'Nashville', submitted: false, kids: 'No', first: '', last: '', phone: '', email: '', date: 0, kidAges: '', howDid: '', error: '', sending: false };
+  // ── Sunday sermons: paste your YouTube Data API v3 key between the quotes below ──
+  YT_API_KEY = 'AIzaSyCNzM-X8ot4tAKGdvmEZn-SCQa0EVBTWaU';
+  YT_UPLOADS = 'UUHlB-nLPdshLHHt_PH7PJ9w'; // Citipointe Church Nashville uploads playlist
+  state = { campus: 'Nashville', submitted: false, kids: 'No', first: '', last: '', phone: '', email: '', date: 0, kidAges: '', howDid: '', error: '', sending: false, sermonsStatus: 'pending', sermons: [], activeVideo: '' };
+  componentDidMount() {
+    const key = this.YT_API_KEY;
+    if (!key) { this.setState({ sermonsStatus: 'failed' }); return; }
+    fetch('https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=8&playlistId=' + this.YT_UPLOADS + '&key=' + key)
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(d => {
+        const vids = (d.items || [])
+          .map(i => {
+            const sn = i.snippet || {}, th = sn.thumbnails || {};
+            return { id: (sn.resourceId || {}).videoId, title: sn.title || 'Sermon', thumb: (th.medium || th.default || {}).url };
+          })
+          .filter(v => v.id && !/^(Private|Deleted) video$/i.test(v.title))
+          .slice(0, 4);
+        if (!vids.length) { this.setState({ sermonsStatus: 'failed' }); return; }
+        this.setState({ sermonsStatus: 'ready', sermons: vids, activeVideo: vids[0].id });
+      })
+      .catch(() => this.setState({ sermonsStatus: 'failed' }));
+  }
   nextSundays(n) {
     const today = new Date(); today.setHours(0, 0, 0, 0);
     const d = new Date(today);
@@ -340,7 +401,19 @@ class Component extends DCLogic {
     const { campus, submitted, kids, error, sending } = this.state;
     const nash = campus === 'Nashville', sel = '#191713', selC = '#FFFFFF', un = '#FDFBF7', unB = '#E0D8C8', unC = '#191713';
     const kidsYes = kids === 'Yes';
+    const st = this.state.sermonsStatus;
+    const active = this.state.sermons.find(v => v.id === this.state.activeVideo) || {};
     return {
+      sermonsReady: st === 'ready',
+      sermonsPending: st === 'pending',
+      sermonsFailed: st === 'failed',
+      activeVideo: this.state.activeVideo,
+      activeTitle: active.title || 'Sermon',
+      moreSermons: this.state.sermons.map(v => ({
+        id: v.id, title: v.title, thumb: v.thumb,
+        ring: v.id === this.state.activeVideo ? '#191713' : 'transparent',
+        onClick: () => this.setState({ activeVideo: v.id }),
+      })),
       campus, submitted, notSubmitted: !submitted,
       pickNashville: () => this.setState({ campus: 'Nashville' }),
       pickFranklin: () => this.setState({ campus: 'Franklin' }),
