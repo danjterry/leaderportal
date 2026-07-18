@@ -311,7 +311,7 @@ class Component extends DCLogic {
     fd.append('q8_q8_datetime6[month]', m);
     fd.append('q8_q8_datetime6[day]', d);
     fd.append('q8_q8_datetime6[year]', y);
-    fd.append('q10_howDid', s.howDid.trim());
+    fd.append('q13_howDid', s.howDid.trim());
     fetch('https://submit.jotform.com/submit/261978205313054', { method: 'POST', mode: 'no-cors', body: fd })
       .then(() => this.setState({ submitted: true, sending: false }))
       .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email nashville@citipointechurch.com.' }));
