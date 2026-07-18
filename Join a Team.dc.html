@@ -56,17 +56,18 @@
     <div style="max-width:1240px; margin:0 auto; padding:clamp(56px,8vw,104px) clamp(20px,4vw,56px);">
       <div style="text-align:center; margin-bottom:52px;">
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">The teams</div>
-        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">Seven ways to make a Sunday happen</h2>
+        <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">Every way to make a Sunday happen</h2>
         <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">From the parking lot to the platform — there’s a place for your gifts.</p>
       </div>
       <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(250px, 1fr)); gap:24px;">
         <sc-for list="{{ teams }}" as="t" hint-placeholder-count="4">
-          <div style="background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; overflow:hidden; display:flex; flex-direction:column;">
+          <div style="{{ t.cardStyle }}">
             <img src="{{ t.img }}" alt="{{ t.name }}" style="width:100%; height:150px; object-fit:cover; display:block;">
             <div style="padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px; flex:1;">
               <div style="font-weight:700; font-size:19px;">{{ t.name }}</div>
               <div style="font-size:14.5px; line-height:1.65; color:#6E6759; flex:1;">{{ t.what }}</div>
               <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14.5px; color:#8A8172;">{{ t.win }}</div>
+              <button onClick="{{ t.onSelect }}" style="{{ t.btnStyle }}">{{ t.btnLabel }}</button>
             </div>
           </div>
         </sc-for>
@@ -110,9 +111,15 @@
 
         <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
           <div style="display:flex; flex-direction:column; gap:18px;">
-            <div>
-              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Name</label>
-              <input type="text" value="{{ form.name }}" onChange="{{ setName }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px;">
+              <div>
+                <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">First name</label>
+                <input type="text" value="{{ form.first }}" onChange="{{ setFirst }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+              </div>
+              <div>
+                <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Last name</label>
+                <input type="text" value="{{ form.last }}" onChange="{{ setLast }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+              </div>
             </div>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px;">
               <div>
@@ -133,7 +140,7 @@
               </div>
             </div>
             <div>
-              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which teams interest you? Pick any.</label>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which teams interest you? Pick any — or tap the cards above.</label>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <sc-for list="{{ teamOptions }}" as="t" hint-placeholder-count="4">
                   <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
@@ -213,7 +220,7 @@
 <script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
 class Component extends DCLogic {
   state = {
-    form: { name: '', mobile: '', email: '', campus: 'Nashville', teams: [], heartbeat: '', howLong: '', notes: '' },
+    form: { first: '', last: '', mobile: '', email: '', campus: 'Nashville', teams: [], heartbeat: '', howLong: '', notes: '' },
     submitted: false, sending: false, error: '',
   };
 
@@ -225,26 +232,22 @@ class Component extends DCLogic {
     'Welcome Team': 'Welcome Team',
     'Parking Lot Team': 'Parking Lot',
     'Citipointe Kids': 'Kids Team',
-    'Connect Bar': 'Connect Bar Team',
+    'Connect Bar': 'Connect Bar',
     'Worship Team': 'Worship Team',
-    'Production Team': 'Production',
+    'Production Team': 'Production Team',
     'Photo/Video Team': 'Photo/Video Team',
   };
 
   submitToJotform() {
     const { form } = this.state;
-    if (!form.name.trim() || !form.mobile.trim() || !form.email.trim()) {
+    if (!form.first.trim() || !form.last.trim() || !form.mobile.trim() || !form.email.trim()) {
       this.setState({ error: 'Please fill in your name, mobile, and email.' });
       return;
     }
     this.setState({ error: '', sending: true });
-    const parts = form.name.trim().split(/\s+/);
-    const first = parts.shift();
-    const last = parts.join(' ');
+    const first = form.first.trim();
+    const last = form.last.trim();
     const mapped = form.teams.map(t => this.teamMap[t] || t);
-    const noteBits = [];
-    if (form.teams.length > 1) noteBits.push('Also interested in: ' + mapped.slice(1).join(', '));
-    if (form.notes.trim()) noteBits.push(form.notes.trim());
     const hb = form.heartbeat === 'Yes' ? 'Yes' : (form.heartbeat ? 'Not Yet' : '');
     const fd = new URLSearchParams();
     fd.append('formID', '261983781484169');
@@ -253,10 +256,10 @@ class Component extends DCLogic {
     fd.append('q3_q3_phone1[full]', form.mobile.trim());
     fd.append('q4_q4_email2', form.email.trim());
     fd.append('q5_q5_dropdown3', form.campus);
-    fd.append('q20_whatTeam', mapped[0] || '');
+    mapped.forEach(t => fd.append('q23_whatTeam23[]', t));
     fd.append('q19_chooseYour19', form.howLong);
     fd.append('q22_haveYou', hb);
-    fd.append('q21_anythingWe', noteBits.join(' \u2014 '));
+    fd.append('q21_anythingWe', form.notes.trim());
     fetch('https://submit.jotform.com/submit/261983781484169', { method: 'POST', mode: 'no-cors', body: fd })
       .then(() => this.setState({ submitted: true, sending: false }))
       .catch(() => this.setState({ sending: false, error: 'Something went wrong \u2014 please try again, or email nashville@citipointechurch.com.' }));
@@ -296,6 +299,13 @@ class Component extends DCLogic {
 
   chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
 
+  toggleTeam = (name) => this.setState(s => {
+    const teams = s.form.teams.includes(name)
+      ? s.form.teams.filter(x => x !== name)
+      : [...s.form.teams, name];
+    return { form: { ...s.form, teams } };
+  });
+
   setField = (key) => (e) => this.setState(s => ({ form: { ...s.form, [key]: e.target.value } }));
 
   renderVals() {
@@ -303,10 +313,22 @@ class Component extends DCLogic {
     const next = this.nextHeartbeat();
 
     return {
-      teams: this.teams,
+      teams: this.teams.map(t => {
+        const picked = form.teams.includes(t.name);
+        return {
+          ...t,
+          cardStyle: `background:#FDFBF7; border:1px solid ${picked ? '#191713' : '#ECE5D8'}; border-radius:22px; overflow:hidden; display:flex; flex-direction:column;`,
+          btnLabel: picked ? 'Added \u2014 see form below' : "I'm interested",
+          btnStyle: picked
+            ? 'text-align:center; margin-top:6px; background:#EAF0E4; color:#3E5A2E; border:1px solid #CBD9BE; font-weight:700; font-size:14.5px; padding:12px; border-radius:100px; font-family:inherit; cursor:pointer;'
+            : 'text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; border:none; font-weight:700; font-size:14.5px; padding:12px; border-radius:100px; font-family:inherit; cursor:pointer;',
+          onSelect: () => this.toggleTeam(t.name),
+        };
+      }),
       pathway: this.pathway,
       form,
-      setName: this.setField('name'),
+      setFirst: this.setField('first'),
+      setLast: this.setField('last'),
       setMobile: this.setField('mobile'),
       setEmail: this.setField('email'),
       setHowLong: this.setField('howLong'),
@@ -322,20 +344,21 @@ class Component extends DCLogic {
       teamOptions: this.teams.map(t => ({
         label: t.name,
         style: this.chipStyle(form.teams.includes(t.name)),
-        onClick: () => this.setState(s => {
-          const teams = s.form.teams.includes(t.name)
-            ? s.form.teams.filter(x => x !== t.name)
-            : [...s.form.teams, t.name];
-          return { form: { ...s.form, teams } };
-        }),
+        onClick: () => this.toggleTeam(t.name),
       })),
+      pickedTeams: form.teams.map(name => ({
+        label: name,
+        onRemove: () => this.toggleTeam(name),
+      })),
+      hasPickedTeams: form.teams.length > 0,
+      noPickedTeams: form.teams.length === 0,
       heartbeatOptions: ['Yes', 'Not yet'].map(label => ({
         label,
         style: this.chipStyle(form.heartbeat === label),
         onClick: () => this.setState(s => ({ form: { ...s.form, heartbeat: label } })),
       })),
       submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.submitToJotform(); },
-      reset: () => this.setState(s => ({ submitted: false, error: '', form: { ...s.form, name: '', mobile: '', email: '', teams: [], heartbeat: '', howLong: '', notes: '' } })),
+      reset: () => this.setState(s => ({ submitted: false, error: '', form: { ...s.form, first: '', last: '', mobile: '', email: '', teams: [], heartbeat: '', howLong: '', notes: '' } })),
       submitted,
       notSubmitted: !submitted,
       doneHeartbeat: form.heartbeat === 'Yes',
