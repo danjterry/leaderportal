@@ -30,9 +30,9 @@
       <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172;">Heartbeat</span>
     </div>
     <div style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
-      <a href="Home.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Home</a>
-      <a href="Lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Life Groups</a>
-      <a href="Join a Team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
+      <a href="home.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Home</a>
+      <a href="lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Lifegroups</a>
+      <a href="join-a-team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
       <a href="#what" style="color:#191713; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:700;">Heartbeat</a>
       <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Give</a>
       <a href="#signup" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Save my spot</a>
@@ -173,8 +173,8 @@
             <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 8px;">We'll text you the details before the day.</p>
             <p style="font-size:15px; color:#8A8172; margin:0 0 24px;">See you on <strong style="color:#191713;">{{ chosenDateLabel }}</strong>.</p>
             <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:26px;">
-              <a href="Join a Team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">While you wait: meet the serving teams &rarr;</a>
-              <a href="Lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">Browse Life Groups &rarr;</a>
+              <a href="join-a-team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">While you wait: meet the serving teams &rarr;</a>
+              <a href="lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">Browse Lifegroups &rarr;</a>
             </div>
             <a href="#signup" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#8A8172; text-decoration:none;">Sign up someone else</a>
           </div>
@@ -188,8 +188,8 @@
   <div style="border-top:1px solid #ECE5D8; background:#F4EEE3;">
     <div style="max-width:1240px; margin:0 auto; padding:28px clamp(20px,4vw,56px); display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:14px 28px; text-align:center;">
       <span style="font-size:15.5px; color:#4A443A;"><span style="font-family:'Minion Pro', Georgia, serif; font-style:italic;">Already done Heartbeat?</span> Your next step is a team and a table.</span>
-      <a href="Join a Team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Join a Team &rarr;</a>
-      <a href="Lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Find a Life Group &rarr;</a>
+      <a href="join-a-team.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Join a Team &rarr;</a>
+      <a href="lifegroups.dc.html" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; white-space:nowrap;">Find a Lifegroup &rarr;</a>
     </div>
   </div>
 
@@ -202,11 +202,16 @@
         <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Heartbeat</span>
       </div>
       <div style="display:flex; gap:12px 32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
-        <a href="Join a Team.dc.html" style="color:#8A8172; text-decoration:none;">Join a Team</a>
-        <a href="Lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Life Groups</a>
-        <a href="Leader Portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+        <a href="join-a-team.dc.html" style="color:#8A8172; text-decoration:none;">Join a Team</a>
+        <a href="lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Lifegroups</a>
+        <!-- TODO: replace href with real prayer form URL --><a href="#prayer" style="color:#8A8172; text-decoration:none;">Need prayer?</a>
+        <a href="leader-portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
       </div>
-      <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Nashville</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a> <a href="https://www.youtube.com/channel/UCHlB-nLPdshLHHt_PH7PJ9w" target="_blank" rel="noopener" aria-label="YouTube" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"></path></svg></a></span></div>
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Franklin</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointefranklin/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/p/Citipointe-Franklin-61555597406922/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
+          </div>
+      <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world &middot; Part of the global Citipointe family &middot; <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#191713; text-decoration:none; font-weight:600;">www.citipointechurch.com</a></div>
     </div>
   </div>
 

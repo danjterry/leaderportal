@@ -28,9 +28,9 @@
     <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
     <div id="home-nav-links" style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
       <a href="#new" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">New Here?</a>
-      <a href="Lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Life Groups</a>
-      <a href="Join a Team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
-      <a href="Heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
+      <a href="lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Lifegroups</a>
+      <a href="join-a-team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
+      <a href="heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
       <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Give</a>
     </div>
     <a href="#visit" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Plan your visit</a>
@@ -126,10 +126,12 @@
             <iframe src="https://www.youtube.com/embed/{{ activeVideo }}?rel=0&amp;modestbranding=1&amp;playsinline=1" title="{{ activeTitle }}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
           </div>
           <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:14px;">
-            <sc-for list="{{ moreSermons }}" as="s" hint-placeholder-count="3">
+            <sc-for list="{{ moreSermons }}" as="s">
               <div onClick="{{ s.onClick }}" style="cursor:pointer; border-radius:14px; overflow:hidden; border:2px solid {{ s.ring }}; background:#FFFFFF;">
                 <div style="position:relative; aspect-ratio:16/9; background:#000;">
-                  <img src="{{ s.thumb }}" alt="{{ s.title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  <sc-if value="{{ s.thumb }}" hint-placeholder-val="{{ false }}">
+                    <img src="{{ s.thumb }}" alt="{{ s.title }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                  </sc-if>
                 </div>
                 <div style="padding:10px 12px; font-size:13px; font-weight:600; line-height:1.4; color:#191713;">{{ s.title }}</div>
               </div>
@@ -186,12 +188,12 @@
       <div style="background:#F4EEE3; border-radius:22px; padding:clamp(22px,3vw,28px);">
         <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Next Heartbeat · {{ nextHeartbeat }}</div>
         <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Heartbeat</div>
-        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Your first step — a one-day course during service. <a href="Heartbeat.dc.html" style="font-weight:700; color:#191713;">Save your spot</a></div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Your first step — a one-day course during service. <a href="heartbeat.dc.html" style="font-weight:700; color:#191713;">Save your spot</a></div>
       </div>
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
         <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Midweek</div>
-        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Life Groups</div>
-        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Groups meet across the week in homes around the city. <a href="Lifegroups.dc.html" style="font-weight:700; color:#191713;">Find a group</a></div>
+        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Lifegroups</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Groups meet across the week in homes around the city. <a href="lifegroups.dc.html" style="font-weight:700; color:#191713;">Find a group</a></div>
       </div>
     </div>
   </div>
@@ -302,30 +304,44 @@
         <div style="max-width:340px;">
           <img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:30px; width:auto; display:block; margin-bottom:16px;">
           <div style="font-size:13px; letter-spacing:1.2px; text-transform:uppercase; font-weight:600; margin-bottom:22px;">For the glory of God and for the sake of the world</div>
-          <div style="font-size:14.5px; line-height:1.8; color:#8A8172;"><strong style="color:#D9D2C4;">Nashville</strong> · Sundays 10am<br>7533 Lords Chapel Drive, Nashville, TN<br><strong style="color:#D9D2C4;">Franklin</strong> · Sundays 11am<br>Expression City Theatre, 1724a General George Patton Dr, Brentwood, TN</div>
+          <div style="display:flex; flex-direction:column; gap:18px;">
+            <div>
+              <div style="font-size:14.5px; line-height:1.8; color:#8A8172;"><strong style="color:#D9D2C4;">Nashville</strong> · Sundays 10am<br>7533 Lords Chapel Drive, Nashville, TN</div>
+              <div style="display:flex; align-items:center; gap:16px; margin-top:8px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#D9D2C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a><a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#D9D2C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a><a href="https://www.youtube.com/channel/UCHlB-nLPdshLHHt_PH7PJ9w" target="_blank" rel="noopener" aria-label="YouTube" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#D9D2C4;"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"></path></svg></a></div>
+            </div>
+            <div>
+              <div style="font-size:14.5px; line-height:1.8; color:#8A8172;"><strong style="color:#D9D2C4;">Franklin</strong> · Sundays 11am<br>Expression City Theatre, 1724a General George Patton Dr, Brentwood, TN</div>
+              <div style="display:flex; align-items:center; gap:16px; margin-top:8px;"><a href="https://www.instagram.com/citipointefranklin/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#D9D2C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a><a href="https://www.facebook.com/p/Citipointe-Franklin-61555597406922/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#D9D2C4;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></div>
+            </div>
+          </div>
         </div>
         <div style="display:flex; flex-wrap:wrap; gap:36px 56px;">
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
             <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Next steps</div>
             <a href="#visit" style="color:#D9D2C4; text-decoration:none;">Plan your visit</a>
-            <a href="Heartbeat.dc.html" style="color:#D9D2C4; text-decoration:none;">Heartbeat</a>
-            <a href="Lifegroups.dc.html" style="color:#D9D2C4; text-decoration:none;">Life Groups</a>
-            <a href="Join a Team.dc.html" style="color:#D9D2C4; text-decoration:none;">Join a Team</a>
+            <a href="heartbeat.dc.html" style="color:#D9D2C4; text-decoration:none;">Heartbeat</a>
+            <a href="lifegroups.dc.html" style="color:#D9D2C4; text-decoration:none;">Lifegroups</a>
+            <a href="join-a-team.dc.html" style="color:#D9D2C4; text-decoration:none;">Join a Team</a>
           </div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
             <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Resources</div>
             <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#D9D2C4; text-decoration:none;">Give online</a>
             <a href="#sermons" style="color:#D9D2C4; text-decoration:none;">Sunday sermons</a>
-            <a href="Leader Portal.dc.html" style="color:#D9D2C4; text-decoration:none;">Leader Portal</a>
+            <a href="leader-portal.dc.html" style="color:#D9D2C4; text-decoration:none;">Leader Portal</a>
           </div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
             <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Contact</div>
             <a href="mailto:nashville@citipointechurch.com" style="color:#D9D2C4; text-decoration:none;">nashville@citipointechurch.com</a>
             <a href="tel:+16152355675" style="color:#D9D2C4; text-decoration:none;">(615) 235-5675</a>
+            <!-- TODO: replace href with real prayer form URL -->
+            <a href="#prayer" style="color:#D9D2C4; text-decoration:none;">Need prayer?</a>
           </div>
         </div>
       </div>
-      <div style="border-top:1px solid #3A362E; margin-top:44px; padding-top:22px; font-size:13px; color:#6E6759;">© 2026 Citipointe Church</div>
+      <div style="border-top:1px solid #3A362E; margin-top:44px; padding-top:22px; display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px 24px; font-size:13px; color:#6E6759;">
+        <div>© 2026 Citipointe Church</div>
+        <div>Part of the global Citipointe family · <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#D9D2C4; text-decoration:none;">www.citipointechurch.com</a></div>
+      </div>
     </div>
   </div>
 
@@ -462,9 +478,9 @@ class Component extends DCLogic {
         { q: 'Where do I park?', a: 'There\u2019s free parking on site at both locations. Our team will be outside to guide you in and walk you to the door.' }
       ],
       steps: [
-        { num: '01', title: 'Heartbeat', detail: 'Your first step. A one-day course during service \u2014 discover the heart of our church, what we believe, and your spiritual gifts.', cta: 'Learn about Heartbeat', href: 'Heartbeat.dc.html' },
-        { num: '02', title: 'Life Groups', detail: 'Life is better together. Find real community, grow in your faith, and do life with people on the same journey.', cta: 'Find a group', href: 'Lifegroups.dc.html' },
-        { num: '03', title: 'Join a Team', detail: 'Serve with purpose. Whether it\u2019s worship, kids, or production, there\u2019s a place for your gifts on a team.', cta: 'See the teams', href: 'Join a Team.dc.html' }
+        { num: '01', title: 'Heartbeat', detail: 'Your first step. A one-day course during service \u2014 discover the heart of our church, what we believe, and your spiritual gifts.', cta: 'Learn about Heartbeat', href: 'heartbeat.dc.html' },
+        { num: '02', title: 'Lifegroups', detail: 'Life is better together. Find real community, grow in your faith, and do life with people on the same journey.', cta: 'Find a group', href: 'lifegroups.dc.html' },
+        { num: '03', title: 'Join a Team', detail: 'Serve with purpose. Whether it\u2019s worship, kids, or production, there\u2019s a place for your gifts on a team.', cta: 'See the teams', href: 'join-a-team.dc.html' }
       ]
     };
   }
