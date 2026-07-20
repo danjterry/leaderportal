@@ -221,9 +221,24 @@
       <div style="text-align:center; margin-bottom:52px;">
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Find a Lifegroup</div>
         <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); margin:0 0 16px; letter-spacing:-1px;">There's a place for you</h2>
-        <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">Filter by what matters to you, then request to join — a leader will reach out personally within the week.</p>
+        <sc-if value="{{ groupsLive }}" hint-placeholder-val="{{ false }}">
+          <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">Filter by what matters to you, then request to join — a leader will reach out personally within the week.</p>
+        </sc-if>
+        <sc-if value="{{ groupsComingSoon }}" hint-placeholder-val="{{ true }}">
+          <p style="font-size:16.5px; color:#6E6759; max-width:540px; margin:0 auto;">Our next season of Lifegroups is taking shape right now.</p>
+        </sc-if>
       </div>
 
+      <sc-if value="{{ groupsComingSoon }}" hint-placeholder-val="{{ true }}">
+        <div style="max-width:640px; margin:0 auto; background:#FDFBF7; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(36px,6vw,56px) clamp(24px,5vw,48px); text-align:center;">
+          <div style="display:inline-block; background:#F4EEE3; color:#6E6759; font-size:12px; font-weight:700; letter-spacing:2px; text-transform:uppercase; padding:7px 16px; border-radius:100px; margin-bottom:20px;">New season launching August 30</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:clamp(22px,3.5vw,27px); color:#191713; margin-bottom:14px;">Groups for the new season are being set right now.</div>
+          <p style="font-size:15.5px; line-height:1.75; color:#6E6759; margin:0 0 26px;">We'll open sign-ups here as soon as they're ready. In the meantime, tell us a little about yourself below and we'll personally help you find your people.</p>
+          <a href="#contact" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:15px 32px; border-radius:100px; text-decoration:none;">Get connected</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ groupsLive }}" hint-placeholder-val="{{ false }}">
       <!-- FILTERS -->
       <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center; margin-bottom:48px;">
         <select style="{{ selectStyle }}" value="{{ filters.location }}" onChange="{{ setLocation }}">
@@ -286,6 +301,7 @@
 
       <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
         <div style="text-align:center; padding:56px 0 8px; color:#6E6759; font-size:16px;">No groups match those filters yet — try widening your search, or <a href="#contact">contact our team</a> and we'll help you find a fit.</div>
+      </sc-if>
       </sc-if>
     </div>
   </div>
@@ -385,6 +401,7 @@
         <a href="equip.dc.html" style="color:#8A8172; text-decoration:none;">Equip</a>
         <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Need prayer?</a>
         <a href="leader-portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+        <a href="https://sites.google.com/citipointechurch.com/staff-support/home" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Staff hub</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
             <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Nashville</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a> <a href="https://www.youtube.com/channel/UCHlB-nLPdshLHHt_PH7PJ9w" target="_blank" rel="noopener" aria-label="YouTube" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6z"></path></svg></a></span></div>
@@ -488,6 +505,9 @@ class Component extends DCLogic {
   toggleDinner = () => this.setState(s => ({ filters: { ...s.filters, dinner: !s.filters.dinner } }));
   toggleOpenOnly = () => this.setState(s => ({ filters: { ...s.filters, openOnly: !s.filters.openOnly } }));
 
+  // Flip to true when the new season's groups are ready to publish
+  groupsLive = false;
+
   renderVals() {
     const { filters } = this.state;
     const visibleGroups = this.groups.filter(g =>
@@ -530,6 +550,8 @@ class Component extends DCLogic {
       openChipStyle: this.chipStyle(filters.openOnly),
       visibleGroups,
       noResults: visibleGroups.length === 0,
+      groupsLive: this.groupsLive,
+      groupsComingSoon: !this.groupsLive,
       demographicOptions: this.demographicOptions,
       submitted: this.state.submitted,
       notSubmitted: !this.state.submitted,
