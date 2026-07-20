@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /leader-portal
+Disallow: /leader-portal.dc.html
+
+Sitemap: https://citipointe.church/sitemap.xml
