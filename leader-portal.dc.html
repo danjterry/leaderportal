@@ -61,24 +61,22 @@
 
   <!-- NAV -->
   <div style="position:sticky; top:0; z-index:40; background:#16140F; color:#FBF8F3;">
-    <div style="max-width:1200px; margin:0 auto; padding:14px clamp(18px,4vw,40px); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px;">
-      <div style="display:flex; align-items:center; gap:12px;">
+    <div style="max-width:1200px; margin:0 auto; padding:12px clamp(18px,4vw,40px) 0; display:flex; align-items:center; justify-content:space-between; gap:10px 16px; flex-wrap:wrap;">
+      <div style="display:flex; align-items:center; gap:12px; min-width:0;">
         <a href="home.dc.html" title="Back to the public site" style="display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;"></a>
         <span style="width:1px; height:18px; background:#3A362E;"></span>
-        <span onClick="{{ goHome }}" style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase; cursor:pointer;">Leader Portal</span>
+        <span onClick="{{ goHome }}" style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase; cursor:pointer; white-space:nowrap;">Leader Portal</span>
       </div>
-      <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap;">
-        <div style="display:flex; gap:2px; background:#26221B; border-radius:100px; padding:3px;">
-          <sc-for list="{{ campusToggle }}" as="c" hint-placeholder-count="2">
-            <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
-          </sc-for>
-        </div>
-        <div style="display:flex; align-items:center; gap:6px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
-          <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
-            <div onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</div>
-          </sc-for>
-        </div>
+      <div style="display:flex; gap:2px; background:#26221B; border-radius:100px; padding:3px; flex:none;">
+        <sc-for list="{{ campusToggle }}" as="c" hint-placeholder-count="2">
+          <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+        </sc-for>
       </div>
+    </div>
+    <div style="max-width:1200px; margin:0 auto; padding:10px clamp(18px,4vw,40px) 12px; display:flex; align-items:center; gap:6px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <sc-for list="{{ navItems }}" as="n" hint-placeholder-count="4">
+        <div onClick="{{ n.onClick }}" style="{{ n.style }}">{{ n.label }}</div>
+      </sc-for>
     </div>
   </div>
 
@@ -131,7 +129,7 @@
             <sc-for list="{{ contactGroups }}" as="g" hint-placeholder-count="2">
               <div>
                 <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:16px;">{{ g.campus }}</div>
-                <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:18px;">
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:18px;">
                   <sc-for list="{{ g.people }}" as="c" hint-placeholder-count="4">
                     <div style="display:flex; align-items:center; gap:14px;">
                       <div style="flex:none; width:40px; height:40px; border-radius:50%; background:#E7DFCF; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; color:#6B6355;">{{ c.initials }}</div>
@@ -324,7 +322,7 @@
         <div>
         <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
           <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">The leader's win</div>
-          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">Citipointe Lifegroups exist to cultivate a welcoming environment that helps people find community and grow in their faith.</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">Our Lifegroups exist to make disciples by gathering people around Jesus in homes throughout our city — so that Christ is glorified and His love is made visible to the world.</div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-top:20px; padding-top:20px; border-top:1px solid #3A362E;">
             <div>
               <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:6px;">Welcoming environment</div>
