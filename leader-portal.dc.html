@@ -25,10 +25,10 @@
     <div style="background:#16140F; color:#FBF8F3; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(32px,5vw,56px);">
       <a href="home.dc.html" style="align-self:flex-start; display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;"></a>
       <div>
-        <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the people who make Sundays and lifegroups happen.</div>
+        <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the glory of God and for the sake of the world.</div>
         <h1 style="font-weight:800; font-size:clamp(30px,4vw,44px); line-height:1.08; margin:0; letter-spacing:-1px; max-width:480px;">Everything you need to serve and lead, in one place.</h1>
       </div>
-      <div style="font-size:13px; color:#9C927E;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
+      <div style="font-size:13px; color:#9C927E;">&copy; 2026 Citipointe Church</div>
     </div>
     <div style="display:flex; align-items:center; justify-content:center; padding:clamp(32px,5vw,56px);">
       <div style="width:100%; max-width:380px;">
@@ -43,6 +43,9 @@
         </div>
         <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">Password</label>
         <input type="password" placeholder="••••••••" value="{{ pw }}" onChange="{{ setPw }}" onKeyDown="{{ pwKeyDown }}" style="width:100%; padding:14px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FFFFFF;">
+        <sc-if value="{{ gateError }}" hint-placeholder-val="{{ false }}">
+          <div style="font-size:13.5px; color:#A4462D; margin-top:12px; text-align:center;">{{ gateError }}</div>
+        </sc-if>
         <a href="#portal" onClick="{{ enter }}" style="display:block; text-align:center; margin-top:16px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Enter the portal</a>
         <div style="text-align:center; margin-top:22px;">
           <a href="home.dc.html" style="font-size:13px; color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
@@ -122,7 +125,8 @@
 
         <!-- WHO TO CONTACT -->
         <div style="background:#F5EFE3; border-radius:22px; padding:clamp(24px,4vw,36px);">
-          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:20px;">Who to contact</div>
+          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:10px;">Who to contact</div>
+          <div style="font-size:14.5px; color:#6B6355; line-height:1.65; margin-bottom:20px;">Not sure who to ask? Start with your Pastoral Oversight or team leader — a text is never a bother.</div>
           <div style="display:flex; flex-direction:column; gap:28px;">
             <sc-for list="{{ contactGroups }}" as="g" hint-placeholder-count="2">
               <div>
@@ -320,15 +324,30 @@
         <div>
         <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
           <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">The leader's win</div>
-          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">A healthy lifegroup produces people who are known, cared for, growing in God's Word, and raising up the next leaders.</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">Citipointe Lifegroups exist to cultivate a welcoming environment that helps people find community and grow in their faith.</div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-top:20px; padding-top:20px; border-top:1px solid #3A362E;">
+            <div>
+              <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:6px;">Welcoming environment</div>
+              <div style="font-size:13.5px; color:#D9D2C4; line-height:1.6;">A fun, inclusive, and uplifting space for people.</div>
+            </div>
+            <div>
+              <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:6px;">Community</div>
+              <div style="font-size:13.5px; color:#D9D2C4; line-height:1.6;">Built through intentional and genuine relationships.</div>
+            </div>
+            <div>
+              <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:6px;">Intentional discipleship</div>
+              <div style="font-size:13.5px; color:#D9D2C4; line-height:1.6;">An intimate relationship with the Holy Spirit, understanding of the Word, and outworking the commissioning of Jesus.</div>
+            </div>
+          </div>
         </div>
 
         <!-- The model -->
         <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
           <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:14px;">The model: dinner parties</div>
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:17px; line-height:1.65; color:#6B6355; margin-bottom:18px;">&ldquo;Every day they continued to meet together in the temple courts. They broke bread in their homes and ate together with glad and sincere hearts, praising God and enjoying the favor of all the people. And the Lord added to their number daily those who were being saved.&rdquo; <span style="font-style:normal; font-size:13.5px; color:#9C927E;">&mdash; Acts 2:46&ndash;47 (NIV)</span></div>
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px 28px;">
             <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Every group is a dinner party.</strong> The table is the strategy — a meal people want to invite their friends to, where community happens before the study does.</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Every group meets Wednesday night.</strong> For the next 12 months, all groups gather on one night. One rhythm for the whole church — then we grow from there.</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Every group meets Wednesday night.</strong> For the 2026/2027 seasons, all groups will gather on one night. One rhythm for the whole church — then we grow from there.</div>
             <div style="font-size:14.5px; color:#3B372E; line-height:1.7;"><strong>Communion at every gathering.</strong> Every table, every week. Pick up Communion resources on Sundays, or midweek from the church office.</div>
           </div>
         </div>
@@ -365,8 +384,8 @@
           <!-- Attendance -->
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Reporting: within 24 hours</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">Report your gathering in the Citipointe Nashville app within 24 hours — attendance, testimonies, and pastoral care notes. Reporting is stewardship: it's how we care for our communities and see who's being discipled. Add new people to your group so our pastors are aware; to remove someone, contact your Pastoral Oversight with the details.</div>
-            <a href="#ccb" style="font-size:14px; font-weight:700; text-decoration:none;">Open CCB (placeholder) &rarr;</a>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">Report your gathering in the Citipointe USA app within 24 hours — attendance, testimonies, and pastoral care notes. Reporting is stewardship: it's how we care for our communities and see who's being discipled. Add new people to your group so our pastors are aware; to remove someone, contact your Pastoral Oversight with the details.</div>
+            <div style="font-size:14px; color:#3B372E; line-height:1.7; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:14px 18px;"><strong>How:</strong> Citipointe USA app &rarr; Lifegroups &rarr; My Groups &rarr; your group &rarr; record attendance. Or follow the link in your email reminder.</div>
           </div>
 
           <!-- Join requests -->
@@ -382,9 +401,19 @@
           </div>
 
           <!-- Support -->
-          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">You have an oversight — use them</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">Every leader has a <strong>Pastoral Oversight</strong> for care, coaching, and any question about discipling your group — build the relationship, don't wait for a crisis. <strong>Discipleship Support</strong> keeps a pulse on who's engaged so nobody slips through the cracks. Reply to both promptly. Pastoral Oversight: Dan Terry, 628&nbsp;259&nbsp;9460.</div>
+          <div style="grid-column:1/-1; background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:20px 28px; align-items:center;">
+            <div>
+              <div style="font-weight:800; font-size:18px; margin-bottom:14px;">You have an oversight — use them</div>
+              <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">Every leader has a <strong>Pastoral Oversight</strong> for care, coaching, and any question about discipling your group — build the relationship, don't wait for a crisis. <strong>Discipleship Support</strong> keeps a pulse on who's engaged so nobody slips through the cracks. Reply to both promptly.</div>
+            </div>
+            <div style="background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:16px 20px;">
+              <div style="font-size:11px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:10px;">Pastoral Oversight — {{ campusLabel }}</div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(140px, 1fr)); gap:12px 18px;">
+                <sc-for list="{{ oversights }}" as="o" hint-placeholder-count="4">
+                  <div style="font-size:14px; color:#3B372E; line-height:1.5;"><div style="font-weight:700; margin-bottom:2px;">{{ o.area }}</div><div>{{ o.names }}</div></div>
+                </sc-for>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -426,12 +455,12 @@
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">This term's study material</div>
             <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">The current series guide and week-by-week material for your group.</div>
-            <a href="#curriculum" style="font-size:14px; font-weight:700; text-decoration:none;">Open (placeholder) &rarr;</a>
+            <div style="display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9C927E; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:100px; padding:7px 16px;">Coming soon</div>
           </div>
-          <div onClick="{{ goSermonNotes }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Sermon notes</div>
             <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Discussion questions from the current series, updated weekly.</div>
-            <div style="font-size:14px; font-weight:700;">Open sermon notes &rarr;</div>
+            <div style="display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9C927E; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:100px; padding:7px 16px;">Coming soon</div>
           </div>
           <div onClick="{{ goCommunion }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Communion guide</div>
@@ -556,13 +585,24 @@
             <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); margin-bottom:22px; display:flex; align-items:center; gap:18px 32px; flex-wrap:wrap;">
               <div style="flex:1 1 260px;">
                 <div style="font-weight:800; font-size:18px; margin-bottom:6px;">New leader checklist</div>
-                <div style="font-size:14px; color:#6B6355; line-height:1.6;">Works for team leaders and lifegroup leaders. Ticks save on this device.</div>
+                <div style="font-size:14px; color:#6B6355; line-height:1.6;">{{ checklistIntro }}</div>
               </div>
               <div style="flex:1 1 220px;">
                 <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:700; margin-bottom:8px;"><span>{{ checklistDone }} of {{ checklistTotal }} done</span><span>{{ checklistPct }}</span></div>
                 <div style="height:8px; border-radius:100px; background:#F0EAE0; overflow:hidden;"><div style="{{ progressBarStyle }}"></div></div>
               </div>
             </div>
+            <sc-if value="{{ isLGTraining }}" hint-placeholder-val="{{ false }}">
+              <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); margin-bottom:22px;">
+                <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Growing your group</div>
+                <div style="font-size:14px; color:#6B6355; line-height:1.6; margin-bottom:18px;">Successful leaders constantly invite new people — and encourage their members to do the same. People desire relationship.</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px 24px;">
+                  <sc-for list="{{ growTips }}" as="g" hint-placeholder-count="4">
+                    <div style="font-size:14px; color:#3B372E; line-height:1.6;"><div style="font-weight:700; margin-bottom:3px;">{{ g.title }}</div><div style="color:#6B6355; font-size:13.5px;">{{ g.detail }}</div></div>
+                  </sc-for>
+                </div>
+              </div>
+            </sc-if>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px;">
               <sc-for list="{{ checklistSections }}" as="sec" hint-placeholder-count="3">
                 <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
@@ -589,7 +629,7 @@
           <div>
             <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:22px;">
               <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">Raise your replacement</div>
-              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">You haven't finished leading until someone can lead without you. Every team and every group carries two leaders in training.</div>
+              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:20px; line-height:1.5; color:#EDE8DE;">You haven't finished leading until someone can lead without you. Our goal: every team and every group to have two leaders in training.</div>
             </div>
             <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden; margin-bottom:22px;">
               <sc-for list="{{ pipelineSteps }}" as="s" hint-placeholder-count="4">
@@ -628,19 +668,71 @@
                 </sc-for>
               </div>
             </div>
+            <sc-if value="{{ isTeamTraining }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:28px;">
+                <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:16px;">Leading on a Sunday</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px;">
+                  <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+                    <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Tips for a great Sunday team</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <sc-for list="{{ teamTips }}" as="t" hint-placeholder-count="6">
+                        <div style="font-size:14px; line-height:1.55;"><span style="font-weight:700;">{{ t.title }}</span> <span style="color:#6B6355;">— {{ t.detail }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+                    <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Culture we protect</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <sc-for list="{{ teamCulture }}" as="t" hint-placeholder-count="4">
+                        <div style="font-size:14px; line-height:1.55;"><span style="font-weight:700;">{{ t.title }}</span> <span style="color:#6B6355;">— {{ t.detail }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
+            <sc-if value="{{ isLGTraining }}" hint-placeholder-val="{{ false }}">
+              <div style="margin-bottom:28px;">
+                <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:16px;">From the Lifegroups Manual</div>
+                <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:22px;">
+                  <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+                    <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Tips for a successful lifegroup</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <sc-for list="{{ lgTips }}" as="t" hint-placeholder-count="8">
+                        <div style="font-size:14px; line-height:1.55;"><span style="font-weight:700;">{{ t.title }}</span> <span style="color:#6B6355;">— {{ t.detail }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                  <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+                    <div style="font-weight:800; font-size:17px; margin-bottom:6px;">How to create a disciple</div>
+                    <div style="font-size:13px; color:#9C927E; margin-bottom:14px;">Matthew 28:18–20 — go and make disciples of all the nations.</div>
+                    <div style="display:flex; flex-direction:column; gap:12px;">
+                      <sc-for list="{{ discipleSteps }}" as="d" hint-placeholder-count="9">
+                        <div style="font-size:14px; line-height:1.55;"><span style="font-weight:700;">{{ d.title }}</span> <span style="color:#6B6355;">— {{ d.detail }}</span></div>
+                      </sc-for>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </sc-if>
             <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:22px;">
               <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
                 <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Guides</div>
                 <div style="display:flex; flex-direction:column; gap:10px;">
-                  <div onClick="{{ goSermonNotes }}" style="font-size:14px; font-weight:700; cursor:pointer;">Sermon notes and discussion questions &rarr;</div>
-                  <div onClick="{{ goCommunion }}" style="font-size:14px; font-weight:700; cursor:pointer;">How to take Communion together &rarr;</div>
-                  <div onClick="{{ goServe }}" style="font-size:14px; font-weight:700; cursor:pointer;">Team playbooks &rarr;</div>
+                  <sc-if value="{{ isLGTraining }}" hint-placeholder-val="{{ false }}">
+                    <div onClick="{{ goCommunion }}" style="font-size:14px; font-weight:700; cursor:pointer;">How to take Communion together &rarr;</div>
+                    <div onClick="{{ goLeadLifegroup }}" style="font-size:14px; font-weight:700; cursor:pointer;">Lifegroup leader playbook &rarr;</div>
+                  </sc-if>
+                  <sc-if value="{{ isTeamTraining }}" hint-placeholder-val="{{ false }}">
+                    <div onClick="{{ goServe }}" style="font-size:14px; font-weight:700; cursor:pointer;">Team playbooks &rarr;</div>
+                    <div onClick="{{ goLeadTeam }}" style="font-size:14px; font-weight:700; cursor:pointer;">Team leader playbook &rarr;</div>
+                  </sc-if>
                 </div>
               </div>
               <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
                 <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Forms and links</div>
                 <div style="display:flex; flex-direction:column; gap:10px;">
-                  <a href="#ccb" style="font-size:14px; font-weight:700; text-decoration:none;">CCB — rostering, serving requests, checks and membership (placeholder) &rarr;</a>
+                  <a href="https://citipointe.ccbchurch.com/" target="_blank" rel="noopener" style="font-size:14px; font-weight:700; text-decoration:none;">CCB — rostering, serving requests, checks and membership &rarr;</a>
                   <div onClick="{{ goSafeChurch }}" style="font-size:14px; font-weight:700; cursor:pointer;">Safe Church and incident report &rarr;</div>
                 </div>
               </div>
@@ -675,37 +767,14 @@
         </div>
 
         <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(24px,4.5vw,34px); max-width:680px;">
-          <sc-if value="{{ notIncidentSubmitted }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex; flex-direction:column; gap:16px;">
-              <div>
-                <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Incident report</div>
-                <div style="font-size:14px; color:#6B6355; line-height:1.6;">File within 24 hours of any injury, safeguarding concern, or near miss. Facts only &mdash; what you saw and heard, not conclusions.</div>
-              </div>
-              <div>
-                <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">What happened</label>
-                <textarea rows="4" value="{{ incident.what }}" onChange="{{ setIncWhat }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FBF8F3; resize:vertical;"></textarea>
-              </div>
-              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px;">
-                <div>
-                  <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">When and where</label>
-                  <input type="text" placeholder="Sun Jul 12, kids wing" value="{{ incident.when }}" onChange="{{ setIncWhen }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FBF8F3;">
-                </div>
-                <div>
-                  <label style="display:block; font-size:13px; font-weight:600; color:#3B372E; margin-bottom:7px;">People involved</label>
-                  <input type="text" placeholder="Names and roles" value="{{ incident.who }}" onChange="{{ setIncWho }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #E7DFCF; font-size:16px; font-family:inherit; color:#16140F; background:#FBF8F3;">
-                </div>
-              </div>
-              <a href="#safe-church" onClick="{{ submitIncident }}" style="text-align:center; margin-top:2px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Submit report</a>
-              <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Goes to the Safe Church team via CCB. Placeholder for now.</div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Incident report</div>
+              <div style="font-size:14px; color:#6B6355; line-height:1.6;">File within 24 hours of any injury, safeguarding concern, or near miss. Facts only &mdash; what you saw and heard, not conclusions. You'll be asked what happened, when and where, and who was involved.</div>
             </div>
-          </sc-if>
-          <sc-if value="{{ incidentSubmitted }}" hint-placeholder-val="{{ false }}">
-            <div style="text-align:center; padding:20px 8px;">
-              <div style="width:56px; height:56px; border-radius:50%; background:#EAF0E4; color:#54713F; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; margin:0 auto 18px;">&#10003;</div>
-              <h3 style="font-weight:800; font-size:24px; margin:0 0 10px; letter-spacing:-0.5px;">Report received.</h3>
-              <p style="font-size:15.5px; color:#6B6355; line-height:1.7; margin:0 0 22px;">The Safe Church team will follow up with you directly. Thank you for speaking up.</p>
-              <a href="#safe-church" onClick="{{ resetIncident }}" style="font-size:14px; font-weight:600; color:#8A8172; text-decoration:none;">File another report</a>
-            </div>
+            <a href="https://form.jotform.com/261996497013165" target="_blank" rel="noopener" style="text-align:center; margin-top:2px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Open the incident report form</a>
+            <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Goes straight to the Safe Church team.</div>
+          </div>
           </sc-if>
         </div>
       </div>
@@ -713,7 +782,7 @@
 
     <!-- FOOTER -->
     <div style="margin-top:56px; padding-top:28px; border-top:1px solid #E7DFCF; display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:13px; color:#9C927E;">
-      <div>Safeguarding records and full membership data live in CCB. Lifegroup reporting lives in the Citipointe Nashville app (built on CCB); team rostering lives in CCB (placeholders).</div>
+      <div>&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
       <a href="home.dc.html" style="color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
     </div>
 
@@ -956,9 +1025,10 @@ class Component extends DCLogic {
 
   leadTeamSections = [
     {
-      title: 'Running your team', showLink: true, linkLabel: 'Open CCB (placeholder)',
+      title: 'Running your team', showLink: false, linkLabel: '',
       items: [
         { title: 'Pre-service huddle', detail: 'Ten minutes: pray, assign positions, name one thing to do better than last week.' },
+        { title: 'See who is on your team', detail: 'Citipointe USA app \u2192 Teams \u2192 My Serving \u2192 the day you serve \u2192 Schedule shows who has accepted or declined.' },
         { title: 'Roster in CCB, a month ahead', detail: 'People say yes to a plan, not a scramble. By the 10th, next month should be scheduled and sent out.' },
         { title: 'Follow up new members', detail: 'A text within 48 hours of a first serve. First Sundays decide whether there is a second.' },
       ],
@@ -1057,8 +1127,8 @@ class Component extends DCLogic {
   communionSteps = [
     { title: 'Prepare the elements', detail: 'Before the group arrives, set out bread (or crackers) and juice, enough for everyone. Keep it simple; the table matters more than the menu.', scripture: '' },
     { title: 'Settle hearts', detail: 'Pause the evening. Explain simply: this is how Jesus asked us to remember Him, His body broken and His blood poured out for us.', scripture: '' },
-    { title: 'Read the Scripture aloud', detail: 'Have someone read the words of institution over the group.', scripture: '1 Corinthians 11:23-26' },
-    { title: 'Make space to examine our hearts', detail: 'Allow a quiet moment for confession and getting right with God and one another before taking the elements.', scripture: '1 Corinthians 11:28' },
+    { title: 'Read the Scripture aloud', detail: 'Have someone read a scripture or share a brief testimony.', scripture: '1 Corinthians 11:23-26' },
+    { title: 'Make space to examine our hearts', detail: 'Pause and invite each person to come honestly before God before taking the elements.', scripture: '1 Corinthians 11:28' },
     { title: 'Give thanks and break the bread', detail: 'Thank God for the body of Jesus, broken for us, then eat together.', scripture: 'Luke 22:19' },
     { title: 'Share the cup', detail: 'Thank God for the blood of Jesus, the new covenant, then drink together.', scripture: 'Luke 22:20' },
     { title: 'Respond', detail: 'Close with prayer, a song, or a moment of thanks, remembering and celebrating our risen Savior until He comes again.', scripture: '' },
@@ -1083,22 +1153,44 @@ class Component extends DCLogic {
   goCurriculum = () => this.setState({ view: 'leadLifegroup', lgTab: 'curriculum' });
 
   checklistData = [
-    { title: 'Before your first night', items: [
+    { title: 'Before your first Sunday', items: [
       { id: 'pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything.' },
-      { id: 'pre-safe', title: 'Safeguarding briefing', detail: 'One session, runs monthly. Book through the church office.' },
-      { id: 'pre-coach', title: 'Coffee with your coach', detail: 'Every new leader gets one. They are your first call all year.' },
-      { id: 'pre-app', title: 'CCB access', detail: 'Ask your staff contact to add you so rostering, serving requests, and attendance work.' },
+      { id: 'pre-safe', title: 'Completed Heartbeat', detail: 'One Sunday \u2014 learn the heart of the church before you lead in it.' },
+      { id: 'pre-coach', title: 'Coffee with your team leader', detail: 'Every new leader gets one. They are your first call all year.' },
+      { id: 'pre-app', title: 'CCB access', detail: 'Ask your staff contact to add you so rostering and serving requests work.' },
     ]},
     { title: 'Your first month', items: [
-      { id: 'm1-colead', title: 'Co-lead alongside a current leader', detail: 'Watch one, lead one. You are never thrown in alone.' },
-      { id: 'm1-host', title: 'Host once with support', detail: 'Run the night while your coach or co-leader backs you up.' },
-      { id: 'm1-attend', title: 'Log attendance the same night', detail: 'Under a minute, every gathering. It is how we spot people drifting.' },
-      { id: 'm1-communion', title: 'Take Communion together', detail: 'Use the guide. Keep Christ at the center from week one.' },
+      { id: 'm1-colead', title: 'Serve alongside a current leader', detail: 'Watch one, lead one. You are never thrown in alone.' },
+      { id: 'm1-host', title: 'Run a Sunday with support', detail: 'Lead the team while your coach backs you up.' },
+      { id: 'm1-attend', title: 'Run a pre-service huddle', detail: 'Ten minutes: pray, assign positions, name one thing to do better.' },
+      { id: 'm1-communion', title: 'Learn your playbook', detail: 'Know the win, the basics, and who to call for your team.' },
     ]},
     { title: 'The ongoing rhythm', items: [
-      { id: 'on-huddle', title: 'Monthly leader huddle', detail: 'Sunday mornings before service. Dates are on the portal home.' },
-      { id: 'on-night', title: 'All-leader night each term', detail: 'Vision, training and food. Non-negotiable, worth it.' },
-      { id: 'on-apprentice', title: 'Name your two leaders in training', detail: 'Every team and group raises two. Start praying about who.' },
+      { id: 'on-consistent', title: 'Stay consistent', detail: 'Same Sunday, same rhythm. Your team takes its cue from you showing up.' },
+      { id: 'on-checkin', title: 'Check in on people who miss a Sunday', detail: 'A quick text says you were missed. It is how we spot people drifting.' },
+      { id: 'on-share', title: 'Share the load', detail: 'Hand out real roles \u2014 the huddle, a position, welcoming new volunteers. Involved people stay.' },
+      { id: 'on-apprentice', title: 'Spot two people you can train as leaders', detail: 'Every team raises two. Start praying about who.' },
+    ]},
+  ];
+
+  lgChecklistData = [
+    { title: 'Before your first night', items: [
+      { id: 'lg-pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything.' },
+      { id: 'lg-pre-safe', title: 'Completed Heartbeat', detail: 'One Sunday \u2014 learn the heart of the church before you lead in it.' },
+      { id: 'lg-pre-coach', title: 'Coffee with your Pastoral Oversight', detail: 'Start the relationship early \u2014 they are your first call all year.' },
+      { id: 'lg-pre-app', title: 'Citipointe USA app access', detail: 'Ask your staff contact to add your group so attendance recording works.' },
+    ]},
+    { title: 'Your first month', items: [
+      { id: 'lg-m1-colead', title: 'Co-lead alongside a current leader', detail: 'Watch one, lead one. You are never thrown in alone.' },
+      { id: 'lg-m1-host', title: 'Host a night with support', detail: 'Run the dinner table while your Pastoral Oversight or co-leader backs you up.' },
+      { id: 'lg-m1-attend', title: 'Record attendance the same night', detail: 'Under a minute in the app, every gathering. It is how we spot people drifting.' },
+      { id: 'lg-m1-communion', title: 'Take Communion together', detail: 'Use the guide. Keep Christ at the center from week one.' },
+    ]},
+    { title: 'The ongoing rhythm', items: [
+      { id: 'lg-on-consistent', title: 'Stay consistent', detail: 'Same night, same rhythm. Consistency is what turns a gathering into a community.' },
+      { id: 'lg-on-checkin', title: 'Check in on people who miss a night', detail: 'A quick text says you were missed. It is how we spot people drifting.' },
+      { id: 'lg-on-share', title: 'Share the load', detail: 'Hand out real roles \u2014 meals, prayer requests, hangouts. Involved people stay.' },
+      { id: 'lg-on-apprentice', title: 'Spot two people you can train as leaders', detail: 'Every group raises two. Start praying about who.' },
     ]},
   ];
 
@@ -1153,8 +1245,19 @@ class Component extends DCLogic {
   renderVals() {
     const { authed, pw, view, teamKey, checklist, trainingTab, ltTab, lgTab, campus, incident, incidentSubmitted } = this.state;
     const pb = this.teams.find(t => t.key === teamKey);
-    const enter = () => this.setState({ authed: true, view: 'home' });
+    const enter = () => {
+      if ((this.state.pw || '').trim() === 'Serve2026') this.setState({ authed: true, view: 'home', gateError: '' });
+      else this.setState({ gateError: 'That password isn\u2019t right \u2014 ask your team leader for the current one.' });
+    };
 
+    const oversights = campus === 'franklin'
+      ? [{ area: 'All groups', names: 'Ethan & Emma-Grace Sherrer' }]
+      : [
+        { area: 'Youth', names: 'Levi Winnington' },
+        { area: 'Young Adults', names: 'Kim & Chris Peterson' },
+        { area: 'Adults', names: 'Jimmy & Tishara Pitts' },
+        { area: 'Seniors', names: 'Art & Otelia Blackburn' },
+      ];
     const navDefs = [
       { key: 'home', label: 'Home' },
       { key: 'serve', label: 'Team Playbooks' },
@@ -1186,10 +1289,12 @@ class Component extends DCLogic {
       { key: 'training', label: 'Training' },
     ].map(t => ({ label: t.label, onClick: () => this.setState({ lgTab: t.key }), style: subTabStyle(lgTab === t.key) }));
 
-    const allItems = this.checklistData.flatMap(s => s.items);
+    const isLGContext = view === 'leadLifegroup' || view === 'sermonNotes' || view === 'communion';
+    const activeChecklistData = isLGContext ? this.lgChecklistData : this.checklistData;
+    const allItems = activeChecklistData.flatMap(s => s.items);
     const doneCount = allItems.filter(i => checklist[i.id]).length;
     const pct = Math.round((doneCount / allItems.length) * 100);
-    const checklistSections = this.checklistData.map(sec => ({
+    const checklistSections = activeChecklistData.map(sec => ({
       title: sec.title,
       items: sec.items.map(it => {
         const c = !!checklist[it.id];
@@ -1210,6 +1315,7 @@ class Component extends DCLogic {
       setPw: (e) => this.setState({ pw: e.target.value }),
       pwKeyDown: (e) => { if (e.key === 'Enter') enter(); },
       enter,
+      gateError: this.state.gateError || false,
 
       navItems: navDefs.map(n => ({
         label: n.label,
@@ -1245,6 +1351,8 @@ class Component extends DCLogic {
         onClick: () => this.save({ campus: c.key }),
         style: 'flex:1; text-align:center; padding:13px; border-radius:12px; cursor:pointer; user-select:none; font-weight:700; font-size:14.5px; border:1.5px solid ' + (campus === c.key ? '#191713; background:#191713; color:#FFFFFF;' : '#E7DFCF; background:#FFFFFF; color:#6B6355;'),
       })),
+      oversights,
+      campusLabel: campus === 'franklin' ? 'Franklin' : 'Nashville',
       campusToggle: [
         { key: 'nashville', label: 'Nashville' },
         { key: 'franklin', label: 'Franklin' },
@@ -1272,6 +1380,51 @@ class Component extends DCLogic {
       isLGCurriculum: lgTab === 'curriculum',
       goCurriculum: this.goCurriculum,
       trainTabs,
+      checklistIntro: isLGContext ? 'For new lifegroup leaders. Ticks save on this device.' : 'For new team leaders. Ticks save on this device.',
+      isLGTraining: isLGContext,
+      isTeamTraining: !isLGContext,
+      teamTips: [
+        { title: 'Arrive before your team', detail: 'Leaders set the pace \u2014 the tone of the day is decided before anyone else walks in.' },
+        { title: 'Run the huddle every week', detail: 'Pray, assign positions, name one thing to do better than last week.' },
+        { title: 'Names matter', detail: 'Greet every volunteer personally. People serve where they feel seen.' },
+        { title: 'Serve the room, watch the door', detail: 'The new person is the priority \u2014 every team exists to make them feel expected.' },
+        { title: 'Debrief in two minutes', detail: 'What worked, what didn\u2019t, and say thanks before anyone leaves.' },
+        { title: 'Rest is part of serving', detail: 'Honor roster rhythms. Don\u2019t burn people out \u2014 sustainable teams last.' },
+      ],
+      teamCulture: [
+        { title: 'There\u2019s always room for one more', detail: 'On the team and in the room.' },
+        { title: 'Win the lost at any cost', detail: 'Every role, from parking to platform, serves this.' },
+        { title: 'Excellence honors God', detail: 'And inspires people \u2014 do the small things well.' },
+        { title: 'Serving is a privilege', detail: 'Not a duty. We get to build the house.' },
+      ],
+      goLeadTeam: this.go('leadTeam'),
+      lgTips: [
+        { title: 'Safe environment', detail: 'What is shared in the group stays in the group, outside of Pastoral Oversight.' },
+        { title: 'Time frame', detail: 'Give a time frame and stick to it \u2014 honoring the clock honors people.' },
+        { title: 'Connect new people to others', detail: 'The more conversations a new person has, the more likely they stay connected.' },
+        { title: 'Don\u2019t fear awkward situations', detail: 'They\u2019re probably more uncomfortable than you. Break the ice and draw out the best in the room.' },
+        { title: 'Ask follow-up questions', detail: 'The right questions are conversation gold \u2014 they lead people deeper into God\u2019s Word.' },
+        { title: 'Dialogue over monologue', detail: 'Think ping pong: keep the ball moving from person to person. Don\u2019t let one voice dominate.' },
+        { title: 'Make space for prayer', detail: 'Prayer keeps Christ at the center of the night.' },
+        { title: 'Look for potential leaders', detail: 'Give them a role \u2014 food, prayer requests, hangouts \u2014 and release them to lead.' },
+      ],
+      discipleSteps: [
+        { title: 'Listen first', detail: 'Understand where they\u2019re coming from before you speak into their life.' },
+        { title: 'Ask questions', detail: 'The right questions help people reach conclusions themselves.' },
+        { title: 'Teach truth', detail: 'Break down Scripture where they\u2019re at, in language they understand.' },
+        { title: 'Equip them', detail: 'Show them how you study the Bible, and give tools that fit what they need.' },
+        { title: 'Be consistent', detail: 'Connect individually outside the group \u2014 keep a pulse on the ninety-nine while going after the one.' },
+        { title: 'Teach them to be planted', detail: 'The local church is essential for every believer.' },
+        { title: 'Dig for gold', detail: 'Help people see themselves the way God sees them.' },
+        { title: 'Take them on the journey', detail: 'Discipleship is relationship \u2014 groceries, hikes, hobbies, everyday life.' },
+        { title: 'Love unconditionally', detail: 'Give grace and mercy no matter what, and let the Holy Spirit change hearts.' },
+      ],
+      growTips: [
+        { title: 'Personal invitation', detail: 'The best way to bring people in. Connected people, connect people \u2014 be present before and after service, and use the 2-minute connect to go get them. Don\u2019t assume people will just find your group.' },
+        { title: 'Social media', detail: 'Your personal page is a great way to share about your lifegroup.' },
+        { title: 'Your own circles', detail: 'Members don\u2019t have to attend Citipointe. Invite coworkers, parents from your kids\u2019 teams, gym friends \u2014 the people already around you.' },
+        { title: 'Don\u2019t do this alone', detail: 'Build a team to share the load \u2014 meals, set up, clean up.' },
+      ],
       isTrainStart: trainingTab === 'start',
       isTrainPipeline: trainingTab === 'pipeline',
       isTrainLibrary: trainingTab === 'library',
@@ -1280,8 +1433,22 @@ class Component extends DCLogic {
       checklistTotal: allItems.length,
       checklistPct: pct + '%',
       progressBarStyle: 'height:100%; width:' + pct + '%; background:#191713; border-radius:100px; transition:width 0.3s;',
-      pipelineSteps: this.pipelineSteps,
-      videos: this.videos,
+      videos: isLGContext
+        ? [
+          { title: 'Your first night as a leader', meta: '9 min \u00b7 New leaders' },
+          { title: 'Leading a discussion people remember', meta: '12 min \u00b7 Lifegroup leaders' },
+          { title: 'Pastoral care basics: what\u2019s yours, what\u2019s ours', meta: '18 min \u00b7 All leaders' },
+          { title: 'Hosting the dinner table', meta: '8 min \u00b7 Lifegroup leaders' },
+        ]
+        : [
+          { title: 'Your first Sunday as a leader', meta: '9 min \u00b7 New leaders' },
+          { title: 'Running a huddle your team loves', meta: '12 min \u00b7 Team leaders' },
+          { title: 'Pastoral care basics: what\u2019s yours, what\u2019s ours', meta: '18 min \u00b7 All leaders' },
+          { title: 'Welcoming a new volunteer well', meta: '8 min \u00b7 Team leaders' },
+        ],
+      pipelineSteps: isLGContext ? this.pipelineSteps : this.pipelineSteps.map(s =>
+        s.n === 3 ? { ...s, detail: 'Hand over one real thing a month \u2014 the huddle, a position, the roster \u2014 and coach from one step back.' } :
+        s.n === 4 ? { ...s, detail: 'Recommend them to your staff contact, then celebrate loudly when they step up to lead their own team.' } : s),
 
       isSafeChurch: view === 'safeChurch',
       goSafeChurch: this.go('safeChurch'),
