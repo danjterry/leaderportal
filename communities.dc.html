@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+    @media (min-width: 861px) { [data-flip] > *:first-child { order: 2; } }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+
+  <!-- TOPBAR -->
+  <div style="background:#191713; color:#B9B2A4; text-align:center; padding:9px 24px; font-size:12.5px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;">For the glory of God and for the sake of the world</div>
+
+  <!-- NAV -->
+  <dc-import name="site-nav" active="communities" page-label="Communities" cta-label="Plan your visit" cta-href="home.dc.html#visit" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(36px,5vw,56px); text-align:center;">
+    <img src="assets/cp-icon-black.png" alt="" style="width:46px; height:auto; margin:0 auto 22px; display:block;">
+    <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#191713; margin-bottom:18px;">Every age. Every season.</div>
+    <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,66px); line-height:1.04; margin:0 auto 26px; letter-spacing:-1.5px; max-width:820px;">Communities</h1>
+    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:620px; margin:0 auto;">Wherever you are in life, there's a place for you at Citipointe.</p>
+  </div>
+
+  <!-- ANCHOR NAV -->
+  <div style="position:sticky; top:62px; z-index:30; background:rgba(253,251,247,0.97); backdrop-filter:blur(10px); border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:12px clamp(20px,4vw,56px); display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
+      <a href="#kids" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Kids</a>
+      <a href="#moms-tots" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Moms &amp; Tots</a>
+      <a href="#youth" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Youth</a>
+      <a href="#young-adults" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Young Adults</a>
+      <a href="#mens" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Men's</a>
+      <a href="#seniors" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Seniors</a>
+    </div>
+  </div>
+
+  <!-- KIDS -->
+  <div id="kids" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-kids.webp" alt="Citipointe Kids on a Sunday" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Birth – elementary</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Citipointe Kids</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">We don't believe in babysitting — we believe in raising world changers. There's no junior Holy Spirit: every Sunday, kids from birth through elementary encounter God at their level — safe, fun, and full of Jesus. Our trained and background-checked team helps kids discover God's love through age-appropriate worship, Bible teaching, and play. Check-in opens before every service and our team will walk your family through it on your first visit.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Sundays during service · Nashville 10am · Franklin 11am</div>
+        <a href="home.dc.html#visit" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Plan your family's visit</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOMS & TOTS -->
+  <div id="moms-tots" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-momstots.webp" alt="Moms & Tots at Citipointe" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Newborn – kindergarten</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Moms &amp; Tots</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Looking for a welcoming community for you and your little one? Join us every Wednesday at Citipointe Church for Moms &amp; Tots — a relaxed morning designed for connection, encouragement, and fun. It's for children from newborn through kindergarten age: the perfect place to meet other moms while your little ones play, learn, and make new friends in a safe and engaging environment. Whether you're a first-time mom or have a growing family, we'd love to welcome you.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Wednesday mornings · Citipointe Church Nashville</div>
+        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Register your interest</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUTH -->
+  <div id="youth" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-youth.webp" alt="Youth Society" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">6th – 12th grade</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Youth Society</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Youth Society is the youth ministry of Citipointe — making noise for Jesus in our cities and nations. We're a movement of young people who represent Jesus wherever they go, helping high-schoolers discover the call of God on their lives. For students in 6th through 12th grade.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Wednesday nights · 6pm Hangtime · 7pm Service · 8:30pm Pick up</div>
+        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Get connected</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- YOUNG ADULTS -->
+  <div id="young-adults" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-ya.webp" alt="YA Society young adults gathering" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">18 – 30s</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">YA Society</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Our Young Adults community is a place for anyone 18 to 30s who wants to grow in their faith, build genuine friendships, and live out God's purpose together. We gather to worship, dive into God's Word, have real conversations, and do life side by side. Whether you're new to church or have been following Jesus for years, you belong here. This is a community where faith is strengthened, leaders are raised, and lives are transformed.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Gatherings happen throughout the month — connect with us and we'll personally invite you to the next one.</div>
+        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Get connected</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MEN'S -->
+  <div id="mens" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-mens.webp" alt="Forged men’s community" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Men's community</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Forged</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">A consistent space where the men of our church grow together in Christ, build lasting relationships, support one another through prayer and life, and pursue spiritual maturity and accountability. Expect fellowship, dinner, worship, and teaching. All men are welcome.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 8px;"><strong style="color:#191713;">Meets:</strong> Third Monday of each month, 6:30pm · Citipointe Church Nashville</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Contact:</strong> Jedediah Vivio or Alex Nelson</div>
+        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Get connected</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SENIORS -->
+  <div id="seniors" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8;">
+    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-seniors.webp" alt="Salt & Light seniors community" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Seniors</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Salt &amp; Light</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Salt &amp; Light is a community for the seasoned saints of our church to stay connected, grow in the Word, and enjoy genuine friendship in this season of life. Come for Bible study, stay for the fellowship. All are welcome.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Wednesdays at 12pm · Citipointe Church Nashville</div>
+        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Get connected</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:44px clamp(20px,4vw,56px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:28px; width:auto; display:block;">
+        <span style="width:1px; height:20px; background:#ECE5D8;"></span>
+        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Communities</span>
+      </div>
+      <div style="display:flex; gap:12px 32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
+        <a href="heartbeat.dc.html" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
+        <a href="lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Lifegroups</a>
+        <a href="join-a-team.dc.html" style="color:#8A8172; text-decoration:none;">Join a Team</a>
+        <a href="equip.dc.html" style="color:#8A8172; text-decoration:none;">Equip</a>
+        <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Need prayer?</a>
+        <a href="leader-portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+      </div>
+      <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world &middot; Part of the global Citipointe family &middot; <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#191713; text-decoration:none; font-weight:600;">www.citipointechurch.com</a></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

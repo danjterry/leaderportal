@@ -14,9 +14,6 @@
     a { color: #191713; }
     a:hover { color: #4A443A; }
     ::selection { background: #F3E7D8; }
-    @media (max-width: 720px) {
-      #home-nav-links { order: 3; flex-basis: 100%; }
-    }
   </style>
 </helmet>
 
@@ -24,17 +21,7 @@
 
   <div style="background:#191713; color:#B9B2A4; text-align:center; padding:9px 24px; font-size:12.5px; letter-spacing:1.5px; font-weight:600; text-transform:uppercase;">For the glory of God and for the sake of the world</div>
 
-  <div style="position:sticky; top:0; z-index:40; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:12px 20px; padding:16px clamp(20px,4vw,56px); background:rgba(253,251,247,0.95); backdrop-filter:blur(10px); border-bottom:1px solid #ECE5D8;">
-    <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
-    <div id="home-nav-links" style="display:flex; align-items:center; gap:14px 26px; max-width:100%; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
-      <a href="#new" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">New Here?</a>
-      <a href="lifegroups.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Lifegroups</a>
-      <a href="join-a-team.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Join a Team</a>
-      <a href="heartbeat.dc.html" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Heartbeat</a>
-      <a href="https://pushpay.com/g/citipointechurch" target="_blank" style="color:#4A443A; text-decoration:none; white-space:nowrap; flex:none; font-size:15px; font-weight:500;">Give</a>
-    </div>
-    <a href="#visit" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">Plan your visit</a>
-  </div>
+  <dc-import name="site-nav" active="home" home-label="New Here?" home-href="#new" cta-label="Plan your visit" cta-href="#visit" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
 
   <!-- HERO -->
   <div style="position:relative; min-height:clamp(480px,72vh,680px); display:flex; align-items:flex-end; background:#191713;">
@@ -181,19 +168,19 @@
     </div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
       <div style="background:#191713; color:#FDFBF7; border-radius:22px; padding:clamp(22px,3vw,28px);">
-        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:8px;">Every Sunday</div>
-        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Sunday service</div>
-        <div style="font-size:14.5px; line-height:1.6; color:#B9B2A4;">Nashville 10am · Franklin 11am</div>
-      </div>
-      <div style="background:#F4EEE3; border-radius:22px; padding:clamp(22px,3vw,28px);">
-        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Next Heartbeat · {{ nextHeartbeat }}</div>
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:8px;">Next Heartbeat · {{ nextHeartbeat }}</div>
         <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Heartbeat</div>
-        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Your first step — a one-day course during service. <a href="heartbeat.dc.html" style="font-weight:700; color:#191713;">Save your spot</a></div>
+        <div style="font-size:14.5px; line-height:1.6; color:#B9B2A4;">Your first step — a one-day course during service. <a href="heartbeat.dc.html" style="font-weight:700; color:#FDFBF7;">Save your spot</a></div>
       </div>
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
         <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Midweek</div>
         <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Lifegroups</div>
         <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Groups meet across the week in homes around the city. <a href="lifegroups.dc.html" style="font-weight:700; color:#191713;">Find a group</a></div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(22px,3vw,28px);">
+        <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:8px;">Last Sunday of the month</div>
+        <div style="font-weight:800; font-size:22px; letter-spacing:-0.5px; margin-bottom:6px;">Baptism Sunday</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759;">Next one is {{ nextBaptism }}. Ready to take your next step? We’d love to celebrate it with you. <a href="https://citipointe.ccbchurch.com/goto/forms/9/responses/new" target="_blank" rel="noopener" style="font-weight:700; color:#191713;">Sign up here</a></div>
       </div>
     </div>
   </div>
@@ -322,6 +309,8 @@
             <a href="heartbeat.dc.html" style="color:#D9D2C4; text-decoration:none;">Heartbeat</a>
             <a href="lifegroups.dc.html" style="color:#D9D2C4; text-decoration:none;">Lifegroups</a>
             <a href="join-a-team.dc.html" style="color:#D9D2C4; text-decoration:none;">Join a Team</a>
+            <a href="communities.dc.html" style="color:#D9D2C4; text-decoration:none;">Communities</a>
+            <a href="equip.dc.html" style="color:#D9D2C4; text-decoration:none;">Equip</a>
           </div>
           <div style="display:flex; flex-direction:column; gap:10px; font-size:15px;">
             <div style="font-size:12px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">Resources</div>
@@ -412,6 +401,14 @@ class Component extends DCLogic {
     if (d < new Date(now.getFullYear(), now.getMonth(), now.getDate())) d = second(now.getFullYear(), now.getMonth() + 1);
     return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   }
+  nextBaptismLabel() {
+    const now = new Date();
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    const last = (y, m) => { const d = new Date(y, m + 1, 0); d.setDate(d.getDate() - d.getDay()); return d; };
+    let d = last(today.getFullYear(), today.getMonth());
+    if (d < today) d = last(today.getFullYear(), today.getMonth() + 1);
+    return d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
+  }
   renderVals() {
     const { campus, submitted, kids, error, sending } = this.state;
     const nash = campus === 'Nashville', sel = '#191713', selC = '#FFFFFF', un = '#FDFBF7', unB = '#E0D8C8', unC = '#191713';
@@ -462,6 +459,7 @@ class Component extends DCLogic {
         { name: 'Franklin, TN', time: 'Sundays at 11am', venue: 'Expression City Theatre — 1724a General George Patton Dr, Brentwood, TN 37027', map: 'https://www.google.com/maps/search/?api=1&query=1724a+General+George+Patton+Dr+Brentwood+TN' }
       ],
       nextHeartbeat: this.nextHeartbeatLabel(),
+      nextBaptism: this.nextBaptismLabel(),
       beliefs: [
         { title: 'One God, Holy Trinity', detail: 'One God, eternally existing in three equally divine Persons \u2014 Father, Son, and Holy Spirit \u2014 Creator and Ruler over all things, worthy of all worship.' },
         { title: 'Jesus, our Lord and Savior', detail: 'The Son of God \u2014 born of a virgin, lived a sinless life, died on a cross for our sins, rose bodily on the third day, and will return as King of Kings.' },
