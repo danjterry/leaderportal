@@ -85,7 +85,7 @@
         </sc-for>
       </div>
       <div style="text-align:center;">
-        <a href="heartbeat.dc.html" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:15.5px; padding:15px 32px; border-radius:100px; text-decoration:none;">See the next Heartbeat date</a>
+        <a href="/heartbeat" style="display:inline-block; background:#FDFBF7; color:#191713; font-weight:700; font-size:15.5px; padding:15px 32px; border-radius:100px; text-decoration:none;">See the next Heartbeat date</a>
       </div>
     </div>
   </div>
@@ -174,12 +174,12 @@
             <h3 style="font-weight:800; font-size:26px; margin:0 0 12px; letter-spacing:-0.5px;">Got it. We're glad you're in.</h3>
             <sc-if value="{{ doneHeartbeat }}" hint-placeholder-val="{{ true }}">
               <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 16px;">A team leader will reach out this week to get you matched and started.</p>
-              <a href="lifegroups.dc.html" style="display:inline-block; font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; margin-bottom:24px;">Meanwhile, find a Lifegroup &rarr;</a>
+              <a href="/lifegroups" style="display:inline-block; font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; margin-bottom:24px;">Meanwhile, find a Lifegroup &rarr;</a>
             </sc-if>
             <sc-if value="{{ needsHeartbeat }}" hint-placeholder-val="{{ false }}">
               <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 16px;">Your next step is Heartbeat. It's where you'll discover your gifts and get matched to a team.</p>
               <p style="font-size:15px; color:#8A8172; margin:0 0 24px;">The next one is <strong style="color:#191713;">{{ nextHeartbeatLabel }}</strong>, during service.</p>
-              <a href="heartbeat.dc.html" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none; margin-bottom:24px;">Save my Heartbeat spot</a>
+              <a href="/heartbeat" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none; margin-bottom:24px;">Save my Heartbeat spot</a>
             </sc-if>
             <div>
               <a href="#interest" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#8A8172; text-decoration:none;">Submit another</a>
@@ -200,14 +200,14 @@
         <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Join a Team</span>
       </div>
       <div style="display:flex; gap:12px 32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
-        <a href="heartbeat.dc.html" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
-        <a href="lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Lifegroups</a>
-        <a href="communities.dc.html" style="color:#8A8172; text-decoration:none;">Communities</a>
-        <a href="equip.dc.html" style="color:#8A8172; text-decoration:none;">Equip</a>
-        <a href="academy.dc.html" style="color:#8A8172; text-decoration:none;">The Academy</a>
-        <a href="kingdom-builders.dc.html" style="color:#8A8172; text-decoration:none;">Kingdom Builders</a>
+        <a href="/heartbeat" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
+        <a href="/lifegroups" style="color:#8A8172; text-decoration:none;">Lifegroups</a>
+        <a href="/communities" style="color:#8A8172; text-decoration:none;">Communities</a>
+        <a href="/equip" style="color:#8A8172; text-decoration:none;">Equip</a>
+        <a href="/academy" style="color:#8A8172; text-decoration:none;">The Academy</a>
+        <a href="/kingdom-builders" style="color:#8A8172; text-decoration:none;">Kingdom Builders</a>
         <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Need prayer?</a>
-        <a href="leader-portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
+        <a href="/leader-portal" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
         <a href="https://sites.google.com/citipointechurch.com/staff-support/home" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Staff hub</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">

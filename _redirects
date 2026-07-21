@@ -48,3 +48,14 @@
 /blog/*  /  301
 /events  /  301
 /media  /  301
+
+# Clean URLs: collapse .dc.html to pretty paths
+/home.dc.html  /  301
+/heartbeat.dc.html  /heartbeat  301
+/lifegroups.dc.html  /lifegroups  301
+/join-a-team.dc.html  /join-a-team  301
+/communities.dc.html  /communities  301
+/equip.dc.html  /equip  301
+/academy.dc.html  /academy  301
+/kingdom-builders.dc.html  /kingdom-builders  301
+/leader-portal.dc.html  /leader-portal  301
