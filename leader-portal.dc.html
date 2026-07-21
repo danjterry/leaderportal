@@ -771,14 +771,22 @@
           </sc-for>
         </div>
 
-        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(24px,4.5vw,34px); max-width:680px;">
-          <div style="display:flex; flex-direction:column; gap:16px;">
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px; max-width:920px;">
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(24px,4.5vw,34px); display:flex; flex-direction:column; gap:16px;">
             <div>
               <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Incident report</div>
-              <div style="font-size:14px; color:#6B6355; line-height:1.6;">File within 24 hours of any injury, safeguarding concern, or near miss. Facts only &mdash; what you saw and heard, not conclusions. You'll be asked what happened, when and where, and who was involved.</div>
+              <div style="font-size:14px; color:#6B6355; line-height:1.6;">For accidents and injuries &mdash; a child hurt, a fall, a near miss. File within 24 hours. Facts only: what happened, when and where, and who was involved.</div>
             </div>
-            <a href="https://form.jotform.com/261996497013165" target="_blank" rel="noopener" style="text-align:center; margin-top:2px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Open the incident report form</a>
+            <a href="https://form.jotform.com/262005684824155" target="_blank" rel="noopener" style="text-align:center; margin-top:auto; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Open the incident report form</a>
             <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Goes straight to the Safe Church team.</div>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(24px,4.5vw,34px); display:flex; flex-direction:column; gap:16px;">
+            <div>
+              <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Safe Church report</div>
+              <div style="font-size:14px; color:#6B6355; line-height:1.6;">For safeguarding concerns &mdash; something you saw or were told that worries you about a child's or vulnerable person's safety, or a policy breach. When in doubt, report; it is never your call to investigate.</div>
+            </div>
+            <a href="https://form.jotform.com/261996497013165" target="_blank" rel="noopener" style="text-align:center; margin-top:auto; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Open the Safe Church report form</a>
+            <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Confidential &mdash; reviewed only by the Safe Church team.</div>
           </div>
           </sc-if>
         </div>
@@ -963,7 +971,7 @@ class Component extends DCLogic {
     },
     {
       key: 'kids', name: 'Citipointe Kids',
-      win: 'Every child and every family feels seen, valued, and experiences the love of God \u2014 kids saved, healed, set free, discipled, equipped, empowered, and growing in serving.',
+      win: 'Every child and every family feels seen, valued, and experiences the love of God \u2014 kids saved, healed, set free, discipled, equipped, and empowered.',
       basics: [
         { label: 'Arrive', value: '9:00 AM, Kids Wing hallway for huddle' },
         { label: 'Wear', value: 'Kids volunteer shirt + name tag (Hosts: "I Am Here to Serve" lanyard)' },
@@ -977,7 +985,7 @@ class Component extends DCLogic {
         { n: 5, title: 'Outside time, then hand back safely', detail: 'Before going out: bathroom break, shoes on, headcount, line up, name call \u2014 and again coming back in. Release each child only to the matching security tag, never to "the parent said I could get them." Then wipe surfaces, sanitize toys, reset the room.' },
       ],
       faqs: [
-        { q: 'Which room do I serve in?', a: 'Red 12\u201318 months (walking) \u00b7 Yellow 18\u201324 months \u00b7 Orange 2\u20133 years \u00b7 Blue 4\u20135 \u00b7 Green 6\u20137 \u00b7 Purple 8\u201312. Your Coordinator confirms your room each Sunday.' },
+        { q: 'Which room do I serve in?', a: 'Red 12\u201318 months (walking) \u00b7 Yellow 18\u201324 months \u00b7 Orange 24\u201336 months \u00b7 Blue 4\u20135 \u00b7 Green 6\u20137 \u00b7 Purple 8\u201312. Your Coordinator confirms your room each Sunday.' },
         { q: 'A child needs a diaper change or the restroom. What do I do?', a: 'Leaders never change diapers \u2014 notify the Coordinator, who contacts the parent to come (tag verified). Restroom: classroom restroom, knock and call their name if they take long. Potty-training help only with the door open.' },
         { q: 'A child gets hurt. What now?', a: 'Minor scrapes: first aid kit in the closet, tell the parent at pick-up. Anything more \u2014 including any head injury \u2014 Coordinator immediately, parent contacted, incident report signed by the parent with a Coordinator witnessing. We never administer medication (life-threatening conditions excepted).' },
         { q: 'How do I handle behavior?', a: 'Calm, kind, and fair \u2014 ask questions, listen well. No physical discipline of any kind, ever, even with parent permission. Need support? Kids Director.' },
