@@ -3,16 +3,6 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Equip Classes | Citipointe Church</title>
-<meta name="description" content="Classes equipping you for God’s plan for your life — Spiritual Warfare, Practical Evangelism, and Tennessee Apologetics Nights at Citipointe Church.">
-<link rel="canonical" href="https://citipointe.church/equip">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Citipointe Church">
-<meta property="og:title" content="Equip Classes | Citipointe Church">
-<meta property="og:description" content="Classes equipping you for God’s plan for your life — Spiritual Warfare, Practical Evangelism, and Tennessee Apologetics Nights at Citipointe Church.">
-<meta property="og:url" content="https://citipointe.church/equip">
-<meta property="og:image" content="https://citipointe.church/assets/arrival-flags.jpg">
-<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -32,7 +22,7 @@
 <div style="min-height:100vh; background:#FDFBF7; color:#191713;">
 
   <!-- NAV -->
-  <dc-import name="site-nav" active="equip" page-label="Equip" cta-label="Keep me updated" cta-href="#" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
+  <dc-import name="site-nav" active="equip" page-label="Equip" cta-label="Keep me updated" cta-href="#interest" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
 
   <!-- HERO -->
   <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(36px,5vw,64px); text-align:center;">
@@ -60,7 +50,7 @@
           <li>How to live daily from a place of victory and freedom</li>
         </ul>
         <p style="font-size:15.5px; line-height:1.8; color:#6E6759; margin:0 0 26px;">Whether you're new to faith or have been following Jesus for years, this class is designed to strengthen your foundation and empower you to live spiritually alert, grounded, and confident.</p>
-        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
+        <a href="#interest" onClick="{{ pickWarfare }}" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
       </div>
     </div>
   </div>
@@ -69,7 +59,7 @@
   <div>
     <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
-        <img src="assets/equip-evangelism.webp" alt="Practical Evangelism class" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+        <img src="assets/equip-evangelism.webp" alt="Practical Evangelism" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
       <div>
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">One-day intensive</div>
@@ -81,7 +71,7 @@
           <div style="display:flex; gap:14px; font-size:15.5px; line-height:1.7; color:#6E6759;"><span style="flex:none; font-weight:700; color:#191713; min-width:110px;">11:30 – 1pm</span><span>Activation and lunch on your own — take what you've learned and put it into practice wherever you go to eat</span></div>
           <div style="display:flex; gap:14px; font-size:15.5px; line-height:1.7; color:#6E6759;"><span style="flex:none; font-weight:700; color:#191713; min-width:110px;">1 – 4pm</span><span>Class members testify about their lunch outings, more teaching, and impartation</span></div>
         </div>
-        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
+        <a href="#interest" onClick="{{ pickEvangelism }}" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
       </div>
     </div>
   </div>
@@ -96,8 +86,86 @@
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Evenings · details coming soon</div>
         <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Tennessee Apologetics Nights</h2>
         <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 26px;">Evenings dedicated to knowing what you believe — and why. Learn to give a reasoned, confident answer for your faith in a culture full of questions. Details coming soon.</p>
-        <a href="#" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
+        <a href="#interest" onClick="{{ pickApologetics }}" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Keep me updated for the next class</a>
       </div>
+    </div>
+  </div>
+
+  <!-- INTEREST FORM -->
+  <div id="interest" style="border-top:1px solid #ECE5D8;">
+    <div style="max-width:720px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px);">
+      <div style="text-align:center; margin-bottom:34px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:14px;">Register your interest</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4.5vw,38px); margin:0 0 14px; letter-spacing:-1px;">Keep me updated</h2>
+        <p style="font-size:16.5px; line-height:1.75; color:#6E6759; margin:0 auto; max-width:480px;">Leave your details and we'll contact you as soon as the next class date is set.</p>
+      </div>
+      <sc-if value="{{ efSubmitted }}" hint-placeholder-val="{{ false }}">
+        <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(32px,6vw,48px); text-align:center;">
+          <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; margin-bottom:12px;">You're on the list.</div>
+          <p style="font-size:15.5px; line-height:1.75; color:#6E6759; margin:0 0 22px;">Thanks — we'll be in touch as soon as the next <strong>{{ selectedLabel }}</strong> date is set.</p>
+          <div onClick="{{ resetEf }}" style="display:inline-block; font-size:14px; font-weight:700; cursor:pointer; text-decoration:underline;">Register for another class</div>
+        </div>
+      </sc-if>
+      <sc-if value="{{ efNotSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,5vw,40px); display:flex; flex-direction:column; gap:18px;">
+          <div>
+            <div style="font-size:13px; font-weight:700; margin-bottom:10px;">Which class?</div>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <sc-for list="{{ efClasses }}" as="c" hint-placeholder-count="3">
+                <div onClick="{{ c.pick }}" style="{{ c.style }}">{{ c.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px;">
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">First name *</div>
+              <input value="{{ efFirst }}" onChange="{{ setEfFirst }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Last name *</div>
+              <input value="{{ efLast }}" onChange="{{ setEfLast }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px;">
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Phone *</div>
+              <input value="{{ efPhone }}" onChange="{{ setEfPhone }}" type="tel" placeholder="(000) 000-0000" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Email *</div>
+              <input value="{{ efEmail }}" onChange="{{ setEfEmail }}" type="email" placeholder="you@example.com" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+            </div>
+          </div>
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px;">
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Your campus *</div>
+              <select value="{{ efCampus }}" onChange="{{ setEfCampus }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+                <sc-for list="{{ campusOptions }}" as="o" hint-placeholder-count="2">
+                  <option value="{{ o }}">{{ o }}</option>
+                </sc-for>
+              </select>
+            </div>
+            <div>
+              <div style="font-size:13px; font-weight:700; margin-bottom:8px;">{{ extraLabel }}</div>
+              <select value="{{ efExtra }}" onChange="{{ setEfExtra }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+                <option value="">Please select…</option>
+                <sc-for list="{{ extraOptions }}" as="o" hint-placeholder-count="4">
+                  <option value="{{ o }}">{{ o }}</option>
+                </sc-for>
+              </select>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:13px; font-weight:700; margin-bottom:8px;">Anything we should know?</div>
+            <textarea value="{{ efNotes }}" onChange="{{ setEfNotes }}" rows="3" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713; resize:vertical;"></textarea>
+          </div>
+          <sc-if value="{{ hasEfError }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:14px; color:#9A3B2E; line-height:1.6;">{{ efError }}</div>
+          </sc-if>
+          <div onClick="{{ submitEf }}" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; cursor:pointer;">{{ submitLabel }}</div>
+          <div style="font-size:12.5px; color:#B0A897; text-align:center; line-height:1.6;">Registering interest for <strong>{{ selectedLabel }}</strong> — goes straight to our team.</div>
+        </div>
+      </sc-if>
     </div>
   </div>
 
@@ -132,5 +200,86 @@
 
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { cls: 'warfare', first: '', last: '', phone: '', email: '', campus: 'Nashville', extra: '', notes: '', sending: false, submitted: false, error: '' };
+
+  forms = {
+    warfare: { id: '262014547796060', label: 'Spiritual Warfare' },
+    evangelism: { id: '262013714131038', label: 'Practical Evangelism' },
+    apologetics: { id: '262014419430043', label: 'Tennessee Apologetics Nights' },
+  };
+  howLongOptions = ["I'm new here", 'Less than 1 year', '1-3 years', '3+ years'];
+  howDidOptions = ['Citipointe Church', 'A friend invited me', 'Social media', 'Online search', 'Other'];
+
+  pick(cls) {
+    return () => {
+      const patch = { cls, extra: '' };
+      if (cls !== 'apologetics' && this.state.campus === "I'm not part of Citipointe") patch.campus = 'Nashville';
+      this.setState(patch);
+    };
+  }
+
+  submit() {
+    const s = this.state;
+    if (s.sending) return;
+    if (!s.first.trim() || !s.last.trim() || !s.phone.trim() || !s.email.trim()) {
+      this.setState({ error: 'Please fill in your name, phone, and email.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const f = this.forms[s.cls];
+    const fd = new URLSearchParams();
+    fd.append('formID', f.id);
+    fd.append('q2_q2_fullname0[first]', s.first.trim());
+    fd.append('q2_q2_fullname0[last]', s.last.trim());
+    fd.append('q3_q3_phone1[full]', s.phone.trim());
+    fd.append('q4_q4_email2', s.email.trim());
+    fd.append('q5_q5_dropdown3', s.campus);
+    if (s.extra) {
+      if (s.cls === 'apologetics') { fd.append('q13_howDid', s.extra); fd.append('q19_chooseYour19', s.extra); }
+      else { fd.append('q19_chooseYour19', s.extra); fd.append('q13_howLong', s.extra); }
+    }
+    if (s.notes.trim()) { fd.append('q18_anythingElse', s.notes.trim()); fd.append('q18_whyAre', s.notes.trim()); }
+    fetch('https://submit.jotform.com/submit/' + f.id, { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email nashville@citipointechurch.com.' }));
+  }
+
+  renderVals() {
+    const s = this.state;
+    const isAp = s.cls === 'apologetics';
+    const pillOn = 'padding:10px 18px; border-radius:100px; font-size:14px; font-weight:700; cursor:pointer; background:#191713; color:#FFFFFF; border:1px solid #191713;';
+    const pillOff = 'padding:10px 18px; border-radius:100px; font-size:14px; font-weight:700; cursor:pointer; background:#FFFFFF; color:#191713; border:1px solid #E3DCCB;';
+    return {
+      pickWarfare: this.pick('warfare'),
+      pickEvangelism: this.pick('evangelism'),
+      pickApologetics: this.pick('apologetics'),
+      efClasses: Object.keys(this.forms).map(k => ({
+        label: this.forms[k].label,
+        pick: this.pick(k),
+        style: k === s.cls ? pillOn : pillOff,
+      })),
+      selectedLabel: this.forms[s.cls].label,
+      campusOptions: isAp ? ['Nashville', 'Franklin', "I'm not part of Citipointe"] : ['Nashville', 'Franklin'],
+      extraLabel: isAp ? 'How did you hear about Apologetics Nights?' : 'How long have you been attending Citipointe?',
+      extraOptions: isAp ? this.howDidOptions : this.howLongOptions,
+      efFirst: s.first, efLast: s.last, efPhone: s.phone, efEmail: s.email, efCampus: s.campus, efExtra: s.extra, efNotes: s.notes,
+      setEfFirst: (e) => this.setState({ first: e.target.value }),
+      setEfLast: (e) => this.setState({ last: e.target.value }),
+      setEfPhone: (e) => this.setState({ phone: e.target.value }),
+      setEfEmail: (e) => this.setState({ email: e.target.value }),
+      setEfCampus: (e) => this.setState({ campus: e.target.value }),
+      setEfExtra: (e) => this.setState({ extra: e.target.value }),
+      setEfNotes: (e) => this.setState({ notes: e.target.value }),
+      submitEf: () => this.submit(),
+      submitLabel: s.sending ? 'Sending…' : 'Register my interest',
+      efError: s.error, hasEfError: !!s.error,
+      efSubmitted: s.submitted, efNotSubmitted: !s.submitted,
+      resetEf: () => this.setState({ submitted: false, extra: '', notes: '' }),
+    };
+  }
+}
+</script>
 </body>
 </html>

@@ -47,7 +47,19 @@
             </div>
           </sc-if>
         </div>
-        <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" style="color:#4A443A; font-weight:500; text-decoration:none; white-space:nowrap; font-size:15px; padding:8px 10px;">Give</a>
+        <div style="position:relative;" onMouseEnter="{{ openGive }}" onMouseLeave="{{ closeDrop }}">
+          <button onClick="{{ toggleGive }}" style="display:flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; font-weight:{{ giveWeight }}; color:{{ giveColor }}; padding:8px 10px; white-space:nowrap;">Give
+            <svg width="10" height="10" viewBox="0 0 10 10" style="transition:transform 0.15s; transform:{{ giveChev }};"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+          </button>
+          <sc-if value="{{ giveOpen }}" hint-placeholder-val="{{ false }}">
+            <div style="position:absolute; top:100%; left:0; padding-top:6px; z-index:60;">
+              <div style="min-width:210px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:16px; padding:8px; box-shadow:0 20px 44px -18px rgba(25,23,19,0.28); display:flex; flex-direction:column;">
+                <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Tithes &amp; Offerings</a>
+                <a href="kingdom-builders.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Kingdom Builders</a>
+              </div>
+            </div>
+          </sc-if>
+        </div>
       </div>
       <a href="{{ ctaHrefVal }}" target="{{ ctaTarget }}" style="color:#FFFFFF; text-decoration:none; font-size:14.5px; font-weight:600; background:#191713; padding:11px 24px; border-radius:100px; white-space:nowrap; flex:none;">{{ ctaLabelVal }}</a>
     </sc-if>
@@ -85,15 +97,23 @@
           <a href="academy.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">The Academy</a>
         </div>
       </sc-if>
-      <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" onClick="{{ closeMobile }}" style="padding:15px 2px; font-size:16.5px; font-weight:600; color:#191713; text-decoration:none;">Give</a>
+      <button onClick="{{ toggleAccGive }}" style="display:flex; align-items:center; justify-content:space-between; background:none; border:none; border-bottom:1px solid #F0EADD; padding:15px 2px; font-family:inherit; font-size:16.5px; font-weight:600; color:#191713; cursor:pointer; text-align:left;">Give
+        <svg width="12" height="12" viewBox="0 0 10 10" style="transition:transform 0.15s; transform:{{ accGiveChev }};"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+      </button>
+      <sc-if value="{{ accGiveOpen }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; flex-direction:column; border-bottom:1px solid #F0EADD; padding:4px 0 10px;">
+          <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Tithes &amp; Offerings</a>
+          <a href="kingdom-builders.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Kingdom Builders</a>
+        </div>
+      </sc-if>
       <a href="{{ ctaHrefVal }}" target="{{ ctaTarget }}" onClick="{{ closeMobile }}" style="margin-top:12px; background:#191713; color:#FFFFFF; text-align:center; padding:16px; border-radius:100px; font-size:15.5px; font-weight:700; text-decoration:none;">{{ ctaLabelVal }}</a>
     </div>
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 320}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;heartbeat&quot;, &quot;team&quot;, &quot;lifegroups&quot;, &quot;communities&quot;, &quot;equip&quot;, &quot;academy&quot;, &quot;&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;pageLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;home.dc.html&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Plan your visit&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}, &quot;ctaHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 320}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;heartbeat&quot;, &quot;team&quot;, &quot;lifegroups&quot;, &quot;communities&quot;, &quot;equip&quot;, &quot;academy&quot;, &quot;give&quot;, &quot;&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;pageLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;home.dc.html&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Plan your visit&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}, &quot;ctaHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}}">
 class Component extends DCLogic {
-  state = { drop: null, mobileMenu: false, accNext: false, accEquip: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 1060, narrow: typeof window !== 'undefined' && window.innerWidth < 1260 };
+  state = { drop: null, mobileMenu: false, accNext: false, accEquip: false, accGive: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 1060, narrow: typeof window !== 'undefined' && window.innerWidth < 1260 };
   componentDidMount() {
     this._onResize = () => {
       const m = window.innerWidth < 1060, n = window.innerWidth < 1260;
@@ -109,6 +129,7 @@ class Component extends DCLogic {
     const wt = on => on ? '700' : '500';
     const nextActive = ['heartbeat', 'team', 'lifegroups'].indexOf(active) >= 0;
     const equipActive = ['equip', 'academy'].indexOf(active) >= 0;
+    const giveActive = active === 'give';
     const ctaHref = p.ctaHref ?? '#';
     return {
       pageLabelVal: p.pageLabel ?? '', hasLabel: !!p.pageLabel && (s.isMobile || !s.narrow),
@@ -120,7 +141,14 @@ class Component extends DCLogic {
       nextColor: col(nextActive), nextWeight: wt(nextActive),
       equipColor: col(equipActive), equipWeight: wt(equipActive),
       isDesktop: !s.isMobile, isMobileVal: s.isMobile,
-      nextOpen: s.drop === 'next', equipOpen: s.drop === 'equip',
+      giveColor: col(giveActive), giveWeight: wt(giveActive),
+      nextOpen: s.drop === 'next', equipOpen: s.drop === 'equip', giveOpen: s.drop === 'give',
+      giveChev: s.drop === 'give' ? 'rotate(180deg)' : 'none',
+      openGive: () => this.setState({ drop: 'give' }),
+      toggleGive: () => this.setState({ drop: s.drop === 'give' ? null : 'give' }),
+      accGiveOpen: s.accGive,
+      accGiveChev: s.accGive ? 'rotate(180deg)' : 'none',
+      toggleAccGive: () => this.setState({ accGive: !s.accGive }),
       nextChev: s.drop === 'next' ? 'rotate(180deg)' : 'none',
       equipChev: s.drop === 'equip' ? 'rotate(180deg)' : 'none',
       openNext: () => this.setState({ drop: 'next' }),
@@ -129,7 +157,7 @@ class Component extends DCLogic {
       toggleNext: () => this.setState({ drop: s.drop === 'next' ? null : 'next' }),
       toggleEquip: () => this.setState({ drop: s.drop === 'equip' ? null : 'equip' }),
       mobileOpen: s.mobileMenu, mobileClosed: !s.mobileMenu,
-      toggleMobile: () => this.setState({ mobileMenu: !s.mobileMenu, accNext: false, accEquip: false }),
+      toggleMobile: () => this.setState({ mobileMenu: !s.mobileMenu, accNext: false, accEquip: false, accGive: false }),
       closeMobile: () => this.setState({ mobileMenu: false }),
       accNextOpen: s.accNext, accEquipOpen: s.accEquip,
       accNextChev: s.accNext ? 'rotate(180deg)' : 'none',
