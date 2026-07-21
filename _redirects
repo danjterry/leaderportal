@@ -9,3 +9,33 @@
 /kingdombuilders  /kingdom-builders.dc.html  200
 /kingdom-builders  /kingdom-builders.dc.html  200
 /leader-portal  /leader-portal.dc.html  200
+
+# Old-site URLs (301 so Google drops them and passes to the new page)
+/church-on-fire-conference  /  301
+/womenonfire  /communities  301
+/seniors  /communities  301
+/easter  /  301
+/spiritual-development  /equip  301
+/about  /heartbeat  301
+/about-us  /heartbeat  301
+/im-new  /heartbeat  301
+/new-here  /heartbeat  301
+/visit  /heartbeat  301
+/plan-your-visit  /heartbeat  301
+/ministries  /communities  301
+/connect  /lifegroups  301
+/groups  /lifegroups  301
+/serve  /join-a-team  301
+/volunteer  /join-a-team  301
+/give  https://pushpay.com/g/citipointechurch  302
+/giving  https://pushpay.com/g/citipointechurch  302
+/kids  /communities  301
+/youth  /communities  301
+/young-adults  /communities  301
+/men  /communities  301
+/women  /communities  301
+/prayer  https://citipointe.ccbchurch.com/goto/forms/10/responses/new  302
+/contact  /heartbeat  301
+/events  /  301
+/sermons  /  301
+/media  /  301
