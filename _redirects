@@ -16,8 +16,8 @@
 /seniors  /communities  301
 /easter  /  301
 /spiritual-development  /equip  301
-/about  /heartbeat  301
-/about-us  /heartbeat  301
+/about  /  301
+/about-us  /  301
 /im-new  /heartbeat  301
 /new-here  /heartbeat  301
 /visit  /heartbeat  301
@@ -36,6 +36,15 @@
 /women  /communities  301
 /prayer  https://citipointe.ccbchurch.com/goto/forms/10/responses/new  302
 /contact  /heartbeat  301
+/nashville  /  301
+/franklin  /heartbeat  301
+/calendar  /  301
+/adults  /communities  301
+/sunday-sermons  /#sermons  301
+/sermons  /#sermons  301
+/contributor/*  /  301
+/episode/*  /#sermons  301
+/event/*  /  301
+/blog/*  /  301
 /events  /  301
-/sermons  /  301
 /media  /  301
