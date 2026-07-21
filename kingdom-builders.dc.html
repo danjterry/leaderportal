@@ -198,9 +198,18 @@
           </div>
         </div>
         <div>
-          <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px; padding-bottom:12px; border-bottom:2px solid #191713;">Global &amp; Future</div>
+          <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px; padding-bottom:12px; border-bottom:2px solid #191713;">Global</div>
           <div style="display:flex; flex-direction:column; gap:16px;">
             <sc-for list="{{ globalProjects }}" as="p" hint-placeholder-count="5">
+              <div>
+                <div style="font-weight:700; font-size:15.5px; margin-bottom:3px;">{{ p.name }}</div>
+                <div style="font-size:14px; line-height:1.65; color:#6E6759;">{{ p.desc }}</div>
+              </div>
+            </sc-for>
+          </div>
+          <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin:32px 0 18px; padding-bottom:12px; border-bottom:2px solid #191713;">Future</div>
+          <div style="display:flex; flex-direction:column; gap:16px;">
+            <sc-for list="{{ futureProjects }}" as="p" hint-placeholder-count="4">
               <div>
                 <div style="font-weight:700; font-size:15.5px; margin-bottom:3px;">{{ p.name }}</div>
                 <div style="font-size:14px; line-height:1.65; color:#6E6759;">{{ p.desc }}</div>
@@ -300,16 +309,18 @@ class Component extends DCLogic {
   globalProjects = [
     { name: 'SHE Rescue Home', desc: 'Educating and rehabilitating girls rescued from the sex trafficking industry in Cambodia.' },
     { name: 'It\u2019s Not Ok Projects', desc: 'Raising awareness and working worldwide to end human trafficking.' },
-    { name: 'Church Planting', desc: 'Establishing thriving, life-giving churches in communities that need the hope of Jesus.' },
-    { name: 'Missionary Support', desc: 'Empowering missionaries taking the Gospel to unreached communities with low Christian presence.' },
     { name: 'Awaken Africa', desc: 'Leadership development and church planting in Africa through missionary support, trips, and lasting connections.' },
     { name: 'Missions Trips', desc: 'Teams sent to Cambodia and Kenya to support on-the-ground mission work and long-term partnerships.' },
     { name: 'Friends in Ministry Network', desc: 'Training, care, and support for ministry leaders and their families \u2014 no one faces the journey alone.' },
+  ];
+  futureProjects = [
+    { name: 'Church Planting', desc: 'Establishing thriving, life-giving churches in communities that need the hope of Jesus.' },
     { name: 'Internship Academy', desc: 'A 9-month immersive program of Bible teaching, hands-on ministry, outreach, and mentoring.' },
+    { name: 'Missionary Support', desc: 'Empowering missionaries taking the Gospel to unreached communities with low Christian presence.' },
     { name: 'Mother\u2019s Day Out Program', desc: 'Christian education and care helping children grow physically, socially, emotionally, and spiritually.' },
   ];
   renderVals() {
-    return { featured: this.featured, localProjects: this.localProjects, globalProjects: this.globalProjects };
+    return { featured: this.featured, localProjects: this.localProjects, globalProjects: this.globalProjects, futureProjects: this.futureProjects };
   }
 }
 </script>
