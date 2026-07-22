@@ -65,6 +65,7 @@
 /staff/hr  /staff-hr.dc.html  200
 /staff/policies  /staff-policies.dc.html  200
 /staff/calendar  /staff-calendar.dc.html  200
+/staff/*  /:splat  200
 /staff.dc.html  /staff  301
 /staff-forms.dc.html  /staff/forms  301
 /staff-hr.dc.html  /staff/hr  301
