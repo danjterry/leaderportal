@@ -67,17 +67,6 @@
       </div>
     </sc-if>
 
-    <!-- REQUESTS -->
-    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Requests</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-top:16px;">
-      <sc-for list="{{ requests }}" as="f" hint-placeholder-count="3">
-        <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
-          <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">{{ f.title }}</div>
-          <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">{{ f.desc }}</div>
-          <div onClick="{{ f.open }}" style="text-align:center; background:#FFFFFF; color:#191713; border:1px solid #191713; font-weight:700; font-size:14.5px; padding:13px; border-radius:100px; cursor:pointer;">{{ f.btnLabel }}</div>
-        </div>
-      </sc-for>
-    </div>
   </div>
 
   <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
@@ -115,8 +104,6 @@ class Component extends DCLogic {
       flowA: [
         this.card('missing', 'Download and complete this form, have Dan or Joel sign it, then upload it to the transaction in Divvy in place of the receipt.'),
         this.card('personal', 'Submit here when a personal purchase was made in error on a church card. Once approved and signed, upload the returned PDF into Divvy where the receipt would go.'),
-      ],
-      requests: [
         this.card('facilities', 'Something needs fixing or setting up? This routes straight to Ops.'),
         this.card('incident', 'Report any incident. Routes to the Executive Pastor.'),
         this.card('safechurch', 'Safe Church reporting for concerns involving children, youth, or vulnerable people.'),
