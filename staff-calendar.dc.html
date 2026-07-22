@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+  <dc-import name="staff-gate" hint-size="0,0"></dc-import>
+  <dc-import name="staff-nav" active="calendar" style="position:sticky; top:0; z-index:40;" hint-size="100%,105px"></dc-import>
+
+  <div style="max-width:1140px; margin:0 auto; padding:clamp(28px,5vw,48px) clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
+    <h1 style="font-weight:800; font-size:clamp(28px,4.5vw,40px); letter-spacing:-1px; margin:0 0 10px;">Calendar</h1>
+    <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 26px;">The Citipointe Nashville calendar — services, events, and staff dates.</p>
+    <sc-if value="{{ calReady }}" hint-placeholder-val="{{ false }}">
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(10px,2vw,18px);">
+        <iframe src="{{ calUrl }}" title="Citipointe Nashville calendar" style="width:100%; height:70vh; min-height:520px; border:none; border-radius:10px; background:#FFFFFF;"></iframe>
+      </div>
+    </sc-if>
+    <sc-if value="{{ calPending }}" hint-placeholder-val="{{ true }}">
+      <div style="border:2px dashed #E0D8C8; border-radius:18px; padding:clamp(40px,8vw,64px) 24px; text-align:center; font-size:15px; color:#8A8172; line-height:1.7;">The Google Calendar embed will appear here once the calendar link is connected.</div>
+    </sc-if>
+    <div style="margin-top:18px;">
+      <a href="https://calendar.google.com/calendar/render?cid=nashville%40citipointechurch.com" target="_blank" rel="noopener" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none; border:1px solid #E0D8C8; background:#FFFFFF; border-radius:100px; padding:12px 24px; display:inline-block;" style-hover="background:#F4EEE3;">Add to Google Calendar &#8599;</a>
+    </div>
+  </div>
+
+  <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // GOOGLE CALENDAR EMBED URL HERE — paste the standard embed src between the quotes,
+  // e.g. 'https://calendar.google.com/calendar/embed?src=...&mode=MONTH'
+  CAL_URL = 'https://calendar.google.com/calendar/embed?src=nashville%40citipointechurch.com&ctz=America%2FChicago';
+  renderVals() {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 700;
+    let url = this.CAL_URL;
+    if (url) url += (url.indexOf('mode=') >= 0 ? '' : (url.indexOf('?') >= 0 ? '&' : '?') + 'mode=' + (isMobile ? 'AGENDA' : 'MONTH'));
+    return { calUrl: url, calReady: !!url, calPending: !url };
+  }
+}
+</script>
+</body>
+</html>

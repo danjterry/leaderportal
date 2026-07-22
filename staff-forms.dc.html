@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+  <dc-import name="staff-gate" hint-size="0,0"></dc-import>
+  <dc-import name="staff-nav" active="forms" style="position:sticky; top:0; z-index:40;" hint-size="100%,105px"></dc-import>
+
+  <div style="max-width:1140px; margin:0 auto; padding:clamp(28px,5vw,48px) clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
+    <h1 style="font-weight:800; font-size:clamp(28px,4.5vw,40px); letter-spacing:-1px; margin:0 0 10px;">Forms</h1>
+    <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 34px; max-width:640px;">Every form follows one of three flows — the card tells you exactly what happens after you hit submit.</p>
+
+    <!-- FLOW A -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow A · Submit for approval</div>
+    <p style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 16px; max-width:640px;">These route to the Executive Pastor for review and signature. Once approved, you'll receive the completed PDF by email — upload it into Divvy against the transaction.</p>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:36px;">
+      <sc-for list="{{ flowA }}" as="f" hint-placeholder-count="2">
+        <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">{{ f.title }}</div>
+          <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">{{ f.desc }}</div>
+          <div onClick="{{ f.open }}" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer;">{{ f.btnLabel }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <sc-if value="{{ hasEmbed }}" hint-placeholder-val="{{ false }}">
+      <div id="embed" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(16px,3vw,24px); margin-bottom:36px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:12px;">
+          <div style="font-weight:800; font-size:16px;">{{ embedTitle }}</div>
+          <div onClick="{{ closeEmbed }}" style="font-size:13.5px; font-weight:700; cursor:pointer; text-decoration:underline; color:#8A8172;">Close</div>
+        </div>
+        <sc-if value="{{ embedReady }}" hint-placeholder-val="{{ false }}">
+          <iframe src="{{ embedUrl }}" title="{{ embedTitle }}" style="width:100%; height:70vh; min-height:480px; border:1px solid #F0EADD; border-radius:12px; background:#FFFFFF;"></iframe>
+        </sc-if>
+        <sc-if value="{{ embedPending }}" hint-placeholder-val="{{ false }}">
+          <div style="border:2px dashed #E0D8C8; border-radius:12px; padding:36px 20px; text-align:center; font-size:14.5px; color:#8A8172; line-height:1.7;">This form is being finalized — the embed will appear here as soon as the JotForm link is connected.</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <!-- FLOW B -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow B · Download, complete, load into ApprovalMax</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0 36px;">
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">Reimbursement Form</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">For out-of-pocket expenses. Download, complete on your device, attach your receipts, and load into ApprovalMax for approval.</div>
+        <a href="#" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Form</a>
+        <!-- REIMBURSEMENT FILLABLE PDF FILE HERE (replace href="#") -->
+      </div>
+    </div>
+
+    <!-- FLOW C -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow C · Plain download</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0 36px;">
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">TN Sales &amp; Use Tax Exemption Certificate</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">Present to the vendor at time of purchase. Church purchases only — never personal payment methods.</div>
+        <a href="#" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Certificate</a>
+        <!-- TAX EXEMPTION CERTIFICATE FILE HERE (replace href="#") -->
+      </div>
+    </div>
+
+    <!-- REQUESTS -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Requests</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-top:16px;">
+      <sc-for list="{{ requests }}" as="f" hint-placeholder-count="3">
+        <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+          <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">{{ f.title }}</div>
+          <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">{{ f.desc }}</div>
+          <div onClick="{{ f.open }}" style="text-align:center; background:#FFFFFF; color:#191713; border:1px solid #191713; font-weight:700; font-size:14.5px; padding:13px; border-radius:100px; cursor:pointer;">{{ f.btnLabel }}</div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { active: null };
+  // Paste real JotForm URLs between the quotes; empty string shows the "coming soon" placeholder.
+  forms = {
+    missing:  { title: 'Missing Receipt Form', url: '' },              // JOTFORM MISSING RECEIPT URL HERE
+    personal: { title: 'Personal Charge Reimbursement', url: '' },     // JOTFORM PERSONAL CHARGE URL HERE
+    facilities: { title: 'Facilities / Maintenance Request', url: '' },// JOTFORM FACILITIES URL HERE
+    it:       { title: 'IT Help Request', url: '' },                   // JOTFORM IT HELP URL HERE
+    incident: { title: 'Incident Report', url: '' },                   // JOTFORM INCIDENT URL HERE
+  };
+  open(key) {
+    return () => {
+      this.setState({ active: this.state.active === key ? null : key });
+    };
+  }
+  card(key, desc) {
+    const f = this.forms[key];
+    return { title: f.title, desc, open: this.open(key), btnLabel: this.state.active === key ? 'Hide form' : 'Open form' };
+  }
+  renderVals() {
+    const a = this.state.active;
+    const f = a ? this.forms[a] : null;
+    return {
+      flowA: [
+        this.card('missing', 'Submit here. Once approved and signed, you\u2019ll receive the completed PDF by email. Upload that PDF into Divvy in place of the receipt.'),
+        this.card('personal', 'Submit here when a personal purchase was made in error on a church card. Once approved and signed, upload the returned PDF into Divvy where the receipt would go.'),
+      ],
+      requests: [
+        this.card('facilities', 'Something needs fixing or setting up? This routes straight to Ops.'),
+        this.card('it', 'Tech trouble \u2014 accounts, devices, AV. Routes to IT.'),
+        this.card('incident', 'Report any incident. Routes to the Executive Pastor.'),
+      ],
+      hasEmbed: !!a,
+      embedTitle: f ? f.title : '',
+      embedUrl: f ? f.url : '',
+      embedReady: !!(f && f.url),
+      embedPending: !!(f && !f.url),
+      closeEmbed: () => this.setState({ active: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

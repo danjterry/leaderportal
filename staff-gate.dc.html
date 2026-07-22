@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<sc-if value="{{ locked }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; inset:0; z-index:100; background:#FDFBF7; display:flex; align-items:center; justify-content:center; padding:24px; font-family:'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;">
+    <div style="width:100%; max-width:400px; text-align:center;">
+      <img src="assets/cp-icon-black.png" alt="" style="width:40px; height:auto; margin:0 auto 18px; display:block;">
+      <div style="font-weight:800; font-size:24px; letter-spacing:-0.5px; color:#191713; margin-bottom:8px;">Staff Hub</div>
+      <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin-bottom:24px;">This area is for Citipointe staff. Enter the staff password to continue.</div>
+      <input value="{{ pw }}" onChange="{{ setPw }}" onKeyDown="{{ onKey }}" type="password" placeholder="Password" style="width:100%; padding:14px 18px; border:1px solid #E3DCCB; border-radius:12px; font-size:16px; font-family:inherit; background:#FFFFFF; color:#191713; text-align:center; margin-bottom:12px;">
+      <sc-if value="{{ hasError }}" hint-placeholder-val="{{ false }}">
+        <div style="font-size:13.5px; color:#9A3B2E; margin-bottom:12px;">{{ error }}</div>
+      </sc-if>
+      <div onClick="{{ unlock }}" style="background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px; border-radius:100px; cursor:pointer;">Enter</div>
+      <div style="display:flex; justify-content:center; gap:24px; margin-top:22px; font-size:13.5px;">
+        <a href="{{ publicHref }}" style="color:#8A8172; text-decoration:none; font-weight:600;">&larr; Public site</a>
+        <a href="{{ leaderHref }}" style="color:#8A8172; text-decoration:none; font-weight:600;">Leader Portal</a>
+      </div>
+    </div>
+  </div>
+</sc-if>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  PASSWORD = 'Staff2026';
+  state = { ok: false, pw: '', error: '' };
+  componentDidMount() {
+    try { if (localStorage.getItem('cp_staff_ok') === '1') this.setState({ ok: true }); } catch (e) {}
+  }
+  tryUnlock() {
+    if (this.state.pw === this.PASSWORD) {
+      try { localStorage.setItem('cp_staff_ok', '1'); } catch (e) {}
+      this.setState({ ok: true, error: '' });
+    } else {
+      this.setState({ error: 'That\u2019s not it \u2014 check with your team lead.' });
+    }
+  }
+  renderVals() {
+    return {
+      locked: !this.state.ok,
+      pw: this.state.pw,
+      setPw: (e) => this.setState({ pw: e.target.value, error: '' }),
+      onKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
+      unlock: () => this.tryUnlock(),
+      error: this.state.error, hasError: !!this.state.error,
+      publicHref: this.props.publicHref ?? '/',
+      leaderHref: this.props.leaderHref ?? '/leader-portal',
+    };
+  }
+}
+</script>
+</body>
+</html>

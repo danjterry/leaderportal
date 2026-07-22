@@ -1,4 +1,3 @@
-/staff  https://sites.google.com/citipointechurch.com/staff-support/home  302
 /  /home.dc.html  200
 /heartbeat  /heartbeat.dc.html  200
 /lifegroups  /lifegroups.dc.html  200
@@ -59,3 +58,10 @@
 /academy.dc.html  /academy  301
 /kingdom-builders.dc.html  /kingdom-builders  301
 /leader-portal.dc.html  /leader-portal  301
+
+# Staff Hub
+/staff  /staff.dc.html  200
+/staff/forms  /staff-forms.dc.html  200
+/staff/hr  /staff-hr.dc.html  200
+/staff/policies  /staff-policies.dc.html  200
+/staff/calendar  /staff-calendar.dc.html  200

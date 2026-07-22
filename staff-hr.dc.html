@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+  <dc-import name="staff-gate" hint-size="0,0"></dc-import>
+  <dc-import name="staff-nav" active="hr" style="position:sticky; top:0; z-index:40;" hint-size="100%,105px"></dc-import>
+
+  <div style="max-width:1140px; margin:0 auto; padding:clamp(28px,5vw,48px) clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
+    <h1 style="font-weight:800; font-size:clamp(28px,4.5vw,40px); letter-spacing:-1px; margin:0 0 34px;">Human Resources</h1>
+
+    <!-- BAMBOO -->
+    <div style="background:#191713; color:#FBF8F3; border-radius:22px; padding:clamp(26px,5vw,40px); margin-bottom:36px;">
+      <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;">
+        <div style="max-width:520px;">
+          <div style="font-weight:800; font-size:clamp(20px,3vw,25px); letter-spacing:-0.5px; margin-bottom:8px;">Leave and PTO live in BambooHR</div>
+          <div style="font-size:15px; line-height:1.7; color:#B7AF9E;">Requests, approvals, and balances all happen there — nothing PTO-related is tracked on this hub.</div>
+        </div>
+        <a href="https://www.bamboohr.com/" target="_blank" rel="noopener" style="display:inline-block; background:#FBF8F3; color:#191713; font-weight:700; font-size:15.5px; padding:16px 34px; border-radius:100px; text-decoration:none;">Open BambooHR &#8599;</a>
+        <!-- BAMBOOHR URL HERE -->
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 16px;">Leave &amp; PTO — quick answers</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom:40px;">
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px);">
+        <div style="font-weight:800; font-size:16px; margin-bottom:8px;">How far ahead do I request?</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">As early as you can — at least two weeks ahead for planned leave, so your team can cover Sundays and events.</div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px);">
+        <div style="font-weight:800; font-size:16px; margin-bottom:8px;">Who approves it?</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">Your direct supervisor, in BambooHR. You'll get an email when it's approved.</div>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px);">
+        <div style="font-weight:800; font-size:16px; margin-bottom:8px;">Where do I see my balance?</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">BambooHR &rarr; My Info &rarr; Time Off. Balances update as requests are approved.</div>
+      </div>
+    </div>
+
+    <!-- DOCS -->
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 16px;">Documents</div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
+      <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
+        <a href="{{ d.href }}" target="_blank" rel="noopener" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px); text-decoration:none; display:flex; flex-direction:column; gap:6px;" style-hover="background:#F4EEE3;">
+          <span style="font-weight:800; font-size:16.5px; color:#191713;">{{ d.title }} &#8599;</span>
+          <span style="font-size:14px; line-height:1.65; color:#8A8172;">{{ d.desc }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      docs: [ // replace href '#' with real Drive/doc links
+        { title: 'Staff Handbook', desc: 'Everything about working at Citipointe, in one document.', href: '#' },
+        { title: 'Role Documents', desc: 'Clear is kind \u2014 what your role owns and how it\u2019s measured.', href: '#' },
+        { title: 'Org Chart', desc: 'Who reports to whom, both campuses.', href: '#' },
+        { title: 'Quarterly Staff Review', desc: 'The Humble / Hungry / Smart review \u2014 overview and forms.', href: '#' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>

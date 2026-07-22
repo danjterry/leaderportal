@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<div style="background:#FDFBF7; border-bottom:1px solid #ECE5D8; font-family:'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;">
+  <div style="max-width:1140px; margin:0 auto; padding:0 clamp(16px,3vw,32px); display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:60px;">
+    <a href="/staff" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#191713; padding:10px 0;">
+      <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:24px; width:auto; display:block;">
+      <span style="width:1px; height:18px; background:#E0D8C8;"></span>
+      <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172; white-space:nowrap;">Staff Hub</span>
+    </a>
+    <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:13.5px; color:#B0A897; white-space:nowrap; display:none;" class="cp-tagline">For the glory of God and for the sake of the world</span>
+  </div>
+  <div style="border-top:1px solid #F0EADD; background:#FFFFFF;">
+    <div style="max-width:1140px; margin:0 auto; padding:6px clamp(16px,3vw,32px); display:flex; gap:2px 8px; flex-wrap:wrap;">
+      <sc-for list="{{ links }}" as="l" hint-placeholder-count="6">
+        <a href="{{ l.href }}" target="{{ l.target }}" style="padding:11px 12px; margin:0 -2px; border-radius:10px; font-size:15px; font-weight:{{ l.weight }}; color:{{ l.color }}; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3; color:#191713;">{{ l.label }}</a>
+      </sc-for>
+    </div>
+  </div>
+</div>
+<helmet>
+  <style>@media (min-width: 900px) { .cp-tagline { display: inline !important; } }</style>
+</helmet>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 900, &quot;height&quot;: 140}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;forms&quot;, &quot;hr&quot;, &quot;policies&quot;, &quot;calendar&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active ?? 'home';
+    const TEAM_FOLDER_URL = 'https://drive.google.com/'; // TEAM FOLDER DRIVE URL HERE
+    const items = [
+      ['home', 'Home', 'home.dc.html'],
+      ['team', 'Team Folder \u2197', TEAM_FOLDER_URL, true],
+      ['forms', 'Forms', 'forms.dc.html'],
+      ['hr', 'Human Resources', 'hr.dc.html'],
+      ['policies', 'Policies', 'policies.dc.html'],
+      ['calendar', 'Calendar', 'calendar.dc.html'],
+    ];
+    return {
+      links: items.map(([key, label, href, ext]) => ({
+        label, href,
+        target: ext ? '_blank' : '_self',
+        weight: key === active ? 700 : 500,
+        color: key === active ? '#191713' : '#6E6759',
+      })),
+    };
+  }
+}
+</script>
+</body>
+</html>

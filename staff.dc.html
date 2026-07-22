@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+  <dc-import name="staff-gate" hint-size="0,0"></dc-import>
+  <dc-import name="staff-nav" active="home" style="position:sticky; top:0; z-index:40;" hint-size="100%,105px"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1140px; margin:0 auto; padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px) 0;">
+    <div style="position:relative; border-radius:24px; overflow:hidden; background:#16140F; min-height:clamp(300px,44vw,420px); display:flex; align-items:flex-end;">
+      <div style="position:absolute; inset:0;">
+        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="staff-hero" shape="rect" placeholder="Drop the worship / congregation photo here" hint-size="100%,100%"></x-import>
+      </div>
+      <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,20,15,0.1) 30%, rgba(22,20,15,0.82) 100%); pointer-events:none;"></div>
+      <div style="position:relative; padding:clamp(24px,5vw,44px); color:#FBF8F3; pointer-events:none;">
+        <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#D9D2C4; margin-bottom:12px;">For the glory of God and for the sake of the world</div>
+        <h1 style="font-weight:800; font-size:clamp(30px,5.5vw,50px); line-height:1.05; margin:0; letter-spacing:-1px;">Citipointe Staff Hub</h1>
+      </div>
+    </div>
+  </div>
+
+  <!-- WELCOME -->
+  <div style="max-width:760px; margin:0 auto; padding:clamp(28px,5vw,48px) clamp(16px,3vw,32px);">
+    <p style="font-size:clamp(16px,2.2vw,17.5px); line-height:1.85; color:#4A443A; margin:0;">It is a privilege to serve on staff at Citipointe Church. What we do is more than a job, it is a calling to build God's house for the glory of God and the sake of the world. With that privilege comes stewardship. Our time, our resources, and the people we lead all belong to God, and we steward them with excellence and integrity. This hub keeps everything you need in one place. Thank you for the way you serve. Let's keep building together.</p>
+  </div>
+
+  <!-- TILES -->
+  <div style="max-width:1140px; margin:0 auto; padding:0 clamp(16px,3vw,32px) clamp(20px,3vw,32px);">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:14px;">
+      <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="5">
+        <a href="{{ t.href }}" target="{{ t.target }}" style="background:{{ t.bg }}; color:{{ t.fg }}; border:1px solid {{ t.border }}; border-radius:18px; padding:clamp(22px,4vw,30px); text-decoration:none; display:flex; flex-direction:column; gap:8px; min-height:120px;">
+          <span style="font-weight:800; font-size:19px; letter-spacing:-0.3px;">{{ t.label }}</span>
+          <span style="font-size:14px; line-height:1.6; color:{{ t.sub }};">{{ t.desc }}</span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+
+  <!-- QUICK LINKS -->
+  <div style="max-width:1140px; margin:0 auto; padding:0 clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
+    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:26px 0 14px;">Quick links</div>
+    <div style="display:flex; flex-wrap:wrap; gap:10px;">
+      <sc-for list="{{ quickLinks }}" as="q" hint-placeholder-count="5">
+        <a href="{{ q.href }}" target="_blank" rel="noopener" style="border:1px solid #E0D8C8; background:#FFFFFF; border-radius:100px; padding:13px 22px; font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">{{ q.label }} &#8599;</a>
+      </sc-for>
+    </div>
+  </div>
+
+  <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const TEAM_FOLDER_URL = 'https://drive.google.com/'; // TEAM FOLDER DRIVE URL HERE
+    const dark = { bg: '#191713', fg: '#FBF8F3', border: '#191713', sub: '#B7AF9E' };
+    const light = { bg: '#FFFFFF', fg: '#191713', border: '#ECE5D8', sub: '#8A8172' };
+    return {
+      tiles: [
+        { label: 'Forms', desc: 'Approvals, reimbursements, requests \u2014 every form in one place.', href: 'forms.dc.html', target: '_self', ...dark },
+        { label: 'Human Resources', desc: 'Leave and PTO, handbook, role documents, reviews.', href: 'hr.dc.html', target: '_self', ...light },
+        { label: 'Policies', desc: 'Church policies and procedures, all current versions.', href: 'policies.dc.html', target: '_self', ...light },
+        { label: 'Calendar', desc: 'The Citipointe staff calendar \u2014 what\u2019s on and when.', href: 'calendar.dc.html', target: '_self', ...light },
+        { label: 'Team Folder \u2197', desc: 'The shared Drive folder \u2014 opens in Google Drive.', href: TEAM_FOLDER_URL, target: '_blank', ...light },
+      ],
+      quickLinks: [
+        { label: 'BambooHR', href: 'https://www.bamboohr.com/' },   // BAMBOOHR URL HERE
+        { label: 'CCB', href: 'https://citipointe.ccbchurch.com/' },
+        { label: 'Clearstream', href: 'https://clearstream.io/' },  // CLEARSTREAM URL HERE
+        { label: 'Divvy', href: 'https://app.divvy.co/' },          // DIVVY URL HERE
+        { label: 'ApprovalMax', href: 'https://app.approvalmax.com/' }, // APPROVALMAX URL HERE
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
