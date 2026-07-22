@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Citipointe Church">
+<meta property="og:title" content="Staff Hub | Citipointe Church">
+<meta property="og:description" content="Forms, HR, policies, and the staff calendar — everything Citipointe staff need in one place.">
+<meta property="og:image" content="https://citipointe.church/assets/staff-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -35,7 +42,7 @@
           <sc-if value="{{ p.open }}" hint-placeholder-val="{{ false }}">
             <div style="padding:0 clamp(18px,3vw,24px) 20px; display:flex; flex-direction:column; gap:14px;">
               <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">{{ p.desc }}</div>
-              <a href="{{ p.href }}" target="_blank" rel="noopener" style="align-self:flex-start; font-size:14px; font-weight:700; color:#191713; text-decoration:none; border:1px solid #191713; border-radius:100px; padding:11px 22px;">Open document &#8599;</a>
+              <div style="align-self:flex-start; font-size:13px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#8A8172; border:1px dashed #D8CFBD; border-radius:100px; padding:10px 20px;">Coming soon</div>
             </div>
           </sc-if>
         </div>
@@ -52,9 +59,8 @@ class Component extends DCLogic {
   items = [ // scaffold — replace titles/descriptions/links as policies are supplied
     { title: 'Safe Church Policy', desc: 'Safeguarding standards for anyone serving with children, youth, or vulnerable people.', href: '#' },
     { title: 'Financial Policy & Card Use', desc: 'Church card use, approvals, receipts, and reimbursements.', href: '#' },
-    { title: 'Social Media & Communications Policy', desc: 'How we represent Citipointe online and in public communication.', href: '#' },
     { title: 'Facilities & Building Use Policy', desc: 'Booking, access, and care of church spaces at both campuses.', href: '#' },
-    { title: 'Travel & Expense Policy', desc: 'Approved travel, per diems, and how to expense trips.', href: '#' },
+    { title: 'Travel & Expense Policy', desc: 'Approved travel and how to expense trips.', href: '#' },
   ];
   renderVals() {
     return {

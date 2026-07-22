@@ -133,7 +133,7 @@ class Component extends DCLogic {
     const ctaHref = p.ctaHref ?? '#';
     return {
       pageLabelVal: p.pageLabel ?? '', hasLabel: !!p.pageLabel && (s.isMobile || !s.narrow),
-      homeLabelVal: p.homeLabel ?? 'Home', homeHrefVal: p.homeHref ?? 'home.dc.html',
+      homeLabelVal: p.homeLabel ?? 'Home', homeHrefVal: p.homeHref ?? '/',
       ctaLabelVal: p.ctaLabel ?? 'Plan your visit', ctaHrefVal: ctaHref,
       ctaTarget: /^https?:/.test(ctaHref) ? '_blank' : '_self',
       homeColor: col(active === 'home'), homeWeight: wt(active === 'home'),

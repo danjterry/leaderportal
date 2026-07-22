@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Citipointe Church">
+<meta property="og:title" content="Staff Hub | Citipointe Church">
+<meta property="og:description" content="Forms, HR, policies, and the staff calendar — everything Citipointe staff need in one place.">
+<meta property="og:image" content="https://citipointe.church/assets/staff-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -26,7 +33,7 @@
   <div style="max-width:1140px; margin:0 auto; padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px) 0;">
     <div style="position:relative; border-radius:24px; overflow:hidden; background:#16140F; min-height:clamp(300px,44vw,420px); display:flex; align-items:flex-end;">
       <div style="position:absolute; inset:0;">
-        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="staff-hero" shape="rect" placeholder="Drop the worship / congregation photo here" hint-size="100%,100%"></x-import>
+        <img src="assets/staff-hero.jpg" alt="Worship at Citipointe" style="width:100%; height:100%; object-fit:cover; object-position:center 40%; display:block;">
       </div>
       <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(22,20,15,0.1) 30%, rgba(22,20,15,0.82) 100%); pointer-events:none;"></div>
       <div style="position:relative; padding:clamp(24px,5vw,44px); color:#FBF8F3; pointer-events:none;">
@@ -69,23 +76,22 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    const TEAM_FOLDER_URL = 'https://drive.google.com/'; // TEAM FOLDER DRIVE URL HERE
+    const TEAM_FOLDER_URL = 'https://drive.google.com/drive/folders/0AE9wK4pmzo5iUk9PVA';
     const dark = { bg: '#191713', fg: '#FBF8F3', border: '#191713', sub: '#B7AF9E' };
     const light = { bg: '#FFFFFF', fg: '#191713', border: '#ECE5D8', sub: '#8A8172' };
     return {
       tiles: [
         { label: 'Forms', desc: 'Approvals, reimbursements, requests \u2014 every form in one place.', href: '/staff/forms', target: '_self', ...dark },
-        { label: 'Human Resources', desc: 'Leave and PTO, handbook, role documents, reviews.', href: '/staff/hr', target: '_self', ...light },
-        { label: 'Policies', desc: 'Church policies and procedures, all current versions.', href: '/staff/policies', target: '_self', ...light },
+        { label: 'HR', desc: 'Request leave, plus quick answers on how it works.', href: '/staff/hr', target: '_self', ...light },
+        { label: 'Policies', desc: 'Church policies and procedures.', href: '/staff/policies', target: '_self', ...light },
         { label: 'Calendar', desc: 'The Citipointe staff calendar \u2014 what\u2019s on and when.', href: '/staff/calendar', target: '_self', ...light },
         { label: 'Team Folder \u2197', desc: 'The shared Drive folder \u2014 opens in Google Drive.', href: TEAM_FOLDER_URL, target: '_blank', ...light },
       ],
       quickLinks: [
-        { label: 'BambooHR', href: 'https://www.bamboohr.com/' },   // BAMBOOHR URL HERE
         { label: 'CCB', href: 'https://citipointe.ccbchurch.com/' },
         { label: 'Clearstream', href: 'https://clearstream.io/' },  // CLEARSTREAM URL HERE
-        { label: 'Divvy', href: 'https://app.divvy.co/' },          // DIVVY URL HERE
-        { label: 'ApprovalMax', href: 'https://app.approvalmax.com/' }, // APPROVALMAX URL HERE
+        { label: 'Divvy', href: 'https://login.us.bill.com/neo/login' },
+        { label: 'UpKeep', href: 'https://request-portal.onupkeep.com/citipointe-church' },
       ],
     };
   }

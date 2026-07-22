@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Citipointe Church">
+<meta property="og:title" content="Staff Hub | Citipointe Church">
+<meta property="og:description" content="Forms, HR, policies, and the staff calendar — everything Citipointe staff need in one place.">
+<meta property="og:image" content="https://citipointe.church/assets/staff-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -29,11 +36,10 @@
     <div style="background:#191713; color:#FBF8F3; border-radius:22px; padding:clamp(26px,5vw,40px); margin-bottom:36px;">
       <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:18px;">
         <div style="max-width:520px;">
-          <div style="font-weight:800; font-size:clamp(20px,3vw,25px); letter-spacing:-0.5px; margin-bottom:8px;">Leave and PTO live in BambooHR</div>
-          <div style="font-size:15px; line-height:1.7; color:#B7AF9E;">Requests, approvals, and balances all happen there — nothing PTO-related is tracked on this hub.</div>
+          <div style="font-weight:800; font-size:clamp(20px,3vw,25px); letter-spacing:-0.5px; margin-bottom:8px;">Request leave</div>
+          <div style="font-size:15px; line-height:1.7; color:#B7AF9E;">Submit your leave request here. You'll get an email once it's approved.</div>
         </div>
-        <a href="https://www.bamboohr.com/" target="_blank" rel="noopener" style="display:inline-block; background:#FBF8F3; color:#191713; font-weight:700; font-size:15.5px; padding:16px 34px; border-radius:100px; text-decoration:none;">Open BambooHR &#8599;</a>
-        <!-- BAMBOOHR URL HERE -->
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSempUQZ3i3oVN12Lp89EQeSF_TvBNg9jtTsrBaQSEqM983zrg/viewform" target="_blank" rel="noopener" style="display:inline-block; background:#FBF8F3; color:#191713; font-weight:700; font-size:15.5px; padding:16px 34px; border-radius:100px; text-decoration:none;">Request Leave &#8599;</a>
       </div>
     </div>
 
@@ -46,11 +52,7 @@
       </div>
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px);">
         <div style="font-weight:800; font-size:16px; margin-bottom:8px;">Who approves it?</div>
-        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">Your direct supervisor, in BambooHR. You'll get an email when it's approved.</div>
-      </div>
-      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px);">
-        <div style="font-weight:800; font-size:16px; margin-bottom:8px;">Where do I see my balance?</div>
-        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">BambooHR &rarr; My Info &rarr; Time Off. Balances update as requests are approved.</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759;">The Executive Pastor and Lead Pastor. You'll get an email when it's approved.</div>
       </div>
     </div>
 
@@ -74,10 +76,7 @@ class Component extends DCLogic {
   renderVals() {
     return {
       docs: [ // replace href '#' with real Drive/doc links
-        { title: 'Staff Handbook', desc: 'Everything about working at Citipointe, in one document.', href: '#' },
-        { title: 'Role Documents', desc: 'Clear is kind \u2014 what your role owns and how it\u2019s measured.', href: '#' },
-        { title: 'Org Chart', desc: 'Who reports to whom, both campuses.', href: '#' },
-        { title: 'Quarterly Staff Review', desc: 'The Humble / Hungry / Smart review \u2014 overview and forms.', href: '#' },
+        { title: 'Staff Handbook', desc: 'Coming soon.', href: '#' },
       ],
     };
   }

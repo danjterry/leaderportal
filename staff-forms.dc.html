@@ -3,6 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Citipointe Church">
+<meta property="og:title" content="Staff Hub | Citipointe Church">
+<meta property="og:description" content="Forms, HR, policies, and the staff calendar — everything Citipointe staff need in one place.">
+<meta property="og:image" content="https://citipointe.church/assets/staff-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
 <body>
@@ -24,11 +31,8 @@
 
   <div style="max-width:1140px; margin:0 auto; padding:clamp(28px,5vw,48px) clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
     <h1 style="font-weight:800; font-size:clamp(28px,4.5vw,40px); letter-spacing:-1px; margin:0 0 10px;">Forms</h1>
-    <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 34px; max-width:640px;">Every form follows one of three flows — the card tells you exactly what happens after you hit submit.</p>
+    <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 34px; max-width:640px;">Each card tells you exactly what to do and what happens next.</p>
 
-    <!-- FLOW A -->
-    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow A · Submit for approval</div>
-    <p style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 16px; max-width:640px;">These route to the Executive Pastor for review and signature. Once approved, you'll receive the completed PDF by email — upload it into Divvy against the transaction.</p>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin-bottom:36px;">
       <sc-for list="{{ flowA }}" as="f" hint-placeholder-count="2">
         <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
@@ -37,6 +41,16 @@
           <div onClick="{{ f.open }}" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer;">{{ f.btnLabel }}</div>
         </div>
       </sc-for>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">Reimbursement Form</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">Email the completed form with your receipt(s) and a brief description of the expenses to CPNChecks@gmail.com. Reimbursements are processed through Bill.com &#8212; watch for an email on setting up your account. Need help with Bill.com? Email Dan Terry.</div>
+        <a href="https://drive.google.com/uc?export=download&amp;id=1Ro1UBNssif_gm1iXf6-eT1IfMKy7myYe" target="_blank" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Form</a>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
+        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">TN Sales &amp; Use Tax Exemption Certificate</div>
+        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">Present to the vendor at time of purchase. Church purchases only &#8212; never personal payment methods.</div>
+        <a href="https://drive.google.com/uc?export=download&amp;id=1N1DDBjCALNNtsVJbJ5364Vk6Og9I2D6i" target="_blank" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Certificate</a>
+      </div>
     </div>
     <sc-if value="{{ hasEmbed }}" hint-placeholder-val="{{ false }}">
       <div id="embed" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(16px,3vw,24px); margin-bottom:36px;">
@@ -52,28 +66,6 @@
         </sc-if>
       </div>
     </sc-if>
-
-    <!-- FLOW B -->
-    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow B · Download, complete, load into ApprovalMax</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0 36px;">
-      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
-        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">Reimbursement Form</div>
-        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">For out-of-pocket expenses. Download, complete on your device, attach your receipts, and load into ApprovalMax for approval.</div>
-        <a href="#" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Form</a>
-        <!-- REIMBURSEMENT FILLABLE PDF FILE HERE (replace href="#") -->
-      </div>
-    </div>
-
-    <!-- FLOW C -->
-    <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Flow C · Plain download</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:14px; margin:16px 0 36px;">
-      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,4vw,28px); display:flex; flex-direction:column; gap:12px;">
-        <div style="font-weight:800; font-size:18px; letter-spacing:-0.3px;">TN Sales &amp; Use Tax Exemption Certificate</div>
-        <div style="font-size:14.5px; line-height:1.7; color:#6E6759; flex:1;">Present to the vendor at time of purchase. Church purchases only — never personal payment methods.</div>
-        <a href="#" style="text-align:center; background:#191713; color:#FFFFFF; font-weight:700; font-size:14.5px; padding:14px; border-radius:100px; cursor:pointer; text-decoration:none;">Download Certificate</a>
-        <!-- TAX EXEMPTION CERTIFICATE FILE HERE (replace href="#") -->
-      </div>
-    </div>
 
     <!-- REQUESTS -->
     <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 6px;">Requests</div>
@@ -96,33 +88,38 @@ class Component extends DCLogic {
   state = { active: null };
   // Paste real JotForm URLs between the quotes; empty string shows the "coming soon" placeholder.
   forms = {
-    missing:  { title: 'Missing Receipt Form', url: '' },              // JOTFORM MISSING RECEIPT URL HERE
-    personal: { title: 'Personal Charge Reimbursement', url: '' },     // JOTFORM PERSONAL CHARGE URL HERE
-    facilities: { title: 'Facilities / Maintenance Request', url: '' },// JOTFORM FACILITIES URL HERE
+    missing:  { title: 'Missing Receipt Form', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1jWgyEaWiBIlHPi_oS3d0jt92vuJM3hv9' }, // JOTFORM MISSING RECEIPT URL HERE (pdf is interim download)
+    personal: { title: 'Personal Charge Reimbursement', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1e7opP0gdIngthpzHF2dSWM80yynF4sv5' }, // JOTFORM PERSONAL CHARGE URL HERE (pdf is interim download)
+    facilities: { title: 'Facilities / Maintenance Request', url: '', link: 'https://request-portal.onupkeep.com/citipointe-church' }, // UpKeep request portal (opens in new tab)
     it:       { title: 'IT Help Request', url: '' },                   // JOTFORM IT HELP URL HERE
-    incident: { title: 'Incident Report', url: '' },                   // JOTFORM INCIDENT URL HERE
+    incident: { title: 'Incident Report', url: 'https://form.jotform.com/262005684824155' },
+    safechurch: { title: 'Safe Church Form', url: 'https://form.jotform.com/261996497013165' },
   };
   open(key) {
     return () => {
+      const f = this.forms[key];
+      if (!f.url && f.link) { window.open(f.link, '_blank'); return; } // external portal
+      if (!f.url && f.pdf) { window.open(f.pdf, '_blank'); return; } // interim PDF until JotForm is live
       this.setState({ active: this.state.active === key ? null : key });
     };
   }
   card(key, desc) {
     const f = this.forms[key];
-    return { title: f.title, desc, open: this.open(key), btnLabel: this.state.active === key ? 'Hide form' : 'Open form' };
+    const btnLabel = this.state.active === key ? 'Hide form' : (!f.url && f.link ? 'Open portal' : (!f.url && f.pdf ? 'Download PDF' : 'Open form'));
+    return { title: f.title, desc, open: this.open(key), btnLabel };
   }
   renderVals() {
     const a = this.state.active;
     const f = a ? this.forms[a] : null;
     return {
       flowA: [
-        this.card('missing', 'Submit here. Once approved and signed, you\u2019ll receive the completed PDF by email. Upload that PDF into Divvy in place of the receipt.'),
+        this.card('missing', 'Download and complete this form, have Dan or Joel sign it, then upload it to the transaction in Divvy in place of the receipt.'),
         this.card('personal', 'Submit here when a personal purchase was made in error on a church card. Once approved and signed, upload the returned PDF into Divvy where the receipt would go.'),
       ],
       requests: [
         this.card('facilities', 'Something needs fixing or setting up? This routes straight to Ops.'),
-        this.card('it', 'Tech trouble \u2014 accounts, devices, AV. Routes to IT.'),
         this.card('incident', 'Report any incident. Routes to the Executive Pastor.'),
+        this.card('safechurch', 'Safe Church reporting for concerns involving children, youth, or vulnerable people.'),
       ],
       hasEmbed: !!a,
       embedTitle: f ? f.title : '',
