@@ -34,12 +34,12 @@ class Component extends DCLogic {
     const active = this.props.active ?? 'home';
     const TEAM_FOLDER_URL = 'https://drive.google.com/'; // TEAM FOLDER DRIVE URL HERE
     const items = [
-      ['home', 'Home', 'home.dc.html'],
+      ['home', 'Home', '/staff'],
       ['team', 'Team Folder \u2197', TEAM_FOLDER_URL, true],
-      ['forms', 'Forms', 'forms.dc.html'],
-      ['hr', 'Human Resources', 'hr.dc.html'],
-      ['policies', 'Policies', 'policies.dc.html'],
-      ['calendar', 'Calendar', 'calendar.dc.html'],
+      ['forms', 'Forms', '/staff/forms'],
+      ['hr', 'Human Resources', '/staff/hr'],
+      ['policies', 'Policies', '/staff/policies'],
+      ['calendar', 'Calendar', '/staff/calendar'],
     ];
     return {
       links: items.map(([key, label, href, ext]) => ({

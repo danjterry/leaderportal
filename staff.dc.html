@@ -74,10 +74,10 @@ class Component extends DCLogic {
     const light = { bg: '#FFFFFF', fg: '#191713', border: '#ECE5D8', sub: '#8A8172' };
     return {
       tiles: [
-        { label: 'Forms', desc: 'Approvals, reimbursements, requests \u2014 every form in one place.', href: 'forms.dc.html', target: '_self', ...dark },
-        { label: 'Human Resources', desc: 'Leave and PTO, handbook, role documents, reviews.', href: 'hr.dc.html', target: '_self', ...light },
-        { label: 'Policies', desc: 'Church policies and procedures, all current versions.', href: 'policies.dc.html', target: '_self', ...light },
-        { label: 'Calendar', desc: 'The Citipointe staff calendar \u2014 what\u2019s on and when.', href: 'calendar.dc.html', target: '_self', ...light },
+        { label: 'Forms', desc: 'Approvals, reimbursements, requests \u2014 every form in one place.', href: '/staff/forms', target: '_self', ...dark },
+        { label: 'Human Resources', desc: 'Leave and PTO, handbook, role documents, reviews.', href: '/staff/hr', target: '_self', ...light },
+        { label: 'Policies', desc: 'Church policies and procedures, all current versions.', href: '/staff/policies', target: '_self', ...light },
+        { label: 'Calendar', desc: 'The Citipointe staff calendar \u2014 what\u2019s on and when.', href: '/staff/calendar', target: '_self', ...light },
         { label: 'Team Folder \u2197', desc: 'The shared Drive folder \u2014 opens in Google Drive.', href: TEAM_FOLDER_URL, target: '_blank', ...light },
       ],
       quickLinks: [
