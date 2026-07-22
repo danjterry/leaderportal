@@ -49,8 +49,8 @@ class Component extends DCLogic {
       onKey: (e) => { if (e.key === 'Enter') this.tryUnlock(); },
       unlock: () => this.tryUnlock(),
       error: this.state.error, hasError: !!this.state.error,
-      publicHref: this.props.publicHref ?? '/',
-      leaderHref: this.props.leaderHref ?? '/leader-portal',
+      publicHref: this.props.publicHref ?? '../home.dc.html',
+      leaderHref: this.props.leaderHref ?? '../leader-portal.dc.html',
     };
   }
 }

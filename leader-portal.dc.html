@@ -853,6 +853,30 @@ class Component extends DCLogic {
       leader: 'Your Parking team lead \u2014 check in on arrival',
       escalation: 'Michael Piper, Serving teams (see Who to Contact)',
       note: '',
+      franklin: {
+        win: 'Often the very first interaction a guest has with Citipointe Franklin \u2014 a safe, organized, and friendly arrival. We don\u2019t simply direct traffic; we create an environment where people feel welcomed before they ever step inside.',
+        basics: [
+          { label: 'Arrive', value: '10:00 AM, check in with your team lead' },
+          { label: 'Team', value: '2\u20133 incl. lead: crosswalk safety, lot entrance, row direction' },
+          { label: 'Wear', value: 'Safety vest + closed shoes' },
+        ],
+        steps: [
+          { n: 1, title: 'Set the lot (10:00\u201310:25)', detail: 'Vest on and get your assignment. Cones and directional signage out, welcome flags at designated entrances, walk the lot for trash, pedestrian walkways clear, and review any special parking instructions for the morning.' },
+          { n: 2, title: 'Team Huddle (10:25\u201310:35)', detail: 'Celebrate wins, hear vision, receive updates, and pray before we serve.' },
+          { n: 3, title: 'Welcome every vehicle (10:35\u201311:15)', detail: 'A smile and a wave for every car. Direct guests safely into available spaces, keep traffic flowing, and watch closely for children, families, and pedestrians at the crosswalk. Help first-time guests and offer a hand with strollers or wheelchairs when appropriate.' },
+          { n: 4, title: 'Released at 11:15', detail: 'Once the lot is clear and all guests have arrived, your team lead releases you to join worship and the message.' },
+          { n: 5, title: 'Pack down after service', detail: 'Retrieve all welcome flags and parking signs to the back storage closet, and return any remaining team equipment to the black bins.' },
+        ],
+        faqs: [
+          { q: 'What happens in bad weather?', a: 'We serve rain or shine. Rotations get shorter in extreme weather \u2014 your team lead will adjust.' },
+          { q: 'What if the lot fills up?', a: 'Tell your team lead. Assignments vary with attendance and parking needs \u2014 they\u2019ll redirect you.' },
+          { q: 'A driver is frustrated or ignores directions. What now?', a: 'Never argue with a moving car. Let it go, stay safe, and mention it at pack down.' },
+          { q: 'Do I miss the whole service?', a: 'No. Your team lead releases the team into service once all guests have safely arrived, around 11:15.' },
+          { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
+        ],
+        escalation: 'Jewels Wike, Serving teams (see Who to Contact)',
+        note: 'Team leads: arrive early and welcome the team, assign positions, confirm cones, signs, and flags are placed, and lead the huddle. Monitor traffic and adjust positions as needed, stay available during service, then make sure all equipment is collected and stored \u2014 and thank the team before dismissing them.',
+      },
     },
     {
       key: 'welcome', name: 'Welcome Team',
@@ -879,9 +903,33 @@ class Component extends DCLogic {
       leader: 'Your Welcome team lead \u2014 check in on arrival',
       escalation: 'Michael Piper, Serving teams (see Who to Contact)',
       note: '',
+      franklin: {
+        win: 'An exceptional guest experience for the entire Sunday morning \u2014 one unified team welcoming guests, staffing the Connect Bar, and caring for the auditorium, so every person feels welcomed, cared for, and encouraged from their first step onto campus until they head home.',
+        basics: [
+          { label: 'Arrive', value: '9:40 AM, check in with your team lead' },
+          { label: 'Team', value: '6 incl. lead: 2 front doors, 2 lobby / Connect Bar, 2 auditorium' },
+          { label: 'Huddle', value: '10:25\u201310:35 AM' },
+        ],
+        steps: [
+          { n: 1, title: 'Set the space (9:40\u201310:25)', detail: 'Check in and receive your assignment \u2014 it may change through the morning as needs shift. Prepare the Connect Bar and equipment, walk the lobby and auditorium removing trash, stock giving stations, tissues, and guest resources, and review announcements, events, and Next Steps so you can answer guest questions.' },
+          { n: 2, title: 'Team Huddle (10:25\u201310:35)', detail: 'Celebrate wins, hear vision, receive updates, and pray before we serve.' },
+          { n: 3, title: 'Welcome with warmth (10:35\u201311:15)', detail: 'Greet every guest with enthusiasm and intentionality. Staff the Connect Bar, help with Next Steps, Kids Check-In, and directions \u2014 and walk guests to their destination rather than pointing. Keep the lobby, coffee station, and auditorium clean and inviting, and look for new guests or anyone needing assistance.' },
+          { n: 4, title: 'Auditorium doors', detail: 'Keep the auditorium doors closed until 10:45, then open them and help guests find seats. The whole team heads into the auditorium at 11:15.' },
+          { n: 5, title: 'Serve the exit, then reset', detail: 'Return to the lobby and Connect Bar to connect with guests as they leave and guide them toward their next step. Then reset the auditorium \u2014 chairs back out, trash cleared \u2014 iPads and equipment back in the bins, and all signage and bins into the back store closets.' },
+        ],
+        faqs: [
+          { q: 'How do I spot a first-timer?', a: 'They pause inside the door, read signage, or walk slowly. When connecting, ask "how long have you been coming to Citipointe?" \u2014 never "is this your first time?" First time: you know exactly what to do, show them around. Second time: "Welcome back! How was your first service? Can I help you with anything?"' },
+          { q: 'What if someone arrives upset or in crisis?', a: 'Stay with them, stay calm, and send a teammate for your team lead or a pastor. Do not leave them alone.' },
+          { q: 'Do I have to be an extrovert?', a: 'No. Warm beats loud. Some of our best greeters are the quiet ones.' },
+          { q: 'Someone asks a question I cannot answer. Now what?', a: 'Walk them to your team lead or a staff member. Never guess about kids check-in or safeguarding questions.' },
+          { q: 'What if I cannot make my rostered Sunday?', a: 'Respond to your serving request in CCB as early as you can, then tell your team lead so they can adjust the schedule.' },
+        ],
+        escalation: 'Jewels Wike, Serving teams (see Who to Contact)',
+        note: 'Team leads: arrive early and welcome the team, assign positions, and make sure the Connect Bar, lobby, and auditorium are fully prepared and guest resources stocked. Complete the attendance or prayer count, coordinate the offering, assist with Communion when applicable, and troubleshoot during service. Afterward, lead the reset, confirm everything is stored and clean, and thank the team before dismissing them.',
+      },
     },
     {
-      key: 'connect-bar', name: 'Connect Bar',
+      key: 'connect-bar', name: 'Connect Bar', franklinHidden: true,
       win: 'We set the atmosphere by being prepared, present, and people-focused \u2014 every guest feels seen, supported, and guided from the moment they enter until service ends.',
       basics: [
         { label: 'Arrive', value: '9:00 AM to set up before huddle' },
@@ -906,7 +954,7 @@ class Component extends DCLogic {
       note: 'Excellence is in the details: technology working, space tidy, and most importantly \u2014 eyes up, people first.',
     },
     {
-      key: 'inside-hosts', name: 'Inside Auditorium Hosts',
+      key: 'inside-hosts', name: 'Inside Auditorium Hosts', franklinHidden: true,
       win: 'Every seat and space is ready for someone to encounter God \u2014 an excellent, welcoming, distraction-free auditorium. "Use your gifts well to serve one another." (1 Peter 4:10)',
       basics: [
         { label: 'Arrive', value: '8:45 AM check-in (leads by 8:40)' },
@@ -1269,7 +1317,10 @@ class Component extends DCLogic {
 
   renderVals() {
     const { authed, pw, view, teamKey, checklist, trainingTab, ltTab, lgTab, campus, incident, incidentSubmitted } = this.state;
-    const pb = this.teams.find(t => t.key === teamKey);
+    const campusTeams = campus === 'franklin'
+      ? this.teams.filter(t => !t.franklinHidden).map(t => t.franklin ? { ...t, ...t.franklin } : t)
+      : this.teams;
+    const pb = campusTeams.find(t => t.key === teamKey);
     const enter = () => {
       if ((this.state.pw || '').trim() === 'Serve2026') this.setState({ authed: true, view: 'home', gateError: '' });
       else this.setState({ gateError: 'That password isn\u2019t right \u2014 ask your team leader for the current one.' });
@@ -1387,7 +1438,7 @@ class Component extends DCLogic {
         style: 'cursor:pointer; user-select:none; white-space:nowrap; padding:7px 14px; border-radius:100px; font-size:12.5px; font-weight:700; ' + (campus === c.key ? 'background:#FBF8F3; color:#16140F;' : 'color:#B7AF9E;'),
       })),
 
-      teamCards: this.teams.map(t => ({ name: t.name, win: t.win, onClick: this.go('playbook', t.key) })),
+      teamCards: campusTeams.map(t => ({ name: t.name, win: t.win, onClick: this.go('playbook', t.key) })),
       pb: pb ? { ...pb, showNote: !!pb.note, hasExtras: !!(pb.extras && pb.extras.length), hasDoc: !!pb.docHref } : { basics: [], steps: [], faqs: [], extras: [] },
 
       leadTeamSections: this.leadTeamSections,

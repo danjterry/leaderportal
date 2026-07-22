@@ -15,6 +15,7 @@
 <meta property="og:image" content="https://citipointe.church/assets/arrival-flags.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
+<script src="./image-slot.js"></script>
 </head>
 <body>
 <x-dc>
@@ -47,6 +48,7 @@
   <div style="position:sticky; top:62px; z-index:30; background:rgba(253,251,247,0.97); backdrop-filter:blur(10px); border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
     <div style="max-width:1240px; margin:0 auto; padding:12px clamp(20px,4vw,56px); display:flex; gap:8px; overflow-x:auto; scrollbar-width:none; -webkit-overflow-scrolling:touch;">
       <a href="#kids" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Kids</a>
+      <a href="#mdo" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Mothers Day Out</a>
       <a href="#moms-tots" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Moms &amp; Tots</a>
       <a href="#youth" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Youth</a>
       <a href="#young-adults" style="flex:none; border:1px solid #E0D8C8; color:#191713; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; text-decoration:none; white-space:nowrap;" style-hover="background:#F4EEE3;">Young Adults</a>
@@ -71,9 +73,25 @@
     </div>
   </div>
 
-  <!-- MOMS & TOTS -->
-  <div id="moms-tots" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+  <!-- MOTHERS DAY OUT -->
+  <div id="mdo" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
     <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+      <div style="width:100%; aspect-ratio:1.2;">
+        <img src="assets/community-mdo.webp" alt="Mothers Day Out" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
+      </div>
+      <div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Weekday care &amp; education</div>
+        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Mothers Day Out</h2>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Mothers Day Out is Citipointe Kids' weekday program of Christian education and care, built on Christian faith and values. Our team provides a caring, stimulating environment where each child's individual needs and abilities are respected, and where little ones can grow toward their potential — physically, socially, emotionally, intellectually, and spiritually — all while mom gets a well-deserved day to herself.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Tuesdays &amp; Thursdays, 9am–3pm · 7533 Lords Chapel Drive, Nashville</div>
+        <a href="https://www.citipointekids.com/" target="_blank" rel="noopener" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none;">Find out more &amp; register</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOMS & TOTS -->
+  <div id="moms-tots" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
         <img src="assets/community-momstots.webp" alt="Moms and Tots" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
@@ -87,23 +105,28 @@
   </div>
 
   <!-- YOUTH -->
-  <div id="youth" style="scroll-margin-top:130px;">
-    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+  <div id="youth" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
         <img src="assets/community-youth.webp" alt="Youth Society" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
       <div>
-        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">6th – 12th grade</div>
-        <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Youth Society</h2>
-        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Youth Society is the youth ministry of Citipointe — making noise for Jesus in our cities and nations. We're a movement of young people who represent Jesus wherever they go, helping high-schoolers discover the call of God on their lives. For students in 6th through 12th grade.</p>
-        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Wednesday nights · 6pm Hangtime · 7pm Service · 8:30pm Pick up</div>
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:18px;">Grades 6 – 12</div>
+        <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:0 0 18px;">
+          <h2 style="font-weight:800; font-size:clamp(28px,4vw,38px); line-height:1.12; margin:0; letter-spacing:-1px;">Youth Society</h2>
+          <sc-if value="{{ showYouthLaunch }}" hint-placeholder-val="{{ false }}"><span style="background:#191713; color:#FFFFFF; font-size:12px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; padding:8px 16px; border-radius:100px; white-space:nowrap;">Launching August 16th!</span></sc-if>
+        </div>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Youth Society is the youth ministry of our church. Our heart is to see students in Grades 6–12 know Jesus, encounter the Holy Spirit, and discover their identity and purpose in Him.</p>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Through biblical teaching, passionate worship, authentic community, and plenty of fun, we equip students to build a strong foundation of faith and live boldly for Jesus. We are committed to raising a generation of young leaders who are confident in their faith, led by the Holy Spirit, and ready to make a difference in their schools, families, across Nashville, and wherever God calls them.</p>
+        <p style="font-size:16.5px; line-height:1.8; color:#6E6759; margin:0 0 20px;">Youth Society creates a space where students can grow in their relationship with God, build lasting friendships, and be encouraged to live out their faith every day.</p>
+        <div style="font-size:14.5px; line-height:1.7; color:#8A8172; margin:0 0 26px;"><strong style="color:#191713;">Meets:</strong> Sundays, 6:00–8:30pm · Citipointe Church Nashville</div>
       </div>
     </div>
   </div>
 
   <!-- YOUNG ADULTS -->
-  <div id="young-adults" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
-    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+  <div id="young-adults" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
         <img src="assets/community-ya.webp" alt="YA Society" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
@@ -117,8 +140,8 @@
   </div>
 
   <!-- MEN'S -->
-  <div id="mens" style="scroll-margin-top:130px;">
-    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+  <div id="mens" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
         <img src="assets/community-mens.webp" alt="Forged Men’s Community" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
@@ -133,8 +156,8 @@
   </div>
 
   <!-- SENIORS -->
-  <div id="seniors" style="scroll-margin-top:130px; background:#FFFFFF; border-top:1px solid #ECE5D8;">
-    <div data-flip style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
+  <div id="seniors" style="scroll-margin-top:130px;">
+    <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,88px) clamp(20px,4vw,56px); display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:clamp(28px,5vw,64px); align-items:center;">
       <div style="width:100%; aspect-ratio:1.2;">
         <img src="assets/community-seniors.webp" alt="Salt and Light Seniors" style="width:100%; height:100%; object-fit:cover; border-radius:22px; display:block;">
       </div>
@@ -176,5 +199,13 @@
 
 </div>
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    // Badge disappears automatically after launch day (end of Aug 16, 2026, local time)
+    return { showYouthLaunch: new Date() < new Date(2026, 7, 17) };
+  }
+}
+</script>
 </body>
 </html>

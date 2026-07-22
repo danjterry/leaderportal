@@ -9,7 +9,7 @@
 <x-dc>
 <div style="background:#FDFBF7; border-bottom:1px solid #ECE5D8; font-family:'Proxima Nova', 'Helvetica Neue', Arial, sans-serif;">
   <div style="max-width:1140px; margin:0 auto; padding:0 clamp(16px,3vw,32px); display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:60px;">
-    <a href="/staff" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#191713; padding:10px 0;">
+    <a href="home.dc.html" style="display:flex; align-items:center; gap:11px; text-decoration:none; color:#191713; padding:10px 0;">
       <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:24px; width:auto; display:block;">
       <span style="width:1px; height:18px; background:#E0D8C8;"></span>
       <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172; white-space:nowrap;">Staff Hub</span>
@@ -34,12 +34,12 @@ class Component extends DCLogic {
     const active = this.props.active ?? 'home';
     const TEAM_FOLDER_URL = 'https://drive.google.com/drive/folders/0AE9wK4pmzo5iUk9PVA';
     const items = [
-      ['home', 'Home', '/staff'],
+      ['home', 'Home', 'home.dc.html'],
       ['team', 'Team Folder \u2197', TEAM_FOLDER_URL, true],
-      ['forms', 'Forms', '/staff/forms'],
-      ['hr', 'HR', '/staff/hr'],
-      ['policies', 'Policies', '/staff/policies'],
-      ['calendar', 'Calendar', '/staff/calendar'],
+      ['forms', 'Forms', 'forms.dc.html'],
+      ['hr', 'HR', 'hr.dc.html'],
+      ['policies', 'Policies', 'policies.dc.html'],
+      ['calendar', 'Calendar', 'calendar.dc.html'],
     ];
     return {
       links: items.map(([key, label, href, ext]) => ({
