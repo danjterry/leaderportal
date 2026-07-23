@@ -32,7 +32,7 @@
 <sc-if value="{{ showGate }}" hint-placeholder-val="{{ true }}">
   <div style="min-height:100vh; display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));">
     <div style="background:#16140F; color:#FBF8F3; display:flex; flex-direction:column; justify-content:space-between; padding:clamp(32px,5vw,56px);">
-      <a href="/" style="align-self:flex-start; display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;"></a>
+      <a href="home.dc.html" style="align-self:flex-start; display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;"></a>
       <div>
         <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4; margin-bottom:16px;">For the glory of God and for the sake of the world.</div>
         <h1 style="font-weight:800; font-size:clamp(30px,4vw,44px); line-height:1.08; margin:0; letter-spacing:-1px; max-width:480px;">Everything you need to serve and lead, in one place.</h1>
@@ -57,7 +57,7 @@
         </sc-if>
         <a href="#portal" onClick="{{ enter }}" style="display:block; text-align:center; margin-top:16px; background:#191713; color:#FFFFFF; font-weight:700; font-size:15.5px; padding:15px; border-radius:100px; text-decoration:none;">Enter the portal</a>
         <div style="text-align:center; margin-top:22px;">
-          <a href="/" style="font-size:13px; color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
+          <a href="home.dc.html" style="font-size:13px; color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
         </div>
       </div>
     </div>
@@ -72,7 +72,7 @@
   <div style="position:sticky; top:0; z-index:40; background:#16140F; color:#FBF8F3;">
     <div style="max-width:1200px; margin:0 auto; padding:12px clamp(18px,4vw,40px) 0; display:flex; align-items:center; justify-content:space-between; gap:10px 16px; flex-wrap:wrap;">
       <div style="display:flex; align-items:center; gap:12px; min-width:0;">
-        <a href="/" title="Back to the public site" style="display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;"></a>
+        <a href="home.dc.html" title="Back to the public site" style="display:block;"><img src="assets/cp-logo-horizontal-white.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;"></a>
         <span style="width:1px; height:18px; background:#3A362E;"></span>
         <span onClick="{{ goHome }}" style="font-size:12px; font-weight:700; letter-spacing:2px; color:#B7AF9E; text-transform:uppercase; cursor:pointer; white-space:nowrap;">Leader Portal</span>
       </div>
@@ -108,11 +108,13 @@
               <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
               <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">Second Sunday of every month</div>
             </div>
-            <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
-              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Launch week</div>
-              <div style="font-weight:800; font-size:19px;">Sunday, Aug 30</div>
-              <div style="font-size:13px; color:#9C927E; margin-top:5px;">Groups may go live on the site the week before</div>
-            </div>
+            <sc-if value="{{ showLaunchNight }}" hint-placeholder-val="{{ true }}">
+              <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+                <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroup fall season · Sep 2 – Nov 18</div>
+                <div style="font-weight:800; font-size:19px;">Launch Night — Wed, Sep 2</div>
+                <div style="font-size:13px; color:#9C927E; margin-top:5px;">Every group starts the same night, Nashville &amp; Franklin</div>
+              </div>
+            </sc-if>
             <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
               <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Miracle Offering</div>
               <div style="font-weight:800; font-size:19px;">Sunday, Nov 8</div>
@@ -371,7 +373,12 @@
 
         <!-- Run sheet -->
         <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(22px,4.5vw,34px); margin-bottom:28px;">
-          <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:6px;">Wednesday night run sheet</div>
+          <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 16px; margin-bottom:6px;">
+            <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">Wednesday night run sheet</div>
+            <sc-if value="{{ showFallDates }}" hint-placeholder-val="{{ true }}">
+              <div style="font-size:12.5px; font-weight:700; color:#8A8172;">Fall season: Sep 2 – Nov 18</div>
+            </sc-if>
+          </div>
           <div style="font-size:13.5px; color:#9C927E; margin-bottom:18px;">A guide, not a script — shift the times to suit your table, but protect dinner, Communion, and finishing on time.</div>
           <div style="display:flex; flex-direction:column;">
             <sc-for list="{{ runSheet }}" as="rs" hint-placeholder-count="5">
@@ -808,7 +815,7 @@
     <!-- FOOTER -->
     <div style="margin-top:56px; padding-top:28px; border-top:1px solid #E7DFCF; display:flex; flex-wrap:wrap; justify-content:space-between; gap:16px; font-size:13px; color:#9C927E;">
       <div>&copy; 2026 Citipointe Church &middot; For the glory of God and for the sake of the world</div>
-      <a href="/" style="color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
+      <a href="home.dc.html" style="color:#9C927E; text-decoration:none;">&larr; Back to public site</a>
     </div>
 
   </div>
@@ -1156,13 +1163,15 @@ class Component extends DCLogic {
     { title: 'I build this house', detail: 'I passionately support the vision of Citipointe Church and honor its pastors and leaders in both speech and action.' },
   ];
 
+  launchNightVisible() { return new Date() < new Date(2026, 8, 3); } // hides after Sep 2, 2026
   seasonCards() {
     const m = new Date().getMonth();
     const defs = [
       { label: 'Spring season', range: 'Feb \u2013 April', months: [1, 2, 3] },
       { label: 'Summer season', range: 'June \u2013 July', months: [5, 6] },
-      { label: 'Fall season', range: 'Sep \u2013 Nov', months: [8, 9, 10] },
     ];
+    // Once the Launch Night tile hides, the fall season shows as a regular season card
+    if (!this.launchNightVisible()) defs.push({ label: 'Fall season', range: 'Sep 2 \u2013 Nov 18', months: [8, 9, 10] });
     return defs.map(d => {
       const active = d.months.includes(m);
       return {
@@ -1444,6 +1453,8 @@ class Component extends DCLogic {
       leadTeamSections: this.leadTeamSections,
       rhythm: this.rhythm, runSheet: this.runSheet, commitments: this.commitments,
       seasons: this.seasonCards(),
+      showLaunchNight: this.launchNightVisible(),
+      showFallDates: new Date() < new Date(2026, 10, 19), // hides after Nov 18, 2026
       careLevels: this.careLevels,
       sermonNotes: this.sermonNotes,
       communionScripture: this.communionScripture,
