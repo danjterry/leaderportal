@@ -9,7 +9,7 @@
 <x-dc>
 <div style="position:relative; background:rgba(253,251,247,0.97); backdrop-filter:blur(10px); border-bottom:1px solid #ECE5D8;">
   <div style="display:flex; align-items:center; justify-content:space-between; gap:12px 16px; padding:14px clamp(20px,4vw,56px);">
-    <a href="/" style="display:flex; align-items:center; gap:14px; text-decoration:none; flex:none;">
+    <a href="home.dc.html" style="display:flex; align-items:center; gap:14px; text-decoration:none; flex:none;">
       <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:34px; width:auto; display:block;">
       <sc-if value="{{ hasLabel }}" hint-placeholder-val="{{ false }}">
         <span style="width:1px; height:24px; background:#ECE5D8;"></span>
@@ -26,14 +26,14 @@
           <sc-if value="{{ nextOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:0; padding-top:6px; z-index:60;">
               <div style="min-width:200px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:16px; padding:8px; box-shadow:0 20px 44px -18px rgba(25,23,19,0.28); display:flex; flex-direction:column;">
-                <a href="/heartbeat" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Heartbeat</a>
-                <a href="/join-a-team" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Team</a>
-                <a href="/lifegroups" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Lifegroup</a>
+                <a href="heartbeat.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Heartbeat</a>
+                <a href="join-a-team.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Team</a>
+                <a href="lifegroups.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Lifegroup</a>
               </div>
             </div>
           </sc-if>
         </div>
-        <a href="/communities" style="color:{{ commColor }}; font-weight:{{ commWeight }}; text-decoration:none; white-space:nowrap; font-size:15px; padding:8px 10px;">Communities</a>
+        <a href="communities.dc.html" style="color:{{ commColor }}; font-weight:{{ commWeight }}; text-decoration:none; white-space:nowrap; font-size:15px; padding:8px 10px;">Communities</a>
         <div style="position:relative;" onMouseEnter="{{ openEquip }}" onMouseLeave="{{ closeDrop }}">
           <button onClick="{{ toggleEquip }}" style="display:flex; align-items:center; gap:6px; background:none; border:none; cursor:pointer; font-family:inherit; font-size:15px; font-weight:{{ equipWeight }}; color:{{ equipColor }}; padding:8px 10px; white-space:nowrap;">Equip
             <svg width="10" height="10" viewBox="0 0 10 10" style="transition:transform 0.15s; transform:{{ equipChev }};"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
@@ -41,8 +41,8 @@
           <sc-if value="{{ equipOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:0; padding-top:6px; z-index:60;">
               <div style="min-width:190px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:16px; padding:8px; box-shadow:0 20px 44px -18px rgba(25,23,19,0.28); display:flex; flex-direction:column;">
-                <a href="/equip" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Equip Classes</a>
-                <a href="/academy" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">The Academy</a>
+                <a href="equip.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Equip Classes</a>
+                <a href="academy.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">The Academy</a>
               </div>
             </div>
           </sc-if>
@@ -55,7 +55,7 @@
             <div style="position:absolute; top:100%; left:0; padding-top:6px; z-index:60;">
               <div style="min-width:210px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:16px; padding:8px; box-shadow:0 20px 44px -18px rgba(25,23,19,0.28); display:flex; flex-direction:column;">
                 <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Tithes &amp; Offerings</a>
-                <a href="/kingdom-builders" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Kingdom Builders</a>
+                <a href="kingdom-builders.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Kingdom Builders</a>
               </div>
             </div>
           </sc-if>
@@ -82,19 +82,19 @@
       </button>
       <sc-if value="{{ accNextOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex; flex-direction:column; border-bottom:1px solid #F0EADD; padding:4px 0 10px;">
-          <a href="/heartbeat" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Heartbeat</a>
-          <a href="/join-a-team" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Team</a>
-          <a href="/lifegroups" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Lifegroup</a>
+          <a href="heartbeat.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Heartbeat</a>
+          <a href="join-a-team.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Team</a>
+          <a href="lifegroups.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Lifegroup</a>
         </div>
       </sc-if>
-      <a href="/communities" onClick="{{ closeMobile }}" style="padding:15px 2px; font-size:16.5px; font-weight:600; color:#191713; text-decoration:none; border-bottom:1px solid #F0EADD;">Communities</a>
+      <a href="communities.dc.html" onClick="{{ closeMobile }}" style="padding:15px 2px; font-size:16.5px; font-weight:600; color:#191713; text-decoration:none; border-bottom:1px solid #F0EADD;">Communities</a>
       <button onClick="{{ toggleAccEquip }}" style="display:flex; align-items:center; justify-content:space-between; background:none; border:none; border-bottom:1px solid #F0EADD; padding:15px 2px; font-family:inherit; font-size:16.5px; font-weight:600; color:#191713; cursor:pointer; text-align:left;">Equip
         <svg width="12" height="12" viewBox="0 0 10 10" style="transition:transform 0.15s; transform:{{ accEquipChev }};"><path d="M1 3l4 4 4-4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg>
       </button>
       <sc-if value="{{ accEquipOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex; flex-direction:column; border-bottom:1px solid #F0EADD; padding:4px 0 10px;">
-          <a href="/equip" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Equip Classes</a>
-          <a href="/academy" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">The Academy</a>
+          <a href="equip.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Equip Classes</a>
+          <a href="academy.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">The Academy</a>
         </div>
       </sc-if>
       <button onClick="{{ toggleAccGive }}" style="display:flex; align-items:center; justify-content:space-between; background:none; border:none; border-bottom:1px solid #F0EADD; padding:15px 2px; font-family:inherit; font-size:16.5px; font-weight:600; color:#191713; cursor:pointer; text-align:left;">Give
@@ -103,7 +103,7 @@
       <sc-if value="{{ accGiveOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex; flex-direction:column; border-bottom:1px solid #F0EADD; padding:4px 0 10px;">
           <a href="https://pushpay.com/g/citipointechurch" target="_blank" rel="noopener" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Tithes &amp; Offerings</a>
-          <a href="/kingdom-builders" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Kingdom Builders</a>
+          <a href="kingdom-builders.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Kingdom Builders</a>
         </div>
       </sc-if>
       <a href="{{ ctaHrefVal }}" target="{{ ctaTarget }}" onClick="{{ closeMobile }}" style="margin-top:12px; background:#191713; color:#FFFFFF; text-align:center; padding:16px; border-radius:100px; font-size:15.5px; font-weight:700; text-decoration:none;">{{ ctaLabelVal }}</a>
