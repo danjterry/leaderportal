@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<title>Visit Us | Citipointe Church Nashville</title>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713; display:flex; flex-direction:column;">
+
+  <!-- HEADER -->
+  <div style="max-width:860px; margin:0 auto; padding:clamp(48px,8vw,80px) clamp(20px,4vw,56px) 0; text-align:center; width:100%;">
+    <img src="assets/cp-icon-black.png" alt="Citipointe Church" style="width:46px; height:auto; margin:0 auto 26px; display:block;">
+    <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,60px); line-height:1.05; margin:0 0 20px; letter-spacing:-1.5px;">Visit Us</h1>
+    <p style="font-size:18px; line-height:1.7; color:#6E6759; max-width:560px; margin:0 auto;">Thanks for considering Citipointe Church Nashville — fill out the form below and a member of our team will be in touch.</p>
+  </div>
+
+  <!-- HERO PHOTO -->
+  <div style="max-width:860px; margin:0 auto; padding:clamp(32px,5vw,44px) clamp(20px,4vw,56px) 0; width:100%;">
+    <img src="assets/welcome-entrance.jpg" alt="Welcome flags and our team greeting people at the front doors" style="width:100%; aspect-ratio:2.2; border-radius:22px; object-fit:cover; display:block;">
+  </div>
+
+  <!-- VISITORREACH FORM -->
+  <div style="max-width:720px; margin:0 auto; padding:clamp(32px,5vw,48px) clamp(20px,4vw,56px) 0; width:100%;">
+    <div data-tf-live="01KY5TNXR0CT100M2JGF1ND37W"></div>
+  </div>
+
+  <!-- SERVICE TIMES & LOCATIONS -->
+  <div style="max-width:860px; margin:0 auto; padding:clamp(32px,5vw,48px) clamp(20px,4vw,56px) 0; width:100%;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,4vw,32px); text-align:center;">
+        <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:12px;">Nashville</div>
+        <div style="font-weight:800; font-size:24px; letter-spacing:-0.5px; margin-bottom:10px;">Sundays at 10am</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759; margin-bottom:16px;">7533 Lords Chapel Drive<br>Nashville, TN</div>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=7533+Lords+Chapel+Drive+Nashville+TN" target="_blank" rel="noopener" style="font-size:14px; font-weight:700; color:#191713; text-decoration:none;">Get directions &rarr;</a>
+      </div>
+      <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(24px,4vw,32px); text-align:center;">
+        <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; color:#8A8172; text-transform:uppercase; margin-bottom:12px;">Franklin</div>
+        <div style="font-weight:800; font-size:24px; letter-spacing:-0.5px; margin-bottom:10px;">Sundays at 11am</div>
+        <div style="font-size:14.5px; line-height:1.6; color:#6E6759; margin-bottom:16px;">Expression City Theatre<br>1724a General George Patton Dr, Brentwood, TN 37027</div>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=1724a+General+George+Patton+Dr+Brentwood+TN" target="_blank" rel="noopener" style="font-size:14px; font-weight:700; color:#191713; text-decoration:none;">Get directions &rarr;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONSENT TEXT -->
+  <div style="max-width:640px; margin:0 auto; padding:24px clamp(20px,4vw,56px) clamp(48px,7vw,72px); width:100%;">
+    <p style="font-size:12.5px; line-height:1.7; color:#8A8172; text-align:center; margin:0;">By submitting, you agree to receive communications from us via text and email. You can text STOP to cancel or HELP for assistance. Message and data rates may apply. Message frequency varies. Citipointe Church Nashville Privacy Policy &amp; Terms of Use apply.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #ECE5D8; margin-top:auto;">
+    <div style="max-width:860px; margin:0 auto; padding:32px clamp(20px,4vw,56px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;">
+      <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:24px; width:auto; display:block;">
+      <div style="font-size:13px; color:#B0A897;">&copy; 2026 Citipointe Church &middot; Nashville &amp; Franklin</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  componentDidMount() {
+    // Typeform embed script must load after the data-tf-live div exists in the DOM
+    if (!document.querySelector('script[src*="embed.typeform.com"]')) {
+      const s = document.createElement('script');
+      s.src = 'https://embed.typeform.com/next/embed.js';
+      document.body.appendChild(s);
+    }
+  }
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

@@ -8,6 +8,8 @@
 /kingdombuilders  /kingdom-builders  301
 /kingdom-builders  /kingdom-builders.dc.html  200
 /leader-portal  /leader-portal.dc.html  200
+/visit-us  /visit-us.dc.html  200
+/visit-us.dc.html  /visit-us  301
 
 # Old-site URLs (301 so Google drops them and passes to the new page)
 /church-on-fire-conference  /  301
