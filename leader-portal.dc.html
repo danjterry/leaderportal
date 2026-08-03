@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,7 +8,9 @@
 <meta property="og:site_name" content="Citipointe Church">
 <meta property="og:title" content="Leader Portal | Citipointe Church">
 <meta property="og:description" content="Everything you need to serve and lead at Citipointe, in one place.">
-<meta property="og:image" content="https://citipointe.church/assets/leader-portal-og.png">
+<meta property="og:image" content="https://citipointe.church/assets/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <title>Leader Portal | Citipointe Church</title>
 <meta name="robots" content="noindex, nofollow">
@@ -134,7 +136,7 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:22px; margin-bottom:48px;">
           <sc-for list="{{ tiles }}" as="t" hint-placeholder-count="3">
             <div onClick="{{ t.onClick }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:22px; padding:clamp(24px,5vw,32px); cursor:pointer; display:flex; flex-direction:column; gap:12px;" style-hover="border-color:#191713;">
-              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; color:#8A8172;">{{ t.num }}</div>
+              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:26px; color:#6E6759;">{{ t.num }}</div>
               <div style="font-weight:800; font-size:22px; letter-spacing:-0.3px;">{{ t.title }}</div>
               <div style="font-size:14.5px; line-height:1.65; color:#6B6355; flex:1;">{{ t.detail }}</div>
               <div style="font-size:14px; font-weight:700;">Open &rarr;</div>
@@ -376,14 +378,14 @@
           <div style="display:flex; flex-wrap:wrap; align-items:baseline; justify-content:space-between; gap:6px 16px; margin-bottom:6px;">
             <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase;">Wednesday night run sheet</div>
             <sc-if value="{{ showFallDates }}" hint-placeholder-val="{{ true }}">
-              <div style="font-size:12.5px; font-weight:700; color:#8A8172;">Fall season: Sep 2 – Nov 18</div>
+              <div style="font-size:12.5px; font-weight:700; color:#6E6759;">Fall season: Sep 2 – Nov 18</div>
             </sc-if>
           </div>
           <div style="font-size:13.5px; color:#9C927E; margin-bottom:18px;">A guide, not a script — shift the times to suit your table, but protect dinner, Communion, and finishing on time.</div>
           <div style="display:flex; flex-direction:column;">
             <sc-for list="{{ runSheet }}" as="rs" hint-placeholder-count="5">
               <div style="display:flex; gap:18px; align-items:flex-start; padding:13px 0; border-bottom:1px solid #F0EADC;">
-                <div style="flex:none; width:64px; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#8A8172; padding-top:1px;">{{ rs.time }}</div>
+                <div style="flex:none; width:64px; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#6E6759; padding-top:1px;">{{ rs.time }}</div>
                 <div>
                   <div style="font-weight:700; font-size:15px; margin-bottom:3px;">{{ rs.title }}</div>
                   <div style="font-size:14px; color:#6B6355; line-height:1.65;">{{ rs.detail }}</div>
@@ -397,7 +399,7 @@
         <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-bottom:28px;">
           <sc-for list="{{ rhythm }}" as="r" hint-placeholder-count="3">
             <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,28px);">
-              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#8A8172; margin-bottom:12px;">{{ r.num }}</div>
+              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#6E6759; margin-bottom:12px;">{{ r.num }}</div>
               <div style="font-weight:800; font-size:17px; margin-bottom:8px;">{{ r.title }}</div>
               <div style="font-size:14.5px; color:#6B6355; line-height:1.65;">{{ r.detail }}</div>
             </div>
@@ -579,7 +581,7 @@
                 <div style="display:flex; align-items:baseline; gap:12px; flex-wrap:wrap;">
                   <div style="font-weight:700; font-size:16px;">{{ step.title }}</div>
                   <sc-if value="{{ step.hasScripture }}" hint-placeholder-val="{{ false }}">
-                    <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:13.5px; color:#8A8172;">{{ step.scripture }}</span>
+                    <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:13.5px; color:#6E6759;">{{ step.scripture }}</span>
                   </sc-if>
                 </div>
                 <div style="font-size:14.5px; color:#6B6355; line-height:1.65; margin-top:5px;">{{ step.detail }}</div>
@@ -682,7 +684,7 @@
                 <sc-for list="{{ videos }}" as="v" hint-placeholder-count="4">
                   <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden;">
                     <div style="aspect-ratio:16/9; background:repeating-linear-gradient(45deg, #F5EFE3, #F5EFE3 10px, #EFE7D7 10px, #EFE7D7 20px); display:flex; align-items:center; justify-content:center;">
-                      <span style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:11.5px; letter-spacing:1px; color:#8A8172; background:#FBF8F3; border:1px dashed #D8CFBC; padding:6px 12px; border-radius:8px;">video &mdash; coming soon</span>
+                      <span style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:11.5px; letter-spacing:1px; color:#6E6759; background:#FBF8F3; border:1px dashed #D8CFBC; padding:6px 12px; border-radius:8px;">video &mdash; coming soon</span>
                     </div>
                     <div style="padding:18px 20px;">
                       <div style="font-weight:700; font-size:15.5px; margin-bottom:4px;">{{ v.title }}</div>

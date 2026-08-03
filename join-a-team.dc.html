@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,7 +12,9 @@
 <meta property="og:title" content="Join a Team — Serve on Sundays | Citipointe Church">
 <meta property="og:description" content="Serving is how you find your people. From the parking lot to the platform, there’s a place for your gifts on a Sunday team at Citipointe Church.">
 <meta property="og:url" content="https://citipointe.church/join-a-team">
-<meta property="og:image" content="https://citipointe.church/assets/arrival-flags.jpg">
+<meta property="og:image" content="https://citipointe.church/assets/og-default.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <script src="./support.js"></script>
 </head>
@@ -60,7 +62,7 @@
             <div style="padding:26px 26px 28px; display:flex; flex-direction:column; gap:10px; flex:1;">
               <div style="font-weight:700; font-size:19px;">{{ t.name }}</div>
               <div style="font-size:14.5px; line-height:1.65; color:#6E6759; flex:1;">{{ t.what }}</div>
-              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14.5px; color:#8A8172;">{{ t.win }}</div>
+              <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14.5px; color:#6E6759;">{{ t.win }}</div>
               <button onClick="{{ t.onSelect }}" style="{{ t.btnStyle }}">{{ t.btnLabel }}</button>
             </div>
           </div>
@@ -98,7 +100,7 @@
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; color:#191713; margin-bottom:20px; text-transform:uppercase;">Interest form</div>
         <h2 style="font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.12; margin:0 0 18px; letter-spacing:-1px;">Tell us you're in</h2>
         <p style="font-size:16px; line-height:1.75; color:#6E6759; margin:0 0 24px;">Whether you've done Heartbeat or not, start here. We'll take the next step with you.</p>
-        <img src="assets/auditorium-wide.jpg" alt="A full auditorium on a Sunday at Citipointe" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
+        <img src="assets/auditorium-wide.webp" alt="A full auditorium on a Sunday at Citipointe" style="width:100%; aspect-ratio:1.3; border-radius:22px; object-fit:cover; display:block;">
       </div>
 
       <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(28px,4vw,40px);">
@@ -134,7 +136,7 @@
               </div>
             </div>
             <div>
-              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which teams interest you? Pick any — or tap the cards above.</label>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which team interests you? Pick one — or tap a card above.</label>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <sc-for list="{{ teamOptions }}" as="t" hint-placeholder-count="4">
                   <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
@@ -179,11 +181,11 @@
             </sc-if>
             <sc-if value="{{ needsHeartbeat }}" hint-placeholder-val="{{ false }}">
               <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 16px;">Your next step is Heartbeat. It's where you'll discover your gifts and get matched to a team.</p>
-              <p style="font-size:15px; color:#8A8172; margin:0 0 24px;">The next one is <strong style="color:#191713;">{{ nextHeartbeatLabel }}</strong>, during service.</p>
+              <p style="font-size:15px; color:#6E6759; margin:0 0 24px;">The next one is <strong style="color:#191713;">{{ nextHeartbeatLabel }}</strong>, during service.</p>
               <a href="heartbeat.dc.html" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none; margin-bottom:24px;">Save my Heartbeat spot</a>
             </sc-if>
             <div>
-              <a href="#interest" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#8A8172; text-decoration:none;">Submit another</a>
+              <a href="#interest" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#6E6759; text-decoration:none;">Submit another</a>
             </div>
           </div>
         </sc-if>
@@ -198,22 +200,22 @@
       <div style="display:flex; align-items:center; gap:12px;">
         <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:28px; width:auto; display:block;">
         <span style="width:1px; height:20px; background:#ECE5D8;"></span>
-        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#8A8172;">Join a Team</span>
+        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#6E6759;">Join a Team</span>
       </div>
-      <div style="display:flex; gap:12px 32px; font-size:14px; color:#8A8172; flex-wrap:wrap;">
-        <a href="heartbeat.dc.html" style="color:#8A8172; text-decoration:none;">Heartbeat</a>
-        <a href="lifegroups.dc.html" style="color:#8A8172; text-decoration:none;">Lifegroups</a>
-        <a href="communities.dc.html" style="color:#8A8172; text-decoration:none;">Communities</a>
-        <a href="equip.dc.html" style="color:#8A8172; text-decoration:none;">Equip</a>
-        <a href="academy.dc.html" style="color:#8A8172; text-decoration:none;">The Academy</a>
-        <a href="kingdom-builders.dc.html" style="color:#8A8172; text-decoration:none;">Kingdom Builders</a>
-        <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#8A8172; text-decoration:none;">Need prayer?</a>
-        <a href="leader-portal.dc.html" style="color:#8A8172; text-decoration:none;">Leader Portal</a>
-        <a href="/staff" style="color:#8A8172; text-decoration:none;">Staff hub</a>
+      <div style="display:flex; gap:12px 32px; font-size:14px; color:#6E6759; flex-wrap:wrap;">
+        <a href="heartbeat.dc.html" style="color:#6E6759; text-decoration:none;">Heartbeat</a>
+        <a href="lifegroups.dc.html" style="color:#6E6759; text-decoration:none;">Lifegroups</a>
+        <a href="communities.dc.html" style="color:#6E6759; text-decoration:none;">Communities</a>
+        <a href="equip.dc.html" style="color:#6E6759; text-decoration:none;">Equip</a>
+        <a href="academy.dc.html" style="color:#6E6759; text-decoration:none;">The Academy</a>
+        <a href="kingdom-builders.dc.html" style="color:#6E6759; text-decoration:none;">Kingdom Builders</a>
+        <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#6E6759; text-decoration:none;">Need prayer?</a>
+        <a href="leader-portal.dc.html" style="color:#6E6759; text-decoration:none;">Leader Portal</a>
+        <a href="/staff" style="color:#6E6759; text-decoration:none;">Staff hub</a>
       </div>
       <div style="display:flex; flex-direction:column; gap:12px;">
-            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Nashville</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
-            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Franklin</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointefranklin/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/p/Citipointe-Franklin-61555597406922/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#8A8172; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Nashville</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Franklin</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointefranklin/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/p/Citipointe-Franklin-61555597406922/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
           </div>
       <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; To unmistakably influence our world for good and for God &middot; Part of the global Citipointe family &middot; <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#191713; text-decoration:none; font-weight:600;">www.citipointechurch.com</a></div>
     </div>
@@ -270,14 +272,14 @@ class Component extends DCLogic {
   }
 
   teams = [
-    { img: 'assets/preaching-cross.jpg', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
-    { img: 'assets/arrival-flags.jpg', name: 'Welcome Team', what: 'The first face people see. Greet at the doors and set the tone for the whole morning.', win: 'The win: every guest feels expected.' },
-    { img: 'assets/parking-team.jpg', name: 'Parking Lot Team', what: 'Direct traffic, wave people in, and turn the parking lot into the first hello.', win: 'The win: the welcome starts at the curb.' },
-    { img: 'assets/kids-outside.jpg', name: 'Citipointe Kids', what: 'Help every child feel seen, known, and loved \u2014 games, stories, worship, and small groups that make faith stick.', win: 'The win: kids beg their parents to come back.' },
-    { img: 'assets/ministry-community.jpg', name: 'Connect Bar', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
-    { img: 'assets/stage-word.jpg', name: 'Worship Team', what: 'Lead the room in worship through vocals and band \u2014 carrying His presence before carrying a note.', win: 'The win: a room led into pure worship of Jesus.' },
-    { img: 'assets/photo-7.png', name: 'Production Team', what: 'Run sound, lyrics, lighting, and stream \u2014 the seamless details behind every service.', win: 'The win: nothing between people and the presence of God.' },
-    { img: 'assets/stage-word.jpg', name: 'Photo/Video Team', what: 'Capture the moments \u2014 photos, video, and stories that let people feel the room before they ever walk in.', win: 'The win: the weekend gets to keep preaching all week.' },
+    { img: 'assets/preaching-cross.webp', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
+    { img: 'assets/arrival-flags.webp', name: 'Welcome Team', what: 'The first face people see. Greet at the doors and set the tone for the whole morning.', win: 'The win: every guest feels expected.' },
+    { img: 'assets/parking-team.webp', name: 'Parking Lot Team', what: 'Direct traffic, wave people in, and turn the parking lot into the first hello.', win: 'The win: the welcome starts at the curb.' },
+    { img: 'assets/kids-outside.webp', name: 'Citipointe Kids', what: 'Help every child feel seen, known, and loved \u2014 games, stories, worship, and small groups that make faith stick.', win: 'The win: kids beg their parents to come back.' },
+    { img: 'assets/ministry-community.webp', name: 'Connect Bar', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
+    { img: 'assets/stage-word.webp', name: 'Worship Team', what: 'Lead the room in worship through vocals and band \u2014 carrying His presence before carrying a note.', win: 'The win: a room led into pure worship of Jesus.' },
+    { img: 'assets/photo-7.webp', name: 'Production Team', what: 'Run sound, lyrics, lighting, and stream \u2014 the seamless details behind every service.', win: 'The win: nothing between people and the presence of God.' },
+    { img: 'assets/stage-word.webp', name: 'Photo/Video Team', what: 'Capture the moments \u2014 photos, video, and stories that let people feel the room before they ever walk in.', win: 'The win: the weekend gets to keep preaching all week.' },
   ];
 
   pathway = [
@@ -304,9 +306,7 @@ class Component extends DCLogic {
   chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
 
   toggleTeam = (name) => this.setState(s => {
-    const teams = s.form.teams.includes(name)
-      ? s.form.teams.filter(x => x !== name)
-      : [...s.form.teams, name];
+    const teams = s.form.teams.includes(name) ? [] : [name];
     return { form: { ...s.form, teams } };
   });
 
