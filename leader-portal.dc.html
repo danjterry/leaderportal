@@ -1251,8 +1251,9 @@ class Component extends DCLogic {
     return d;
   }
 
-  go = (view, teamKey) => () => this.setState({ view, teamKey: teamKey || null, ltTab: 'playbook', lgTab: 'playbook' });
-  goCurriculum = () => this.setState({ view: 'leadLifegroup', lgTab: 'curriculum' });
+  toTop = () => { try { window.scrollTo(0, 0); document.documentElement.scrollTop = 0; document.body.scrollTop = 0; } catch (e) {} };
+  go = (view, teamKey) => () => { this.setState({ view, teamKey: teamKey || null, ltTab: 'playbook', lgTab: 'playbook' }); this.toTop(); };
+  goCurriculum = () => { this.setState({ view: 'leadLifegroup', lgTab: 'curriculum' }); this.toTop(); };
 
   checklistData = [
     { title: 'Before your first Sunday', items: [
@@ -1380,19 +1381,19 @@ class Component extends DCLogic {
       { key: 'library', label: 'Library' },
     ].map(t => ({
       label: t.label,
-      onClick: () => this.setState({ trainingTab: t.key }),
+      onClick: () => { this.setState({ trainingTab: t.key }); this.toTop(); },
       style: 'cursor:pointer; user-select:none; padding:11px 20px; border-radius:100px; font-size:14px; font-weight:700; white-space:nowrap; ' + (trainingTab === t.key ? 'background:#191713; color:#FFFFFF;' : 'background:#FFFFFF; border:1px solid #E7DFCF; color:#4A443A;'),
     }));
     const subTabStyle = (active) => 'cursor:pointer; user-select:none; padding:11px 20px; border-radius:100px; font-size:14px; font-weight:700; white-space:nowrap; ' + (active ? 'background:#191713; color:#FFFFFF;' : 'background:#FFFFFF; border:1px solid #E7DFCF; color:#4A443A;');
     const leadTeamTabs = [
       { key: 'playbook', label: 'Leader Playbook' },
       { key: 'training', label: 'Training' },
-    ].map(t => ({ label: t.label, onClick: () => this.setState({ ltTab: t.key }), style: subTabStyle(ltTab === t.key) }));
+    ].map(t => ({ label: t.label, onClick: () => { this.setState({ ltTab: t.key }); this.toTop(); }, style: subTabStyle(ltTab === t.key) }));
     const leadLGTabs = [
       { key: 'playbook', label: 'Leader Playbook' },
       { key: 'curriculum', label: 'Curriculum & Content' },
       { key: 'training', label: 'Training' },
-    ].map(t => ({ label: t.label, onClick: () => this.setState({ lgTab: t.key }), style: subTabStyle(lgTab === t.key) }));
+    ].map(t => ({ label: t.label, onClick: () => { this.setState({ lgTab: t.key }); this.toTop(); }, style: subTabStyle(lgTab === t.key) }));
 
     const isLGContext = view === 'leadLifegroup' || view === 'sermonNotes' || view === 'communion';
     const activeChecklistData = isLGContext ? this.lgChecklistData : this.checklistData;
