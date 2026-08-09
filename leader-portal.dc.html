@@ -501,10 +501,10 @@
               <a href="https://www.multiplymovement.com/chapters" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Weekly teaching videos + chapters &rarr;</a>
             </div>
           </div>
-          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Sermon notes</div>
-            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Discussion questions from the current series, updated weekly.</div>
-            <div style="display:inline-block; font-size:12.5px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#9C927E; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:100px; padding:7px 16px;">Coming soon</div>
+          <div onClick="{{ goSermonNotes }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
+            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Sermon notes &amp; discussion questions</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Questions from Sunday's message to take into your Wednesday night group, updated weekly.</div>
+            <div style="font-size:14px; font-weight:700;">Open the questions &rarr;</div>
           </div>
           <div onClick="{{ goCommunion }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Communion guide</div>
@@ -548,7 +548,7 @@
         <div onClick="{{ goCurriculum }}" style="display:inline-block; font-size:13.5px; font-weight:600; color:#9C927E; cursor:pointer; margin-bottom:20px;">&larr; Curriculum and content</div>
         <div style="margin-bottom:32px;">
           <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; margin-bottom:10px; text-transform:uppercase;">Discuss the message</div>
-          <h1 style="font-weight:800; font-size:clamp(26px,5vw,34px); margin:0; letter-spacing:-0.5px;">Sermon Notes</h1>
+          <h1 style="font-weight:800; font-size:clamp(26px,5vw,34px); margin:0; letter-spacing:-0.5px;">Sermon Notes &amp; Discussion Questions</h1>
         </div>
         <div style="display:flex; flex-direction:column; gap:20px;">
           <sc-for list="{{ sermonNotes }}" as="n" hint-placeholder-count="3">
@@ -558,7 +558,9 @@
                   <div style="font-weight:700; font-size:19px; margin-bottom:4px;">{{ n.title }}</div>
                   <div style="font-size:13px; color:#9C927E;">{{ n.date }} &middot; {{ n.passage }}</div>
                 </div>
-                <a href="#sermon-notes" style="font-size:14px; font-weight:600; text-decoration:none; flex:none; white-space:nowrap;">Download PDF &rarr;</a>
+                <sc-if value="{{ n.link }}" hint-placeholder-val="{{ true }}">
+                  <a href="{{ n.link }}" target="_blank" style="font-size:14px; font-weight:600; text-decoration:none; flex:none; white-space:nowrap;">Printable version &rarr;</a>
+                </sc-if>
               </div>
               <div style="font-size:15px; color:#3B372E; line-height:1.65; margin-bottom:18px;">{{ n.summary }}</div>
               <div style="background:#FBF8F3; border-radius:12px; padding:20px 22px;">
@@ -1216,9 +1218,7 @@ class Component extends DCLogic {
   ];
 
   sermonNotes = [
-    { date: 'July 5, 2026', title: 'Rooted: Devoted to the Word', passage: 'Acts 2:42-47', summary: 'A look at the four devotions of the early church, teaching, fellowship, breaking of bread, and prayer, and what it means to build our lives on them today.', questions: ['What does it look like to be "devoted" rather than just "interested"?', 'Which of the four devotions is hardest for your group to prioritize right now?', 'Share one practical way your group can grow in fellowship this week.'] },
-    { date: 'June 28, 2026', title: 'Rooted: A People, Not a Place', passage: '1 Peter 2:9-10', summary: 'Exploring our identity as a chosen people and what it means to carry that identity into our homes, workplaces and lifegroups.', questions: ['How does knowing you\u2019re part of "a people" change the way you show up to group?', 'Where do you find your identity when life gets hard?', 'Who is one person you could invite into this community?'] },
-    { date: 'June 21, 2026', title: 'Where You Matter', passage: 'Luke 15:1-7', summary: 'The story of the lost sheep, and the heart of a God who leaves the ninety-nine to go after the one.', questions: ['Have you experienced God pursuing you personally? What happened?', 'Who in your life needs to hear that they matter to God?', 'How can your group be a place where people feel found?'] },
+    { date: 'August 2, 2026', title: 'Back to the Standard: What Is a Disciple?', passage: 'Matthew 28:19-20 · Joel Ramsey', link: 'assets/discussion-questions-august-2-2026.html', summary: 'Not a crowd but a community of disciples \u2014 measuring our lives against Jesus himself rather than tradition or culture. Use these in your Wednesday night lifegroup to spark honest conversation.', questions: ['What is the difference between attending a church and belonging to one, and which better describes your life right now?', 'Between chasing success and isolating from everyone, where do you lean, and why does that pull feel so strong?', 'Every lifegroup moves to Wednesday nights from September 2, growing from 7 to 100 groups. Why do consistency and simplicity matter for real community?', 'Where might you be measuring your faith against tradition or culture rather than against Jesus himself?', 'Read Matthew 28:19-20. What is one command of Jesus you have heard clearly but been slow to obey?', 'Read Luke 6:40. Who has shaped you to look more like Jesus, and who are you investing in that way?', 'Read 1 John 2:6. What would walking the way Jesus walked look like this week in one specific relationship?', 'Surrender, obey, do, make disciples \u2014 which of the four feels hardest for you right now, and why?', 'What is one real need in your life right now that this group could help carry?', 'Where does your life look more like the surrounding culture than like Jesus, and what would bring it back to the standard?'] },
   ];
 
   communionScripture = {
