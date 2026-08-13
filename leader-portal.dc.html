@@ -117,6 +117,13 @@
                 <div style="font-size:13px; color:#9C927E; margin-top:5px;">6:30pm at Citipointe Nashville, all Lifegroup leaders</div>
               </div>
             </sc-if>
+            <sc-if value="{{ showSignUps }}" hint-placeholder-val="{{ true }}">
+              <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+                <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroups</div>
+                <div style="font-weight:800; font-size:19px;">Sign ups go live — Sun, Aug 16</div>
+                <div style="font-size:13px; color:#9C927E; margin-top:5px;">Groups list on citipointe.church &mdash; answer requests within 48 hours</div>
+              </div>
+            </sc-if>
             <sc-if value="{{ showLaunchNight }}" hint-placeholder-val="{{ true }}">
               <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
                 <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroup fall season · Sep 2 – Nov 18</div>
@@ -431,7 +438,57 @@
           <!-- Join requests -->
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Join requests: the 48-hour rule</div>
-            <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">When someone asks to join through the website or app, respond within 48 hours &mdash; a fast, warm hello communicates that we value people. And we never turn anyone away: if your table is at capacity, talk to your Pastoral Oversight about alternatives before saying no.</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">When someone asks to join through the website or app, respond within 48 hours &mdash; a fast, warm hello communicates that we value people. Call if you can, text if you cannot. Give them the address, the time, and tell them the food is covered on their first night. If you cannot take them, tell your Pastoral Oversight the same day so they can be placed somewhere else.</div>
+            <div style="font-size:14px; color:#3B372E; line-height:1.7; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:14px 18px;"><strong>Then add them:</strong> Citipointe USA app &rarr; My Lifegroup &rarr; your group &rarr; View / Edit Members &rarr; Add &rarr; search their name. You do not need to wait for a request &mdash; if you have already recruited someone, go straight to the app and add them.</div>
+          </div>
+
+          <!-- Children -->
+          <div style="grid-column:1/-1; background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Children at Lifegroups</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:18px;">Not every group will have children, and that is fine. If yours does, start with a conversation with the Lifegroups Director &mdash; we will walk through it with you, and if the standard below can be met, you are good to go.</div>
+            <div style="background:#F5EFE3; border-radius:12px; padding:16px 20px; font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:18px;"><strong>The standard we all keep:</strong> any time a child is in the care of someone other than their own parent or guardian, two background-checked adults are present. The same standard in every Citipointe ministry, in every building and every home. It is not about suspicion &mdash; it protects the children and it protects you.</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px 28px; margin-bottom:18px;">
+              <div>
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">What meets the standard</div>
+                <div style="font-size:14px; color:#3B372E; line-height:1.7;">Simplest option: children stay with their own parents for the evening, in the same room or an adjoining one their parent can see. They eat with everyone and hear the adults pray. If your group would like children looked after separately, that works too &mdash; with two background-checked adults in the room.</div>
+              </div>
+              <div>
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">Check first</div>
+                <div style="font-size:14px; color:#3B372E; line-height:1.7;">A single sitter, one adult alone with the kids in another room, or a rotating kids' night in another home all fall short &mdash; bring those ideas to your oversight <strong>before</strong> you offer them, rather than after. Arrangements families make privately between themselves stay with those parents.</div>
+              </div>
+            </div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:14px 18px;"><strong>When someone asks, say this:</strong> &ldquo;Bring the kids. They stay with you, they eat with us, and most nights they end up playing nearby while we talk. It is a family in a home, not a service.&rdquo; Keep your Pastoral Oversight in the loop &mdash; Young Families oversight is Dylan and Tasmin Hibbert, and they would love to help.</div>
+          </div>
+
+          <!-- Confidentiality -->
+          <div style="grid-column:1/-1; background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Confidentiality is not secrecy</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:18px;">What is shared around your table stays around your table &mdash; not repeated to other leaders, not to spouses outside the group, not carried into conversations at church on Sunday. There are three exceptions, and they are not negotiable: <strong>someone at risk of harming themselves</strong>, <strong>someone at risk of harming another person</strong>, and <strong>anything involving a minor</strong>.</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:18px;">In those three cases you do not hold it, you do not sit on it overnight, and you do not decide on your own whether it is serious enough. Pass it to your Pastoral Oversight immediately, and where the law requires it, to the authorities. Tennessee requires any person who suspects child abuse or neglect to report it &mdash; that obligation is not limited to staff, and it is not satisfied by telling a pastor.</div>
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:18px;">
+              <div style="background:#F5EFE3; border-radius:12px; padding:16px 20px;">
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">Write</div>
+                <div style="font-size:14px; color:#3B372E; line-height:1.7;">&ldquo;Called Tuesday. Going through a hard season at work. Will follow up next week. Would benefit from a call from a pastor.&rdquo;</div>
+              </div>
+              <div style="background:#F5EFE3; border-radius:12px; padding:16px 20px;">
+                <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">Do not write</div>
+                <div style="font-size:14px; color:#3B372E; line-height:1.7;">The content of what someone disclosed. Medical, marital, or financial detail, or anything told to you in confidence that does not fall under the three exceptions. If you are unsure whether it belongs in a note, it does not &mdash; call and say it out loud instead.</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- The meal -->
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">Nobody caters this alone</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">The food does not need to be impressive, it needs to happen. Set a rotation for the whole season on night one &mdash; someone brings the main, everyone else works a simple rotation of sides, drinks, and dessert &mdash; then hand it to someone in the group who enjoys organizing. If the host quietly absorbs the whole load they will be tired by week four and done by week eight, and the group loses its home. Ask about allergies and dietary needs when someone joins, not when they arrive at the door.</div>
+            <div style="font-size:14px; color:#3B372E; line-height:1.7; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:14px 18px;"><strong>A guest's first night:</strong> come hungry, bring nothing. After that they are not a guest, they are family &mdash; and family brings something.</div>
+          </div>
+
+          <!-- Group full -->
+          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="font-weight:800; font-size:18px; margin-bottom:14px;">When your group is full</div>
+            <div style="font-size:14.5px; color:#3B372E; line-height:1.7; margin-bottom:16px;">We never turn anyone away. When your table reaches capacity, tell the Lifegroups Director that same week &mdash; do not wait for the next check-in. One of three things happens: your leaders in training launch a second table in another home, we place the person in a group with room near them, or you and the Director plan how your group multiplies.</div>
+            <div style="font-size:14px; color:#3B372E; line-height:1.7; background:#FBF8F3; border:1px solid #E7DFCF; border-radius:12px; padding:14px 18px;">A full group is not a problem to be managed. It is the signal that it is time to multiply &mdash; which is what the two leaders in training were always for.</div>
           </div>
 
           <!-- Cancelling -->
@@ -495,9 +552,11 @@
           <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
             <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">This term's study material</div>
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Multiply: Disciples Making Disciples</div>
-            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Francis Chan's guide to making disciples — read the book and work through the chapters with your group.</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Volume 1 small group content. Lead from the leader's guide; give every member the group member guide. The book and the weekly teaching videos sit behind it.</div>
             <div style="display:flex; flex-direction:column; gap:8px;">
-              <a href="assets/multiply-disciples-making-disciples.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Study material PDF &rarr;</a>
+              <a href="assets/multiply-vol1-leaders-guide.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Volume 1 &mdash; Leader's guide &rarr;</a>
+              <a href="assets/multiply-vol1-group-member-guide.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Volume 1 &mdash; Group member guide &rarr;</a>
+              <a href="assets/multiply-disciples-making-disciples.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">The full book (PDF) &rarr;</a>
               <a href="https://www.multiplymovement.com/chapters" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Weekly teaching videos + chapters &rarr;</a>
             </div>
           </div>
@@ -1172,8 +1231,8 @@ class Component extends DCLogic {
 
   runSheet = [
     { time: '7:00', title: 'Dinner around the table', detail: 'The meal is the point, not the preamble. Eat together, linger, and make the new person feel like they were expected.' },
-    { time: '7:45', title: 'Celebrate and announce', detail: 'Wins first \u2014 someone joined a team, a testimony, an answered prayer. Then any dates the group needs.' },
-    { time: '7:55', title: 'The Word at the table', detail: 'Open the study material or sermon notes. Dialogue over monologue \u2014 keep the ball moving from person to person.' },
+    { time: '7:45', title: 'Clear and connect', detail: 'The table gets cleared together, and wins get celebrated \u2014 a testimony, an answered prayer, someone joining a team. This is where new people get folded in, so make sure nobody is standing on their own.' },
+    { time: '8:00', title: 'The Word at the table', detail: 'Open the study material or sermon notes. Dialogue over monologue \u2014 keep the ball moving from person to person.' },
     { time: '8:20', title: 'Communion together', detail: 'Every table, every gathering. Use the Communion guide, and pick up resources on Sundays or midweek from the office.' },
     { time: '8:30', title: 'Pray and send', detail: 'Prayer requests and praise reports, pray for them together, and finish on time \u2014 honoring the clock honors the guest.' },
   ];
@@ -1257,7 +1316,7 @@ class Component extends DCLogic {
 
   checklistData = [
     { title: 'Before your first Sunday', items: [
-      { id: 'pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything.' },
+      { id: 'pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything \u2014 submit by 19 August. Anyone not submitted by the 19th leads alongside an approved leader on launch night rather than solo.' },
       { id: 'pre-safe', title: 'Completed Heartbeat', detail: 'One Sunday \u2014 learn the heart of the church before you lead in it.' },
       { id: 'pre-coach', title: 'Coffee with your team leader', detail: 'Every new leader gets one. They are your first call all year.' },
       { id: 'pre-app', title: 'CCB access', detail: 'Ask your staff contact to add you so rostering and serving requests work.' },
@@ -1278,7 +1337,7 @@ class Component extends DCLogic {
 
   lgChecklistData = [
     { title: 'Before your first night', items: [
-      { id: 'lg-pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything.' },
+      { id: 'lg-pre-bg', title: 'Background check cleared', detail: 'Handled through CCB. Required before you lead anything \u2014 submit by 19 August. Anyone not submitted by the 19th leads alongside an approved leader on launch night rather than solo.' },
       { id: 'lg-pre-safe', title: 'Completed Heartbeat', detail: 'One Sunday \u2014 learn the heart of the church before you lead in it.' },
       { id: 'lg-pre-coach', title: 'Coffee with your Pastoral Oversight', detail: 'Start the relationship early \u2014 they are your first call all year.' },
       { id: 'lg-pre-app', title: 'Citipointe USA app access', detail: 'Ask your staff contact to add your group so attendance recording works.' },
@@ -1361,6 +1420,7 @@ class Component extends DCLogic {
       : [
         { area: 'Youth', names: 'Levi Winnington' },
         { area: 'Young Adults', names: 'Kim & Chris Peterson' },
+        { area: 'Young Families', names: 'Dylan & Tasmin Hibbert' },
         { area: 'Adults', names: 'Jimmy & Tishara Pitts' },
         { area: 'Seniors', names: 'Art & Otelia Blackburn' },
       ];
@@ -1476,6 +1536,7 @@ class Component extends DCLogic {
       seasons: this.seasonCards(),
       showLaunchNight: this.launchNightVisible(),
       showTrainingNight: new Date() < new Date(2026, 7, 13), // hides after Aug 12, 2026
+      showSignUps: new Date() < new Date(2026, 7, 24), // hides a week after sign ups open
       showFallDates: new Date() < new Date(2026, 10, 19), // hides after Nov 18, 2026
       careLevels: this.careLevels,
       sermonNotes: this.sermonNotes,
