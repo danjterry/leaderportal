@@ -14,7 +14,7 @@
 // leader who handles admin for the group. Internal only, never rendered.
 
 export const GROUPS = [
-  { id: 'chris-kim', art: 'assets/groups/chris-kim.png', formName: "Chris and Kim's Lifegroup", leaders: 'Chris & Kim Peterson', assistants: 'Miranda Lightner & David Nguyen', campus: 'Nashville', area: 'Nippers Corner', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
+  { id: 'chris-kim', art: 'assets/groups/chris-kim.png', formName: "Chris and Kim's Lifegroup", leaders: 'Chris & Kim Peterson', assistants: 'David Nguyen & Miranda Lightner', campus: 'Nashville', area: 'Nippers Corner', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
   { id: 'matt-steph', art: 'assets/groups/matt-steph.png', formName: "Matt and Steph's Lifegroup", leaders: 'Matt & Steph Utterback', assistants: '', campus: 'Nashville', area: 'Nippers Corner', time: '5:00pm', kids: true, demographics: ['Adults'], status: 'Open' },
   { id: 'mickey-greg', art: 'assets/groups/mickey-greg.png', formName: "Greg and Mickey's Lifegroup", leaders: 'Greg & Mickey Taylor', assistants: 'Steve & Kathy Carter', campus: 'Nashville', area: 'Brentwood', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
   { id: 'freddie-cheri', art: 'assets/groups/freddie-cheri.png', formName: "Freddie and Cheri's Lifegroup", leaders: 'Freddie & Cheri Carr', assistants: 'Melissa & Nate Bentley', campus: 'Nashville', area: 'Antioch', time: '6:30pm', kids: true, demographics: ['Young Adults', 'Adults'], status: 'Open' },
@@ -24,20 +24,20 @@ export const GROUPS = [
   { id: 'levi-bryan', art: 'assets/groups/levi-bryan.png', formName: "Levi and Bryan's Lifegroup", leaders: 'Levi Winnington & Bryan Henkel', assistants: 'Angel Padilla', campus: 'Nashville', area: 'Antioch', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
   { id: 'john-tricia', art: 'assets/groups/john-tricia.png', formName: "John and Tricia's Lifegroup", leaders: 'John & Tricia Prather', assistants: 'Reggie & Ife Scott', campus: 'Nashville', area: 'Antioch', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
   { id: 'pedro-kristina', art: 'assets/groups/pedro-kristina.png', formName: "Pedro and Kristina's Lifegroup", leaders: 'Pedro & Kristina Vinhais', assistants: 'Robin & Max Penir', campus: 'Nashville', area: 'Spring Hill', time: '7:00pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
-  { id: 'eric-jodi', formName: "Eric and Jodi's Lifegroup", leaders: 'Eric & Jodi Madej', assistants: 'Tammy & Neal Kelley', contact: 'Tammy Kelley', campus: 'Nashville', area: 'Murfreesboro', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
-  { id: 'christina-jedediah', art: 'assets/groups/christina-jedediah.png', formName: "Christina and Jedediah's Lifegroup", leaders: 'Christina & Jed Vivio', assistants: '', campus: 'Nashville', area: 'Nolensville', time: '5:30pm', kids: true, demographics: ['Young Adults', 'Adults', 'Young Families'], status: 'Open' },
-  { id: 'tyler-erica', art: 'assets/groups/tyler-erica.png', formName: "Tyler and Erica's Lifegroup", leaders: 'Erica & Tyler Thayer', assistants: '', campus: 'Nashville', area: 'Nolensville', time: '6:30pm', kids: true, demographics: ['Adults', 'Young Families'], status: 'Open' },
+  { id: 'tammy-neal', formName: "Tammy & Neal Kelley's Lifegroup", leaders: 'Tammy & Neal Kelley', assistants: 'Eric & Jodi Madej', contact: 'Tammy Kelley', campus: 'Nashville', area: 'Murfreesboro', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
+  { id: 'christina-jedediah', art: 'assets/groups/christina-jedediah.png', formName: "Christina and Jedediah's Lifegroup", leaders: 'Christina & Jed Vivio', assistants: '', campus: 'Nashville', area: 'Nolensville', time: '5:30pm', kids: true, demographics: ['Married Couples', 'Young Families'], status: 'Open' },
+  { id: 'tyler-erica', art: 'assets/groups/tyler-erica.png', formName: "Tyler and Erica's Lifegroup", leaders: 'Tyler & Erica Thayer', assistants: '', campus: 'Nashville', area: 'Nolensville', time: '6:30pm', kids: true, demographics: ['Adults', 'Families'], status: 'Open' },
   { id: 'jericco-shantelle', art: 'assets/groups/jericco-shantelle.png', formName: "Jericco and Shantelle's Lifegroup", leaders: 'Jericco & Shantelle Vera', assistants: 'Nikki & Dalton Steele', campus: 'Nashville', area: 'East Nashville', time: '6:30pm', kids: false, demographics: ['Young Adults', 'Young Families'], status: 'Open' },
   { id: 'jimmy-tishara', art: 'assets/groups/jimmy-tishara.png', formName: "Jimmy and Tishara's Lifegroup", leaders: 'Jimmy & Tishara Pitts', assistants: '', campus: 'Nashville', area: 'Smyrna', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
   { id: 'art-otelia', art: 'assets/groups/art-otelia.png', formName: "Art and Otelia's Lifegroup", leaders: 'Art & Otelia Blackburn', assistants: 'Kirstie Shreuder & Beverly Erwin', campus: 'Nashville', area: 'At the church', time: '12:00pm', kids: false, demographics: ['Seniors'], status: 'Open' },
-  { id: 'stuart-kelsey', formName: "Stuart and Kelsey's Lifegroup", leaders: 'Stuart & Kelsey', assistants: '', campus: 'Franklin', area: 'Bradford Hills', time: '6:30pm', kids: true, demographics: ['Young Adults', 'Adults', 'Young Families'], status: 'Open' },
+  { id: 'stuart-kelsey', formName: "Stuart and Kelsey's Lifegroup", leaders: 'Stuart & Kelsey McCloud', assistants: '', campus: 'Franklin', area: 'Bradford Hills', time: '6:30pm', kids: true, demographics: ['Young Adults', 'Adults', 'Young Families'], status: 'Open' },
   { id: 'ethan-aaron', formName: "Ethan and Aaron's Lifegroup", leaders: 'Ethan & Aaron', assistants: '', campus: 'Franklin', area: 'Franklin', time: '6:30pm', kids: false, demographics: ['Men'], status: 'Open' },
   { id: 'eva-katrina', formName: "Eva and Katrina's Lifegroup", leaders: 'Eva & Katrina', assistants: '', campus: 'Franklin', area: 'Franklin', time: '7:00pm', kids: false, demographics: ['Women'], status: 'Open' },
 ];
 
 // Filter vocabularies, ordered for the UI (not alphabetised by accident).
 export const CAMPUSES = ['Nashville', 'Franklin'];
-export const DEMOGRAPHICS = ['Young Adults', 'Adults', 'Young Families', 'Seniors', 'Men', 'Women'];
+export const DEMOGRAPHICS = ['Young Adults', 'Adults', 'Married Couples', 'Young Families', 'Families', 'Seniors', 'Men', 'Women'];
 export const AREAS = [...new Set(GROUPS.map(g => g.area))].sort((a, b) => a.localeCompare(b));
 
 // Derived from formName so the card and the JotForm option can never drift.
