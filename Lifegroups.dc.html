@@ -307,7 +307,7 @@
                 <button onClick="{{ g.openRequest }}" style="margin-top:6px; background:#191713; color:#FFFFFF; border:none; font-family:inherit; font-weight:700; font-size:14.5px; padding:13px; border-radius:100px; cursor:pointer;">Request to join</button>
               </sc-if>
               <sc-if value="{{ g.isFull }}" hint-placeholder-val="{{ false }}">
-                <div style="margin-top:6px; text-align:center; background:#F4EEE3; color:#8E877A; font-weight:700; font-size:14.5px; padding:13px; border-radius:100px;">Currently at capacity</div>
+                <button disabled="{{ true }}" style="margin-top:6px; background:#191713; color:#FFFFFF; border:none; font-family:inherit; font-weight:700; font-size:14.5px; padding:13px; border-radius:100px; opacity:0.5; cursor:default;">Currently at capacity</button>
               </sc-if>
             </div>
           </div>
@@ -629,7 +629,7 @@ class Component extends DCLogic {
   groups = [];
 
   loadGroups() {
-    import('./lifegroups-data.js').then(m => {
+    import('./lifegroups-data.js?v=6').then(m => {
       this.groups = m.GROUPS.map(g => ({
         ...g,
         display: m.displayName(g),
