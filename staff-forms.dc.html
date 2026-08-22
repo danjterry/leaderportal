@@ -80,8 +80,8 @@ class Component extends DCLogic {
     missing:  { title: 'Missing Receipt Form', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1jWgyEaWiBIlHPi_oS3d0jt92vuJM3hv9' }, // JOTFORM MISSING RECEIPT URL HERE (pdf is interim download)
     personal: { title: 'Personal Charge Reimbursement', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1e7opP0gdIngthpzHF2dSWM80yynF4sv5' }, // JOTFORM PERSONAL CHARGE URL HERE (pdf is interim download)
     facilities: { title: 'Facilities / Maintenance Request', url: '', link: 'https://request-portal.onupkeep.com/citipointe-church' }, // UpKeep request portal (opens in new tab)
-    incident: { title: 'Incident Report', url: 'https://form.jotform.com/262005684824155' },
-    safechurch: { title: 'Safe Church Form', url: 'https://form.jotform.com/261996497013165' },
+    incident: { title: 'Incident Report', url: '', link: 'https://form.jotform.com/262005684824155', btn: 'Open form' },
+    safechurch: { title: 'Safe Church Form', url: '', link: 'https://form.jotform.com/261996497013165', btn: 'Open form' },
   };
   open(key) {
     return () => {
@@ -93,7 +93,7 @@ class Component extends DCLogic {
   }
   card(key, desc) {
     const f = this.forms[key];
-    const btnLabel = this.state.active === key ? 'Hide form' : (!f.url && f.link ? 'Open portal' : (!f.url && f.pdf ? 'Download PDF' : 'Open form'));
+    const btnLabel = this.state.active === key ? 'Hide form' : (!f.url && f.link ? (f.btn || 'Open portal') : (!f.url && f.pdf ? 'Download PDF' : 'Open form'));
     return { title: f.title, desc, open: this.open(key), btnLabel };
   }
   renderVals() {
