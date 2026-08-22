@@ -31,7 +31,7 @@ export const GROUPS = [
   { id: 'jimmy-tishara', art: 'assets/groups/jimmy-tishara.webp', formName: "Jimmy and Tishara's Lifegroup", leaders: 'Jimmy & Tishara Pitts', assistants: '', campus: 'Nashville', area: 'Smyrna', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Open' },
   { id: 'art-otelia', art: 'assets/groups/art-otelia.webp', formName: "Art and Otelia's Lifegroup", leaders: 'Art & Otelia Blackburn', assistants: 'Kirstie Shreuder & Beverly Erwin', campus: 'Nashville', area: 'At the church', time: '12:00pm', kids: false, demographics: ['Seniors'], status: 'Open' },
   { id: 'stuart-kelsey', art: 'assets/groups/stuart-kelsey.webp', formName: "Stuart and Kelsey's Lifegroup", leaders: 'Stuart & Kelsey McCloud', assistants: '', campus: 'Franklin', area: 'Bradford Hills', time: '6:30pm', kids: true, demographics: ['Young Adults', 'Adults', 'Young Families'], status: 'Open' },
-  { id: 'ethan-aaron', art: 'assets/groups/ethan-aaron.webp', formName: "Ethan and Aaron's Lifegroup", leaders: 'Ethan & Aaron', assistants: '', campus: 'Franklin', area: 'Franklin', time: '6:30pm', kids: false, demographics: ['Men'], status: 'Open' },
+  { id: 'dj-aileen', art: 'assets/groups/dj-aileen.webp', formName: "Dj and Aileen's Lifegroup", display: 'DJ & Aileen', leaders: 'DJ & Aileen Adkison', assistants: '', campus: 'Franklin', area: 'Franklin', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
   { id: 'eva-katrina', art: 'assets/groups/eva-katrina.webp', formName: "Eva and Katrina's Lifegroup", leaders: 'Eva & Katrina', assistants: '', campus: 'Franklin', area: 'Franklin', time: '7:00pm', kids: false, demographics: ['Women'], status: 'Open' },
 ];
 
