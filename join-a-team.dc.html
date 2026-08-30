@@ -136,7 +136,7 @@
               </div>
             </div>
             <div>
-              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which team interests you? Pick one, tap a card above — or let us help you decide.</label>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which team interests you? Pick one, or tap a card above.</label>
               <div style="display:flex; gap:10px; flex-wrap:wrap;">
                 <sc-for list="{{ teamOptions }}" as="t" hint-placeholder-count="4">
                   <div onClick="{{ t.onClick }}" style="{{ t.style }}">{{ t.label }}</div>
@@ -232,17 +232,19 @@ class Component extends DCLogic {
 
   howLongOptions = ['Just started', 'Under a year', '1 to 3 years', '3+ years'];
 
-  // our card names -> exact JotForm dropdown values
+  // our card names -> exact Zap Teams Directory "Team Name" values.
+  // Campus + this string form the Zap lookup key, e.g. "Nashville - Welcome Team".
+  // These must stay identical to the JotForm dropdown options AND the directory sheet.
+  // Card labels now match the directory names exactly, so this map is 1:1.
   teamMap = {
-    'Inside Hosts': 'Inside Host Team',
+    'Inside Hosts Team': 'Inside Hosts Team',
     'Welcome Team': 'Welcome Team',
-    'Parking Lot Team': 'Parking Lot',
-    'Citipointe Kids': 'Kids Team',
-    'Connect Bar': 'Connect Bar',
+    'Parking Lot Team': 'Parking Lot Team',
+    'Kids Team': 'Kids Team',
+    'Connect Bar Team': 'Connect Bar Team',
     'Worship Team': 'Worship Team',
     'Production Team': 'Production Team',
-    'Photo/Video Team': 'Photo/Video Team',
-    'Help me decide': 'Help me decide',
+    'Photography Team': 'Photography Team',
   };
 
   submitToJotform() {
@@ -273,14 +275,14 @@ class Component extends DCLogic {
   }
 
   teams = [
-    { img: 'assets/preaching-cross.webp', name: 'Inside Hosts', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
+    { img: 'assets/preaching-cross.webp', name: 'Inside Hosts Team', what: 'Help people find a seat, answer questions, and keep the room feeling calm and cared for.', win: 'The win: nobody sits alone or feels lost.' },
     { img: 'assets/arrival-flags.webp', name: 'Welcome Team', what: 'The first face people see. Greet at the doors and set the tone for the whole morning.', win: 'The win: every guest feels expected.' },
     { img: 'assets/parking-team.webp', name: 'Parking Lot Team', what: 'Direct traffic, wave people in, and turn the parking lot into the first hello.', win: 'The win: the welcome starts at the curb.' },
-    { img: 'assets/kids-outside.webp', name: 'Citipointe Kids', what: 'Help every child feel seen, known, and loved \u2014 games, stories, worship, and small groups that make faith stick.', win: 'The win: kids beg their parents to come back.' },
-    { img: 'assets/ministry-community.webp', name: 'Connect Bar', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
+    { img: 'assets/kids-outside.webp', name: 'Kids Team', what: 'Help every child feel seen, known, and loved \u2014 games, stories, worship, and small groups that make faith stick.', win: 'The win: kids beg their parents to come back.' },
+    { img: 'assets/ministry-community.webp', name: 'Connect Bar Team', what: 'Be the friendly face with the answers \u2014 help guests find next steps, kids check-in, and their place in church life.', win: 'The win: every guest feels seen, supported, and guided.' },
     { img: 'assets/stage-word.webp', name: 'Worship Team', what: 'Lead the room in worship through vocals and band \u2014 carrying His presence before carrying a note.', win: 'The win: a room led into pure worship of Jesus.' },
     { img: 'assets/photo-7.webp', name: 'Production Team', what: 'Run sound, lyrics, lighting, and stream \u2014 the seamless details behind every service.', win: 'The win: nothing between people and the presence of God.' },
-    { img: 'assets/stage-word.webp', name: 'Photo/Video Team', what: 'Capture the moments \u2014 photos, video, and stories that let people feel the room before they ever walk in.', win: 'The win: the weekend gets to keep preaching all week.' },
+    { img: 'assets/stage-word.webp', name: 'Photography Team', what: 'Capture the moments \u2014 photos, video, and stories that let people feel the room before they ever walk in.', win: 'The win: the weekend gets to keep preaching all week.' },
   ];
 
   pathway = [
@@ -347,7 +349,7 @@ class Component extends DCLogic {
         style: this.chipStyle(form.campus === label),
         onClick: () => this.setState(s => ({ form: { ...s.form, campus: label } })),
       })),
-      teamOptions: this.teams.map(t => t.name).concat('Help me decide').map(name => ({
+      teamOptions: this.teams.map(t => t.name).map(name => ({
         label: name,
         style: this.chipStyle(form.teams.includes(name)),
         onClick: () => this.toggleTeam(name),

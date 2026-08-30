@@ -60,10 +60,18 @@
     <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172; margin:0 0 16px;">Documents</div>
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px;">
       <sc-for list="{{ docs }}" as="d" hint-placeholder-count="4">
-        <a href="{{ d.href }}" target="_blank" rel="noopener" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px); text-decoration:none; display:flex; flex-direction:column; gap:6px;" style-hover="background:#F4EEE3;">
-          <span style="font-weight:800; font-size:16.5px; color:#191713;">{{ d.title }} &#8599;</span>
-          <span style="font-size:14px; line-height:1.65; color:#8A8172;">{{ d.desc }}</span>
-        </a>
+        <sc-if value="{{ d.ready }}" hint-placeholder-val="{{ true }}">
+          <a href="{{ d.href }}" target="_blank" rel="noopener" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(20px,4vw,26px); text-decoration:none; display:flex; flex-direction:column; gap:6px;" style-hover="background:#F4EEE3;">
+            <span style="font-weight:800; font-size:16.5px; color:#191713;">{{ d.title }} &#8599;</span>
+            <span style="font-size:14px; line-height:1.65; color:#8A8172;">{{ d.desc }}</span>
+          </a>
+        </sc-if>
+        <sc-if value="{{ d.pending }}" hint-placeholder-val="{{ false }}">
+          <div style="background:#FBF8F3; border:1px dashed #E0D8C8; border-radius:18px; padding:clamp(20px,4vw,26px); display:flex; flex-direction:column; gap:6px;">
+            <span style="font-weight:800; font-size:16.5px; color:#8A8172;">{{ d.title }}</span>
+            <span style="font-size:14px; line-height:1.65; color:#8A8172;">{{ d.desc }}</span>
+          </div>
+        </sc-if>
       </sc-for>
     </div>
   </div>
@@ -75,9 +83,11 @@
 class Component extends DCLogic {
   renderVals() {
     return {
-      docs: [ // replace href '#' with real Drive/doc links
-        { title: 'Staff Handbook', desc: 'Coming soon.', href: '#' },
-      ],
+      // Set href to the real Drive/doc link; a doc with no href renders as a
+      // non-clickable "coming soon" tile instead of a dead anchor.
+      docs: [
+        { title: 'Staff Handbook', desc: 'Coming soon.', href: '' },
+      ].map(d => ({ ...d, ready: !!d.href, pending: !d.href })),
     };
   }
 }

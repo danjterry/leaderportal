@@ -14,7 +14,7 @@
 // leader who handles admin for the group. Internal only, never rendered.
 
 export const GROUPS = [
-  { id: 'chris-kim', art: 'assets/groups/chris-kim.webp', formName: "Chris and Kim's Lifegroup", leaders: 'Chris & Kim Peterson', assistants: 'David Nguyen & Miranda Lightner', campus: 'Nashville', area: 'Nippers Corner', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Open' },
+  { id: 'chris-kim', art: 'assets/groups/chris-kim.webp', formName: "Chris and Kim's Lifegroup", leaders: 'Chris & Kim Peterson', assistants: 'David Nguyen & Miranda Lightner', campus: 'Nashville', area: 'Nippers Corner', time: '6:30pm', kids: false, demographics: ['Young Adults'], status: 'Full' },
   { id: 'matt-steph', art: 'assets/groups/matt-steph.webp', formName: "Matt and Steph's Lifegroup", leaders: 'Matt & Steph Utterback', assistants: '', campus: 'Nashville', area: 'Nippers Corner', time: '5:00pm', kids: true, demographics: ['Adults'], status: 'Open' },
   { id: 'mickey-greg', art: 'assets/groups/mickey-greg.webp', formName: "Greg and Mickey's Lifegroup", leaders: 'Greg & Mickey Taylor', assistants: 'Steve & Kathy Carter', campus: 'Nashville', area: 'Brentwood', time: '6:30pm', kids: false, demographics: ['Adults'], status: 'Full' },
   { id: 'freddie-cheri', art: 'assets/groups/freddie-cheri.webp', formName: "Freddie and Cheri's Lifegroup", leaders: 'Freddie & Cheri Carr', assistants: 'Melissa & Nate Bentley', campus: 'Nashville', area: 'Antioch', time: '6:30pm', kids: true, demographics: ['Young Adults', 'Adults'], status: 'Open' },

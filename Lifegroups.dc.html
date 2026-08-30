@@ -629,7 +629,7 @@ class Component extends DCLogic {
   groups = [];
 
   loadGroups() {
-    import('./lifegroups-data.js?v=12').then(m => {
+    import('./lifegroups-data.js?v=13').then(m => {
       this.groups = m.GROUPS.map(g => ({
         ...g,
         display: m.displayName(g),
