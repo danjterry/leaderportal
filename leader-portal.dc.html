@@ -554,17 +554,31 @@
 
         <!-- CURRICULUM & CONTENT TAB -->
         <sc-if value="{{ isLGCurriculum }}" hint-placeholder-val="{{ false }}">
-        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
-          <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
-            <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:8px;">This term's study material</div>
-            <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Multiply: Disciples Making Disciples</div>
-            <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Volume 1 small group content. Lead from the leader's guide; give every member the group member guide. The weekly teaching videos sit behind it.</div>
-            <div style="display:flex; flex-direction:column; gap:8px;">
-              <a href="assets/multiply-vol1-leaders-guide.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Volume 1 &mdash; Leader's guide &rarr;</a>
-              <a href="assets/multiply-vol1-group-member-guide.pdf" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Volume 1 &mdash; Group member guide &rarr;</a>
-              <a href="https://www.multiplymovement.com/chapters" target="_blank" style="font-size:14px; font-weight:700; text-decoration:none;">Weekly teaching videos + chapters &rarr;</a>
-            </div>
+        <div style="background:#191713; border-radius:18px; padding:clamp(24px,5vw,38px); margin-bottom:20px; display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:clamp(20px,4vw,40px); align-items:center;">
+          <div>
+            <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:10px;">The full book</div>
+            <div style="font-weight:800; font-size:clamp(22px,3.4vw,28px); color:#FBF8F3; line-height:1.2; letter-spacing:-0.5px; margin-bottom:12px;">Multiply: Disciples Making Disciples</div>
+            <div style="font-size:14.5px; color:#B8AF9C; line-height:1.7;">Francis Chan with Mark Beuving &mdash; the complete 338&#8209;page book, all five parts and twenty&#8209;four sessions. The publisher offers it free, so every leader and every member can have their own copy.</div>
           </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="https://www.multiplymovement.com/english_multiply.pdf" target="_blank" rel="noopener" style="background:#FBF8F3; color:#191713; border-radius:12px; padding:15px 22px; font-size:14.5px; font-weight:800; text-decoration:none; text-align:center;" style-hover="background:#FFFFFF;">Download the full book (PDF) &darr;</a>
+            <a href="https://www.multiplymovement.com/chapters" target="_blank" rel="noopener" style="border:1px solid #4A443A; color:#FBF8F3; border-radius:12px; padding:15px 22px; font-size:14.5px; font-weight:700; text-decoration:none; text-align:center;" style-hover="border-color:#9C927E;">Read a session online &rarr;</a>
+            <div style="font-size:12.5px; color:#8A8172; line-height:1.6; text-align:center;">&copy; Francis Chan &amp; Mark Beuving. Free from the publisher &mdash; please share the link, not copies.</div>
+          </div>
+        </div>
+        <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(24px,5vw,38px); margin-bottom:20px; display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:clamp(20px,4vw,40px); align-items:center;">
+          <div>
+            <div style="font-size:11.5px; letter-spacing:1.5px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:10px;">This term's study material</div>
+            <div style="font-weight:800; font-size:clamp(22px,3.4vw,28px); line-height:1.2; letter-spacing:-0.5px; margin-bottom:12px;">Volume 1 &mdash; what your group works through</div>
+            <div style="font-size:14.5px; color:#6B6355; line-height:1.7;">Lead from the leader's guide; give every member the group member guide. The weekly teaching videos sit behind it.</div>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:10px;">
+            <a href="assets/multiply-vol1-leaders-guide.pdf" target="_blank" rel="noopener" style="background:#191713; color:#FBF8F3; border-radius:12px; padding:15px 22px; font-size:14.5px; font-weight:800; text-decoration:none; text-align:center;" style-hover="background:#3B372E;">Leader's guide (PDF) &darr;</a>
+            <a href="assets/multiply-vol1-group-member-guide.pdf" target="_blank" rel="noopener" style="background:#191713; color:#FBF8F3; border-radius:12px; padding:15px 22px; font-size:14.5px; font-weight:800; text-decoration:none; text-align:center;" style-hover="background:#3B372E;">Group member guide (PDF) &darr;</a>
+            <a href="https://www.multiplymovement.com/chapters" target="_blank" rel="noopener" style="border:1px solid #E0D8C8; color:#191713; border-radius:12px; padding:15px 22px; font-size:14.5px; font-weight:700; text-decoration:none; text-align:center;" style-hover="border-color:#191713;">Weekly teaching videos + chapters &rarr;</a>
+          </div>
+        </div>
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:20px;">
           <div onClick="{{ goSermonNotes }}" style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4.5vw,30px); cursor:pointer;" style-hover="border-color:#191713;">
             <div style="font-weight:800; font-size:18px; margin-bottom:10px;">Sermon notes &amp; discussion questions</div>
             <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:16px;">Questions from Sunday's message to take into your Wednesday night group, updated weekly.</div>
