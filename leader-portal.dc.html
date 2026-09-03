@@ -766,9 +766,36 @@
                 </div>
               </sc-for>
             </div>
-            <div style="background:#F5EFE3; border-radius:18px; padding:clamp(20px,4.5vw,30px);">
+            <div style="background:#F5EFE3; border-radius:18px; padding:clamp(20px,4.5vw,30px); margin-bottom:22px;">
               <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:10px;">When someone's ready</div>
               <div style="font-size:14.5px; color:#3B372E; line-height:1.7;">Tell your staff contact. You are the pipeline for who leads next — a recommendation from you starts their approval, checks and training.</div>
+            </div>
+
+            <div style="margin-bottom:22px;">
+              <div style="font-size:12.5px; letter-spacing:2px; font-weight:700; color:#191713; text-transform:uppercase; margin-bottom:8px;">How to become ready to lead</div>
+              <div style="font-size:14.5px; color:#6B6355; line-height:1.7; margin-bottom:18px; max-width:640px;">Share this with the person you're raising — it's what growing into leading actually looks like.</div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:18px;">
+                <sc-for list="{{ readySteps }}" as="r" hint-placeholder-count="8">
+                  <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; padding:clamp(20px,4vw,26px);">
+                    <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#9C927E; margin-bottom:10px;">{{ r.n }}</div>
+                    <div style="font-weight:800; font-size:16px; letter-spacing:-0.2px; margin-bottom:8px;">{{ r.title }}</div>
+                    <div style="font-size:14px; color:#6B6355; line-height:1.7;">{{ r.detail }}</div>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+
+            <div style="background:#16140F; color:#FBF8F3; border-radius:18px; padding:clamp(22px,4.5vw,34px);">
+              <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:10px;">How do I know I'm ready to lead?</div>
+              <div style="font-size:14.5px; color:#B7AF9E; line-height:1.7; margin-bottom:20px; max-width:620px;">Not a test to pass — a picture to grow into. Work through it together.</div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:10px 28px;">
+                <sc-for list="{{ readyChecks }}" as="c" hint-placeholder-count="13">
+                  <div style="display:flex; align-items:flex-start; gap:11px; font-size:14.5px; line-height:1.6; color:#EDE8DE; padding:5px 0;">
+                    <span style="flex:none; width:17px; height:17px; border:1px solid #4A443A; border-radius:5px; margin-top:3px;"></span>
+                    <span>{{ c }}</span>
+                  </div>
+                </sc-for>
+              </div>
             </div>
           </div>
         </sc-if>
@@ -781,13 +808,28 @@
               <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px;">
                 <sc-for list="{{ videos }}" as="v" hint-placeholder-count="4">
                   <div style="background:#FFFFFF; border:1px solid #E7DFCF; border-radius:18px; overflow:hidden;">
-                    <div style="aspect-ratio:16/9; background:repeating-linear-gradient(45deg, #F5EFE3, #F5EFE3 10px, #EFE7D7 10px, #EFE7D7 20px); display:flex; align-items:center; justify-content:center;">
-                      <span style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:11.5px; letter-spacing:1px; color:#6E6759; background:#FBF8F3; border:1px dashed #D8CFBC; padding:6px 12px; border-radius:8px;">video &mdash; coming soon</span>
-                    </div>
-                    <div style="padding:18px 20px;">
-                      <div style="font-weight:700; font-size:15.5px; margin-bottom:4px;">{{ v.title }}</div>
-                      <div style="font-size:13px; color:#9C927E;">{{ v.meta }}</div>
-                    </div>
+                    <sc-if value="{{ v.url }}" hint-placeholder-val="{{ false }}">
+                      <a href="{{ v.url }}" target="_blank" rel="noopener" style="display:block; text-decoration:none; color:inherit;">
+                        <div style="{{ v.thumbStyle }}">
+                          <span style="position:relative; width:54px; height:54px; border-radius:50%; background:#FBF8F3; display:flex; align-items:center; justify-content:center;">
+                            <span style="width:0; height:0; border-left:16px solid #16140F; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:4px;"></span>
+                          </span>
+                        </div>
+                        <div style="padding:18px 20px;">
+                          <div style="font-weight:700; font-size:15.5px; margin-bottom:4px;">{{ v.title }} &#8599;</div>
+                          <div style="font-size:13px; color:#9C927E;">{{ v.meta }}</div>
+                        </div>
+                      </a>
+                    </sc-if>
+                    <sc-if value="{{ v.soon }}" hint-placeholder-val="{{ true }}">
+                      <div style="aspect-ratio:16/9; background:repeating-linear-gradient(45deg, #F5EFE3, #F5EFE3 10px, #EFE7D7 10px, #EFE7D7 20px); display:flex; align-items:center; justify-content:center;">
+                        <span style="font-family:ui-monospace, 'SF Mono', Menlo, monospace; font-size:11.5px; letter-spacing:1px; color:#6E6759; background:#FBF8F3; border:1px dashed #D8CFBC; padding:6px 12px; border-radius:8px;">video &mdash; coming soon</span>
+                      </div>
+                      <div style="padding:18px 20px;">
+                        <div style="font-weight:700; font-size:15.5px; margin-bottom:4px;">{{ v.title }}</div>
+                        <div style="font-size:13px; color:#9C927E;">{{ v.meta }}</div>
+                      </div>
+                    </sc-if>
                   </div>
                 </sc-for>
               </div>
@@ -844,6 +886,7 @@
                 <div style="font-weight:800; font-size:17px; margin-bottom:14px;">Guides</div>
                 <div style="display:flex; flex-direction:column; gap:10px;">
                   <sc-if value="{{ isLGTraining }}" hint-placeholder-val="{{ false }}">
+                    <a href="assets/lifegroup-leader-training-manual.pdf" target="_blank" rel="noopener" style="font-size:14px; font-weight:700; text-decoration:none;">Lifegroup Leader Training manual (PDF) &darr;</a>
                     <div onClick="{{ goCommunion }}" style="font-size:14px; font-weight:700; cursor:pointer;">How to take Communion together &rarr;</div>
                     <div onClick="{{ goLeadLifegroup }}" style="font-size:14px; font-weight:700; cursor:pointer;">Lifegroup leader playbook &rarr;</div>
                   </sc-if>
@@ -1381,6 +1424,33 @@ class Component extends DCLogic {
     { n: 4, title: 'Send them out', detail: 'Recommend them to your staff contact, then celebrate loudly when they launch their own team or table.' },
   ];
 
+  readySteps = [
+    { n: '01', title: 'Be faithful', detail: 'Show up. Come prepared, be consistent, participate, help without being asked, follow through on what you say you\u2019ll do, and ask for clear feedback.' },
+    { n: '02', title: 'Get close to your leader', detail: 'Don\u2019t simply attend their group \u2014 learn from them. Ask questions, and give them permission to correct you.' },
+    { n: '03', title: 'Take ownership', detail: 'Don\u2019t wait to be assigned something before you start caring. Notice the new person, help with dinner, learn people\u2019s names, text someone who missed, pray for people, invite someone from Sunday.' },
+    { n: '04', title: 'Say yes to opportunities to lead', detail: 'When your leader asks you to lead something, lean in. You won\u2019t feel completely ready \u2014 that\u2019s okay.' },
+    { n: '05', title: 'Know the people, not just the content', detail: 'Lifegroups aren\u2019t about content completion. The goal is Christ-centred transformation.' },
+    { n: '06', title: 'Develop your own walk with Jesus', detail: 'You can\u2019t take people where you have not gone yourself. Build a life with Jesus from which Wednesday naturally overflows.' },
+    { n: '07', title: 'Become someone who makes disciples', detail: 'Your role is to help people go to Jesus, understand His Word, hear His voice, obey Him, and become more like Him.' },
+    { n: '08', title: 'Prepare to be sent', detail: 'Eventually your leader should be able to step away and trust you with the table.' },
+  ];
+
+  readyChecks = [
+    'I can create a welcoming environment.',
+    'I can facilitate meaningful conversation.',
+    'I can handle Scripture faithfully.',
+    'I can lead prayer and Communion.',
+    'I notice people who are drifting.',
+    'I follow up with people.',
+    'I can receive correction.',
+    'I know when something needs pastoral oversight.',
+    'I understand our Lifegroup model.',
+    'I am planted in the church.',
+    'I am living what I\u2019m asking others to live.',
+    'I can shepherd people without needing my leader beside me.',
+    'I\u2019m willing to raise someone behind me.',
+  ];
+
   videos = [
     { title: 'Your first night as a leader', meta: '9 min \u00b7 New leaders' },
     { title: 'Leading a discussion people remember', meta: '12 min \u00b7 Lifegroup leaders' },
@@ -1616,13 +1686,16 @@ class Component extends DCLogic {
       isTrainStart: trainingTab === 'start',
       isTrainPipeline: trainingTab === 'pipeline',
       isTrainLibrary: trainingTab === 'library',
+      readySteps: this.readySteps,
+      readyChecks: this.readyChecks,
       checklistSections,
       checklistDone: doneCount,
       checklistTotal: allItems.length,
       checklistPct: pct + '%',
       progressBarStyle: 'height:100%; width:' + pct + '%; background:#191713; border-radius:100px; transition:width 0.3s;',
-      videos: isLGContext
+      videos: (isLGContext
         ? [
+          { title: 'Lifegroup Leader Training', meta: 'Full session \u00b7 All Lifegroup leaders', url: 'https://www.youtube.com/watch?v=g2ws3vT63dY', thumb: 'https://img.youtube.com/vi/g2ws3vT63dY/hqdefault.jpg' },
           { title: 'Your first night as a leader', meta: '9 min \u00b7 New leaders' },
           { title: 'Leading a discussion people remember', meta: '12 min \u00b7 Lifegroup leaders' },
           { title: 'Pastoral care basics: what\u2019s yours, what\u2019s ours', meta: '18 min \u00b7 All leaders' },
@@ -1633,7 +1706,8 @@ class Component extends DCLogic {
           { title: 'Running a huddle your team loves', meta: '12 min \u00b7 Team leaders' },
           { title: 'Pastoral care basics: what\u2019s yours, what\u2019s ours', meta: '18 min \u00b7 All leaders' },
           { title: 'Welcoming a new volunteer well', meta: '8 min \u00b7 Team leaders' },
-        ],
+        ]).map(v => ({ ...v, soon: !v.url,
+          thumbStyle: 'aspect-ratio:16/9; display:grid; place-items:center; position:relative; background:#16140F' + (v.thumb ? ' center/cover no-repeat url(' + v.thumb + ')' : '') + ';' })),
       pipelineSteps: isLGContext ? this.pipelineSteps : this.pipelineSteps.map(s =>
         s.n === 3 ? { ...s, detail: 'Hand over one real thing a month \u2014 the huddle, a position, the roster \u2014 and coach from one step back.' } :
         s.n === 4 ? { ...s, detail: 'Recommend them to your staff contact, then celebrate loudly when they step up to lead their own team.' } : s),

@@ -2,6 +2,7 @@
 /heartbeat  /heartbeat.dc.html  200
 /lifegroups  /lifegroups.dc.html  200
 /join-a-team  /join-a-team.dc.html  200
+/following-jesus  /following-jesus.dc.html  200
 /communities  /communities.dc.html  200
 /equip  /equip.dc.html  200
 /academy  /academy.dc.html  200
@@ -27,6 +28,11 @@
 /connect  /lifegroups  301
 /groups  /lifegroups  301
 /serve  /join-a-team  301
+/baptism  /following-jesus#baptism  301
+/baptisms  /following-jesus#baptism  301
+/salvation  /following-jesus#yes  301
+/isaidyes  /following-jesus#yes  301
+/i-said-yes  /following-jesus#yes  301
 /volunteer  /join-a-team  301
 /give  https://pushpay.com/g/citipointechurch  302
 /giving  https://pushpay.com/g/citipointechurch  302
@@ -55,6 +61,7 @@
 /heartbeat.dc.html  /heartbeat  301
 /lifegroups.dc.html  /lifegroups  301
 /join-a-team.dc.html  /join-a-team  301
+/following-jesus.dc.html  /following-jesus  301
 /communities.dc.html  /communities  301
 /equip.dc.html  /equip  301
 /academy.dc.html  /academy  301

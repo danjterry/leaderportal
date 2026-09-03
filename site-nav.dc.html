@@ -26,6 +26,8 @@
           <sc-if value="{{ nextOpen }}" hint-placeholder-val="{{ false }}">
             <div style="position:absolute; top:100%; left:0; padding-top:6px; z-index:60;">
               <div style="min-width:200px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:16px; padding:8px; box-shadow:0 20px 44px -18px rgba(25,23,19,0.28); display:flex; flex-direction:column;">
+                <a href="following-jesus.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Following Jesus</a>
+                <a href="following-jesus.dc.html#baptism" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Get Baptised</a>
                 <a href="heartbeat.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Heartbeat</a>
                 <a href="join-a-team.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Team</a>
                 <a href="lifegroups.dc.html" style="padding:11px 14px; border-radius:10px; font-size:15px; font-weight:500; color:#191713; text-decoration:none;" style-hover="background:#F4EEE3;">Join a Lifegroup</a>
@@ -82,6 +84,8 @@
       </button>
       <sc-if value="{{ accNextOpen }}" hint-placeholder-val="{{ false }}">
         <div style="display:flex; flex-direction:column; border-bottom:1px solid #F0EADD; padding:4px 0 10px;">
+          <a href="following-jesus.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Following Jesus</a>
+          <a href="following-jesus.dc.html#baptism" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Get Baptised</a>
           <a href="heartbeat.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Heartbeat</a>
           <a href="join-a-team.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Team</a>
           <a href="lifegroups.dc.html" onClick="{{ closeMobile }}" style="padding:11px 16px; font-size:15.5px; font-weight:500; color:#4A443A; text-decoration:none;">Join a Lifegroup</a>
@@ -111,7 +115,7 @@
   </sc-if>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 320}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;heartbeat&quot;, &quot;team&quot;, &quot;lifegroups&quot;, &quot;communities&quot;, &quot;equip&quot;, &quot;academy&quot;, &quot;give&quot;, &quot;&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;pageLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;home.dc.html&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Plan your visit&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}, &quot;ctaHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1280, &quot;height&quot;: 320}, &quot;active&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;home&quot;, &quot;following&quot;, &quot;heartbeat&quot;, &quot;team&quot;, &quot;lifegroups&quot;, &quot;communities&quot;, &quot;equip&quot;, &quot;academy&quot;, &quot;give&quot;, &quot;&quot;], &quot;default&quot;: &quot;home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;pageLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Home&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;homeHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;home.dc.html&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Nav&quot;}, &quot;ctaLabel&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Plan your visit&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}, &quot;ctaHref&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;#&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CTA&quot;}}">
 class Component extends DCLogic {
   state = { drop: null, mobileMenu: false, accNext: false, accEquip: false, accGive: false, isMobile: typeof window !== 'undefined' && window.innerWidth < 1060, narrow: typeof window !== 'undefined' && window.innerWidth < 1260 };
   componentDidMount() {
@@ -127,7 +131,7 @@ class Component extends DCLogic {
     const active = p.active || '';
     const col = on => on ? '#191713' : '#4A443A';
     const wt = on => on ? '700' : '500';
-    const nextActive = ['heartbeat', 'team', 'lifegroups'].indexOf(active) >= 0;
+    const nextActive = ['following', 'heartbeat', 'team', 'lifegroups'].indexOf(active) >= 0;
     const equipActive = ['equip', 'academy'].indexOf(active) >= 0;
     const giveActive = active === 'give';
     const ctaHref = p.ctaHref ?? '#';
