@@ -10,6 +10,8 @@
 /kingdom-builders  /kingdom-builders.dc.html  200
 /leader-portal  /leader-portal.dc.html  200
 /visit-us  /visit-us.dc.html  200
+/lets-connect  /lets-connect.dc.html  200
+/letsconnect  /lets-connect  301
 /visit-us.dc.html  /visit-us  301
 
 # Old-site URLs (301 so Google drops them and passes to the new page)
@@ -67,6 +69,7 @@
 /academy.dc.html  /academy  301
 /kingdom-builders.dc.html  /kingdom-builders  301
 /leader-portal.dc.html  /leader-portal  301
+/lets-connect.dc.html  /lets-connect  301
 
 # Staff Hub
 /staff  /staff.dc.html  200
