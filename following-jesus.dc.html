@@ -275,7 +275,9 @@ class Component extends DCLogic {
       id: '262436511394053',
       name: 'q2_q2_fullname0', dob: 'q3_q3_datetime1', gender: 'q4_q4_radio2',
       phone: 'q5_q5_phone3', email: 'q6_q6_email4', campus: 'q7_q7_radio5',
-      baptismDate: 'q12_whichBaptism', before: 'q8_q8_radio6', when: 'q9_q9_radio7',
+      // "What Sunday would like to sign up for?" is a TEXT field — we post the
+      // words, e.g. "Sunday September 27". Verified against the form source.
+      baptismDate: 'q13_whatSunday', before: 'q8_q8_radio6', when: 'q9_q9_radio7',
       notes: 'q10_q10_textarea8',
     },
   };
@@ -315,6 +317,8 @@ class Component extends DCLogic {
   iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   longDate = (d) => d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' });
   shortDate = (d) => d.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  // the value the form expects, in words: "Sunday September 27"
+  sundayText = (d) => d.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' }).replace(',', '');
 
   chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
   tabStyle = (active) => `padding:13px 26px; border-radius:100px; font-size:15px; font-weight:700; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#E0D8C8'}; background:${active ? '#191713' : 'transparent'}; color:${active ? '#FFFFFF' : '#6E6759'};`;
@@ -334,8 +338,21 @@ class Component extends DCLogic {
   submitToJotform() {
     const { form, mode } = this.state;
     const f = this.jf[mode];
-    if (!form.first.trim() || !form.last.trim() || !form.mobile.trim() || !form.email.trim()) {
-      this.setState({ error: 'Please fill in your name, mobile, and email.' });
+    // Mirror the forms' own required fields, so nothing is rejected silently.
+    const missing = [];
+    if (!form.first.trim() || !form.last.trim()) missing.push('your name');
+    if (!form.dob) missing.push('your date of birth');
+    if (!form.gender) missing.push('your gender');
+    if (!form.mobile.trim()) missing.push('your mobile');
+    if (!form.email.trim()) missing.push('your email');
+    if (mode === 'decision' && !form.decisionType) missing.push('whether this is a first time decision or a recommitment');
+    if (mode === 'baptism') {
+      if (!form.before) missing.push('whether you have been baptised before');
+      if (!form.when) missing.push('when you decided to follow Jesus');
+    }
+    if (missing.length) {
+      const list = missing.length === 1 ? missing[0] : missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1];
+      this.setState({ error: 'Please add ' + list + '.' });
       return;
     }
     this.setState({ error: '', sending: true });
@@ -351,7 +368,7 @@ class Component extends DCLogic {
     if (mode === 'decision') {
       fd.append(f.decisionType, form.decisionType);
     } else {
-      this.appendDate(fd, f.baptismDate, form.baptismDate || this.iso(this.baptismDates()[0]));
+      fd.append(f.baptismDate, form.baptismDate || this.sundayText(this.baptismDates()[0]));
       fd.append(f.before, form.before);
       fd.append(f.when, form.when);
     }
@@ -397,7 +414,7 @@ class Component extends DCLogic {
     const { form, mode, submitted, submittedMode, sending, error } = this.state;
     const isBaptism = mode === 'baptism';
     const dates = this.baptismDates();
-    const selectedDate = form.baptismDate || this.iso(dates[0]);
+    const selectedDate = form.baptismDate || this.sundayText(dates[0]);
 
     return {
       steps: this.steps,
@@ -426,7 +443,7 @@ class Component extends DCLogic {
       beforeOptions: this.beforeTypes.map(label => ({ label, style: this.chipStyle(form.before === label), onClick: this.setChip('before', label) })),
       whenOptions: this.whenTypes.map(label => ({ label, style: this.chipStyle(form.when === label), onClick: this.setChip('when', label) })),
       baptismDateOptions: dates.map(d => {
-        const v = this.iso(d);
+        const v = this.sundayText(d);
         return { label: this.shortDate(d), style: this.chipStyle(selectedDate === v), onClick: this.setChip('baptismDate', v) };
       }),
       formError: error || false,
