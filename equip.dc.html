@@ -253,11 +253,8 @@ class Component extends DCLogic {
     fd.append('q3_q3_phone1[full]', s.phone.trim());
     fd.append('q4_q4_email2', s.email.trim());
     fd.append('q5_q5_dropdown3', s.campus);
-    if (s.extra) {
-      if (s.cls === 'apologetics') { fd.append('q13_howDid', s.extra); fd.append('q19_chooseYour19', s.extra); }
-      else { fd.append('q19_chooseYour19', s.extra); fd.append('q13_howLong', s.extra); }
-    }
-    if (s.notes.trim()) { fd.append('q18_anythingElse', s.notes.trim()); fd.append('q18_whyAre', s.notes.trim()); }
+    if (s.extra) fd.append('q6_radio4', s.extra);
+    if (s.notes.trim()) fd.append('q7_textarea5', s.notes.trim());
     fetch('https://submit.jotform.com/submit/' + f.id, { method: 'POST', mode: 'no-cors', body: fd })
       .then(() => this.setState({ submitted: true, sending: false }))
       .catch(() => this.setState({ sending: false, error: 'Something went wrong — please try again, or email nashville@citipointechurch.com.' }));

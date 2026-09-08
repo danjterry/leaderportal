@@ -177,7 +177,16 @@
             <select value="{{ afCampus }}" onChange="{{ setAfCampus }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
               <option value="Nashville">Nashville</option>
               <option value="Franklin">Franklin</option>
-              <option value="I'm not part of Citipointe">I'm not part of Citipointe</option>
+            </select>
+          </div>
+          <div>
+            <div style="font-size:13px; font-weight:700; margin-bottom:8px;">How did you hear about the Academy? *</div>
+            <select value="{{ afHeard }}" onChange="{{ setAfHeard }}" style="width:100%; padding:13px 16px; border:1px solid #E3DCCB; border-radius:12px; font-size:15px; font-family:inherit; background:#FFFFFF; color:#191713;">
+              <option value="Sunday service">Sunday service</option>
+              <option value="A friend">A friend</option>
+              <option value="Social media">Social media</option>
+              <option value="Staff member">Staff member</option>
+              <option value="Other">Other</option>
             </select>
           </div>
           <div>
@@ -232,7 +241,7 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { first: '', last: '', phone: '', email: '', campus: 'Nashville', why: '', sending: false, submitted: false, error: '' };
+  state = { first: '', last: '', phone: '', email: '', campus: 'Nashville', heard: 'Sunday service', why: '', sending: false, submitted: false, error: '' };
   fall = [
     ['September 14', 'Systematic Theology'],
     ['September 21', 'Revelation'],
@@ -287,12 +296,13 @@ class Component extends DCLogic {
     this.setState({ error: '', sending: true });
     const fd = new URLSearchParams();
     fd.append('formID', '262015093665052');
-    fd.append('q2_q2_fullname0[first]', s.first.trim());
-    fd.append('q2_q2_fullname0[last]', s.last.trim());
-    fd.append('q3_q3_phone1[full]', s.phone.trim());
-    fd.append('q4_q4_email2', s.email.trim());
-    fd.append('q5_q5_dropdown3', s.campus);
-    if (s.why.trim()) { fd.append('q18_whyAre', s.why.trim()); fd.append('q18_anythingElse', s.why.trim()); }
+    fd.append('q2_fullname0[first]', s.first.trim());
+    fd.append('q2_fullname0[last]', s.last.trim());
+    fd.append('q3_email1', s.email.trim());
+    fd.append('q4_phone2[full]', s.phone.trim());
+    fd.append('q5_radio3', s.campus);
+    fd.append('q7_dropdown5', s.heard);
+    if (s.why.trim()) fd.append('q6_textbox4', s.why.trim());
     fetch('https://submit.jotform.com/submit/262015093665052', { method: 'POST', mode: 'no-cors', body: fd })
       .then(() => this.setState({ submitted: true, sending: false }))
       .catch(() => this.setState({ sending: false, error: 'Something went wrong \u2014 please try again, or email nashville@citipointechurch.com.' }));
@@ -301,12 +311,13 @@ class Component extends DCLogic {
     const s = this.state;
     return {
       fallClasses: this.fmt(this.fall), springClasses: this.fmt(this.spring),
-      afFirst: s.first, afLast: s.last, afPhone: s.phone, afEmail: s.email, afCampus: s.campus, afWhy: s.why,
+      afFirst: s.first, afLast: s.last, afPhone: s.phone, afEmail: s.email, afCampus: s.campus, afHeard: s.heard, afWhy: s.why,
       setAfFirst: (e) => this.setState({ first: e.target.value }),
       setAfLast: (e) => this.setState({ last: e.target.value }),
       setAfPhone: (e) => this.setState({ phone: e.target.value }),
       setAfEmail: (e) => this.setState({ email: e.target.value }),
       setAfCampus: (e) => this.setState({ campus: e.target.value }),
+      setAfHeard: (e) => this.setState({ heard: e.target.value }),
       setAfWhy: (e) => this.setState({ why: e.target.value }),
       submitAf: () => this.submit(),
       afSubmitLabel: s.sending ? 'Sending\u2026' : 'Express Interest',
