@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<title>Let’s Connect | Citipointe Church</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713; display:flex; flex-direction:column;">
+
+  <div style="border-bottom:1px solid #ECE5D8; background:#FFFFFF;">
+    <div style="max-width:900px; margin:0 auto; padding:18px clamp(20px,4vw,40px); display:flex; align-items:center; justify-content:space-between; gap:16px;">
+      <a href="/" style="display:flex; align-items:center;"><img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:26px; width:auto; display:block;"></a>
+      <div style="font-size:12px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase;">Let's connect</div>
+    </div>
+  </div>
+
+  <div id="start" style="max-width:760px; margin:0 auto; width:100%; padding:clamp(44px,7vw,76px) clamp(20px,4vw,40px) clamp(56px,8vw,96px);">
+
+    <div style="text-align:center; margin-bottom:clamp(28px,4vw,40px);">
+      <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#9C927E; margin-bottom:16px;">We're glad you're here.</div>
+      <h1 style="font-weight:800; font-size:clamp(34px,6vw,54px); line-height:1.06; letter-spacing:-1.4px; margin:0 0 20px;">Let's connect</h1>
+      <p style="font-size:17.5px; line-height:1.7; color:#6E6759; max-width:480px; margin:0 auto;">Share your details and your campus, and someone from our team will reach out this week. Takes about a minute.</p>
+    </div>
+
+    <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:22px; padding:clamp(28px,4vw,44px);">
+
+      <sc-if value="{{ notSubmitted }}" hint-placeholder-val="{{ true }}">
+        <div style="display:flex; flex-direction:column; gap:18px;">
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">First name</label>
+              <input type="text" value="{{ form.first }}" onChange="{{ setFirst }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Last name</label>
+              <input type="text" value="{{ form.last }}" onChange="{{ setLast }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Date of birth</label>
+              <input type="date" value="{{ form.dob }}" onChange="{{ setDob }}" style="width:100%; padding:12px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Gender</label>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <sc-for list="{{ genderOptions }}" as="g" hint-placeholder-count="2">
+                  <div onClick="{{ g.onClick }}" style="{{ g.style }}">{{ g.label }}</div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:14px;">
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Mobile</label>
+              <input type="tel" placeholder="(615) 555-0100" value="{{ form.mobile }}" onChange="{{ setMobile }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+            <div>
+              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Email</label>
+              <input type="email" placeholder="you@email.com" value="{{ form.email }}" onChange="{{ setEmail }}" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; color:#191713; background:#FDFBF7;">
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Campus</label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <sc-for list="{{ campusOptions }}" as="c" hint-placeholder-count="2">
+                <div onClick="{{ c.onClick }}" style="{{ c.style }}">{{ c.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which of these sounds most like you?</label>
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <sc-for list="{{ stageOptions }}" as="s" hint-placeholder-count="4">
+                <div onClick="{{ s.onClick }}" style="{{ s.style }}">{{ s.label }}</div>
+              </sc-for>
+            </div>
+          </div>
+
+          <div>
+            <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">Anything you would like us to know?</label>
+            <textarea onInput="{{ setNotes }}" rows="3" placeholder="Optional" style="width:100%; padding:13px 16px; border-radius:12px; border:1px solid #ECE5D8; font-size:16px; font-family:inherit; background:#FDFBF7; outline:none; resize:vertical;"></textarea>
+          </div>
+
+          <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
+            <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
+          </sc-if>
+
+          <a href="#start" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">{{ submitLabel }}</a>
+        </div>
+      </sc-if>
+
+      <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+        <div style="text-align:center; padding:24px 8px;">
+          <div style="width:56px; height:56px; border-radius:50%; background:#EAF0E4; color:#54713F; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; margin:0 auto 20px;">&#10003;</div>
+          <h3 style="font-weight:800; font-size:26px; margin:0 0 12px; letter-spacing:-0.5px;">Thanks &mdash; we've got it.</h3>
+          <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 auto 24px; max-width:400px;">Someone from our {{ campusLabel }} team will reach out this week. In the meantime, have a look at where people find community.</p>
+          <a href="lifegroups.dc.html" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none; margin-bottom:22px;">Find a Lifegroup</a>
+          <div>
+            <a href="#start" onClick="{{ reset }}" style="font-size:14px; font-weight:600; color:#6E6759; text-decoration:none;">Submit another</a>
+          </div>
+        </div>
+      </sc-if>
+
+    </div>
+
+    <p style="text-align:center; font-size:14.5px; line-height:1.7; color:#9C927E; margin:26px auto 0; max-width:440px;">Rather talk to a person? Email <a href="mailto:nashville@citipointechurch.com" style="color:#6E6759;">nashville@citipointechurch.com</a> and we'll get back to you.</p>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  state = {
+    form: { first: '', last: '', dob: '', gender: '', mobile: '', email: '', campus: 'Nashville', stage: '', notes: '' },
+    submitted: false, sending: false, error: '',
+  };
+
+  // "Let's Connect" JotForm. Field names VERIFIED against the live form source.
+  jf = {
+    id: '262464183729061',
+    name: 'q2_q2_fullname0', dob: 'q3_q3_datetime1', gender: 'q4_q4_radio2',
+    phone: 'q5_q5_phone3', email: 'q6_q6_email4', campus: 'q7_q7_radio5',
+    stage: 'q8_q8_radio6', notes: 'q9_q9_textarea7',
+  };
+
+  stages = [
+    'This was my first time',
+    'I have been a few times',
+    'I have been coming a while but have not connected yet',
+    'I am new to the area and looking for a church',
+  ];
+
+  chipStyle = (active) => `padding:12px 20px; border-radius:100px; font-size:14.5px; font-weight:600; cursor:pointer; user-select:none; border:1px solid ${active ? '#191713' : '#ECE5D8'}; background:${active ? '#191713' : '#FDFBF7'}; color:${active ? '#FFFFFF' : '#4A443A'};`;
+
+  setField = (key) => (e) => this.setState(s => ({ form: { ...s.form, [key]: e.target.value } }));
+  setChip = (key, val) => () => this.setState(s => ({ form: { ...s.form, [key]: val } }));
+
+  appendDate(fd, base, isoStr) {
+    if (!isoStr) return;
+    const [y, m, d] = isoStr.split('-');
+    fd.append(`${base}[month]`, m);
+    fd.append(`${base}[day]`, d);
+    fd.append(`${base}[year]`, y);
+  }
+
+  submitToJotform() {
+    const { form } = this.state;
+    const f = this.jf;
+    const missing = [];
+    if (!form.first.trim() || !form.last.trim()) missing.push('your name');
+    if (!form.dob) missing.push('your date of birth');
+    if (!form.gender) missing.push('your gender');
+    if (!form.mobile.trim()) missing.push('your mobile');
+    if (!form.email.trim()) missing.push('your email');
+    if (!form.stage) missing.push('which option sounds most like you');
+    if (missing.length) {
+      const list = missing.length === 1 ? missing[0] : missing.slice(0, -1).join(', ') + ' and ' + missing[missing.length - 1];
+      this.setState({ error: 'Please add ' + list + '.' });
+      return;
+    }
+    this.setState({ error: '', sending: true });
+    const fd = new URLSearchParams();
+    fd.append('formID', f.id);
+    fd.append(`${f.name}[first]`, form.first.trim());
+    fd.append(`${f.name}[last]`, form.last.trim());
+    this.appendDate(fd, f.dob, form.dob);
+    fd.append(f.gender, form.gender);
+    fd.append(`${f.phone}[full]`, form.mobile.trim());
+    fd.append(f.email, form.email.trim());
+    fd.append(f.campus, form.campus);
+    fd.append(f.stage, form.stage);
+    fd.append(f.notes, form.notes.trim());
+    fetch(`https://submit.jotform.com/submit/${f.id}`, { method: 'POST', mode: 'no-cors', body: fd })
+      .then(() => this.setState({ submitted: true, sending: false }))
+      .catch(() => this.setState({ sending: false, error: 'Something went wrong \u2014 please try again, or email nashville@citipointechurch.com.' }));
+  }
+
+  renderVals() {
+    const { form, submitted, sending, error } = this.state;
+    return {
+      form,
+      setFirst: this.setField('first'),
+      setLast: this.setField('last'),
+      setDob: this.setField('dob'),
+      setMobile: this.setField('mobile'),
+      setEmail: this.setField('email'),
+      setNotes: this.setField('notes'),
+      genderOptions: ['Male', 'Female'].map(label => ({ label, style: this.chipStyle(form.gender === label), onClick: this.setChip('gender', label) })),
+      campusOptions: ['Nashville', 'Franklin'].map(label => ({ label, style: this.chipStyle(form.campus === label), onClick: this.setChip('campus', label) })),
+      stageOptions: this.stages.map(label => ({ label, style: this.chipStyle(form.stage === label), onClick: this.setChip('stage', label) })),
+      formError: error || false,
+      submitLabel: sending ? 'Sending\u2026' : "Let's connect",
+      submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.submitToJotform(); },
+      submitted,
+      notSubmitted: !submitted,
+      campusLabel: form.campus,
+      reset: (e) => { if (e && e.preventDefault) e.preventDefault(); this.setState(s => ({ submitted: false, error: '', form: { ...s.form, first: '', last: '', dob: '', gender: '', mobile: '', email: '', stage: '', notes: '' } })); },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
