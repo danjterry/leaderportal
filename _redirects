@@ -11,6 +11,7 @@
 /leader-portal  /leader-portal.dc.html  200
 /visit-us  /visit-us.dc.html  200
 /lets-connect  /lets-connect.dc.html  200
+/community-calendar  /community-calendar.dc.html  200
 /letsconnect  /lets-connect  301
 /visit-us.dc.html  /visit-us  301
 
@@ -70,6 +71,22 @@
 /kingdom-builders.dc.html  /kingdom-builders  301
 /leader-portal.dc.html  /leader-portal  301
 /lets-connect.dc.html  /lets-connect  301
+/community-calendar.dc.html  /community-calendar  301
+
+# Short .dc links (no .html) also collapse to pretty paths
+/home.dc  /  301
+/heartbeat.dc  /heartbeat  301
+/lifegroups.dc  /lifegroups  301
+/join-a-team.dc  /join-a-team  301
+/following-jesus.dc  /following-jesus  301
+/communities.dc  /communities  301
+/equip.dc  /equip  301
+/academy.dc  /academy  301
+/kingdom-builders.dc  /kingdom-builders  301
+/leader-portal.dc  /leader-portal  301
+/lets-connect.dc  /lets-connect  301
+/visit-us.dc  /visit-us  301
+/community-calendar.dc  /community-calendar  301
 
 # Staff Hub
 /staff  /staff.dc.html  200

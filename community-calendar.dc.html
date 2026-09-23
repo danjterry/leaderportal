@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Community Calendar | Citipointe Church</title>
+  <meta name="robots" content="noindex, nofollow">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+  </style>
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+
+  <dc-import name="site-nav" active="communities" page-label="Calendar" cta-label="Plan your visit" cta-href="home.dc.html#visit" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
+
+  <!-- HERO -->
+  <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(32px,4vw,48px); text-align:center;">
+    <img src="assets/cp-icon-black.png" alt="" style="width:46px; height:auto; margin:0 auto 22px; display:block;">
+    <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; margin-bottom:18px;">The big dates, in one place.</div>
+    <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,66px); line-height:1.04; margin:0 auto 26px; letter-spacing:-1.5px;">Community Calendar</h1>
+    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:600px; margin:0 auto; text-wrap:pretty;">What's coming up across Citipointe over the next few months — so you can save the date and bring a friend.</p>
+  </div>
+
+  <!-- NEXT UP -->
+  <sc-if value="{{ hasNext }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1000px; margin:0 auto; padding:0 clamp(20px,4vw,56px) clamp(40px,6vw,64px);">
+      <div style="background:#191713; color:#FBF8F3; border-radius:24px; padding:clamp(26px,5vw,44px); display:grid; grid-template-columns:auto minmax(0,1fr); gap:clamp(20px,4vw,40px); align-items:center;">
+        <div style="text-align:center; min-width:92px; border-right:1px solid #3A362E; padding-right:clamp(20px,4vw,40px);">
+          <div style="font-size:12px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase;">{{ next.dow }} · {{ next.mon }}</div>
+          <div style="font-weight:800; font-size:clamp(44px,7vw,60px); line-height:1.05; letter-spacing:-1.5px; white-space:nowrap;">{{ next.day }}</div>
+        </div>
+        <div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:12px;">
+            <span style="font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#B7AF9E;">Next up</span>
+            <span style="font-size:12px; font-weight:700; background:#FBF8F3; color:#191713; padding:5px 12px; border-radius:100px;">{{ next.until }}</span>
+          </div>
+          <div style="font-weight:800; font-size:clamp(24px,3.4vw,32px); line-height:1.15; letter-spacing:-0.6px; margin-bottom:8px;">{{ next.title }}</div>
+          <div style="font-size:15px; line-height:1.7; color:#D9D2C4; margin-bottom:20px;">{{ next.when }} · {{ next.place }}</div>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <sc-if value="{{ next.href }}" hint-placeholder-val="{{ false }}">
+              <a href="{{ next.href }}" target="_blank" rel="noopener" style="background:#FBF8F3; color:#191713; font-weight:700; font-size:14.5px; padding:12px 26px; border-radius:100px; text-decoration:none;">{{ next.hrefLabel }}</a>
+            </sc-if>
+            <button onClick="{{ next.addCal }}" style="background:none; border:1px solid #4A443A; color:#FBF8F3; font-family:inherit; font-weight:700; font-size:14.5px; padding:12px 26px; border-radius:100px; cursor:pointer;" style-hover="border-color:#B7AF9E;">Add to calendar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- FILTERS -->
+  <sc-if value="{{ hasFilters }}" hint-placeholder-val="{{ false }}">
+  <div style="position:sticky; top:62px; z-index:30; background:rgba(253,251,247,0.97); backdrop-filter:blur(10px); border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+    <div style="max-width:1000px; margin:0 auto; padding:12px clamp(20px,4vw,56px); display:flex; gap:8px; overflow-x:auto; scrollbar-width:none;">
+      <sc-for list="{{ filters }}" as="f" hint-placeholder-count="6">
+        <button onClick="{{ f.pick }}" style="flex:none; font-family:inherit; border:1px solid {{ f.border }}; background:{{ f.bg }}; color:{{ f.fg }}; font-size:14px; font-weight:600; padding:9px 18px; border-radius:100px; cursor:pointer; white-space:nowrap;">{{ f.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  </sc-if>
+
+  <!-- BIG DATES -->
+  <div style="max-width:1000px; margin:0 auto; padding:clamp(40px,6vw,64px) clamp(20px,4vw,56px) clamp(48px,7vw,80px);">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; margin-bottom:8px;">
+      <h2 style="font-weight:800; font-size:clamp(26px,3.6vw,34px); letter-spacing:-0.8px; margin:0;">Big dates</h2>
+      <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:16px; color:#6E6759;">{{ rangeLabel }}</div>
+    </div>
+
+    <sc-for list="{{ months }}" as="m" hint-placeholder-count="3">
+      <div style="margin-top:36px;">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; padding-bottom:14px; border-bottom:1px solid #191713;">{{ m.label }}</div>
+        <sc-for list="{{ m.events }}" as="e" hint-placeholder-count="2">
+          <div style="display:grid; grid-template-columns:64px minmax(0,1fr); gap:clamp(16px,3vw,28px); padding:22px 0; border-bottom:1px solid #ECE5D8; align-items:start;">
+            <div style="text-align:center;">
+              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#6E6759; text-transform:uppercase;">{{ e.dow }}</div>
+              <div style="font-weight:800; font-size:30px; line-height:1.1; letter-spacing:-0.5px; white-space:nowrap;">{{ e.day }}</div>
+            </div>
+            <div style="display:flex; justify-content:space-between; gap:16px 24px; flex-wrap:wrap; align-items:center;">
+              <div style="flex:1 1 320px; min-width:0;">
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:6px;">
+                  <span style="font-weight:800; font-size:18.5px; letter-spacing:-0.2px;">{{ e.title }}</span>
+                  <span style="font-size:11px; letter-spacing:1.5px; font-weight:700; text-transform:uppercase; color:#6E6759; border:1px solid #E0D8C8; padding:4px 10px; border-radius:100px; white-space:nowrap;">{{ e.tagLabel }}</span>
+                </div>
+                <div style="font-size:14.5px; line-height:1.65; color:#6E6759;">{{ e.when }} · {{ e.place }}</div>
+                <sc-if value="{{ e.note }}" hint-placeholder-val="{{ false }}">
+                  <div style="font-size:14.5px; line-height:1.65; color:#6E6759; margin-top:4px; text-wrap:pretty;">{{ e.note }}</div>
+                </sc-if>
+              </div>
+              <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                <sc-if value="{{ e.href }}" hint-placeholder-val="{{ false }}">
+                  <a href="{{ e.href }}" target="_blank" rel="noopener" style="background:#191713; color:#FFFFFF; font-weight:700; font-size:13.5px; padding:10px 20px; border-radius:100px; text-decoration:none; white-space:nowrap;">{{ e.hrefLabel }}</a>
+                </sc-if>
+                <button onClick="{{ e.addCal }}" aria-label="Add to calendar" style="background:#FFFFFF; border:1px solid #E0D8C8; color:#191713; font-family:inherit; font-weight:700; font-size:13.5px; padding:10px 18px; border-radius:100px; cursor:pointer; white-space:nowrap;" style-hover="background:#F4EEE3;">+ Calendar</button>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+
+    <sc-if value="{{ isEmpty }}" hint-placeholder-val="{{ false }}">
+      <div style="margin-top:32px; border:1px solid #E0D8C8; background:#FFFFFF; border-radius:18px; padding:28px; text-align:center;">
+        <div style="font-weight:800; font-size:18px; margin-bottom:6px;">Nothing big on the books just yet.</div>
+        <div style="font-size:15px; color:#6E6759; line-height:1.7;">Our regular gatherings below are happening every week — come along.</div>
+      </div>
+    </sc-if>
+  </div>
+
+  <!-- RHYTHMS -->
+  <sc-if value="{{ showRhythms }}" hint-placeholder-val="{{ true }}">
+    <div style="background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
+      <div style="max-width:1000px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,4vw,56px);">
+        <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:14px;">Every week, every month</div>
+        <h2 style="font-weight:800; font-size:clamp(26px,3.6vw,34px); letter-spacing:-0.8px; margin:0 0 12px;">Our regular rhythms</h2>
+        <p style="font-size:16.5px; line-height:1.75; color:#6E6759; margin:0 0 32px; max-width:560px;">No need to wait for a big date — these happen all year round.</p>
+        <a href="home.dc.html#visit" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px 32px; align-items:center; background:#191713; color:#FBF8F3; border-radius:20px; padding:clamp(24px,4vw,34px) clamp(24px,4vw,38px); text-decoration:none; margin-bottom:16px;">
+          <div>
+            <div style="font-weight:800; font-size:clamp(22px,3vw,26px); letter-spacing:-0.4px; margin-bottom:6px;">Sunday Services</div>
+            <div style="font-size:11px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#B7AF9E;">Every Sunday</div>
+            <div style="font-size:13.5px; font-weight:700; margin-top:8px; color:#D9D2C4;">Next: {{ sundayNext }}</div>
+          </div>
+          <div style="display:flex; gap:28px; flex-wrap:wrap;">
+            <div><div style="font-size:11px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#B7AF9E; margin-bottom:4px;">Nashville</div><div style="font-weight:800; font-size:22px;">10am</div></div>
+            <div><div style="font-size:11px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#B7AF9E; margin-bottom:4px;">Franklin</div><div style="font-weight:800; font-size:22px;">11am</div></div>
+          </div>
+          <div style="justify-self:start; background:#FBF8F3; color:#191713; font-size:14px; font-weight:700; padding:11px 24px; border-radius:100px; white-space:nowrap;">Plan your visit →</div>
+        </a>
+        <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(260px, 1fr)); gap:16px;">
+          <sc-for list="{{ rhythms }}" as="r" hint-placeholder-count="6">
+            <a href="{{ r.href }}" style="display:flex; flex-direction:column; gap:6px; border:1px solid #ECE5D8; background:#FDFBF7; border-radius:18px; padding:22px 24px; text-decoration:none; color:#191713;" style-hover="border-color:#B0A897;">
+              <div style="font-weight:800; font-size:18px;">{{ r.name }}</div>
+              <div style="font-size:11px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#6E6759;">{{ r.cadence }}</div>
+              <div style="font-size:14.5px; color:#6E6759; line-height:1.6;">{{ r.time }}</div>
+              <sc-if value="{{ r.nextLabel }}" hint-placeholder-val="{{ false }}">
+                <div style="font-size:13.5px; font-weight:700; margin-top:6px;">Next: {{ r.nextLabel }}</div>
+              </sc-if>
+              <sc-if value="{{ r.cta }}" hint-placeholder-val="{{ false }}">
+                <div style="align-self:flex-start; margin-top:10px; background:#191713; color:#FFFFFF; font-size:13.5px; font-weight:700; padding:9px 18px; border-radius:100px;">{{ r.cta }}</div>
+              </sc-if>
+            </a>
+          </sc-for>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+
+  <!-- FOOTER -->
+  <div style="border-top:1px solid #ECE5D8;">
+    <div style="max-width:1240px; margin:0 auto; padding:44px clamp(20px,4vw,56px); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px;">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <img src="assets/cp-logo-horizontal-black.png" alt="Citipointe Church" style="height:28px; width:auto; display:block;">
+        <span style="width:1px; height:20px; background:#ECE5D8;"></span>
+        <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#6E6759;">Community Calendar</span>
+      </div>
+      <div style="display:flex; gap:12px 32px; font-size:14px; color:#6E6759; flex-wrap:wrap;">
+        <a href="heartbeat.dc.html" style="color:#6E6759; text-decoration:none;">Heartbeat</a>
+        <a href="join-a-team.dc.html" style="color:#6E6759; text-decoration:none;">Join a Team</a>
+        <a href="lifegroups.dc.html" style="color:#6E6759; text-decoration:none;">Lifegroups</a>
+        <a href="communities.dc.html" style="color:#6E6759; text-decoration:none;">Communities</a>
+        <a href="equip.dc.html" style="color:#6E6759; text-decoration:none;">Equip</a>
+        <a href="academy.dc.html" style="color:#6E6759; text-decoration:none;">The Academy</a>
+        <a href="kingdom-builders.dc.html" style="color:#6E6759; text-decoration:none;">Kingdom Builders</a>
+        <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#6E6759; text-decoration:none;">Need prayer?</a>
+        <a href="leader-portal.dc.html" style="color:#6E6759; text-decoration:none;">Leader Portal</a>
+        <a href="staff/home.dc.html" style="color:#6E6759; text-decoration:none;">Staff hub</a>
+      </div>
+      <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; To unmistakably influence our world for good and for God &middot; <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#191713; text-decoration:none; font-weight:600;">www.citipointechurch.com</a></div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;windowMonths&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;3&quot;,&quot;6&quot;,&quot;12&quot;],&quot;default&quot;:&quot;6&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Calendar&quot;},&quot;showRhythms&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Calendar&quot;}}">
+// ─── EDIT HERE: big dates only. Past events drop off automatically. ───
+const EVENTS = [
+  { title: '5 Year Anniversary Sunday', start: '2026-10-11', place: 'All services · Nashville 10am & Franklin 11am', tag: 'church' },
+  { title: 'Kingdom Builders Dinner', start: '2026-10-21T19:00', end: '2026-10-21T21:30', place: 'The Harpeth Hotel, Franklin', tag: 'church',
+    href: 'https://www.eventbrite.com/e/1998654588677?aff=oddtdtcreator', hrefLabel: 'Get tickets' },
+  { title: 'Faith Love Hope Miracle Offering', start: '2026-11-08', place: 'All services · Nashville & Franklin', tag: 'church',
+    note: 'One Sunday, one sacrificial offering — believing God for miracles.', href: 'kingdom-builders.dc.html', hrefLabel: 'Learn more' },
+  { title: 'YA Friendsgiving', start: '2026-11-19', place: 'YA Society', tag: 'ya', href: 'communities.dc.html#young-adults', hrefLabel: 'Learn more' },
+  { title: 'Forged Men’s Night', start: '2026-11-16T18:30', place: 'Citipointe Church Nashville', tag: 'mens', href: 'communities.dc.html#mens', hrefLabel: 'Learn more' },
+  { title: 'Awaken the Nations Worship Night', start: '2026-11-21', place: 'Citipointe Church', tag: 'church' },
+  { title: 'Adult Christmas Party', start: '2026-12-05', place: 'Citipointe Church', tag: 'adults' },
+  { title: 'Carols in the Square', start: '2026-12-12', place: 'Lenox Village Square', tag: 'church' },
+  { title: 'Serve with Red Frogs on NYE', start: '2026-12-31', place: 'New Year’s Eve', tag: 'church' },
+  { title: 'Church on Fire Conference', start: '2027-03-11', end: '2027-03-13', place: 'Citipointe Church Nashville', tag: 'church',
+    href: 'https://brushfire.com/citipointechurch/churchonfireconference2027/632589', hrefLabel: 'Get tickets' },
+];
+
+const TAGS = { church: 'Church-wide', kids: 'Kids', youth: 'Youth', ya: 'Young Adults', adults: 'Adults', mens: "Men's", womens: "Women's", seniors: 'Seniors' };
+
+const RHYTHMS = [
+  { name: 'Sunday Services', cadence: 'Every Sunday', time: 'Nashville 10am · Franklin 11am', rule: { dow: 0, endHour: 13 }, href: 'home.dc.html#visit' },
+  { name: 'Lifegroups Fall Season', cadence: 'Every Wednesday · Sep 2 – Nov 18', time: 'In homes across Nashville & Franklin', rule: { dow: 3, endHour: 21 }, season: { from: '2026-09-02', until: '2026-11-18' }, offSeason: 'New season, dates coming soon', href: 'lifegroups.dc.html', cta: 'Find a Lifegroup →' },
+  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13 }, href: 'heartbeat.dc.html#signup', cta: 'Save my spot →' },
+  { name: 'Baptism Sunday', cadence: 'Last Sunday monthly', time: 'During services · Nashville & Franklin', rule: { dow: 0, nth: -1, endHour: 13 }, href: 'following-jesus.dc.html#baptism', cta: 'Sign up to be baptised →' },
+  { name: 'Baby Dedications', cadence: 'Quarterly', time: 'During service · Nashville & Franklin', dates: ['2026-10-18'], offSeason: 'Next date coming soon', href: '#', cta: 'Sign up here →' },
+  { name: 'Youth Society', cadence: 'Every Sunday', time: '6:00–8:30pm · Nashville', rule: { dow: 0, endHour: 21 }, href: 'communities.dc.html#youth' },
+  { name: 'Seniors Community', cadence: 'Every Wednesday', time: '12pm · Nashville', rule: { dow: 3, endHour: 13 }, href: 'communities.dc.html#seniors' },
+  { name: 'Moms & Tots', cadence: 'Every other Wednesday', time: '9:30–11:30am · Nashville', href: 'communities.dc.html#moms-tots' },
+];
+
+const parse = s => { const [d, t] = s.split('T'); const [y, m, dd] = d.split('-').map(Number); const [h, mi] = (t || '0:0').split(':').map(Number); return new Date(y, m - 1, dd, h, mi); };
+const hasTime = s => s.includes('T');
+const fmt = (d, o) => d.toLocaleDateString('en-US', o);
+const fmtTime = d => d.toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' }).replace(':00', '').replace(' ', '').toLowerCase();
+const dayStart = d => new Date(d.getFullYear(), d.getMonth(), d.getDate());
+
+function nextOccurrence(rule, from) {
+  let d = dayStart(from);
+  if (rule.endHour != null && from.getHours() >= rule.endHour) d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
+  if (rule.nth == null) { const diff = (rule.dow - d.getDay() + 7) % 7; return new Date(d.getFullYear(), d.getMonth(), d.getDate() + diff); }
+  for (let k = 0; k < 3; k++) {
+    const first = new Date(d.getFullYear(), d.getMonth() + k, 1);
+    let hit;
+    if (rule.nth === -1) { const last = new Date(first.getFullYear(), first.getMonth() + 1, 0); hit = new Date(last.getFullYear(), last.getMonth(), last.getDate() - ((last.getDay() - rule.dow + 7) % 7)); }
+    else hit = new Date(first.getFullYear(), first.getMonth(), 1 + ((rule.dow - first.getDay() + 7) % 7) + (rule.nth - 1) * 7);
+    if (hit >= d) return hit;
+  }
+}
+
+function icsFor(e) {
+  const s = parse(e.start), en = e.end ? parse(e.end) : null;
+  const pad = n => String(n).padStart(2, '0');
+  const dt = d => `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}`;
+  const dtt = d => `${dt(d)}T${pad(d.getHours())}${pad(d.getMinutes())}00`;
+  let dates;
+  if (hasTime(e.start)) dates = `DTSTART:${dtt(s)}\r\nDTEND:${dtt(en || new Date(s.getTime() + 7200000))}`;
+  else { const last = en || s; const after = new Date(last.getFullYear(), last.getMonth(), last.getDate() + 1); dates = `DTSTART;VALUE=DATE:${dt(s)}\r\nDTEND;VALUE=DATE:${dt(after)}`; }
+  const body = `BEGIN:VCALENDAR\r\nVERSION:2.0\r\nPRODID:-//Citipointe Church//Calendar//EN\r\nBEGIN:VEVENT\r\nUID:${dt(s)}-${e.title.replace(/\W/g, '')}@citipointe.church\r\n${dates}\r\nSUMMARY:${e.title}\r\nLOCATION:${e.place}\r\nEND:VEVENT\r\nEND:VCALENDAR`;
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([body], { type: 'text/calendar' }));
+  a.download = e.title.replace(/[^\w ]/g, '') + '.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+}
+
+class Component extends DCLogic {
+  state = { filter: 'all' };
+  renderVals() {
+    const now = new Date(), today = dayStart(now);
+    const months = Number(this.props.windowMonths ?? 6);
+    const horizon = new Date(today.getFullYear(), today.getMonth() + months, today.getDate());
+    const f = this.state.filter;
+
+    const upcoming = EVENTS.map(e => {
+      const s = parse(e.start), en = e.end ? parse(e.end) : s;
+      return { ...e, s, en };
+    }).filter(e => dayStart(e.en) >= today && e.s <= horizon).sort((a, b) => a.s - b.s);
+
+    const view = e => {
+      const multi = e.end && dayStart(e.en) > dayStart(e.s);
+      let when = fmt(e.s, { weekday: 'long', month: 'long', day: 'numeric' });
+      if (multi) when = e.s.getMonth() === e.en.getMonth() ? `${fmt(e.s, { month: 'long' })} ${e.s.getDate()}–${e.en.getDate()}` : `${fmt(e.s, { month: 'short', day: 'numeric' })} – ${fmt(e.en, { month: 'short', day: 'numeric' })}`;
+      if (hasTime(e.start)) when += ` · ${fmtTime(e.s)}`;
+      const days = Math.round((dayStart(e.s) - today) / 86400000);
+      const until = days <= 0 ? (multi ? 'Happening now' : 'Today') : days === 1 ? 'Tomorrow' : days < 7 ? 'This week' : days < 14 ? 'Next week' : `In ${Math.round(days / 7)} weeks`;
+      return {
+        title: e.title, place: e.place, note: e.note || '', href: e.href || '', hrefLabel: e.hrefLabel || 'Learn more',
+        dow: fmt(e.s, { weekday: 'short' }), mon: fmt(e.s, { month: 'short' }), day: String(e.s.getDate()),
+        when, until, tagLabel: TAGS[e.tag] || 'Church-wide', addCal: () => icsFor(e),
+      };
+    };
+
+    const filtered = upcoming.filter(e => f === 'all' || e.tag === f);
+    const groups = [];
+    filtered.forEach(e => {
+      const key = fmt(e.s, { month: 'long', year: 'numeric' });
+      let g = groups.find(x => x.label === key);
+      if (!g) groups.push(g = { label: key, events: [] });
+      g.events.push(view(e));
+    });
+
+    const usedTags = ['all', ...Object.keys(TAGS).filter(t => upcoming.some(e => e.tag === t))];
+    const filters = usedTags.length > 2 ? usedTags.map(t => {
+      const on = t === f;
+      return { label: t === 'all' ? 'All' : TAGS[t], pick: () => this.setState({ filter: t }), bg: on ? '#191713' : 'transparent', fg: on ? '#FFFFFF' : '#191713', border: on ? '#191713' : '#E0D8C8' };
+    }) : [];
+
+    const rhythms = RHYTHMS.map(r => {
+      if (r.dates) { const d = r.dates.map(parse).find(x => x >= today); return { ...r, nextLabel: d ? fmt(d, { weekday: 'short', month: 'short', day: 'numeric' }) : (r.offSeason || '') }; }
+      if (!r.rule) return { ...r, nextLabel: '' };
+      let from = now;
+      if (r.season && parse(r.season.from) > now) from = parse(r.season.from);
+      const n = nextOccurrence(r.rule, from);
+      if (r.season && n > parse(r.season.until)) return { ...r, cadence: 'Every Wednesday', nextLabel: r.offSeason || '' };
+      return { ...r, nextLabel: fmt(n, { weekday: 'short', month: 'short', day: 'numeric' }) };
+    });
+
+    return {
+      hasNext: upcoming.length > 0, next: upcoming.length ? view(upcoming[0]) : {},
+      filters, hasFilters: filters.length > 0, months: groups, isEmpty: groups.length === 0,
+      rangeLabel: `${fmt(today, { month: 'long' })} – ${fmt(horizon, { month: 'long', year: 'numeric' })}`,
+      rhythms: rhythms.filter(r => r.name !== 'Sunday Services'),
+      sundayNext: (rhythms.find(r => r.name === 'Sunday Services') || {}).nextLabel || '',
+      showRhythms: this.props.showRhythms ?? true,
+    };
+  }
+}
+</script>
+</body>
+</html>
