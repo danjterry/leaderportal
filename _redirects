@@ -89,6 +89,8 @@
 /community-calendar.dc  /community-calendar  301
 
 # Staff Hub
+/staff/home.dc  /staff  301
+/staff/home.dc.html  /staff  301
 /staff  /staff.dc.html  200
 /staff/forms  /staff-forms.dc.html  200
 /staff/hr  /staff-hr.dc.html  200

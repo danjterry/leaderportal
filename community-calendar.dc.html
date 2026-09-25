@@ -9,7 +9,7 @@
 <x-dc>
 <helmet>
   <title>Community Calendar | Citipointe Church</title>
-  <meta name="robots" content="noindex, nofollow">
+  <script src="/calendar-events.js"></script>
   <style>
     html { scroll-behavior: smooth; }
     body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
@@ -22,7 +22,7 @@
 
 <div style="min-height:100vh; background:#FDFBF7; color:#191713;">
 
-  <dc-import name="site-nav" active="communities" page-label="Calendar" cta-label="Plan your visit" cta-href="home.dc.html#visit" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
+  <dc-import name="site-nav" active="communities" page-label="Calendar" cta-label="Plan your visit" cta-href="/#visit" style="position:sticky; top:0; z-index:40;" hint-size="100%,63px"></dc-import>
 
   <!-- HERO -->
   <div style="max-width:1240px; margin:0 auto; padding:clamp(48px,8vw,88px) clamp(20px,4vw,56px) clamp(32px,4vw,48px); text-align:center;">
@@ -119,11 +119,11 @@
   <!-- RHYTHMS -->
   <sc-if value="{{ showRhythms }}" hint-placeholder-val="{{ true }}">
     <div style="background:#FFFFFF; border-top:1px solid #ECE5D8; border-bottom:1px solid #ECE5D8;">
-      <div style="max-width:1000px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,4vw,56px);">
+      <div id="rhythms" style="max-width:1000px; margin:0 auto; padding:clamp(48px,7vw,80px) clamp(20px,4vw,56px);">
         <div style="font-size:12.5px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; margin-bottom:14px;">Every week, every month</div>
         <h2 style="font-weight:800; font-size:clamp(26px,3.6vw,34px); letter-spacing:-0.8px; margin:0 0 12px;">Our regular rhythms</h2>
         <p style="font-size:16.5px; line-height:1.75; color:#6E6759; margin:0 0 32px; max-width:560px;">No need to wait for a big date — these happen all year round.</p>
-        <a href="home.dc.html#visit" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px 32px; align-items:center; background:#191713; color:#FBF8F3; border-radius:20px; padding:clamp(24px,4vw,34px) clamp(24px,4vw,38px); text-decoration:none; margin-bottom:16px;">
+        <a href="/#visit" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:20px 32px; align-items:center; background:#191713; color:#FBF8F3; border-radius:20px; padding:clamp(24px,4vw,34px) clamp(24px,4vw,38px); text-decoration:none; margin-bottom:16px;">
           <div>
             <div style="font-weight:800; font-size:clamp(22px,3vw,26px); letter-spacing:-0.4px; margin-bottom:6px;">Sunday Services</div>
             <div style="font-size:11px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#B7AF9E;">Every Sunday</div>
@@ -163,17 +163,21 @@
         <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:14px; color:#6E6759;">Community Calendar</span>
       </div>
       <div style="display:flex; gap:12px 32px; font-size:14px; color:#6E6759; flex-wrap:wrap;">
-        <a href="heartbeat.dc.html" style="color:#6E6759; text-decoration:none;">Heartbeat</a>
-        <a href="join-a-team.dc.html" style="color:#6E6759; text-decoration:none;">Join a Team</a>
-        <a href="lifegroups.dc.html" style="color:#6E6759; text-decoration:none;">Lifegroups</a>
-        <a href="communities.dc.html" style="color:#6E6759; text-decoration:none;">Communities</a>
-        <a href="equip.dc.html" style="color:#6E6759; text-decoration:none;">Equip</a>
-        <a href="academy.dc.html" style="color:#6E6759; text-decoration:none;">The Academy</a>
-        <a href="kingdom-builders.dc.html" style="color:#6E6759; text-decoration:none;">Kingdom Builders</a>
+        <a href="/heartbeat" style="color:#6E6759; text-decoration:none;">Heartbeat</a>
+        <a href="/join-a-team" style="color:#6E6759; text-decoration:none;">Join a Team</a>
+        <a href="/lifegroups" style="color:#6E6759; text-decoration:none;">Lifegroups</a>
+        <a href="/communities" style="color:#6E6759; text-decoration:none;">Communities</a>
+        <a href="/equip" style="color:#6E6759; text-decoration:none;">Equip</a>
+        <a href="/academy" style="color:#6E6759; text-decoration:none;">The Academy</a>
+        <a href="/kingdom-builders" style="color:#6E6759; text-decoration:none;">Kingdom Builders</a>
         <a href="https://citipointe.ccbchurch.com/goto/forms/10/responses/new" target="_blank" rel="noopener" style="color:#6E6759; text-decoration:none;">Need prayer?</a>
-        <a href="leader-portal.dc.html" style="color:#6E6759; text-decoration:none;">Leader Portal</a>
-        <a href="staff/home.dc.html" style="color:#6E6759; text-decoration:none;">Staff hub</a>
+        <a href="/leader-portal" style="color:#6E6759; text-decoration:none;">Leader Portal</a>
+        <a href="/staff" style="color:#6E6759; text-decoration:none;">Staff hub</a>
       </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Nashville</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointenashville/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/CitipointeNashville/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
+            <div style="display:flex; align-items:center; gap:14px;"><span style="font-size:11px; letter-spacing:1.5px; text-transform:uppercase; font-weight:700; color:#B0A897; min-width:64px;">Franklin</span><span style="display:flex; align-items:center; gap:16px;"><a href="https://www.instagram.com/citipointefranklin/" target="_blank" rel="noopener" aria-label="Instagram" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle></svg></a> <a href="https://www.facebook.com/p/Citipointe-Franklin-61555597406922/" target="_blank" rel="noopener" aria-label="Facebook" style="color:#6E6759; display:inline-flex; padding:12px; margin:-12px;" style-hover="color:#191713;"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.78-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"></path></svg></a></span></div>
+          </div>
       <div style="font-size:13px; color:#B0A897; flex:1 1 100%;">&copy; 2026 Citipointe Church &middot; To unmistakably influence our world for good and for God &middot; <a href="https://citipointechurch.com" target="_blank" rel="noopener" style="color:#191713; text-decoration:none; font-weight:600;">www.citipointechurch.com</a></div>
     </div>
   </div>
@@ -181,34 +185,20 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;windowMonths&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;3&quot;,&quot;6&quot;,&quot;12&quot;],&quot;default&quot;:&quot;6&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Calendar&quot;},&quot;showRhythms&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Calendar&quot;}}">
-// ─── EDIT HERE: big dates only. Past events drop off automatically. ───
-const EVENTS = [
-  { title: '5 Year Anniversary Sunday', start: '2026-10-11', place: 'All services · Nashville 10am & Franklin 11am', tag: 'church' },
-  { title: 'Kingdom Builders Dinner', start: '2026-10-21T19:00', end: '2026-10-21T21:30', place: 'The Harpeth Hotel, Franklin', tag: 'church',
-    href: 'https://www.eventbrite.com/e/1998654588677?aff=oddtdtcreator', hrefLabel: 'Get tickets' },
-  { title: 'Faith Love Hope Miracle Offering', start: '2026-11-08', place: 'All services · Nashville & Franklin', tag: 'church',
-    note: 'One Sunday, one sacrificial offering — believing God for miracles.', href: 'kingdom-builders.dc.html', hrefLabel: 'Learn more' },
-  { title: 'YA Friendsgiving', start: '2026-11-19', place: 'YA Society', tag: 'ya', href: 'communities.dc.html#young-adults', hrefLabel: 'Learn more' },
-  { title: 'Forged Men’s Night', start: '2026-11-16T18:30', place: 'Citipointe Church Nashville', tag: 'mens', href: 'communities.dc.html#mens', hrefLabel: 'Learn more' },
-  { title: 'Awaken the Nations Worship Night', start: '2026-11-21', place: 'Citipointe Church', tag: 'church' },
-  { title: 'Adult Christmas Party', start: '2026-12-05', place: 'Citipointe Church', tag: 'adults' },
-  { title: 'Carols in the Square', start: '2026-12-12', place: 'Lenox Village Square', tag: 'church' },
-  { title: 'Serve with Red Frogs on NYE', start: '2026-12-31', place: 'New Year’s Eve', tag: 'church' },
-  { title: 'Church on Fire Conference', start: '2027-03-11', end: '2027-03-13', place: 'Citipointe Church Nashville', tag: 'church',
-    href: 'https://brushfire.com/citipointechurch/churchonfireconference2027/632589', hrefLabel: 'Get tickets' },
-];
+// Big dates live in calendar-events.js (shared with the home page).
+const getEvents = () => window.CP_EVENTS || [];
 
 const TAGS = { church: 'Church-wide', kids: 'Kids', youth: 'Youth', ya: 'Young Adults', adults: 'Adults', mens: "Men's", womens: "Women's", seniors: 'Seniors' };
 
 const RHYTHMS = [
-  { name: 'Sunday Services', cadence: 'Every Sunday', time: 'Nashville 10am · Franklin 11am', rule: { dow: 0, endHour: 13 }, href: 'home.dc.html#visit' },
-  { name: 'Lifegroups Fall Season', cadence: 'Every Wednesday · Sep 2 – Nov 18', time: 'In homes across Nashville & Franklin', rule: { dow: 3, endHour: 21 }, season: { from: '2026-09-02', until: '2026-11-18' }, offSeason: 'New season, dates coming soon', href: 'lifegroups.dc.html', cta: 'Find a Lifegroup →' },
-  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13 }, href: 'heartbeat.dc.html#signup', cta: 'Save my spot →' },
-  { name: 'Baptism Sunday', cadence: 'Last Sunday monthly', time: 'During services · Nashville & Franklin', rule: { dow: 0, nth: -1, endHour: 13 }, href: 'following-jesus.dc.html#baptism', cta: 'Sign up to be baptised →' },
-  { name: 'Baby Dedications', cadence: 'Quarterly', time: 'During service · Nashville & Franklin', dates: ['2026-10-18'], offSeason: 'Next date coming soon', href: '#', cta: 'Sign up here →' },
-  { name: 'Youth Society', cadence: 'Every Sunday', time: '6:00–8:30pm · Nashville', rule: { dow: 0, endHour: 21 }, href: 'communities.dc.html#youth' },
-  { name: 'Seniors Community', cadence: 'Every Wednesday', time: '12pm · Nashville', rule: { dow: 3, endHour: 13 }, href: 'communities.dc.html#seniors' },
-  { name: 'Moms & Tots', cadence: 'Every other Wednesday', time: '9:30–11:30am · Nashville', href: 'communities.dc.html#moms-tots' },
+  { name: 'Sunday Services', cadence: 'Every Sunday', time: 'Nashville 10am · Franklin 11am', rule: { dow: 0, endHour: 13 }, href: '/#visit' },
+  { name: 'Lifegroups Fall Season', cadence: 'Every Wednesday · Sep 2 – Nov 18', time: 'In homes across Nashville & Franklin', rule: { dow: 3, endHour: 21 }, season: { from: '2026-09-02', until: '2026-11-18' }, offSeason: 'New season, dates coming soon', href: '/lifegroups', cta: 'Find a Lifegroup →' },
+  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13 }, href: '/heartbeat#signup', cta: 'Save my spot →' },
+  { name: 'Baptism Sunday', cadence: 'Last Sunday monthly', time: 'During services · Nashville & Franklin', rule: { dow: 0, nth: -1, endHour: 13 }, href: '/following-jesus#baptism', cta: 'Sign up to be baptised →' },
+  { name: 'Baby Dedications', cadence: 'Quarterly', time: 'During service · Nashville & Franklin', dates: ['2026-10-18'], offSeason: 'Next date coming soon', href: '/communities#kids' },
+  { name: 'Youth Society', cadence: 'Every Sunday', time: '6:00–8:30pm · Nashville', rule: { dow: 0, endHour: 21 }, href: '/communities#youth' },
+  { name: 'Seniors Community', cadence: 'Every Wednesday', time: '12pm · Nashville', rule: { dow: 3, endHour: 13 }, href: '/communities#seniors' },
+  { name: 'Moms & Tots', cadence: 'Every other Wednesday', time: '9:30–11:30am · Nashville', href: '/communities#moms-tots' },
 ];
 
 const parse = s => { const [d, t] = s.split('T'); const [y, m, dd] = d.split('-').map(Number); const [h, mi] = (t || '0:0').split(':').map(Number); return new Date(y, m - 1, dd, h, mi); };
@@ -247,13 +237,15 @@ function icsFor(e) {
 
 class Component extends DCLogic {
   state = { filter: 'all' };
+  componentDidMount() { if (!window.CP_EVENTS) this._t = setInterval(() => { if (window.CP_EVENTS) { clearInterval(this._t); this.forceUpdate(); } }, 100); }
+  componentWillUnmount() { clearInterval(this._t); }
   renderVals() {
     const now = new Date(), today = dayStart(now);
     const months = Number(this.props.windowMonths ?? 6);
     const horizon = new Date(today.getFullYear(), today.getMonth() + months, today.getDate());
     const f = this.state.filter;
 
-    const upcoming = EVENTS.map(e => {
+    const upcoming = getEvents().map(e => {
       const s = parse(e.start), en = e.end ? parse(e.end) : s;
       return { ...e, s, en };
     }).filter(e => dayStart(e.en) >= today && e.s <= horizon).sort((a, b) => a.s - b.s);
@@ -300,7 +292,7 @@ class Component extends DCLogic {
     return {
       hasNext: upcoming.length > 0, next: upcoming.length ? view(upcoming[0]) : {},
       filters, hasFilters: filters.length > 0, months: groups, isEmpty: groups.length === 0,
-      rangeLabel: `${fmt(today, { month: 'long' })} – ${fmt(horizon, { month: 'long', year: 'numeric' })}`,
+      rangeLabel: `Through ${fmt(horizon, { month: 'long', year: 'numeric' })}`,
       rhythms: rhythms.filter(r => r.name !== 'Sunday Services'),
       sundayNext: (rhythms.find(r => r.name === 'Sunday Services') || {}).nextLabel || '',
       showRhythms: this.props.showRhythms ?? true,
