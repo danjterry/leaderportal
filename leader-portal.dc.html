@@ -104,46 +104,54 @@
         <!-- KEY DATES -->
         <div style="margin-bottom:40px;">
           <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:12px;">Key dates</div>
+          <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px 28px; background:#F3E7D8; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; padding:22px clamp(20px,4vw,28px); margin-bottom:14px;">
+            <div style="min-width:0;">
+              <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#6E6759; text-transform:uppercase; margin-bottom:5px;">Featured · Church on Fire Conference</div>
+              <div style="font-weight:800; font-size:clamp(19px,2.4vw,23px); letter-spacing:-0.3px;">March 11–13, 2027 · Citipointe Church Nashville</div>
+              <div style="font-size:13.5px; color:#6E6759; margin-top:5px;">Leaders, get registered and bring your team.</div>
+            </div>
+            <a href="https://www.churchonfirenashville.com" target="_blank" rel="noopener" style="flex:none; display:inline-block; background:#191713; color:#FBF8F3; font-weight:700; font-size:14px; padding:12px 24px; border-radius:100px; text-decoration:none;" style-hover="background:#3A352C;">Sign up on the conference site →</a>
+          </div>
           <div style="display:flex; flex-wrap:wrap; gap:14px;">
-            <div style="background:#16140F; color:#FBF8F3; border-radius:16px; flex:1 1 260px; max-width:440px; padding:20px clamp(20px,4vw,28px);">
+            <div style="order:{{ heartbeatOrder }}; background:#16140F; color:#FBF8F3; border-radius:16px; flex:1 1 260px; max-width:440px; padding:20px clamp(20px,4vw,28px);">
               <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:5px;">Next Heartbeat</div>
               <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
               <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">Second Sunday of every month</div>
             </div>
             <sc-if value="{{ showTrainingNight }}" hint-placeholder-val="{{ true }}">
-              <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+              <div style="order:20260812; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
                 <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroup leaders</div>
                 <div style="font-weight:800; font-size:19px;">Training Night — Thu, Aug 12</div>
                 <div style="font-size:13px; color:#9C927E; margin-top:5px;">6:30pm at Citipointe Nashville, all Lifegroup leaders</div>
               </div>
             </sc-if>
             <sc-if value="{{ showSignUps }}" hint-placeholder-val="{{ true }}">
-              <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+              <div style="order:20260816; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
                 <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroups</div>
                 <div style="font-weight:800; font-size:19px;">Sign ups go live — Sun, Aug 16</div>
                 <div style="font-size:13px; color:#9C927E; margin-top:5px;">Groups list on citipointe.church &mdash; answer requests within 48 hours</div>
               </div>
             </sc-if>
             <sc-if value="{{ showLaunchNight }}" hint-placeholder-val="{{ true }}">
-              <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+              <div style="order:20260902; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
                 <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Lifegroup fall season · Sep 2 – Nov 18</div>
                 <div style="font-weight:800; font-size:19px;">Launch Night — Wed, Sep 2</div>
                 <div style="font-size:13px; color:#9C927E; margin-top:5px;">Every group starts the same night, Nashville &amp; Franklin</div>
               </div>
             </sc-if>
-            <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+            <div style="order:20261108; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
               <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Miracle Offering</div>
               <div style="font-weight:800; font-size:19px;">Sunday, Nov 8</div>
               <div style="font-size:13px; color:#9C927E; margin-top:5px;">Faith Love Hope &middot; both campuses</div>
             </div>
-            <div style="background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
+            <div style="order:20261021; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
               <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#9C927E; text-transform:uppercase; margin-bottom:5px;">Kingdom Builders Dinner</div>
               <div style="font-weight:800; font-size:19px;">Wed, Oct 21 &middot; 7:00pm</div>
               <div style="font-size:13px; color:#9C927E; margin-top:5px;">The Harpeth Hotel — The Courtyard, Franklin TN</div>
               <a href="https://www.eventbrite.com/e/1998654588677?aff=oddtdtcreator" target="_blank" rel="noopener" style="display:inline-block; margin-top:10px; background:#191713; color:#FBF8F3; font-weight:700; font-size:12.5px; padding:8px 18px; border-radius:100px; text-decoration:none;">Purchase tickets</a>
             </div>
             <sc-for list="{{ seasons }}" as="sn" hint-placeholder-count="3">
-              <div style="background:{{ sn.bg }}; color:{{ sn.color }}; border:1px solid {{ sn.border }}; border-radius:16px; flex:1 1 170px; max-width:280px; padding:20px clamp(20px,4vw,28px);">
+              <div style="order:{{ sn.order }}; background:{{ sn.bg }}; color:{{ sn.color }}; border:1px solid {{ sn.border }}; border-radius:16px; flex:1 1 170px; max-width:280px; padding:20px clamp(20px,4vw,28px);">
                 <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:{{ sn.labelColor }}; text-transform:uppercase; margin-bottom:5px;">{{ sn.label }}</div>
                 <div style="font-weight:800; font-size:19px;">{{ sn.range }}</div>
                 <div style="font-size:13px; color:{{ sn.labelColor }}; margin-top:5px;">{{ sn.status }}</div>
@@ -1305,18 +1313,24 @@ class Component extends DCLogic {
     { title: 'I build this house', detail: 'I passionately support the vision of Citipointe Church and honor its pastors and leaders in both speech and action.' },
   ];
 
+  dateKey(d) { return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
   launchNightVisible() { return new Date() < new Date(2026, 8, 3); } // hides after Sep 2, 2026
   seasonCards() {
     const m = new Date().getMonth();
     const defs = [
-      { label: 'Spring season', range: 'Feb \u2013 April', months: [1, 2, 3] },
-      { label: 'Summer season', range: 'June \u2013 July', months: [5, 6] },
+      { label: 'Spring season', range: 'Feb \u2013 April', months: [1, 2, 3], startDay: 1 },
+      { label: 'Summer season', range: 'June \u2013 July', months: [5, 6], startDay: 1 },
     ];
     // Once the Launch Night tile hides, the fall season shows as a regular season card
-    if (!this.launchNightVisible()) defs.push({ label: 'Fall season', range: 'Sep 2 \u2013 Nov 18', months: [8, 9, 10] });
+    if (!this.launchNightVisible()) defs.push({ label: 'Fall season', range: 'Sep 2 \u2013 Nov 18', months: [8, 9, 10], startDay: 2 });
     return defs.map(d => {
       const active = d.months.includes(m);
+      const now = new Date();
+      // calendar-order key (YYYYMMDD): active season sorts as today, otherwise its next start
+      const y = active || d.months[0] > m ? now.getFullYear() : now.getFullYear() + 1;
+      const order = active ? this.dateKey(now) : this.dateKey(new Date(y, d.months[0], d.startDay));
       return {
+        order,
         label: d.label, range: d.range,
         status: active ? 'Happening now' : 'Lifegroup season',
         bg: active ? '#16140F' : '#FFFFFF', color: active ? '#FBF8F3' : '#16140F',
@@ -1366,8 +1380,9 @@ class Component extends DCLogic {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let y = today.getFullYear(), m = today.getMonth();
+    const skip = ['2026-10', '2026-11']; // months with no Heartbeat (YYYY-MM)
     let d = this.secondSunday(y, m);
-    if (d < today) { m++; if (m > 11) { m = 0; y++; } d = this.secondSunday(y, m); }
+    while (d < today || skip.includes(y + '-' + String(m + 1).padStart(2, '0'))) { m++; if (m > 11) { m = 0; y++; } d = this.secondSunday(y, m); }
     return d;
   }
 
@@ -1590,6 +1605,7 @@ class Component extends DCLogic {
       isSermonNotes: view === 'sermonNotes',
       isCommunion: view === 'communion',
 
+      heartbeatOrder: this.dateKey(this.nextHeartbeat()),
       nextHeartbeatLabel: this.nextHeartbeat().toLocaleDateString('en-US', { weekday: 'short', month: 'long', day: 'numeric' }),
       keyDates: this.keyDates,
       tiles: this.tiles.map(t => ({ ...t, onClick: this.go(t.key) })),

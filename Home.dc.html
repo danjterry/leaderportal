@@ -468,8 +468,10 @@ class Component extends DCLogic {
   nextHeartbeatLabel() {
     const now = new Date();
     const second = (y, m) => { const d = new Date(y, m, 1); const off = (7 - d.getDay()) % 7; return new Date(y, m, 1 + off + 7); };
-    let d = second(now.getFullYear(), now.getMonth());
-    if (d < new Date(now.getFullYear(), now.getMonth(), now.getDate())) d = second(now.getFullYear(), now.getMonth() + 1);
+    const skip = ['2026-10', '2026-11']; // months with no Heartbeat (YYYY-MM)
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+    let d, k = 0;
+    do { d = second(now.getFullYear(), now.getMonth() + k++); } while (d < today || skip.includes(d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0')));
     return d.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
   }
   nextBaptismLabel() {

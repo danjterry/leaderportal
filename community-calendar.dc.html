@@ -193,7 +193,7 @@ const TAGS = { church: 'Church-wide', kids: 'Kids', youth: 'Youth', ya: 'Young A
 const RHYTHMS = [
   { name: 'Sunday Services', cadence: 'Every Sunday', time: 'Nashville 10am · Franklin 11am', rule: { dow: 0, endHour: 13 }, href: '/#visit' },
   { name: 'Lifegroups Fall Season', cadence: 'Every Wednesday · Sep 2 – Nov 18', time: 'In homes across Nashville & Franklin', rule: { dow: 3, endHour: 21 }, season: { from: '2026-09-02', until: '2026-11-18' }, offSeason: 'New season, dates coming soon', href: '/lifegroups', cta: 'Find a Lifegroup →' },
-  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13 }, href: '/heartbeat#signup', cta: 'Save my spot →' },
+  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13, skip: ['2026-10', '2026-11'] }, href: '/heartbeat#signup', cta: 'Save my spot →' },
   { name: 'Baptism Sunday', cadence: 'Last Sunday monthly', time: 'During services · Nashville & Franklin', rule: { dow: 0, nth: -1, endHour: 13 }, href: '/following-jesus#baptism', cta: 'Sign up to be baptised →' },
   { name: 'Baby Dedications', cadence: 'Quarterly', time: 'During service · Nashville & Franklin', dates: ['2026-10-18'], offSeason: 'Next date coming soon', href: '/communities#kids' },
   { name: 'Youth Society', cadence: 'Every Sunday', time: '6:00–8:30pm · Nashville', rule: { dow: 0, endHour: 21 }, href: '/communities#youth' },
@@ -216,7 +216,8 @@ function nextOccurrence(rule, from) {
     let hit;
     if (rule.nth === -1) { const last = new Date(first.getFullYear(), first.getMonth() + 1, 0); hit = new Date(last.getFullYear(), last.getMonth(), last.getDate() - ((last.getDay() - rule.dow + 7) % 7)); }
     else hit = new Date(first.getFullYear(), first.getMonth(), 1 + ((rule.dow - first.getDay() + 7) % 7) + (rule.nth - 1) * 7);
-    if (hit >= d) return hit;
+    const ym = hit.getFullYear() + '-' + String(hit.getMonth() + 1).padStart(2, '0');
+    if (hit >= d && !(rule.skip || []).includes(ym)) return hit;
   }
 }
 

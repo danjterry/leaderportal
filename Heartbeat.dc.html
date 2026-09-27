@@ -275,7 +275,8 @@ class Component extends DCLogic {
     let y = today.getFullYear(), m = today.getMonth();
     while (dates.length < 3) {
       const d = this.secondSunday(y, m);
-      if (d >= today) dates.push(d);
+      const skip = ['2026-10', '2026-11']; // months with no Heartbeat (YYYY-MM)
+      if (d >= today && !skip.includes(y + '-' + String(m + 1).padStart(2, '0'))) dates.push(d);
       m++;
       if (m > 11) { m = 0; y++; }
     }
