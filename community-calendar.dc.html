@@ -211,7 +211,7 @@ function nextOccurrence(rule, from) {
   let d = dayStart(from);
   if (rule.endHour != null && from.getHours() >= rule.endHour) d = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1);
   if (rule.nth == null) { const diff = (rule.dow - d.getDay() + 7) % 7; return new Date(d.getFullYear(), d.getMonth(), d.getDate() + diff); }
-  for (let k = 0; k < 3; k++) {
+  for (let k = 0; k < 14; k++) {
     const first = new Date(d.getFullYear(), d.getMonth() + k, 1);
     let hit;
     if (rule.nth === -1) { const last = new Date(first.getFullYear(), first.getMonth() + 1, 0); hit = new Date(last.getFullYear(), last.getMonth(), last.getDate() - ((last.getDay() - rule.dow + 7) % 7)); }
