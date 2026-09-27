@@ -364,7 +364,7 @@ class Component extends DCLogic {
     fd.append(f.gender, form.gender);
     fd.append(`${f.phone}[full]`, form.mobile.trim());
     fd.append(f.email, form.email.trim());
-    fd.append(f.campus, form.campus);
+    fd.append(f.campus, mode === 'baptism' ? 'Nashville' : form.campus);
     if (mode === 'decision') {
       fd.append(f.decisionType, form.decisionType);
     } else {
@@ -440,7 +440,7 @@ class Component extends DCLogic {
       setEmail: this.setField('email'),
       setNotes: this.setField('notes'),
       genderOptions: ['Male', 'Female'].map(label => ({ label, style: this.chipStyle(form.gender === label), onClick: this.setChip('gender', label) })),
-      campusOptions: ['Nashville', 'Franklin'].map(label => ({ label, style: this.chipStyle(form.campus === label), onClick: this.setChip('campus', label) })),
+      campusOptions: (isBaptism ? ['Nashville'] : ['Nashville', 'Franklin']).map(label => ({ label, style: this.chipStyle(form.campus === label), onClick: this.setChip('campus', label) })),
       decisionTypeOptions: this.decisionTypes.map(label => ({ label, style: this.chipStyle(form.decisionType === label), onClick: this.setChip('decisionType', label) })),
       beforeOptions: this.beforeTypes.map(label => ({ label, style: this.chipStyle(form.before === label), onClick: this.setChip('before', label) })),
       whenOptions: this.whenTypes.map(label => ({ label, style: this.chipStyle(form.when === label), onClick: this.setChip('when', label) })),
