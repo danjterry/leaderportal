@@ -193,7 +193,7 @@ const TAGS = { church: 'Church-wide', kids: 'Kids', youth: 'Youth', ya: 'Young A
 const RHYTHMS = [
   { name: 'Sunday Services', cadence: 'Every Sunday', time: 'Nashville 10am · Franklin 11am', rule: { dow: 0, endHour: 13 }, href: '/#visit' },
   { name: 'Lifegroups Fall Season', cadence: 'Every Wednesday · Sep 2 – Nov 18', time: 'In homes across Nashville & Franklin', rule: { dow: 3, endHour: 21 }, season: { from: '2026-09-02', until: '2026-11-18' }, offSeason: 'New season, dates coming soon', href: '/lifegroups', cta: 'Find a Lifegroup →' },
-  { name: 'Heartbeat', cadence: 'Second Sunday monthly', time: 'During service · Nashville & Franklin', rule: { dow: 0, nth: 2, endHour: 13, skip: ['2026-10', '2026-11'] }, href: '/heartbeat#signup', cta: 'Save my spot →' },
+  { name: 'Heartbeat', cadence: 'First Sunday monthly', time: 'During service · Nashville (Franklin by interest)', rule: { dow: 0, nth: 1, endHour: 13, skip: ['2026-10'] }, href: '/heartbeat#signup', cta: 'Save my spot →' },
   { name: 'Baptism Sunday', cadence: 'Last Sunday monthly', time: 'During services · Nashville & Franklin', rule: { dow: 0, nth: -1, endHour: 13 }, href: '/following-jesus#baptism', cta: 'Sign up to be baptised →' },
   { name: 'Baby Dedications', cadence: 'Quarterly', time: 'During service · Nashville & Franklin', dates: ['2026-10-18'], offSeason: 'Next date coming soon', href: '/communities#kids' },
   { name: 'Youth Society', cadence: 'Every Sunday', time: '6:00–8:30pm · Nashville', rule: { dow: 0, endHour: 21 }, href: '/communities#youth' },

@@ -181,7 +181,7 @@
             </sc-if>
             <sc-if value="{{ needsHeartbeat }}" hint-placeholder-val="{{ false }}">
               <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 16px;">Your next step is Heartbeat. It's where you'll discover your gifts and get matched to a team.</p>
-              <p style="font-size:15px; color:#6E6759; margin:0 0 24px;">The next one is <strong style="color:#191713;">{{ nextHeartbeatLabel }}</strong>, during service.</p>
+              <p style="font-size:15px; color:#6E6759; margin:0 0 24px;">The next one at Nashville is <strong style="color:#191713;">{{ nextHeartbeatLabel }}</strong>, during service. At Franklin, register your interest on the Heartbeat page.</p>
               <a href="/heartbeat" style="display:inline-block; background:#191713; color:#FFFFFF; font-weight:700; font-size:15px; padding:14px 30px; border-radius:100px; text-decoration:none; margin-bottom:24px;">Save my Heartbeat spot</a>
             </sc-if>
             <div>
@@ -294,7 +294,7 @@ class Component extends DCLogic {
   secondSunday(year, month) {
     const first = new Date(year, month, 1);
     const offset = (7 - first.getDay()) % 7;
-    return new Date(year, month, 1 + offset + 7);
+    return new Date(year, month, 1 + offset);
   }
 
   nextHeartbeat() {

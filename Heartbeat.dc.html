@@ -40,13 +40,13 @@
     <img src="assets/cp-icon-black.png" alt="" style="width:46px; height:auto; margin:0 auto 22px; display:block;">
     <div style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:24px; color:#191713; margin-bottom:18px;">Your first step at Citipointe.</div>
     <h1 style="font-weight:800; font-size:clamp(38px,6.5vw,66px); line-height:1.04; margin:0 auto 26px; letter-spacing:-1.5px; max-width:860px;">One Sunday. Fully connected.</h1>
-    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:640px; margin:0 auto 36px;">Heartbeat is a one day course that happens during service on the second Sunday of every month. Discover the heart of our church, what we believe, your spiritual gifts, and your place on a team and in a lifegroup.</p>
+    <p style="font-size:18.5px; line-height:1.7; color:#6E6759; max-width:640px; margin:0 auto 36px;">Heartbeat is a one day course that happens during service on the first Sunday of every month at Nashville. At Franklin, register your interest and we’ll let you know the next date. Discover the heart of our church, what we believe, your spiritual gifts, and your place on a team and in a lifegroup.</p>
 
     <div style="display:flex; flex-wrap:wrap; align-items:stretch; justify-content:center; gap:14px; max-width:720px; margin:0 auto 36px;">
       <div style="background:#191713; color:#FDFBF7; border-radius:18px; flex:1 1 240px; padding:20px clamp(22px,4vw,34px); text-align:left;">
         <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#B9B2A4; text-transform:uppercase; margin-bottom:6px;">Next Heartbeat</div>
         <div style="font-weight:800; font-size:26px; letter-spacing:-0.5px;">{{ nextDateLabel }}</div>
-        <div style="font-size:14px; color:#B9B2A4; margin-top:4px;">During service, Nashville and Franklin</div>
+        <div style="font-size:14px; color:#B9B2A4; margin-top:4px;">During service, Nashville</div>
       </div>
       <div style="background:#F4EEE3; color:#191713; border-radius:18px; flex:1 1 240px; padding:20px clamp(22px,4vw,34px); text-align:left;">
         <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; color:#6E6759; text-transform:uppercase; margin-bottom:6px;">Can't make it? Following month</div>
@@ -143,12 +143,17 @@
               </div>
             </div>
             <div>
-              <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which date?</label>
-              <div style="display:flex; gap:10px; flex-wrap:wrap;">
-                <sc-for list="{{ dateOptions }}" as="d" hint-placeholder-count="2">
-                  <div onClick="{{ d.onClick }}" style="{{ d.style }}">{{ d.label }}</div>
-                </sc-for>
-              </div>
+              <sc-if value="{{ isNashville }}" hint-placeholder-val="{{ true }}">
+                <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:8px;">Which date?</label>
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                  <sc-for list="{{ dateOptions }}" as="d" hint-placeholder-count="2">
+                    <div onClick="{{ d.onClick }}" style="{{ d.style }}">{{ d.label }}</div>
+                  </sc-for>
+                </div>
+              </sc-if>
+              <sc-if value="{{ isFranklin }}" hint-placeholder-val="{{ false }}">
+                <div style="background:#F4EEE3; border-radius:14px; padding:14px 18px; font-size:14.5px; line-height:1.6; color:#4A443A;">Heartbeat at Franklin runs by interest. Register below and we’ll let you know when the next one is on.</div>
+              </sc-if>
             </div>
             <div>
               <label style="display:block; font-size:13px; font-weight:600; color:#4A443A; margin-bottom:7px;">How long have you been attending Citipointe?</label>
@@ -157,7 +162,7 @@
             <sc-if value="{{ formError }}" hint-placeholder-val="{{ false }}">
               <div style="font-size:13.5px; color:#A4462D; text-align:center;">{{ formError }}</div>
             </sc-if>
-            <a href="#signup" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">Save my spot</a>
+            <a href="#signup" onClick="{{ submit }}" style="text-align:center; margin-top:6px; background:#191713; color:#FFFFFF; font-weight:700; font-size:16px; padding:16px; border-radius:100px; text-decoration:none;">{{ submitLabel }}</a>
 
           </div>
         </sc-if>
@@ -166,8 +171,13 @@
           <div style="text-align:center; padding:24px 8px;">
             <div style="width:56px; height:56px; border-radius:50%; background:#EAF0E4; color:#54713F; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:700; margin:0 auto 20px;">&#10003;</div>
             <h3 style="font-weight:800; font-size:26px; margin:0 0 12px; letter-spacing:-0.5px;">You're in.</h3>
-            <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 8px;">We'll text you the details before the day.</p>
-            <p style="font-size:15px; color:#6E6759; margin:0 0 24px;">See you on <strong style="color:#191713;">{{ chosenDateLabel }}</strong>.</p>
+            <sc-if value="{{ isNashville }}" hint-placeholder-val="{{ true }}">
+              <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 8px;">We'll text you the details before the day.</p>
+              <p style="font-size:15px; color:#6E6759; margin:0 0 24px;">See you on <strong style="color:#191713;">{{ chosenDateLabel }}</strong>.</p>
+            </sc-if>
+            <sc-if value="{{ isFranklin }}" hint-placeholder-val="{{ false }}">
+              <p style="font-size:16px; color:#6E6759; line-height:1.7; margin:0 0 24px;">We'll be in touch when the next Franklin Heartbeat is set.</p>
+            </sc-if>
             <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:26px;">
               <a href="/join-a-team" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">While you wait: meet the serving teams &rarr;</a>
               <a href="/lifegroups" style="font-size:14.5px; font-weight:700; color:#191713; text-decoration:none;">Browse Lifegroups &rarr;</a>
@@ -239,9 +249,11 @@ class Component extends DCLogic {
     fd.append('q3_q3_phone1[full]', form.mobile.trim());
     fd.append('q4_q4_email2', form.email.trim());
     fd.append('q5_q5_dropdown3', form.campus);
-    fd.append('q8_q8_datetime6[month]', String(d.getMonth() + 1).padStart(2, '0'));
-    fd.append('q8_q8_datetime6[day]', String(d.getDate()).padStart(2, '0'));
-    fd.append('q8_q8_datetime6[year]', String(d.getFullYear()));
+    if (form.campus === 'Nashville') {
+      fd.append('q8_q8_datetime6[month]', String(d.getMonth() + 1).padStart(2, '0'));
+      fd.append('q8_q8_datetime6[day]', String(d.getDate()).padStart(2, '0'));
+      fd.append('q8_q8_datetime6[year]', String(d.getFullYear()));
+    }
     fd.append('q13_howLong', form.howLong.trim());
     fetch('https://submit.jotform.com/submit/261983504237158', { method: 'POST', mode: 'no-cors', body: fd })
       .then(() => this.setState({ submitted: true, sending: false }))
@@ -256,16 +268,16 @@ class Component extends DCLogic {
   ];
 
   steps = [
-    { num: '01', title: 'Show up on the second Sunday', detail: 'Come to the service you normally attend at Nashville or Franklin.' },
+    { num: '01', title: 'Show up on the first Sunday', detail: 'Come to service at Nashville. At Franklin, register your interest and we’ll let you know the date.' },
     { num: '02', title: 'It happens during service', detail: 'Heartbeat runs alongside the service, so there is no extra trip.' },
     { num: '03', title: 'Leave connected', detail: 'You walk out knowing your gifts, your lifegroup, and your team.' },
   ];
 
-  // 2nd Sunday of a given month/year
+  // 1st Sunday of a given month/year
   secondSunday(year, month) {
     const first = new Date(year, month, 1);
     const offset = (7 - first.getDay()) % 7; // days to first Sunday
-    return new Date(year, month, 1 + offset + 7);
+    return new Date(year, month, 1 + offset);
   }
 
   upcomingDates() {
@@ -275,7 +287,7 @@ class Component extends DCLogic {
     let y = today.getFullYear(), m = today.getMonth();
     while (dates.length < 3) {
       const d = this.secondSunday(y, m);
-      const skip = ['2026-10', '2026-11']; // months with no Heartbeat (YYYY-MM)
+      const skip = ['2026-10']; // months with no Heartbeat (YYYY-MM)
       if (d >= today && !skip.includes(y + '-' + String(m + 1).padStart(2, '0'))) dates.push(d);
       m++;
       if (m > 11) { m = 0; y++; }
@@ -316,6 +328,9 @@ class Component extends DCLogic {
         style: this.chipStyle(form.date === i),
         onClick: () => this.setState(s => ({ form: { ...s.form, date: i } })),
       })),
+      isNashville: form.campus === 'Nashville',
+      isFranklin: form.campus === 'Franklin',
+      submitLabel: form.campus === 'Franklin' ? 'Register my interest' : 'Save my spot',
       chosenDateLabel: this.fmt(dates[form.date] || dates[0]),
       submit: (e) => { if (e && e.preventDefault) e.preventDefault(); this.submitToJotform(); },
       formError: error || false,

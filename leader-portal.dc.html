@@ -116,7 +116,7 @@
             <div style="order:{{ heartbeatOrder }}; background:#16140F; color:#FBF8F3; border-radius:16px; flex:1 1 260px; max-width:440px; padding:20px clamp(20px,4vw,28px);">
               <div style="font-size:11px; letter-spacing:2px; font-weight:700; color:#B7AF9E; text-transform:uppercase; margin-bottom:5px;">Next Heartbeat</div>
               <div style="font-weight:800; font-size:19px;">{{ nextHeartbeatLabel }}</div>
-              <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">Second Sunday of every month</div>
+              <div style="font-size:13px; color:#B7AF9E; margin-top:5px;">First Sunday monthly at Nashville · Franklin by expression of interest</div>
             </div>
             <sc-if value="{{ showTrainingNight }}" hint-placeholder-val="{{ true }}">
               <div style="order:20260812; background:#FFFFFF; color:#16140F; border:1px solid #E7DFCF; border-radius:16px; flex:1 1 200px; max-width:300px; padding:20px clamp(20px,4vw,28px);">
@@ -1373,14 +1373,14 @@ class Component extends DCLogic {
   secondSunday(year, month) {
     const first = new Date(year, month, 1);
     const offset = (7 - first.getDay()) % 7;
-    return new Date(year, month, 1 + offset + 7);
+    return new Date(year, month, 1 + offset);
   }
 
   nextHeartbeat() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     let y = today.getFullYear(), m = today.getMonth();
-    const skip = ['2026-10', '2026-11']; // months with no Heartbeat (YYYY-MM)
+    const skip = ['2026-10']; // months with no Heartbeat (YYYY-MM)
     let d = this.secondSunday(y, m);
     while (d < today || skip.includes(y + '-' + String(m + 1).padStart(2, '0'))) { m++; if (m > 11) { m = 0; y++; } d = this.secondSunday(y, m); }
     return d;
