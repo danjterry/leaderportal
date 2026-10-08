@@ -6,7 +6,7 @@ window.CP_EVENTS = [
     href: 'https://www.eventbrite.com/e/1998654588677?aff=oddtdtcreator', hrefLabel: 'Get tickets' },
   { title: 'Faith Love Hope Miracle Offering', start: '2026-11-08', place: 'All services · Nashville & Franklin', tag: 'church',
     note: 'One Sunday, one sacrificial offering — believing God for miracles.', href: '/kingdom-builders', hrefLabel: 'Learn more' },
-  { title: 'YA Friendsgiving', start: '2026-11-19', place: 'YA Society', tag: 'ya', href: '/communities#young-adults', hrefLabel: 'Learn more' },
+  { title: 'YA Friendsgiving', start: '2026-11-18T18:30', place: 'YA Society', tag: 'ya', href: '/communities#young-adults', hrefLabel: 'Learn more' },
   { title: 'Forged Men’s Night', start: '2026-11-16T18:30', place: 'Citipointe Church Nashville', tag: 'mens', href: '/communities#mens', hrefLabel: 'Learn more' },
   { title: 'Awaken the Nations Worship Night', start: '2026-11-21', place: 'Citipointe Church', tag: 'church', href: 'https://www.awakenthenation.tv/events', hrefLabel: 'Learn more' },
   { title: 'Adult Christmas Party', start: '2026-12-05', place: 'Citipointe Church', tag: 'adults' },
