@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Facilities request | Citipointe Church</title>
+<link rel="icon" type="image/png" href="/assets/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Citipointe Church">
+<meta property="og:title" content="Staff Hub | Citipointe Church">
+<meta property="og:description" content="Forms, HR, policies, and the staff calendar: everything Citipointe staff need in one place.">
+<meta property="og:image" content="https://citipointe.church/assets/staff-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <style>
+    body { margin: 0; background: #FDFBF7; font-family: 'Proxima Nova', 'Helvetica Neue', Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    * { box-sizing: border-box; }
+    a { color: #191713; }
+    a:hover { color: #4A443A; }
+    ::selection { background: #F3E7D8; }
+    input, textarea, button { font: inherit; color: inherit; }
+    input::placeholder, textarea::placeholder { color: #A39A89; }
+    .fr-field:focus { outline: none; border-color: #191713 !important; box-shadow: 0 0 0 1px #191713; }
+    .fr-tile:focus-visible, .fr-btn:focus-visible, .fr-drop:focus-within, a:focus-visible { outline: 2px solid #191713; outline-offset: 2px; }
+    .fr-tile:hover { border-color: #191713 !important; }
+    .fr-btn:disabled { opacity: 0.7; cursor: default; }
+    .fr-hp { position: absolute !important; left: -10000px !important; top: auto !important; width: 1px !important; height: 1px !important; overflow: hidden !important; }
+  </style>
+  <meta name="robots" content="noindex, nofollow">
+</helmet>
+
+<div style="min-height:100vh; background:#FDFBF7; color:#191713;">
+  <dc-import name="staff-gate" hint-size="0,0"></dc-import>
+  <dc-import name="staff-nav" active="forms" style="position:sticky; top:0; z-index:40;" hint-size="100%,105px"></dc-import>
+
+  <div style="max-width:1140px; margin:0 auto; padding:clamp(24px,4vw,40px) clamp(16px,3vw,32px) clamp(40px,6vw,64px);">
+
+    <a href="/staff/forms" style="display:inline-block; font-size:14px; font-weight:700; color:#6E6759; text-decoration:none; margin-bottom:22px;">&larr; All forms</a>
+
+    <!-- FORM STATE -->
+    <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; flex-wrap:wrap; gap:clamp(24px,4vw,48px); align-items:flex-start;">
+
+        <div style="flex:999 1 560px; min-width:0; display:flex; flex-direction:column; gap:22px;">
+          <div style="display:flex; flex-direction:column; gap:10px; max-width:640px;">
+            <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172;">Facilities</div>
+            <h1 style="margin:0; font-weight:800; font-size:clamp(30px,4.5vw,44px); line-height:1.08; letter-spacing:-1px;">Report something that needs fixing.</h1>
+            <p style="margin:0; font-size:clamp(16px,2vw,17.5px); line-height:1.75; color:#4A443A;">Tell us what and where, and add a photo if you can. It goes straight to the facilities team, so they can bring the right tools the first time.</p>
+          </div>
+
+          <form id="fr-form" method="post" action="https://submit.jotform.com/submit/263084264506053" enctype="multipart/form-data" accept-charset="utf-8" target="fr-jotform-target" onSubmit="{{ onFormSubmit }}" style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(22px,3vw,32px); display:flex; flex-direction:column; gap:30px;">
+
+            <!-- Jotform plumbing (do not rename) -->
+            <input type="hidden" name="formID" value="263084264506053">
+            <input type="hidden" name="simple_spc" value="263084264506053-263084264506053">
+            <div class="fr-hp" aria-hidden="true">
+              <label for="fr-website">Leave this empty</label>
+              <input id="fr-website" type="text" name="website" tabindex="-1" autocomplete="off">
+            </div>
+            <input type="hidden" name="q6_q6_radio4" value="{{ campusValue }}">
+            <input type="hidden" name="q10_q10_dropdown8" value="{{ categoryValue }}">
+            <input type="hidden" name="q11_q11_radio9" value="{{ priorityValue }}">
+            <input type="hidden" name="q12_q12_datetime10[month]" value="{{ neededMonth }}">
+            <input type="hidden" name="q12_q12_datetime10[day]" value="{{ neededDay }}">
+            <input type="hidden" name="q12_q12_datetime10[year]" value="{{ neededYear }}">
+
+            <!-- ABOUT YOU -->
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#8A8172;">About you</div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="font-size:14px; font-weight:700;">Your name</div>
+                <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:12px;">
+                  <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
+                    <label for="fr-first" style="font-size:13px; font-weight:600; color:#6E6759;">First name</label>
+                    <input id="fr-first" class="fr-field" type="text" name="q3_q3_fullname1[first]" autocomplete="given-name" value="{{ first }}" onChange="{{ setFirst }}" aria-invalid="{{ inv.first }}" style="{{ st.first }}">
+                    <sc-if value="{{ show.first }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.first }}</div></sc-if>
+                  </div>
+                  <div style="display:flex; flex-direction:column; gap:6px; min-width:0;">
+                    <label for="fr-last" style="font-size:13px; font-weight:600; color:#6E6759;">Last name</label>
+                    <input id="fr-last" class="fr-field" type="text" name="q3_q3_fullname1[last]" autocomplete="family-name" value="{{ last }}" onChange="{{ setLast }}" aria-invalid="{{ inv.last }}" style="{{ st.last }}">
+                    <sc-if value="{{ show.last }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.last }}</div></sc-if>
+                  </div>
+                </div>
+              </div>
+              <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:16px;">
+                <div style="display:flex; flex-direction:column; gap:7px; min-width:0;">
+                  <label for="fr-email" style="font-size:14px; font-weight:700;">Email</label>
+                  <input id="fr-email" class="fr-field" type="email" name="q4_q4_email2" autocomplete="email" inputmode="email" placeholder="you@citipointechurch.com" value="{{ email }}" onChange="{{ setEmail }}" aria-invalid="{{ inv.email }}" style="{{ st.email }}">
+                  <sc-if value="{{ show.email }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.email }}</div></sc-if>
+                </div>
+                <div style="display:flex; flex-direction:column; gap:7px; min-width:0;">
+                  <label for="fr-phone" style="font-size:14px; font-weight:700;">Phone <span style="font-weight:400; color:#6E6759; font-size:13px;">optional</span></label>
+                  <input id="fr-phone" class="fr-field" type="tel" name="q5_q5_phone3[full]" autocomplete="tel" placeholder="(615) 555-0123" value="{{ phone }}" onChange="{{ setPhone }}" style="{{ st.phone }}">
+                </div>
+              </div>
+            </div>
+
+            <div style="height:1px; background:#ECE5D8;"></div>
+
+            <!-- WHERE -->
+            <div style="display:flex; flex-direction:column; gap:16px;">
+              <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#8A8172;">Where</div>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div id="fr-campus-label" style="font-size:14px; font-weight:700;">Campus</div>
+                <div id="fr-campus" role="group" aria-labelledby="fr-campus-label" style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:10px; max-width:420px;">
+                  <sc-for list="{{ campuses }}" as="c" hint-placeholder-count="2">
+                    <button type="button" class="fr-tile" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ show.campus }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.campus }}</div></sc-if>
+              </div>
+              <div style="display:flex; flex-direction:column; gap:7px; max-width:520px;">
+                <label for="fr-room" style="font-size:14px; font-weight:700;">Room or area</label>
+                <input id="fr-room" class="fr-field" type="text" name="q7_q7_textbox5" placeholder="e.g. Kids wing, Room 104" value="{{ room }}" onChange="{{ setRoom }}" aria-invalid="{{ inv.room }}" style="{{ st.room }}">
+                <sc-if value="{{ show.room }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.room }}</div></sc-if>
+              </div>
+            </div>
+
+            <div style="height:1px; background:#ECE5D8;"></div>
+
+            <!-- WHAT NEEDS ATTENTION -->
+            <div style="display:flex; flex-direction:column; gap:18px;">
+              <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#8A8172;">What needs attention</div>
+
+              <div style="display:flex; flex-direction:column; gap:7px;">
+                <div style="display:flex; justify-content:space-between; align-items:baseline; gap:12px;">
+                  <label for="fr-title" style="font-size:14px; font-weight:700;">In a few words</label>
+                  <span style="font-size:12.5px; color:#6E6759;">{{ titleCount }}</span>
+                </div>
+                <input id="fr-title" class="fr-field" type="text" name="q9_q9_textbox7" maxlength="120" placeholder="e.g. Toilet running constantly in the women's restroom" value="{{ title }}" onChange="{{ setTitle }}" aria-invalid="{{ inv.title }}" style="{{ st.title }}">
+                <sc-if value="{{ show.title }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.title }}</div></sc-if>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div id="fr-cat-label" style="font-size:14px; font-weight:700;">Category</div>
+                <div id="fr-cat" role="group" aria-labelledby="fr-cat-label" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(170px, 1fr)); gap:8px;">
+                  <sc-for list="{{ categories }}" as="c" hint-placeholder-count="10">
+                    <button type="button" class="fr-tile" onClick="{{ c.pick }}" aria-pressed="{{ c.pressed }}" style="{{ c.style }}">{{ c.label }}</button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ show.category }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.category }}</div></sc-if>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div id="fr-prio-label" style="font-size:14px; font-weight:700;">How soon?</div>
+                <div id="fr-prio" role="group" aria-labelledby="fr-prio-label" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:8px;">
+                  <sc-for list="{{ priorities }}" as="p" hint-placeholder-count="4">
+                    <button type="button" class="fr-tile" onClick="{{ p.pick }}" aria-pressed="{{ p.pressed }}" style="{{ p.style }}"><span style="font-weight:700; font-size:15px;">{{ p.label }}</span><span style="{{ p.hintStyle }}">{{ p.hint }}</span></button>
+                  </sc-for>
+                </div>
+                <sc-if value="{{ show.priority }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.priority }}</div></sc-if>
+                <sc-if value="{{ isUrgent }}" hint-placeholder-val="{{ false }}">
+                  <div role="note" style="background:#F3E7D8; border-radius:12px; padding:12px 16px; font-size:14px; line-height:1.6; color:#191713;">If someone could get hurt, like a gas smell, flooding or sparking, also tell a staff member on site right now.</div>
+                </sc-if>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:7px; max-width:260px;">
+                <label for="fr-needed" style="font-size:14px; font-weight:700;">Needed by <span style="font-weight:400; color:#6E6759; font-size:13px;">optional</span></label>
+                <input id="fr-needed" class="fr-field" type="date" min="{{ today }}" value="{{ needed }}" onChange="{{ setNeeded }}" style="{{ st.needed }}">
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:7px;">
+                <label for="fr-details" style="font-size:14px; font-weight:700;">Details</label>
+                <textarea id="fr-details" class="fr-field" name="q14_q14_textarea12" rows="4" placeholder="What's happening, when it started, and anything you've already tried." value="{{ details }}" onChange="{{ setDetails }}" aria-invalid="{{ inv.details }}" style="{{ st.details }}"></textarea>
+                <sc-if value="{{ show.details }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ err.details }}</div></sc-if>
+              </div>
+
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="font-size:14px; font-weight:700;">Photos <span style="font-weight:400; color:#6E6759; font-size:13px;">optional, up to 6</span></div>
+                <label for="fr-photos" class="fr-drop" onDragOver="{{ dragOver }}" onDragLeave="{{ dragLeave }}" onDrop="{{ dropFiles }}" style="{{ dropStyle }}">
+                  <span style="width:44px; height:44px; border-radius:100px; background:#FFFFFF; border:1px solid #E0D8C8; display:flex; align-items:center; justify-content:center; flex:none;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#191713" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h3l2-3h6l2 3h3v11H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg></span>
+                  <span style="display:flex; flex-direction:column; gap:2px; min-width:0;"><span style="font-weight:700; font-size:15px;">Take a photo or choose one</span><span style="font-size:13.5px; color:#6E6759;">A clear shot of the problem and where it is. Images only, 10 MB each.</span></span>
+                  <input id="fr-photos" type="file" name="q15_q15_fileupload13[]" accept="image/*" multiple="{{ true }}" onChange="{{ pickFiles }}" style="position:absolute; width:1px; height:1px; opacity:0; overflow:hidden;">
+                </label>
+                <sc-if value="{{ hasPhotos }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                    <sc-for list="{{ photos }}" as="ph" hint-placeholder-count="2">
+                      <div style="position:relative; width:76px; height:76px; border-radius:12px; overflow:hidden; border:1px solid #E0D8C8; background:#F4EEE3;">
+                        <img src="{{ ph.url }}" alt="{{ ph.name }}" style="width:100%; height:100%; object-fit:cover; display:block;">
+                        <button type="button" class="fr-btn" onClick="{{ ph.remove }}" aria-label="Remove {{ ph.name }}" style="position:absolute; top:4px; right:4px; width:26px; height:26px; border-radius:100px; border:none; background:#191713; color:#FFFFFF; font-size:15px; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; padding:0;">&times;</button>
+                      </div>
+                    </sc-for>
+                  </div>
+                </sc-if>
+                <sc-if value="{{ hasPhotoNote }}" hint-placeholder-val="{{ false }}"><div style="font-size:13.5px; color:#A4462D;">{{ photoNote }}</div></sc-if>
+              </div>
+            </div>
+
+            <!-- FOOTER -->
+            <div style="display:flex; flex-direction:column; gap:12px; border-top:1px solid #ECE5D8; padding-top:22px;">
+              <sc-if value="{{ showSummary }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px; font-weight:600; color:#A4462D;">A few things still need filling in. They're marked above.</div></sc-if>
+              <sc-if value="{{ slow }}" hint-placeholder-val="{{ false }}"><div role="alert" style="font-size:14px; line-height:1.6; color:#A4462D;">This is taking longer than usual. Check your inbox for a confirmation before you send it again.</div></sc-if>
+              <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:14px;">
+                <span style="font-size:14px; color:#6E6759;">Goes straight to the facilities team.</span>
+                <button type="button" class="fr-btn" onClick="{{ send }}" disabled="{{ sending }}" aria-busy="{{ busy }}" style="appearance:none; border:1px solid #191713; background:#191713; color:#FFFFFF; border-radius:100px; padding:14px 28px; min-height:48px; font-weight:700; font-size:15.5px; cursor:pointer;">{{ sendLabel }}</button>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- WHAT HAPPENS NEXT -->
+        <aside style="flex:1 1 260px; min-width:0; display:flex; flex-direction:column; gap:12px; padding-top:clamp(0px,1vw,8px);">
+          <div style="font-size:11.5px; letter-spacing:2px; font-weight:700; text-transform:uppercase; color:#8A8172;">What happens next</div>
+          <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:6px;">
+            <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#8A8172;">01</span>
+            <span style="font-weight:800; font-size:17px; letter-spacing:-0.3px;">Danny gets it straight away</span>
+            <span style="font-size:14.5px; line-height:1.65; color:#6E6759;">By email, with your photos attached.</span>
+          </div>
+          <div style="background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:6px;">
+            <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#8A8172;">02</span>
+            <span style="font-weight:800; font-size:17px; letter-spacing:-0.3px;">You'll get a confirmation</span>
+            <span style="font-size:14.5px; line-height:1.65; color:#6E6759;">He'll reply to that email if he needs more detail or a time to get in.</span>
+          </div>
+          <div style="background:#191713; border:1px solid #191713; border-radius:18px; padding:20px 22px; display:flex; flex-direction:column; gap:6px; color:#FDFBF7;">
+            <span style="font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:22px; color:#B9B2A4;">03</span>
+            <span style="font-weight:800; font-size:17px; letter-spacing:-0.3px;">Something dangerous?</span>
+            <span style="font-size:14.5px; line-height:1.65; color:#D9D2C4;">Gas smell, flooding, sparking or someone hurt: tell a staff member on site straight away, then send this.</span>
+          </div>
+        </aside>
+      </div>
+    </sc-if>
+
+    <!-- CONFIRMATION STATE -->
+    <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+      <div role="status" style="max-width:640px; background:#FFFFFF; border:1px solid #ECE5D8; border-radius:18px; padding:clamp(28px,5vw,44px); display:flex; flex-direction:column; gap:14px; align-items:flex-start;">
+        <div style="font-size:12px; letter-spacing:2.5px; font-weight:700; text-transform:uppercase; color:#8A8172;">Facilities</div>
+        <h1 style="margin:0; font-weight:800; font-size:clamp(30px,4.5vw,40px); line-height:1.08; letter-spacing:-1px;">Request received.</h1>
+        <p style="margin:0; font-family:'Minion Pro', Georgia, serif; font-style:italic; font-size:21px; color:#191713;">We've got it from here.</p>
+        <p style="margin:0; font-size:15.5px; line-height:1.75; color:#6E6759;">The facilities team has your request. Check your inbox for a confirmation; Danny will reply there if he needs anything else.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:10px; margin-top:6px;">
+          <button type="button" class="fr-btn" onClick="{{ reset }}" style="appearance:none; border:1px solid #191713; background:#191713; color:#FFFFFF; border-radius:100px; padding:13px 24px; min-height:46px; font-weight:700; font-size:15px; cursor:pointer;">Report something else</button>
+          <a href="/staff/forms" style="border:1px solid #191713; background:#FFFFFF; color:#191713; border-radius:100px; padding:13px 24px; min-height:46px; font-weight:700; font-size:15px; text-decoration:none; display:inline-flex; align-items:center;">Back to forms</a>
+        </div>
+      </div>
+    </sc-if>
+
+    <!-- Submissions post here so the page never leaves the Staff Hub -->
+    <iframe name="fr-jotform-target" title="Facilities request submission" tabindex="-1" aria-hidden="true" style="display:none; width:0; height:0; border:0;"></iframe>
+  </div>
+
+  <dc-import name="staff-footer" hint-size="100%,90px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // Jotform "Facilities request" form. Field names below must match Jotform exactly.
+  FORM_ID = '263084264506053';
+  ACTION = 'https://submit.jotform.com/submit/263084264506053';
+  FRAME = 'fr-jotform-target';
+  MAX_PHOTOS = 6;
+  MAX_BYTES = 10 * 1024 * 1024;
+  CAMPUSES = ['Nashville', 'Franklin'];
+  CATEGORIES = [
+    ['HVAC / heating & cooling', 'HVAC / heating & cooling'],
+    ['Plumbing', 'Plumbing'],
+    ['Electrical & lighting', 'Electrical & lighting'],
+    ['Doors, locks & keys', 'Doors, locks & keys'],
+    ['Cleaning', 'Cleaning & janitorial'],
+    ['Furniture & room setup', 'Furniture & room setup'],
+    ['Grounds & parking', 'Grounds & parking'],
+    ['Roof, walls & windows', 'Roof, walls & windows'],
+    ['Safety hazard', 'Safety hazard'],
+    ['Something else', 'Other'],
+  ];
+  PRIORITIES = [
+    { key: 'low', label: 'Low', hint: "When there's time", value: "Low (when there's time)" },
+    { key: 'medium', label: 'Medium', hint: 'Within the week', value: 'Medium (within the week)' },
+    { key: 'high', label: 'High', hint: 'Within 48 hours', value: 'High (within 48 hours)' },
+    { key: 'urgent', label: 'Urgent', hint: 'Safety risk or affects a service', value: 'Urgent (safety risk or affects a service)' },
+  ];
+  ORDER = ['first', 'last', 'email', 'campus', 'room', 'title', 'category', 'priority', 'details'];
+  FOCUS = { first: 'fr-first', last: 'fr-last', email: 'fr-email', campus: 'fr-campus', room: 'fr-room', title: 'fr-title', category: 'fr-cat', priority: 'fr-prio', details: 'fr-details' };
+
+  photoFiles = [];
+  thumbs = [];
+  awaiting = false;
+  slowTimer = null;
+
+  blank() {
+    return { first: '', last: '', email: '', phone: '', campus: '', room: '', title: '', category: '', priority: '', needed: '', details: '', photoNote: '', photoRev: 0, dragging: false, tried: false, sending: false, slow: false, submitted: false };
+  }
+  state = this.blank();
+
+  componentDidMount() {
+    this.onFrameLoad = () => this.frameLoaded();
+    try {
+      const f = document.querySelector('iframe[name="' + this.FRAME + '"]');
+      if (f) { f.addEventListener('load', this.onFrameLoad); this.frameEl = f; }
+    } catch (e) {}
+  }
+  componentWillUnmount() {
+    try { if (this.frameEl) this.frameEl.removeEventListener('load', this.onFrameLoad); } catch (e) {}
+    clearTimeout(this.slowTimer);
+    this.clearThumbs();
+  }
+
+  // ---- validation ----
+  errors() {
+    const s = this.state, e = {};
+    if (!s.first.trim()) e.first = 'Add your first name.';
+    if (!s.last.trim()) e.last = 'Add your last name.';
+    if (!s.email.trim()) e.email = 'Add your email so you get the confirmation.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(s.email.trim())) e.email = "That email doesn't look right.";
+    if (!s.campus) e.campus = 'Choose a campus.';
+    if (!s.room.trim()) e.room = 'Tell us the room or area.';
+    if (!s.title.trim()) e.title = 'Describe it in a few words.';
+    if (!s.category) e.category = 'Choose a category.';
+    if (!s.priority) e.priority = 'Choose how soon.';
+    if (!s.details.trim()) e.details = 'Add a few details.';
+    return e;
+  }
+  focusFirst(key) {
+    try {
+      const el = document.getElementById(this.FOCUS[key]);
+      if (!el) return;
+      const target = el.tagName === 'DIV' ? el.querySelector('button') : el;
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      if (target) setTimeout(() => { try { target.focus({ preventScroll: true }); } catch (e) {} }, 250);
+    } catch (e) {}
+  }
+
+  // ---- submit ----
+  submitForm(form) {
+    if (this.state.sending) return;
+    const errs = this.errors();
+    const keys = this.ORDER.filter((k) => errs[k]);
+    if (keys.length) { this.setState({ tried: true }); this.focusFirst(keys[0]); return; }
+    if (!form) form = document.getElementById('fr-form');
+    if (!form) return;
+    form.setAttribute('method', 'post');
+    form.setAttribute('action', this.ACTION);
+    form.setAttribute('enctype', 'multipart/form-data');
+    form.setAttribute('accept-charset', 'utf-8');
+    form.setAttribute('target', this.FRAME);
+    this.awaiting = true;
+    this.setState({ tried: true, sending: true, slow: false });
+    clearTimeout(this.slowTimer);
+    this.slowTimer = setTimeout(() => { if (this.awaiting) this.setState({ sending: false, slow: true }); }, 45000);
+    form.submit();
+  }
+  frameLoaded() {
+    if (!this.awaiting) return; // ignore the empty frame's first load
+    this.awaiting = false;
+    clearTimeout(this.slowTimer);
+    this.clearThumbs();
+    this.photoFiles = [];
+    this.setState({ sending: false, slow: false, submitted: true });
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {}
+  }
+  reset() {
+    this.awaiting = false;
+    clearTimeout(this.slowTimer);
+    this.clearThumbs();
+    this.photoFiles = [];
+    this.setState(this.blank());
+    try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) {}
+  }
+
+  // ---- photos ----
+  clearThumbs() {
+    this.thumbs.forEach((u) => { try { URL.revokeObjectURL(u); } catch (e) {} });
+    this.thumbs = [];
+  }
+  canSetFiles() {
+    try { return typeof DataTransfer === 'function' && !!new DataTransfer().items; } catch (e) { return false; }
+  }
+  takeFiles(input, incoming, merge) {
+    const canSet = this.canSetFiles();
+    const pool = (canSet && merge ? this.photoFiles : []).concat(incoming);
+    const notes = [];
+    const images = pool.filter((f) => /^image\//i.test(f.type || '') || /\.(jpe?g|png|gif|webp|heic|heif)$/i.test(f.name || ''));
+    if (images.length < pool.length) notes.push('Only images can be added.');
+    const sized = images.filter((f) => f.size <= this.MAX_BYTES);
+    if (sized.length < images.length) notes.push('Each photo needs to be under 10 MB.');
+    let kept = sized.slice(0, this.MAX_PHOTOS);
+    if (sized.length > this.MAX_PHOTOS) notes.push('You can add up to 6 photos, so we kept the first 6.');
+    if (input) {
+      if (canSet) {
+        try { const dt = new DataTransfer(); kept.forEach((f) => dt.items.add(f)); input.files = dt.files; }
+        catch (e) { if (kept.length !== pool.length) { input.value = ''; kept = []; } }
+      } else if (kept.length !== pool.length) {
+        input.value = '';
+        kept = [];
+        notes.push('Please choose again: up to 6 images, each under 10 MB.');
+      }
+    }
+    this.clearThumbs();
+    this.photoFiles = kept;
+    this.thumbs = kept.map((f) => { try { return URL.createObjectURL(f); } catch (e) { return ''; } });
+    this.setState({ photoNote: notes.join(' '), photoRev: this.state.photoRev + 1, dragging: false });
+  }
+  removePhoto(i) {
+    const input = document.getElementById('fr-photos');
+    const rest = this.photoFiles.filter((_, j) => j !== i);
+    if (this.canSetFiles()) { this.takeFiles(input, rest, false); }
+    else { if (input) input.value = ''; this.clearThumbs(); this.photoFiles = []; this.setState({ photoNote: '', photoRev: this.state.photoRev + 1 }); }
+  }
+
+  // ---- render ----
+  tile(selected, invalid, extra) {
+    const base = 'appearance:none; text-align:left; border-radius:12px; padding:12px 16px; min-height:48px; font-size:14.5px; font-weight:600; cursor:pointer; display:flex; flex-direction:column; gap:2px; justify-content:center; transition:background .12s, border-color .12s;';
+    const on = 'background:#191713; color:#FFFFFF; border:1px solid #191713;';
+    const off = 'background:#FDFBF7; color:#191713; border:1px solid ' + (invalid ? '#A4462D' : '#E0D8C8') + ';';
+    return base + (selected ? on : off) + (extra || '');
+  }
+  field(invalid, extra) {
+    return 'width:100%; min-height:48px; padding:12px 16px; border:1px solid ' + (invalid ? '#A4462D' : '#E0D8C8') + '; border-radius:12px; background:#FDFBF7; font-size:16px;' + (extra || '');
+  }
+  today() {
+    const d = new Date();
+    const p = (n) => String(n).padStart(2, '0');
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+  renderVals() {
+    const s = this.state;
+    const errs = s.tried ? this.errors() : {};
+    const keys = ['first', 'last', 'email', 'campus', 'room', 'title', 'category', 'priority', 'details'];
+    const show = {}, inv = {}, err = {};
+    keys.forEach((k) => { show[k] = !!errs[k]; inv[k] = errs[k] ? 'true' : 'false'; err[k] = errs[k] || ''; });
+    const set = (k, max) => (e) => { let v = e.target.value; if (max) v = v.slice(0, max); this.setState({ [k]: v }); };
+    const neededParts = /^\d{4}-\d{2}-\d{2}$/.test(s.needed) ? s.needed.split('-') : ['', '', ''];
+    const cat = this.CATEGORIES.find((c) => c[0] === s.category);
+    const prio = this.PRIORITIES.find((p) => p.key === s.priority);
+    return {
+      first: s.first, last: s.last, email: s.email, phone: s.phone, room: s.room, title: s.title, needed: s.needed, details: s.details,
+      setFirst: set('first'), setLast: set('last'), setEmail: set('email'), setPhone: set('phone'), setRoom: set('room'),
+      setTitle: set('title', 120), setNeeded: set('needed'), setDetails: set('details'),
+      titleCount: s.title.length + '/120',
+      today: this.today(),
+      show, inv, err,
+      st: {
+        first: this.field(show.first), last: this.field(show.last), email: this.field(show.email), phone: this.field(false),
+        room: this.field(show.room), title: this.field(show.title), needed: this.field(false),
+        details: this.field(show.details, ' min-height:120px; line-height:1.6; resize:vertical;'),
+      },
+      campuses: this.CAMPUSES.map((c) => ({
+        label: c, pressed: String(s.campus === c),
+        style: this.tile(s.campus === c, show.campus, ' align-items:center; font-weight:700; font-size:15px;'),
+        pick: () => this.setState({ campus: c }),
+      })),
+      categories: this.CATEGORIES.map(([label]) => ({
+        label, pressed: String(s.category === label),
+        style: this.tile(s.category === label, show.category),
+        pick: () => this.setState({ category: label }),
+      })),
+      priorities: this.PRIORITIES.map((p) => ({
+        label: p.label, hint: p.hint, pressed: String(s.priority === p.key),
+        style: this.tile(s.priority === p.key, show.priority, ' min-height:66px;'),
+        hintStyle: 'font-size:12.5px; font-weight:500; line-height:1.35; color:' + (s.priority === p.key ? '#D9D2C4' : '#6E6759') + ';',
+        pick: () => this.setState({ priority: p.key }),
+      })),
+      isUrgent: s.priority === 'urgent',
+      campusValue: s.campus,
+      categoryValue: cat ? cat[1] : '',
+      priorityValue: prio ? prio.value : '',
+      neededMonth: neededParts[1], neededDay: neededParts[2], neededYear: neededParts[0],
+      photos: this.photoFiles.map((f, i) => ({ name: f.name || 'Photo ' + (i + 1), url: this.thumbs[i] || '', remove: () => this.removePhoto(i) })),
+      hasPhotos: this.photoFiles.length > 0,
+      photoNote: s.photoNote, hasPhotoNote: !!s.photoNote,
+      pickFiles: (e) => this.takeFiles(e.target, Array.from(e.target.files || []), true),
+      dragOver: (e) => { e.preventDefault(); if (!s.dragging) this.setState({ dragging: true }); },
+      dragLeave: () => { if (s.dragging) this.setState({ dragging: false }); },
+      dropFiles: (e) => {
+        e.preventDefault();
+        const files = Array.from((e.dataTransfer && e.dataTransfer.files) || []);
+        const input = document.getElementById('fr-photos');
+        if (!this.canSetFiles() && input && e.dataTransfer) { try { input.files = e.dataTransfer.files; } catch (x) {} }
+        this.takeFiles(input, files, true);
+      },
+      dropStyle: 'position:relative; display:flex; flex-wrap:wrap; align-items:center; gap:14px; border:1.5px dashed ' + (s.dragging ? '#191713' : '#E0D8C8') + '; border-radius:14px; background:' + (s.dragging ? '#F4EEE3' : '#FDFBF7') + '; padding:18px 20px; cursor:pointer;',
+      showSummary: s.tried && Object.keys(errs).length > 0,
+      slow: s.slow,
+      sending: s.sending,
+      busy: s.sending ? 'true' : 'false',
+      sendLabel: s.sending ? 'Sending…' : 'Send request →',
+      send: (e) => this.submitForm(e && e.target && e.target.closest ? e.target.closest('form') : null),
+      onFormSubmit: (e) => { e.preventDefault(); this.submitForm(e.target); },
+      frameLoaded: () => this.frameLoaded(),
+      reset: () => this.reset(),
+      showForm: !s.submitted,
+      submitted: s.submitted,
+    };
+  }
+}
+</script>
+</body>
+</html>

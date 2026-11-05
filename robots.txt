@@ -8,6 +8,7 @@ Disallow: /staff-forms.dc.html
 Disallow: /staff-hr.dc.html
 Disallow: /staff-policies.dc.html
 Disallow: /staff-calendar.dc.html
+Disallow: /staff-facilities.dc.html
 Disallow: /staff.dc.html
 
 Sitemap: https://citipointe.church/sitemap.xml

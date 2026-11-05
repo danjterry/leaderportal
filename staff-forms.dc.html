@@ -79,13 +79,14 @@ class Component extends DCLogic {
   forms = {
     missing:  { title: 'Missing Receipt Form', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1jWgyEaWiBIlHPi_oS3d0jt92vuJM3hv9' }, // JOTFORM MISSING RECEIPT URL HERE (pdf is interim download)
     personal: { title: 'Personal Charge Reimbursement', url: '', pdf: 'https://drive.google.com/uc?export=download&id=1e7opP0gdIngthpzHF2dSWM80yynF4sv5' }, // JOTFORM PERSONAL CHARGE URL HERE (pdf is interim download)
-    facilities: { title: 'Facilities / Maintenance Request', url: '', link: 'https://request-portal.onupkeep.com/citipointe-church' }, // UpKeep request portal (opens in new tab)
+    facilities: { title: 'Facilities request', url: '', link: '/staff/facilities', btn: 'Open form', sameTab: true }, // Staff Hub facilities page (same tab)
     incident: { title: 'Incident Report', url: '', link: 'https://form.jotform.com/262005684824155', btn: 'Open form' },
     safechurch: { title: 'Safe Church Form', url: '', link: 'https://form.jotform.com/261996497013165', btn: 'Open form' },
   };
   open(key) {
     return () => {
       const f = this.forms[key];
+      if (!f.url && f.link && f.sameTab) { window.location.href = f.link; return; } // page on the Staff Hub
       if (!f.url && f.link) { window.open(f.link, '_blank'); return; } // external portal
       if (!f.url && f.pdf) { window.open(f.pdf, '_blank'); return; } // interim PDF until JotForm is live
       this.setState({ active: this.state.active === key ? null : key });
@@ -103,7 +104,7 @@ class Component extends DCLogic {
       flowA: [
         this.card('missing', 'Download and complete this form, have Dan or Joel sign it, then upload it to the transaction in Divvy in place of the receipt.'),
         this.card('personal', 'Submit here when a personal purchase was made in error on a church card. Once approved and signed, upload the returned PDF into Divvy where the receipt would go.'),
-        this.card('facilities', 'Something needs fixing or setting up? This routes straight to Ops.'),
+        this.card('facilities', 'Something needs fixing, cleaning or setting up? Add a photo if you can. It goes straight to Danny.'),
         this.card('incident', 'Report any incident. Routes to the Executive Pastor.'),
         this.card('safechurch', 'Safe Church reporting for concerns involving children, youth, or vulnerable people.'),
       ],
